@@ -3,7 +3,7 @@
 //  iOSDemoTests
 //
 //  Created by Shams Ahmed on 21/05/2019.
-//  Copyright © 2019 Bitrise. All rights reserved.
+//  Copyright © 2020 Bitrise. All rights reserved.
 //
 
 import XCTest

@@ -954,13 +954,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0A77837AAC2594B9AD55F60C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		104A695F2293FDA20065F218 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2474,8 +2467,6 @@
 				104A69C5229407BE0065F218 /* Create Swift header and copy to build path */,
 				104A695A2293FC340065F218 /* Run SwiftLint linter tool */,
 				1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */,
-				0A77837AAC2594B9AD55F60C /* Frameworks */,
-				1009E27F24519291000244AC /* Test Test Test */,
 			);
 			buildRules = (
 			);
@@ -2857,24 +2848,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1009E27F24519291000244AC /* Test Test Test */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Test Test Test";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "import Foundation\n\nprint(\"Hello Swift START\")\n\nlet process = ProcessInfo.processInfo\nlet environment = process.environment\nlet arguments = process.arguments\n\nprint(environment)\nprint(arguments)\n\nprint(\"Hello Swift END\")\n";
-		};
 		104A695A2293FC340065F218 /* Run SwiftLint linter tool */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2891,7 +2864,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config .swiftlint.yml\nelse\n    echo \"warning: SwiftLint not installed, use brew install swiftlint\"\nfi\n";
 		};
 		104A69C5229407BE0065F218 /* Create Swift header and copy to build path */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3092,7 +3065,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating universal static library zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License.md, TraceSDK.podspec.json\"\n\nzip -jr \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License.md\" \"../../TraceSDK.podspec.json\"\n\necho \"Created universal static library zip\"\n";
+			shellScript = "echo \"Creating universal static library zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License.md, TraceSDK.podspec.json\"\n\nzip -jr \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../TraceSDK.podspec.json\"\n\necho \"Created universal static library zip\"\n";
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;

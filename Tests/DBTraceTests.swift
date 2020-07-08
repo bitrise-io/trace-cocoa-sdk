@@ -3,7 +3,7 @@
 //  Tests
 //
 //  Created by Shams Ahmed on 01/10/2019.
-//  Copyright © 2019 Bitrise. All rights reserved.
+//  Copyright © 2020 Bitrise. All rights reserved.
 //
 
 import Foundation
