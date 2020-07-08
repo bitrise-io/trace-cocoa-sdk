@@ -1,0 +1,16 @@
+{
+  "description" : "HTTP Request Task",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "http.task.count.of.bytes.received"
+    },
+    {
+      "description" : "",
+      "key" : "http.task.count.of.bytes.sent"
+    }
+  ],
+  "name" : "app.request.task",
+  "type" : 1,
+  "unit" : "string"
+}

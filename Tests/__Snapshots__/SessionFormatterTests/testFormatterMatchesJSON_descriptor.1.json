@@ -1,0 +1,16 @@
+{
+  "description" : "App session in milliseconds",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "reason"
+    },
+    {
+      "description" : "",
+      "key" : "duration"
+    }
+  ],
+  "name" : "app.session.milliseconds",
+  "type" : 1,
+  "unit" : "ms"
+}

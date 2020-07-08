@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>classNames</key>
+	<dict>
+		<key>ControlUITests</key>
+		<dict>
+			<key>testControlTabPerformance()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.221</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>85.197</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+		</dict>
+		<key>LifecycleUITests</key>
+		<dict>
+			<key>testBackgroundToForeground()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.0685</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>16.384</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+			<key>testForegroundToBackground()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.instructions_retired</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>61984</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.0415</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>18.842</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+			<key>testLockScreen()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.0399</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.8192</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+			<key>testMultipleForegroundToBackground()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.102</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>34.406</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+		</dict>
+		<key>NetworkUITests</key>
+		<dict>
+			<key>testNetworkingPerformance()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.238</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>22.118</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+		</dict>
+		<key>TabsUITests</key>
+		<dict>
+			<key>testNetworkingPerformance()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.207</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>80.3</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+			</dict>
+			<key>testTabsPerformance()</key>
+			<dict>
+				<key>com.apple.dt.XCTMetric_CPU.time</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.214</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>111</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>50</real>
+				</dict>
+				<key>com.apple.dt.XCTMetric_Memory.physical-peak</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

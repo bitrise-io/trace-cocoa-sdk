@@ -1,0 +1,276 @@
+[
+    {
+        "points": [
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 3315428
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 506866
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "4099",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 471184
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 471204
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 471244
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593768067,
+                    "nanos": 89551
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "-10813",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 295968
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 295988
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 296028
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767212,
+                    "nanos": 172048
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "2",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767212,
+                    "nanos": 16787
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767212,
+                    "nanos": 16807
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 300222
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "260",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 327599
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 327619
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767943,
+                    "nanos": 327659
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 499259
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 499379
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 499519
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 499679
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 499859
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 500059
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 500279
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 500519
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 500779
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 501059
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 501359
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 501679
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 502019
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 502379
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 502759
+                }
+            },
+            {
+                "value": 1,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 503159
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "4099",
+                "has_value": true
+            }
+        ]
+    }
+]

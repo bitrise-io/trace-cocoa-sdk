@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m2H-1E-TAa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Control-->
+        <scene sceneID="sZl-Se-RfL">
+            <objects>
+                <viewController storyboardIdentifier="ControlViewController" title="Control" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m2H-1E-TAa" customClass="ControlViewController" customModule="iOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oVp-ZX-Ypj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-mN-xAu">
+                                <rect key="frame" x="166" y="118" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCl-KU-UeJ">
+                                <rect key="frame" x="166" y="188" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Eax-el-1Ly">
+                                <rect key="frame" x="142" y="255" width="94" height="32"/>
+                            </stepper>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-5c-QMp">
+                                <rect key="frame" x="18" y="325" width="378" height="31"/>
+                            </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rwk-FU-g95">
+                                <rect key="frame" x="142" y="406" width="131" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ghT-5c-QMp" firstAttribute="top" secondItem="Eax-el-1Ly" secondAttribute="bottom" constant="38" id="CPl-9t-urE"/>
+                            <constraint firstItem="Uau-mN-xAu" firstAttribute="leading" secondItem="BCl-KU-UeJ" secondAttribute="trailing" constant="-46" id="LDc-d8-q3W"/>
+                            <constraint firstItem="res-wO-xCY" firstAttribute="trailing" secondItem="ghT-5c-QMp" secondAttribute="trailing" constant="20" id="UIa-sJ-X6G"/>
+                            <constraint firstItem="Eax-el-1Ly" firstAttribute="centerX" secondItem="BCl-KU-UeJ" secondAttribute="centerX" id="VBo-Zv-HVL"/>
+                            <constraint firstItem="rwk-FU-g95" firstAttribute="top" secondItem="ghT-5c-QMp" secondAttribute="bottom" constant="51" id="Yi8-OU-uu2"/>
+                            <constraint firstItem="Eax-el-1Ly" firstAttribute="leading" secondItem="rwk-FU-g95" secondAttribute="leading" id="Z5x-Gs-W1q"/>
+                            <constraint firstItem="Eax-el-1Ly" firstAttribute="top" secondItem="BCl-KU-UeJ" secondAttribute="bottom" constant="37" id="ZY9-AG-Eyy"/>
+                            <constraint firstItem="res-wO-xCY" firstAttribute="trailing" secondItem="rwk-FU-g95" secondAttribute="trailing" constant="141" id="btC-eD-Wy3"/>
+                            <constraint firstItem="Uau-mN-xAu" firstAttribute="top" secondItem="res-wO-xCY" secondAttribute="top" constant="74" id="bu3-fK-5YG"/>
+                            <constraint firstItem="BCl-KU-UeJ" firstAttribute="top" secondItem="Uau-mN-xAu" secondAttribute="bottom" constant="39" id="jhZ-d7-ZAk"/>
+                            <constraint firstItem="rwk-FU-g95" firstAttribute="leading" secondItem="res-wO-xCY" secondAttribute="leading" constant="142" id="rCJ-n2-r3y"/>
+                            <constraint firstItem="ghT-5c-QMp" firstAttribute="leading" secondItem="res-wO-xCY" secondAttribute="leading" constant="20" id="x9Q-Ca-fXb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="res-wO-xCY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3DD-f0-PYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13.043478260869566" y="67.633928571428569"/>
+        </scene>
+        <!--Gesture-->
+        <scene sceneID="J6l-5h-vyI">
+            <objects>
+                <viewController storyboardIdentifier="GestureViewController" title="Gesture" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XPz-PK-Dcd" customClass="GestureViewController" customModule="iOSDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iQD-2W-a9U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="41w-q1-3OL"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="D5a-dm-lrA" appends="YES" id="n69-u0-Llq"/>
+                            <outletCollection property="gestureRecognizers" destination="s4F-b2-QGj" appends="YES" id="xvd-is-SdL"/>
+                            <outletCollection property="gestureRecognizers" destination="jMM-Sl-Mj8" appends="YES" id="qiX-oD-Wp1"/>
+                            <outletCollection property="gestureRecognizers" destination="KhD-aG-JVf" appends="YES" id="5jb-FF-3DB"/>
+                            <outletCollection property="gestureRecognizers" destination="rM6-N5-DJV" appends="YES" id="VXf-IA-cPd"/>
+                            <outletCollection property="gestureRecognizers" destination="40G-65-TSe" appends="YES" id="G1e-m2-P1I"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eX-7S-WwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="D5a-dm-lrA"/>
+                <tapGestureRecognizer numberOfTouchesRequired="2" id="s4F-b2-QGj"/>
+                <pinchGestureRecognizer id="jMM-Sl-Mj8"/>
+                <rotationGestureRecognizer id="KhD-aG-JVf"/>
+                <swipeGestureRecognizer direction="left" id="rM6-N5-DJV"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="40G-65-TSe">
+                    <rectEdge key="edges" right="YES"/>
+                </screenEdgePanGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="857" y="71"/>
+        </scene>
+    </scenes>
+</document>

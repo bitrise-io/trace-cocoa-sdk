@@ -1,0 +1,72 @@
+{
+  "description" : "this is a placeholder for all the session labels. These labels should be applied to all metrics until we can find a more efficient method",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "device.id"
+    },
+    {
+      "description" : "",
+      "key" : "device.type"
+    },
+    {
+      "description" : "",
+      "key" : "os.version"
+    },
+    {
+      "description" : "",
+      "key" : "device.name"
+    },
+    {
+      "description" : "",
+      "key" : "app.platform"
+    },
+    {
+      "description" : "",
+      "key" : "device.locale.language.code"
+    },
+    {
+      "description" : "",
+      "key" : "device.locale"
+    },
+    {
+      "description" : "",
+      "key" : "process.name"
+    },
+    {
+      "description" : "",
+      "key" : "app.version"
+    },
+    {
+      "description" : "",
+      "key" : "app.build"
+    },
+    {
+      "description" : "",
+      "key" : "app.name"
+    },
+    {
+      "description" : "",
+      "key" : "br.app.id"
+    },
+    {
+      "description" : "",
+      "key" : "disk.total.disk.space"
+    },
+    {
+      "description" : "",
+      "key" : "disk.free.disk.space"
+    },
+    {
+      "description" : "",
+      "key" : "disk.used.disk.space"
+    },
+    {
+      "description" : "",
+      "key" : "device.jailbroken"
+    }
+  ],
+  "name" : "SESSION LABELS",
+  "type" : 4,
+  "unit" : "1"
+}

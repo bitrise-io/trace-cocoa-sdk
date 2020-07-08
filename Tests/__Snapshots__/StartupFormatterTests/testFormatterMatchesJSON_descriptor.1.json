@@ -1,0 +1,12 @@
+{
+  "description" : "App startup latency in milliseconds",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "app.start.state"
+    }
+  ],
+  "name" : "app.startup.latency.ms",
+  "type" : 1,
+  "unit" : "ms"
+}

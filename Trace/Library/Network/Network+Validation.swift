@@ -1,0 +1,35 @@
+//
+//  Network+Validation.swift
+//  Trace
+//
+//  Created by Shams Ahmed on 12/03/2020.
+//  Copyright © 2020 Bitrise. All rights reserved.
+//
+
+import Foundation
+
+internal extension Network {
+
+    // MARK: - Response Validation
+
+    func validate(_ data: Data?, _ response: URLResponse?, _ error: Swift.Error?, completion: @escaping (Completion) -> Void) {
+        let statusCode = (response as? HTTPURLResponse)?.statusCode
+        
+        if let statusCode = statusCode,
+            successStatusCodes.contains(statusCode) == true {
+            completion(.success(data))
+        } else if let statusCode = statusCode,
+            clientStatusCodes.contains(statusCode) == true {
+            if statusCode == StatusCode.unauthorized.rawValue {
+                Logger.print(.application, "Authentication token is unauthorized")
+            }
+            
+            completion(.failure(.client))
+        } else if let statusCode = statusCode,
+            serverStatusCodes.contains(statusCode) == true {
+            completion(.failure(.server))
+        } else {
+            completion(.failure(.unknown(error: error)))
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "description" : "description",
+  "label_keys" : [
+    {
+      "description" : "myKey",
+      "key" : "myKey"
+    }
+  ],
+  "name" : "http.session.configuration",
+  "type" : 1,
+  "unit" : "bytes"
+}

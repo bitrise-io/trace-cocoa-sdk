@@ -1,0 +1,40 @@
+{
+  "description" : "HTTP session configuration details",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "http.session.identifier"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.timeout.interval.for.request"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.timeout.interval.for.resource"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.sends.launch.events"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.urlCache.current.disk.usage"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.urlCache.disk.capacity"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.urlCache.current.memory.usage"
+    },
+    {
+      "description" : "",
+      "key" : "http.session.urlCache.memory.capacity"
+    }
+  ],
+  "name" : "http.session.configuration",
+  "type" : 1,
+  "unit" : "string"
+}

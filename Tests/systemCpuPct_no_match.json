@@ -1,0 +1,70 @@
+[
+    {
+      "points": [
+        {
+          "value": 3.3,
+          "timestamp": {
+            "seconds": 1593700978,
+            "nanos": 808866
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "system",
+          "has_value": true
+        }
+      ]
+    },
+    {
+      "points": [
+        {
+          "value": 7.6,
+          "timestamp": {
+            "seconds": 1593700978,
+            "nanos": 808866
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "user",
+          "has_value": true
+        }
+      ]
+    },
+    {
+      "points": [
+        {
+          "value": 89.1,
+          "timestamp": {
+            "seconds": 1593700978,
+            "nanos": 808866
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "idle",
+          "has_value": true
+        }
+      ]
+    },
+    {
+      "points": [
+        {
+          "value": 0,
+          "timestamp": {
+            "seconds": 1593700978,
+            "nanos": 808866
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "nice",
+          "has_value": true
+        }
+      ]
+    }
+  ]

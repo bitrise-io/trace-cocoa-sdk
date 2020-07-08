@@ -1,0 +1,206 @@
+[
+    {
+        "points": [
+            {
+                "value": 744808448,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "free",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 5328449536,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "active",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 5143179264,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "inactive",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 4930277376,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "wired",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 17179869184,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "total",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1030914048,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "compressed",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 744808448,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "free",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 5328449536,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "active",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 5143179264,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "inactive",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 4930277376,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "wired",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 17179869184,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "total",
+                "has_value": true
+            }
+        ]
+    },
+    {
+        "points": [
+            {
+                "value": 1030914048,
+                "timestamp": {
+                    "seconds": 1593681810,
+                    "nanos": 396628
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "compressed",
+                "has_value": true
+            }
+        ]
+    }
+]

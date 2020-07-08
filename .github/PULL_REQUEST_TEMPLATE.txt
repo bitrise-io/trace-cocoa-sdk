@@ -1,0 +1,8 @@
+## Proposed changes:
+- 
+- 
+
+### Pre-requisites:
+- [ ] Reviewed code before asking reviewer <em>(Look at *Files Changed* below instead of Xcode)</em>.
+- [ ] Reviewed code format follows the style guide where possible.
+- [ ] Added tests where possible <em>(*compulsory for business logic and new classes)</em>.

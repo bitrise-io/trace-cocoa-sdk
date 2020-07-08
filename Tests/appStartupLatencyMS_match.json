@@ -1,0 +1,70 @@
+[
+    {
+      "points": [
+        {
+          "value": 0.6,
+          "timestamp": {
+            "seconds": 1593699692,
+            "nanos": 9172401
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "cold",
+          "has_value": true
+        }
+      ]
+    },
+    {
+        "points": [
+          {
+            "value": 1.6,
+            "timestamp": {
+              "seconds": 15931699692,
+              "nanos": 9172401
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "warm",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 3.6,
+            "timestamp": {
+              "seconds": 159233699692,
+              "nanos": 9172401
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "cold",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 5.6,
+            "timestamp": {
+              "seconds": 1593699692,
+              "nanos": 91712401
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "cold",
+            "has_value": true
+          }
+        ]
+      }
+  ]

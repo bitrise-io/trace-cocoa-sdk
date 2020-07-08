@@ -1,0 +1,41 @@
+{
+  "attributes" : {
+    "attribute_map" : {
+      "br_test1" : {
+        "value" : {
+          "truncated_byte_count" : 0,
+          "value" : "test"
+        }
+      },
+      "br_test2" : {
+        "value" : {
+          "truncated_byte_count" : 0,
+          "value" : "test2"
+        }
+      },
+      "br_test3" : {
+        "value" : {
+          "truncated_byte_count" : 10,
+          "value" : "test3"
+        }
+      }
+    },
+    "dropped_attributes_count" : 0
+  },
+  "end_time" : {
+    "nanos" : 2,
+    "seconds" : 200
+  },
+  "kind" : 2,
+  "name" : {
+    "truncated_byte_count" : 0,
+    "value" : "test"
+  },
+  "parent_span_id" : null,
+  "span_id" : "31323334",
+  "start_time" : {
+    "nanos" : 1,
+    "seconds" : 100
+  },
+  "trace_id" : "31323334"
+}

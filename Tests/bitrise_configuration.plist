@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APM_COLLECTOR_TOKEN</key>
+	<string>9449cf8e-fd8f-4c2f-9d7c-188c6e0f1c8f</string>
+	<key>APM_COLLECTOR_ENVIRONMENT</key>
+	<string>https://collector.apm.bitrise.io</string>
+</dict>
+</plist>

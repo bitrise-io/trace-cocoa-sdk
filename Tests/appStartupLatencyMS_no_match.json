@@ -1,0 +1,19 @@
+[
+    {
+      "points": [
+        {
+          "value": 0.6,
+          "timestamp": {
+            "seconds": 1593699692,
+            "nanos": 9172401
+          }
+        }
+      ],
+      "label_values": [
+        {
+          "value": "cold",
+          "has_value": true
+        }
+      ]
+    }
+  ]

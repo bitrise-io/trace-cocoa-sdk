@@ -1,0 +1,21 @@
+reporter: "xcode"
+
+disabled_rules:
+  - skip_public
+  
+excluded: # paths to ignore during detecting. Takes precedence over `included`.  
+  - Docs
+  - Carthage
+  - Pods
+  - Demo
+  - Tests
+  - Playground
+  - Interoperability
+  - iOSDemo
+  - iOSDemoTests
+  - iOSDemoUITests
+  - SDK
+  - CrashReportingTests
+  - Workaround
+  - build
+  - Scripts

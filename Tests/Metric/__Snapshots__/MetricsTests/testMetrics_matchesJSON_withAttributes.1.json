@@ -1,0 +1,40 @@
+{
+  "attributes" : {
+    "test1" : "test2"
+  },
+  "metrics" : [
+    {
+      "metric_descriptor" : {
+        "description" : "description",
+        "label_keys" : [
+          {
+            "description" : "myKey",
+            "key" : "myKey"
+          }
+        ],
+        "name" : "view.frame.rate",
+        "type" : 1,
+        "unit" : "percent"
+      },
+      "timeseries" : [
+        {
+          "label_values" : [
+            {
+              "has_value" : true,
+              "value" : "1"
+            }
+          ],
+          "points" : [
+            {
+              "timestamp" : {
+                "nanos" : 1,
+                "seconds" : 1
+              },
+              "value" : 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "description" : "Total number of application errors",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "error_code"
+    }
+  ],
+  "name" : "app.error.total",
+  "type" : 4,
+  "unit" : "1"
+}

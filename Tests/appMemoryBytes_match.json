@@ -1,0 +1,104 @@
+[
+  {
+    "points": [
+      {
+        "value": 126472192,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "res",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 17179869184,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "total",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 126472192,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "res",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 17179869184,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "total",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 12647232192,
+        "timestamp": {
+          "seconds": 15936195577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "res",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 171791869184,
+        "timestamp": {
+          "seconds": 159113695577,
+          "nanos": 24431628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "total",
+        "has_value": true
+      }
+    ]
+  }
+]

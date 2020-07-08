@@ -1,0 +1,296 @@
+[
+  {
+    "points": [
+      {
+        "value": 0.13,
+        "timestamp": {
+          "seconds": 15193610721,
+          "nanos": 1101031
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "init",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.33,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 380217
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "load.view",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.33,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 3801363
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "view.did.load",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.33,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 382019
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "view.will.appear",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.33,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 53712071
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "view.did.appear",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.23,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 4565048
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "view.will.layout.subviews",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0.23,
+        "timestamp": {
+          "seconds": 1593610721,
+          "nanos": 456513
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NetworkViewController",
+        "has_value": true
+      },
+      {
+        "value": "view.did.layout.subviews",
+        "has_value": true
+      }
+    ]
+  },
+  {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 1101031
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "init",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 380217
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "load.view",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 380363
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "view.did.load",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 382019
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "view.will.appear",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 5372071
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "view.did.appear",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 4565048
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "view.will.layout.subviews",
+            "has_value": true
+          }
+        ]
+      },
+      {
+        "points": [
+          {
+            "value": 0.43,
+            "timestamp": {
+              "seconds": 1593610721,
+              "nanos": 45653
+            }
+          }
+        ],
+        "label_values": [
+          {
+            "value": "ViewController",
+            "has_value": true
+          },
+          {
+            "value": "view.did.layout.subviews",
+            "has_value": true
+          }
+        ]
+      }
+]

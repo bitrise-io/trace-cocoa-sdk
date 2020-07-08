@@ -1,0 +1,36 @@
+[
+  {
+    "points": [
+      {
+        "value": 126472192,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "res",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 17179869184,
+        "timestamp": {
+          "seconds": 1593695577,
+          "nanos": 2443628
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "total",
+        "has_value": true
+      }
+    ]
+  }
+]

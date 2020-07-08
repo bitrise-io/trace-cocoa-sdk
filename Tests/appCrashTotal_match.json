@@ -1,0 +1,81 @@
+[
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767948,
+          "nanos": 385013
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767948,
+          "nanos": 385033
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767217,
+          "nanos": 252414
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NSRangeException",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 159376227948,
+          "nanos": 385013
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 159233767948,
+          "nanos": 385033
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1592343767217,
+          "nanos": 252414
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NSRangeException",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 159133767948,
+          "nanos": 3851013
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "SwiftException",
+        "has_value": true
+      }
+    ]
+  }
+]

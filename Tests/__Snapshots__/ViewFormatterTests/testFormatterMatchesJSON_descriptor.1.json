@@ -1,0 +1,16 @@
+{
+  "description" : "View render latency in milliseconds",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "view.name"
+    },
+    {
+      "description" : "",
+      "key" : "event"
+    }
+  ],
+  "name" : "subview.render.latency.ms",
+  "type" : 1,
+  "unit" : "ms"
+}

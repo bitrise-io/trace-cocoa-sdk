@@ -1,0 +1,208 @@
+[
+  {
+    "points": [
+      {
+        "value": 3.3,
+        "timestamp": {
+          "seconds": 1593700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "system",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 7.6,
+        "timestamp": {
+          "seconds": 1593700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "user",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 89.1,
+        "timestamp": {
+          "seconds": 1593700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "idle",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0,
+        "timestamp": {
+          "seconds": 1593700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  },
+  
+
+  {
+    "points": [
+      {
+        "value": 13.3,
+        "timestamp": {
+          "seconds": 15493700978,
+          "nanos": 8088266
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "system",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 7.66,
+        "timestamp": {
+          "seconds": 159373300978,
+          "nanos": 80884366
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "user",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 891.1,
+        "timestamp": {
+          "seconds": 15931700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "idle",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0,
+        "timestamp": {
+          "seconds": 15931700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0,
+        "timestamp": {
+          "seconds": 15931700978,
+          "nanos": 8088166
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 10,
+        "timestamp": {
+          "seconds": 15931700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 20,
+        "timestamp": {
+          "seconds": 159311700978,
+          "nanos": 808866
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 0,
+        "timestamp": {
+          "seconds": 159312700978,
+          "nanos": 8088266
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "nice",
+        "has_value": true
+      }
+    ]
+  }
+]

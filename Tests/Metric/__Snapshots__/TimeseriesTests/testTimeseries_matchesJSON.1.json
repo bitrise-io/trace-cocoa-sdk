@@ -1,0 +1,37 @@
+{
+  "label_values" : [
+    {
+      "has_value" : true,
+      "value" : "1"
+    },
+    {
+      "has_value" : true,
+      "value" : "2"
+    },
+    {
+      "has_value" : true,
+      "value" : "3"
+    },
+    {
+      "has_value" : true,
+      "value" : "string1"
+    },
+    {
+      "has_value" : true,
+      "value" : "string2"
+    },
+    {
+      "has_value" : true,
+      "value" : "string3"
+    }
+  ],
+  "points" : [
+    {
+      "timestamp" : {
+        "nanos" : 1,
+        "seconds" : 1
+      },
+      "value" : 1
+    }
+  ]
+}

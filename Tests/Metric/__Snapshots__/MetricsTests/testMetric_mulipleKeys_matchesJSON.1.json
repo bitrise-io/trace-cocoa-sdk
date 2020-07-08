@@ -1,0 +1,103 @@
+{
+  "metrics" : [
+    {
+      "metric_descriptor" : {
+        "description" : "description",
+        "label_keys" : [
+          {
+            "description" : "myKey",
+            "key" : "myKey"
+          }
+        ],
+        "name" : "app.request.size.bytes",
+        "type" : 1,
+        "unit" : "1"
+      },
+      "timeseries" : [
+        {
+          "label_values" : [
+            {
+              "has_value" : true,
+              "value" : "1"
+            }
+          ],
+          "points" : [
+            {
+              "timestamp" : {
+                "nanos" : 1,
+                "seconds" : 1
+              },
+              "value" : 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metric_descriptor" : {
+        "description" : "description1",
+        "label_keys" : [
+          {
+            "description" : "myKey1",
+            "key" : "myKey1"
+          }
+        ],
+        "name" : "app.prerequest.total",
+        "type" : 1,
+        "unit" : "percent"
+      },
+      "timeseries" : [
+        {
+          "label_values" : [
+            {
+              "has_value" : true,
+              "value" : "1"
+            }
+          ],
+          "points" : [
+            {
+              "timestamp" : {
+                "nanos" : 1,
+                "seconds" : 1
+              },
+              "value" : 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metric_descriptor" : {
+        "description" : "description2",
+        "label_keys" : [
+          {
+            "description" : "myKey2",
+            "key" : "myKey2"
+          }
+        ],
+        "name" : "app.error.total",
+        "type" : 1,
+        "unit" : "1"
+      },
+      "timeseries" : [
+        {
+          "label_values" : [
+            {
+              "has_value" : true,
+              "value" : "1"
+            }
+          ],
+          "points" : [
+            {
+              "timestamp" : {
+                "nanos" : 1,
+                "seconds" : 1
+              },
+              "value" : 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

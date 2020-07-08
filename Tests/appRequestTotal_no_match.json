@@ -1,0 +1,66 @@
+[
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593768068,
+          "nanos": 727379
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593768068,
+          "nanos": 727779
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "www.reddit.com/hot.json",
+        "has_value": true
+      },
+      {
+        "value": "GET",
+        "has_value": true
+      },
+      {
+        "value": "200",
+        "has_value": true
+      }
+    ]
+  },
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 15937168068,
+          "nanos": 727379
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 15931768068,
+          "nanos": 727779
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "www.reddit.com/cold.json",
+        "has_value": true
+      },
+      {
+        "value": "POST",
+        "has_value": true
+      },
+      {
+        "value": "200",
+        "has_value": true
+      }
+    ]
+  }
+]

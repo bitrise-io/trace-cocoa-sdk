@@ -1,0 +1,27 @@
+[
+    {
+        "points": [
+            {
+                "value": 560700,
+                "timestamp": {
+                    "seconds": 1593767106,
+                    "nanos": 55872
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "www.reddit.com/hot.json",
+                "has_value": true
+            },
+            {
+                "value": "GET",
+                "has_value": true
+            },
+            {
+                "value": "200",
+                "has_value": true
+            }
+        ]
+    }
+]

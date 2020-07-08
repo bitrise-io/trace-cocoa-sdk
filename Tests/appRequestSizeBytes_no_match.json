@@ -1,0 +1,27 @@
+[
+    {
+        "points": [
+            {
+                "value": 2100,
+                "timestamp": {
+                    "seconds": 1593767105,
+                    "nanos": 9916529
+                }
+            }
+        ],
+        "label_values": [
+            {
+                "value": "www.reddit.com/r/slide_ios/hot.json",
+                "has_value": true
+            },
+            {
+                "value": "GET",
+                "has_value": true
+            },
+            {
+                "value": "200",
+                "has_value": true
+            }
+        ]
+    }
+]

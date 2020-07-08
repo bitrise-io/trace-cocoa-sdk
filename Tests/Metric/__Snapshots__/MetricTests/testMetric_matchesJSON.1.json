@@ -1,0 +1,33 @@
+{
+  "metric_descriptor" : {
+    "description" : "description",
+    "label_keys" : [
+      {
+        "description" : "myKey",
+        "key" : "myKey"
+      }
+    ],
+    "name" : "app.crash.total",
+    "type" : 1,
+    "unit" : "string"
+  },
+  "timeseries" : [
+    {
+      "label_values" : [
+        {
+          "has_value" : true,
+          "value" : "1"
+        }
+      ],
+      "points" : [
+        {
+          "timestamp" : {
+            "nanos" : 1,
+            "seconds" : 1
+          },
+          "value" : 1
+        }
+      ]
+    }
+  ]
+}

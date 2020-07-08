@@ -1,0 +1,24 @@
+{
+  "description" : "description",
+  "label_keys" : [
+    {
+      "description" : "myKey",
+      "key" : "myKey"
+    },
+    {
+      "description" : "myKey1",
+      "key" : "myKey1"
+    },
+    {
+      "description" : "myKey2",
+      "key" : "myKey2"
+    },
+    {
+      "description" : "myKey3",
+      "key" : "myKey3"
+    }
+  ],
+  "name" : "system.cpu.pct",
+  "type" : 1,
+  "unit" : "string"
+}

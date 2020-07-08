@@ -1,0 +1,16 @@
+{
+  "description" : "View controller render latency in milliseconds",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "view.name"
+    },
+    {
+      "description" : "",
+      "key" : "event"
+    }
+  ],
+  "name" : "app.request.size.bytes",
+  "type" : 1,
+  "unit" : "ms"
+}

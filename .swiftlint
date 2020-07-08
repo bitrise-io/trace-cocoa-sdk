@@ -1,0 +1,63 @@
+disabled_rules:
+  - identifier_name
+  - nesting
+  - attributes
+  - implicitly_unwrapped_optional
+  - large_tuple
+  - explicit_acl
+  - fatal_error_message
+  - line_length
+  - force_try
+  - function_body_length
+  - cyclomatic_complexity
+  - type_body_length
+  - type_name
+  - todo
+opt_in_rules:
+  - array_init
+  - closure_end_indentation
+  - closure_spacing
+  - contains_over_first_not_nil
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - literal_expression_end_indentation
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prefixed_toplevel_constant
+  - private_action
+  - private_outlet
+  - redundant_nil_coalescing
+  - unneeded_parentheses_in_closure_argument
+  - explicit_acl
+  - duplicate_imports
+  - unused_declaration
+  - unused_import
+excluded:
+  - Docs
+  - Carthage
+  - Pods
+  - Demo
+  - Tests
+  - Playground
+  - Interoperability
+  - iOSDemo
+  - iOSDemoTests
+  - iOSDemoUITests
+  - SDK
+  - CrashReportingTests
+  - Workaround
+  - build
+  - Scripts
+  - PerformanceUITests
+  - PerformanceTests
+trailing_whitespace:
+  ignores_empty_lines: true
+function_parameter_count:
+  warning: 8
+file_length:
+  warning: 500
+  

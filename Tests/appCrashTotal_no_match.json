@@ -1,0 +1,33 @@
+[
+  {
+    "points": [
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767948,
+          "nanos": 385013
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767948,
+          "nanos": 385033
+        }
+      },
+      {
+        "value": 1,
+        "timestamp": {
+          "seconds": 1593767217,
+          "nanos": 252414
+        }
+      }
+    ],
+    "label_values": [
+      {
+        "value": "NSRangeException",
+        "has_value": true
+      }
+    ]
+  }
+]
