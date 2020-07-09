@@ -1,0 +1,34 @@
+{
+  "name": "BitriseTrace",
+  "summary": "Bitrise Trace SDK",
+  "homepage": "https://bitrise.io",
+  "version": "1.4.10",
+  "swift_version": "5.2.4",
+  "authors": {
+    "Shams Ahmed": "shams.ahmed@bitrise.io",
+    "Colin Hemmings": "colin.hemmings@bitrise.io",
+    "Mukund Agarwal": "mukund.agarwal@bitrise.io"
+  },
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+    
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "frameworks": [
+    "SystemConfiguration"
+  ],
+  "libraries": [
+    "c++",
+    "z"
+  ],
+  "preserve_paths": "libTrace.a",
+  "source": {
+    "http": "https://monitoring-sdk.firebaseapp.com/1.4.10/libTrace.a.zip"
+  },
+  "user_target_xcconfig": {
+    "OTHER_LDFLAGS": "-force_load $(PODS_ROOT)/BitriseTrace/libTrace.a"
+  }
+}

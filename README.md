@@ -34,7 +34,7 @@ Add the follow step inside your `bitrise.yml` file if the step project is in you
 
 If your using GIT use the following:
 ```yml
-- git::https://github.com/bitrise-steplib/bitrise-step-link-apm-sdk-ios.git@master:
+- git::https://github.com/bitrise-steplib/bitrise-step-add-trace-sdk.git@master:
     title: Add Trace SDK to Xcode project
     inputs:
     - lib_version: "latest"
@@ -52,10 +52,10 @@ Add Trace SDK to the `Podfile`
 
 target 'YOUR_TARGET_NAME' do
     # Public access 
-    pod 'TraceSDK', :http => 'https://monitoring-sdk.firebaseapp.com/latest/libTrace.a.zip'
+    pod 'BitriseTrace', :http => 'https://monitoring-sdk.firebaseapp.com/latest/libTrace.a.zip'
     
     # Private access to repo
-    pod 'TraceSDK', :git => 'https://github.com/bitrise-io/apm-cocoa-sdk.git'
+    pod 'BitriseTrace', :git => 'https://github.com/bitrise-io/trace-cocoa-sdk.git'
 end
 ```
 
@@ -76,7 +76,7 @@ Add this to your `Cartfile`
 
 ```ruby
 # Private access 
-github "bitrise-io/apm-cocoa-sdk"
+github "bitrise-io/trace-cocoa-sdk"
 ```
 
 ```bash
@@ -112,7 +112,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 #### Embedded static library at build time
 
-* Download static library (`libTrace.a`) assert from [Github release page](https://github.com/bitrise-io/apm-cocoa-sdk/releases)
+* Download static library (`libTrace.a`) assert from [Github release page](https://github.com/bitrise-io/trace-cocoa-sdk/releases)
 * Drop the library at the root of your Xcode project. i.e same directory as your `xcproject/xcworkspace`.
 * Next in Xcode, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
@@ -127,7 +127,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Open up Terminal, `cd` into your top-level project directory where Xcode project is stored.
 * Add `Trace` as a git submodule by running the following command:
 
-`$ git submodule add https://github.com/bitrise-io/apm-cocoa-sdk.git`
+`$ git submodule add https://github.com/bitrise-io/trace-cocoa-sdk.git`
 
 * Open the new `Trace` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 * Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.

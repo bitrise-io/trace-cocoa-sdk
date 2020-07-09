@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "public": "SDK",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "CrashReportingTests/*",
+      ".github/*",
+      "InteroperabilityTests/*",
+      "PerformanceTests/*",
+      "PerformanceUITests/*",
+      "Playground/*",
+      "Pods/*",
+      "Scripts/*",
+      "Tests/*",
+      "Trace/*",
+      "UploadDSYM/*",
+      "Workaround/*",
+      "iOSDemo/*",
+      "prod/*",
+      "staging/*"
+    ]
+  }
+}
