@@ -3065,7 +3065,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating universal static library zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
+			shellScript = "echo \"Creating universal static library zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr -u \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
