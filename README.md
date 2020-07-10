@@ -1,10 +1,16 @@
-# Trace SDK
-Todo: add badges.. 
+# <img src="assets/logo.jpeg"  width="90" height="90">  Trace SDK
+![Bitrise status](https://app.bitrise.io/app/fa31931683b0dd17.svg?token=MpCmFyjh7KE7W785Tb3Keg)![Cocoapods](https://img.shields.io/cocoapods/v/BitriseTrace)![Cocoapods platforms](https://img.shields.io/cocoapods/p/BitriseTrace)![Cocoapods](https://img.shields.io/cocoapods/l/BitriseTrace)![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen)![Swift version](https://img.shields.io/badge/Swift-5.2.4-red)![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fbitrise)![Join Slack group](https://img.shields.io/badge/Chat-Slack-blue?link=https://chat.bitrise.io/)
+
+Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.
+Use Trace to:
+- Detect the problem: Know about issues before your users report them.
+- Assess the impact: Focus on resolving the issues which are most impactful to your users.
+- Trace the cause: Spend less time trying to reproduce issues.
 
 ## Requirements
 
 iOS 10.0+ 
-Xcode 11.4+
+Xcode 11.5+
 Swift 5.2
 
 
@@ -147,7 +153,8 @@ By default navigating to root of the SDK site will always redirect to latest ver
 
 # Miscellaneous
 
-[KSCrash](https://github.com/kstenerud/KSCrash/) last commit: 58094b309e443f16273a75d87a3065a9fafd2540
+### Special thanks to
+Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `58094b309e443f16273a75d87a3065a9fafd2540`
 
 # License
 Trace is released under the MIT license. See LICENSE for details.
