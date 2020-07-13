@@ -3011,7 +3011,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/latest/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
+			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/latest/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\nln -s \"${PROJECT_DIR}/SDK/latest/libTrace.a\" \"${PROJECT_DIR}\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
 		};
 		10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */ = {
 			isa = PBXShellScriptBuildPhase;
