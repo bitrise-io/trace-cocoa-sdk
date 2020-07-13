@@ -8,14 +8,9 @@
 
 import UIKit
 
-#if DEBUG
-// Should be addressed at somepoint:
 // See more here: https://bugs.swift.org/browse/SR-3801
 // and here: https://github.com/apple/swift/commit/08af6f0c0933dc70cb868633e2e017b63c12eba1
-@testable import Trace
-#else
 import Trace
-#endif
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
@@ -29,7 +24,7 @@ final class AppDelegate: UIResponder {
     
     func setup() {
         timer = .scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { _ in
-            // nothing fancy used for running random tests
+            // nothing fancy only used for running random tests
         })
     }
 }
