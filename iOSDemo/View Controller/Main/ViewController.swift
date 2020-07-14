@@ -102,8 +102,6 @@ final class ViewController: UITableViewController {
             }
         }
         
-        print("DEMO - making network request for \(task)")
-        
         task.resume()
     }
 }
