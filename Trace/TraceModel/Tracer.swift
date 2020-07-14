@@ -56,11 +56,11 @@ final class Tracer {
                 return model
             }
 
-            Logger.print(.traceModel, "Using last trace as current active view controller was not found.")
+            Logger.print(.traceModel, "Using last trace as current active view controller was not found")
                             
             return traces.last
         }() else {
-            Logger.print(.internalError, "Failed to find active trace.")
+            Logger.print(.internalError, "Failed to find active trace")
                         
             return
         }
@@ -68,7 +68,7 @@ final class Tracer {
         dispatchQueue.sync { [trace] in
             // validation
             if trace.isComplete {
-                Logger.print(.traceModel, "Trace is appending child while marked as complete.")
+                Logger.print(.traceModel, "Trace is appending child while marked as complete")
                 // V2: find the last incomplete trace model or return error
             }
             

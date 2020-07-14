@@ -12,6 +12,10 @@ import CoreData
 /// Internal use only
 final internal class Persistent: NSPersistentContainer {
     
+    // MARK: - Type
+    
+    private typealias Result = Swift.Result<Void, Error>
+    
     // MARK: - Property
     
     lazy var privateContext: NSManagedObjectContext = self.newBackgroundContext()
@@ -29,12 +33,12 @@ final internal class Persistent: NSPersistentContainer {
 
             persistentStoreDescriptions = [description]
         
-            Logger.print(.database, "Using in-memory store while in debug mode.")
+            Logger.print(.database, "Using in-memory store while in debug mode")
         #endif
         
         loadPersistentStores(completionHandler: { [weak self] _, error in
             if let error = error {
-                let message = "load persistent stores error: \(error.localizedDescription)"
+                let message = "loading persistent store error: \(error.localizedDescription)"
                 
                 Logger.print(.database, message)
             }
