@@ -107,7 +107,7 @@ internal final class Queue {
                 self?.scheduler.schedule(model, {
                     switch $0 {
                     case .success: self?.database.dao.metric.delete(dbModels)
-                    case .failure: Logger.print(.queue, "Failed to submit metric, will try again in 1 minute.")
+                    case .failure: Logger.print(.queue, "Failed to submit metric, will try again in 1 minute")
                     }
                 })
             } catch {
@@ -146,7 +146,7 @@ internal final class Queue {
                             
                             self?.database.dao.trace.delete(toBeDeleted)
                         case .failure:
-                            Logger.print(.queue, "Failed to submit trace, will try again in 1 minute.")
+                            Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
                 }
