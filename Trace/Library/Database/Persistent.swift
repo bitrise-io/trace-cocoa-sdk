@@ -23,10 +23,18 @@ final internal class Persistent: NSPersistentContainer {
     // MARK: - Setup
     
     internal func setup() {
-        setupPersistentStore()
+        setupPersistentStore { [weak self] in
+            switch $0 {
+            case .success: break
+            case .failure:
+                Logger.print(.database, "Persistent store failed, fallback set to in-memory store")
+                
+                self?.setupPersistentStore(inMemory: true)
+            }
+        }
     }
     
-    private func setupPersistentStore() {
+    private func setupPersistentStore(inMemory: Bool = false, _ completion: ((Result) -> Void)? = nil) {
         #if DEBUG || Debug || debug
             let description = NSPersistentStoreDescription()
             description.type = NSInMemoryStoreType
@@ -34,6 +42,15 @@ final internal class Persistent: NSPersistentContainer {
             persistentStoreDescriptions = [description]
         
             Logger.print(.database, "Using in-memory store while in debug mode")
+        #else
+            if inMemory {
+                let description = NSPersistentStoreDescription()
+                description.type = NSInMemoryStoreType
+
+                persistentStoreDescriptions = [description]
+            
+                Logger.print(.database, "Using in-memory store")
+            }
         #endif
         
         loadPersistentStores(completionHandler: { [weak self] _, error in
@@ -41,9 +58,13 @@ final internal class Persistent: NSPersistentContainer {
                 let message = "loading persistent store error: \(error.localizedDescription)"
                 
                 Logger.print(.database, message)
+                
+                completion?(.failure(error))
+            } else {
+                self?.configureStores(error)
+                
+                completion?(.success(()))
             }
-            
-            self?.configureStores(error)
         })
     }
     
