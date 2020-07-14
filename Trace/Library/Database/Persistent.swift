@@ -29,7 +29,7 @@ final internal class Persistent: NSPersistentContainer {
 
             persistentStoreDescriptions = [description]
         
-            Logger.print(.database, "Using in-memory store while in debug")
+            Logger.print(.database, "Using in-memory store while in debug mode.")
         #endif
         
         loadPersistentStores(completionHandler: { [weak self] _, error in
