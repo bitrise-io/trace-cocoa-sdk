@@ -73,7 +73,7 @@ final public class Trace: NSObject {
     // MARK: - Setup
     
     private func setup() {
-        Logger.print(.launch, "Bitrise Trace \(Constants.SDK.version.rawValue)")
+        Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue)")
         
         setupConfiguration()
         setupCrashReporting()
@@ -89,6 +89,8 @@ final public class Trace: NSObject {
             if let environment = configuration.model.environment {
                 Constants.API = environment
             }
+            
+            Logger.print(.launch, "Bitrise Trace setup complete")
         } catch {
             Logger.print(.internalError, "Application failed to read configuration file, all data will be cached until it's resolved")
         }

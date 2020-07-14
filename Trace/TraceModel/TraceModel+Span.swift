@@ -288,6 +288,6 @@ extension TraceModel.Span {
     
     /// :nodoc:
     public override var description: String {
-        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), is complete: \(end != nil), is root: \(parentSpanId == nil)"
+        return "\(type(of: self)) \(spanId) name: \(name.value), id: \(traceId ?? "nil"), is complete: \(end != nil)"
     }
 }
