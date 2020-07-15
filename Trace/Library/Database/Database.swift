@@ -31,7 +31,7 @@ final internal class Database {
         internal func managedObjectContext(for persistent: Persistent) -> NSManagedObjectContext {
             switch self {
             case .view: return persistent.viewContext
-            case .background: return persistent.newBackgroundContext()
+            case .background: return persistent.privateContext
             }
         }
     }
