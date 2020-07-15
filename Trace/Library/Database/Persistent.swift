@@ -82,6 +82,17 @@ final internal class Persistent: NSPersistentContainer {
         url.appendPathComponent(Constants.SDK.company.rawValue)
         url.appendPathComponent("Database")
         
+        let fileManager = FileManager.default
+        
+        // Create directory if it doesn't exist
+        if !fileManager.fileExists(atPath: url.path) {
+            do {
+                try fileManager.createDirectory(at: url, withIntermediateDirectories: true)
+            } catch {
+                Logger.print(.database, "Failed to create directory with error: \(error.localizedDescription)")
+            }
+        }
+            
         return url
     }
 }
