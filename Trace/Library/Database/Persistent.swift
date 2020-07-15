@@ -36,19 +36,13 @@ final internal class Persistent: NSPersistentContainer {
     
     private func setupPersistentStore(inMemory: Bool = false, _ completion: ((Result) -> Void)? = nil) {
         #if DEBUG || Debug || debug
-            let description = NSPersistentStoreDescription()
-            description.type = NSInMemoryStoreType
-
-            persistentStoreDescriptions = [description]
+            addInMemoryStore()
         
             Logger.print(.database, "Using in-memory store while in debug mode")
         #else
             if inMemory {
-                let description = NSPersistentStoreDescription()
-                description.type = NSInMemoryStoreType
-
-                persistentStoreDescriptions = [description]
-            
+                addInMemoryStore()
+                
                 Logger.print(.database, "Using in-memory store")
             }
         #endif
@@ -69,6 +63,13 @@ final internal class Persistent: NSPersistentContainer {
     }
     
     // MARK: - Store
+    
+    private func addInMemoryStore() {
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+
+        persistentStoreDescriptions = [description]
+    }
     
     private func configureStores(_ error: Error?) {
         viewContext.automaticallyMergesChangesFromParent = true
