@@ -57,11 +57,7 @@ Add Trace SDK to the `Podfile`
 # Podfile
 
 target 'YOUR_TARGET_NAME' do
-    # Public access 
-    pod 'BitriseTrace', :http => 'https://monitoring-sdk.firebaseapp.com/latest/libTrace.a.zip'
-    
-    # Private access to repo
-    pod 'BitriseTrace', :git => 'https://github.com/bitrise-io/trace-cocoa-sdk.git'
+    pod 'BitriseTrace'
 end
 ```
 
