@@ -119,7 +119,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Next in Xcode, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for "Other Linker Flags" or "OTHER_LDFLAGS" and enter `-force_load libTrace.a`
-* Click on the + button under the "Linked Frameworks and Libraries" section.
+* Click on the + button under the "Frameworks, Libraries and Embedded Content" section.
 * Add `libz.tbd` and `libc++.tbd`.
 * And that's it!
 
@@ -134,7 +134,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Open the new `Trace` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 * Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "General" panel.
-* Click on the + button under the "Linked Frameworks and Libraries" section.
+* Click on the + button under the "Frameworks, Libraries and Embedded Content" section.
 * Add `libTrace.a` library.
 * Add `libz.tbd` and `libc++.tbd` as well.
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
