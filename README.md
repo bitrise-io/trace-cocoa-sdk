@@ -25,7 +25,9 @@ Each framework can be easier found in Xcode framework list. These are currently 
 
 ### Bitrise Workflow
 
-# Install from Bitrise workflow step site (Todo: Link to step website)
+### Install from Bitrise workflow step site
+
+Use [Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk) step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and librares are down for you. 
 
 ### Install directly from source
 
