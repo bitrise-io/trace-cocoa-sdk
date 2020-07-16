@@ -1,0 +1,19 @@
+component_depth: 3
+languages:
+- objectivec
+- swift
+exclude:
+- /Docs/.*
+- /Carthage/.*
+- /Pods/.*
+- /Demo/.*
+- /SDK/.*
+- /Playground/.*
+- /iOSDemo/.*
+- /iOSDemoTests/.*
+- /iOSDemoUITests/.*
+- /CrashReportingTests/.*
+- /Workaround/.*
+- /build/.*
+- /Scripts/.*
+- /Trace/Library/CrashReporting/.*
