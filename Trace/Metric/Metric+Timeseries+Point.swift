@@ -91,10 +91,10 @@ internal extension Metric.Timeseries {
         
         private func setup() {
             #if Debug
-            // TODO: only for private beta testing. remove before GA
-            if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
-            }
+                // TODO: only for private beta testing. remove before GA
+                if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                }
             #endif
         }
         
