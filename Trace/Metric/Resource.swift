@@ -25,6 +25,7 @@ struct Resource: Codable {
             case network = "device.network"
             case sessionId = "app.session.id"
             case jailbroken = "device.jailbroken"
+            case sdkVersion = "sdk.version"
         }
         
         case type
@@ -42,6 +43,7 @@ struct Resource: Codable {
     let deviceType: String
     let carrier: String
     let jailbroken: String
+    let sdkVersion: String
     
     var network: String
     var session: String
@@ -56,6 +58,7 @@ struct Resource: Codable {
         deviceType = details[DeviceFormatter.Keys.model.rawValue] ?? ""
         carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue] ?? ""
         jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue] ?? ""
+        sdkVersion = details[DeviceFormatter.Keys.SDK.version.rawValue] ?? ""
         network = ""
         session = ""
     }
@@ -76,6 +79,7 @@ struct Resource: Codable {
         network = try nestedContainer.decode(String.self, forKey: .network)
         session = try nestedContainer.decode(String.self, forKey: .sessionId)
         jailbroken = try nestedContainer.decode(String.self, forKey: .jailbroken)
+        sdkVersion = try nestedContainer.decode(String.self, forKey: .sdkVersion)
     }
     
     // MARK: - Encode
@@ -95,6 +99,7 @@ struct Resource: Codable {
         try nestedContainer.encode(session, forKey: .sessionId)
         try nestedContainer.encode(platform, forKey: .platform)
         try nestedContainer.encode(jailbroken, forKey: .jailbroken)
+        try nestedContainer.encode(sdkVersion, forKey: .sdkVersion)
     }
 }
 
