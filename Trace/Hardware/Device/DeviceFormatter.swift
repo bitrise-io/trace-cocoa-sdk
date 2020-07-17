@@ -8,7 +8,10 @@
 
 import Foundation
 import UIKit
+
+#if !targetEnvironment(macCatalyst)
 import CoreTelephony.CTTelephonyNetworkInfo
+#endif
 
 internal struct DeviceFormatter: JSONEncodable {
     
@@ -117,6 +120,7 @@ internal struct DeviceFormatter: JSONEncodable {
         details[Keys.Disk.freeDiskSpace.rawValue] = fileManager.freeDiskSpace
         details[Keys.Disk.usedDiskSpace.rawValue] = fileManager.usedDiskSpace
         
+        #if !targetEnvironment(macCatalyst)
         let networkInfo = CTTelephonyNetworkInfo()
         
         if #available(iOS 12.0, *) {
@@ -147,6 +151,7 @@ internal struct DeviceFormatter: JSONEncodable {
                 details[Keys.Carrier.country.rawValue] = code
             }
         }
+        #endif
         
         let isJailbroken = UIDevice.current.isJailbroken
         
