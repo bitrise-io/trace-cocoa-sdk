@@ -62,6 +62,8 @@
 		1028C8C22302C15000E07839 /* PersistentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028C8C12302C15000E07839 /* PersistentTests.swift */; platformFilter = ios; };
 		1028C8C42302C28A00E07839 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028C8C32302C28A00E07839 /* DatabaseTests.swift */; platformFilter = ios; };
 		1028C8C82302F2DD00E07839 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1028C8C52302F2D300E07839 /* Session.swift */; platformFilter = ios; };
+		10350D9724C1FFC50004F6D7 /* TimestampValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */; };
+		10350D9924C203B70004F6D7 /* TimestampValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10350D9824C203B70004F6D7 /* TimestampValidatorTests.swift */; };
 		103643702357D2E200B084E2 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036436F2357D2E200B084E2 /* StringTests.swift */; platformFilter = ios; };
 		103701F422ABD1130069C771 /* URLSession+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103701F322ABD1130069C771 /* URLSession+Swizzled.swift */; platformFilter = ios; };
 		103ABC822445FED6001BC364 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 103ABC812445FED6001BC364 /* bitrise_configuration.plist */; };
@@ -529,6 +531,8 @@
 		1028C8C12302C15000E07839 /* PersistentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentTests.swift; path = Tests/PersistentTests.swift; sourceTree = SOURCE_ROOT; };
 		1028C8C32302C28A00E07839 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseTests.swift; path = Tests/DatabaseTests.swift; sourceTree = SOURCE_ROOT; };
 		1028C8C52302F2D300E07839 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampValidator.swift; sourceTree = "<group>"; };
+		10350D9824C203B70004F6D7 /* TimestampValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimestampValidatorTests.swift; path = Tests/TimestampValidatorTests.swift; sourceTree = SOURCE_ROOT; };
 		1036436F2357D2E200B084E2 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringTests.swift; path = Tests/Helper/StringTests.swift; sourceTree = SOURCE_ROOT; };
 		103701F322ABD1130069C771 /* URLSession+Swizzled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Swizzled.swift"; sourceTree = "<group>"; };
 		103ABC812445FED6001BC364 /* bitrise_configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = bitrise_configuration.plist; path = prod/bitrise_configuration.plist; sourceTree = SOURCE_ROOT; };
@@ -2212,6 +2216,7 @@
 			isa = PBXGroup;
 			children = (
 				108D309A23292A93002757CC /* UUIDTests.swift */,
+				10350D9824C203B70004F6D7 /* TimestampValidatorTests.swift */,
 				10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */,
 				1036436F2357D2E200B084E2 /* StringTests.swift */,
 				10E49095235DAD6F0047691F /* OrderedDictionaryTests.swift */,
@@ -2260,6 +2265,7 @@
 				1008F5772350DFEF00689B2B /* OrderedDictionary.swift */,
 				1006100C23576729004EFC2C /* String+Hex.swift */,
 				101055DA241BACAB0088BD24 /* Data+Helper.swift */,
+				10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -3114,6 +3120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10350D9724C1FFC50004F6D7 /* TimestampValidator.swift in Sources */,
 				10127B8B22E7620A004B1F4C /* Database.swift in Sources */,
 				1046CC4122BB895D00A8762F /* ViewControllerFormatter.swift in Sources */,
 				10673CFF23EC1E68002D7CD1 /* KSCPU_x86_32.c in Sources */,
@@ -3345,6 +3352,7 @@
 				10866F372294686600D77D56 /* LoggerTests.swift in Sources */,
 				108EF3C3231EBFEB0029FD65 /* DataTaskFormatterTests.swift in Sources */,
 				108CDECB23FC0E7300153BEB /* FilterPipelineTests.swift in Sources */,
+				10350D9924C203B70004F6D7 /* TimestampValidatorTests.swift in Sources */,
 				10EFEC11234799B60037CBBD /* SwiftOnlyLoadTests.swift in Sources */,
 				108D309B23292A93002757CC /* UUIDTests.swift in Sources */,
 				108CDECE23FC2EA600153BEB /* FilterStringToDataTests.swift in Sources */,
