@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Only for testing
 internal struct TimestampValidator {
 
     // MARK: - Property
@@ -29,9 +30,14 @@ internal struct TimestampValidator {
             to: toDate
         )
 
-        if let year = components.year, let month = components.month, let day = components.day, year == 0, month == 0, day == 0 {
+        if let year = components.year,
+            let month = components.month,
+            let day = components.day,
+            year == 0, month == 0, day == 0 {
             return true
         }
+        
+        Logger.print(.internalError, "Invalid timestamp \(components)")
         
         return false
     }

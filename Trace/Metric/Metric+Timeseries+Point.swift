@@ -52,12 +52,16 @@ internal extension Metric.Timeseries {
             self.seconds = seconds
             self.nanos = nanos
             self.value = value
+            
+            setup()
         }
         
         private init(seconds: Int, nanos: Int, value: Int) {
             self.seconds = seconds
             self.nanos = nanos
             self.value = value
+            
+            setup()
         }
         
         internal init(from decoder: Decoder) throws {
@@ -79,6 +83,19 @@ internal extension Metric.Timeseries {
             } else {
                 throw Error.codingError
             }
+            
+            setup()
+        }
+        
+        // MARK: - Setup
+        
+        private func setup() {
+            #if Debug
+            // TODO: only for private beta testing. remove before GA
+            if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+            }
+            #endif
         }
         
         // MARK: - Encode

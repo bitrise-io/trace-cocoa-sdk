@@ -15,8 +15,32 @@ internal enum Time {
     // MARK: - Timestamp
     
     struct Timestamp: Encodable {
+        
+        // MARK: - Property
+        
         let seconds, nanos: Int
         let timeInterval: TimeInterval
+        
+        // MARK: - Init
+        
+        init(seconds: Int, nanos: Int, timeInterval: TimeInterval) {
+            self.seconds = seconds
+            self.nanos = nanos
+            self.timeInterval = timeInterval
+            
+            setup()
+        }
+        
+        // MARK: - Setup
+        
+        private func setup() {
+            #if Debug
+            // TODO: only for private beta testing. remove before GA
+            if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+            }
+            #endif
+        }
     }
     
     // MARK: - Property
