@@ -44,8 +44,31 @@ extension TraceModel {
         // MARK: - Model
         
         struct Timestamp: Codable {
+            
+            // MARK: - Property
+            
             let seconds: Int
             let nanos: Int
+            
+            // MARK: - Init
+            
+            init(seconds: Int, nanos: Int) {
+                self.seconds = seconds
+                self.nanos = nanos
+                
+                setup()
+            }
+            
+            // MARK: - Setup
+            
+            private func setup() {
+                #if Debug
+                // TODO: only for private beta testing. remove before GA
+                if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                }
+                #endif
+            }
         }
         
         struct Name: Codable {
