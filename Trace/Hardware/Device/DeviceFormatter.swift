@@ -49,6 +49,10 @@ internal struct DeviceFormatter: JSONEncodable {
             case country = "device.country"
         }
         
+        enum SDK: String {
+            case version
+        }
+        
         case uuid = "device.id"
         case uuidType = "device.id.type"
         case batteryState = "app.power.state"
@@ -147,6 +151,7 @@ internal struct DeviceFormatter: JSONEncodable {
         let isJailbroken = UIDevice.current.isJailbroken
         
         details[Keys.jailbroken.rawValue] = isJailbroken ? "true" : "false"
+        details[Keys.SDK.version.rawValue] = Constants.SDK.version.rawValue
         
         return details
     }
