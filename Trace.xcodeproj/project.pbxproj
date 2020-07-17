@@ -1053,6 +1053,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF6E4EC46AA3C6B643C3E0AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -2475,6 +2482,7 @@
 				104A69C5229407BE0065F218 /* Create Swift header and copy to build path */,
 				104A695A2293FC340065F218 /* Run SwiftLint linter tool */,
 				1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */,
+				FF6E4EC46AA3C6B643C3E0AF /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2908,8 +2916,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2945,8 +2952,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3001,8 +3007,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		10A9C80A23E8809B00DCBF4F /* 5. Create folder with new version */ = {
 			isa = PBXShellScriptBuildPhase;
