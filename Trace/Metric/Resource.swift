@@ -38,7 +38,6 @@ struct Resource: Codable {
     let platform: String = "iOS"
     let appVersion: String
     let uuid: String
-    let country: String
     let osVersion: String
     let deviceType: String
     let carrier: String
@@ -53,7 +52,6 @@ struct Resource: Codable {
     init(from details: OrderedDictionary<String, String>) {
         appVersion = details[DeviceFormatter.Keys.Application.version.rawValue] ?? ""
         uuid = details[DeviceFormatter.Keys.uuid.rawValue] ?? ""
-        country = details[DeviceFormatter.Keys.Carrier.country.rawValue] ?? ""
         osVersion = details[DeviceFormatter.Keys.systemVersion.rawValue] ?? ""
         deviceType = details[DeviceFormatter.Keys.model.rawValue] ?? ""
         carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue] ?? ""
@@ -72,7 +70,6 @@ struct Resource: Codable {
         
         appVersion = try nestedContainer.decode(String.self, forKey: .appVersion)
         uuid = try nestedContainer.decode(String.self, forKey: .uuid)
-        country = try nestedContainer.decode(String.self, forKey: .country)
         osVersion = try nestedContainer.decode(String.self, forKey: .osVersion)
         deviceType = try nestedContainer.decode(String.self, forKey: .deviceType)
         carrier = try nestedContainer.decode(String.self, forKey: .carrier)
@@ -91,7 +88,6 @@ struct Resource: Codable {
         try container.encode(type, forKey: .type)
         try nestedContainer.encode(appVersion, forKey: .appVersion)
         try nestedContainer.encode(uuid, forKey: .uuid)
-        try nestedContainer.encode(country, forKey: .country)
         try nestedContainer.encode(osVersion, forKey: .osVersion)
         try nestedContainer.encode(deviceType, forKey: .deviceType)
         try nestedContainer.encode(carrier, forKey: .carrier)
