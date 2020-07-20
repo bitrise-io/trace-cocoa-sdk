@@ -138,6 +138,17 @@ internal final class Queue {
                 Logger.print(.queue, "Scheduling \(combined.count) traces")
                 
                 combined.forEach { trace in
+                    // fallback
+                    if trace.resource == nil {
+                        Logger.print(.internalError, "Resource missing from new trace model")
+                        
+                        if let newResource = self?.session.resource {
+                            Logger.print(.internalError, "Injecting last known Resource into trace model")
+                            
+                            trace.resource = newResource
+                        }
+                    }
+                    
                     self?.scheduler.schedule(trace, {
                         switch $0 {
                         case .success:
