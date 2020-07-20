@@ -52,9 +52,9 @@ final public class Trace: NSObject {
     // MARK: - Init
     
     private override init() {
+        session = Session()
         network = Network()
         database = Database()
-        session = Session()
         
         scheduler = Scheduler(with: network)
         queue = Queue(with: scheduler, database, session) // make sure queue startup first
