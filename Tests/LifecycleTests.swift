@@ -28,17 +28,42 @@ final class LifecycleTests: XCTestCase {
     
     // MARK: - Tests
     
-    func testSendNotification() {
+    func testSendNotification_passes() {
         var result = false
         
         Trace.shared.queue.observation = { _ in result = true }
         
         [
             UIApplication.didFinishLaunchingNotification,
-            UIApplication.willEnterForegroundNotification,
             UIApplication.didEnterBackgroundNotification,
+            UIApplication.willEnterForegroundNotification,
             UIApplication.willTerminateNotification,
             UIApplication.didReceiveMemoryWarningNotification
+        ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
+        
+        XCTAssertTrue(result)
+    }
+    
+    func testSendNotification_foreground_observationDoesNotGetTriggered() {
+        var result = false
+        
+        Trace.shared.queue.observation = { _ in result = true }
+        
+        [UIApplication.didFinishLaunchingNotification].forEach {
+            NotificationCenter.default.post(Notification(name: $0))
+        }
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testSendNotification_foreground_observationDoesGetTriggered() {
+        var result = false
+        
+        Trace.shared.queue.observation = { _ in result = true }
+        
+        [
+            UIApplication.didEnterBackgroundNotification,
+            UIApplication.willEnterForegroundNotification
         ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
         
         XCTAssertTrue(result)
