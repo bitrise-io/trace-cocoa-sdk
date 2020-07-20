@@ -2916,7 +2916,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2952,7 +2953,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3007,7 +3009,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		10A9C80A23E8809B00DCBF4F /* 5. Create folder with new version */ = {
 			isa = PBXShellScriptBuildPhase;

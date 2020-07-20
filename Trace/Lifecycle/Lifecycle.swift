@@ -20,6 +20,8 @@ final internal class Lifecycle {
     private var willTerminateNotification: NSObjectProtocol?
     private var didReceiveMemoryWarningNotification: NSObjectProtocol?
     
+    private var didEnterBackgroundOnce = false
+    
     private let queue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = .background
@@ -66,16 +68,25 @@ final internal class Lifecycle {
             object: nil,
             queue: queue,
             using: { [weak self] _ in
-                self?.process()
-                
-                Trace.shared.didComeBackToForeground()
+                // iOS Demo project doesn't call this notification
+                // While on a new project it gets called.
+                // Safe guard is place to avoid false metric for warm startup
+                if self?.didEnterBackgroundOnce == true {
+                    self?.process()
+                    
+                    Trace.shared.didComeBackToForeground()
+                }
             }
         )
         didEnterBackgroundNotification = NotificationCenter.default.addObserver(
             forName: UIApplication.didEnterBackgroundNotification,
             object: nil,
             queue: queue,
-            using: { [weak self] _ in self?.process(.background) }
+            using: { [weak self] _ in
+                self?.process(.background)
+                
+                self?.didEnterBackgroundOnce = true
+            }
         )
         willTerminateNotification = NotificationCenter.default.addObserver(
             forName: UIApplication.willTerminateNotification,
@@ -91,7 +102,7 @@ final internal class Lifecycle {
             forName: UIApplication.didReceiveMemoryWarningNotification,
             object: nil,
             queue: queue,
-            using: { _ in Logger.print(.application, "app received memory warning") }
+            using: { _ in Logger.print(.application, "Received memory warning") }
         )
     }
     
