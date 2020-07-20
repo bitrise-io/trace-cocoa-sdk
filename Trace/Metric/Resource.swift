@@ -17,7 +17,6 @@ struct Resource: Codable {
         enum Labels: String, CodingKey {
             case appVersion = "app.version"
             case uuid = "device.id"
-            case country = "device.country"
             case osVersion = "os.version"
             case deviceType = "device.type"
             case platform = "app.platform"

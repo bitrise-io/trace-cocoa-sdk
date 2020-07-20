@@ -28,7 +28,6 @@ final class ResourceTests: XCTestCase {
         enum Keys: String, CodingKey {
             case appVersion = "app.version"
             case uuid = "device.id"
-            case country = "device.country"
             case osVersion = "os.version"
             case deviceType = "device.type"
             case carrier = "device.carrier"
@@ -38,7 +37,6 @@ final class ResourceTests: XCTestCase {
         let details: OrderedDictionary<String, String> = [
             Keys.appVersion.rawValue: "1",
             Keys.uuid.rawValue: "123",
-            Keys.country.rawValue: "uk",
             Keys.osVersion.rawValue: "13",
             Keys.deviceType.rawValue:  "ios",
             Keys.carrier.rawValue: "apple",
@@ -57,7 +55,6 @@ final class ResourceTests: XCTestCase {
         enum Keys: String, CodingKey {
             case appVersion = "app.version"
             case uuid = "device.id"
-            case country = "device.country"
             case osVersion = "os.version"
             case deviceType = "device.type"
             case carrier = "device.carrier"
@@ -67,7 +64,6 @@ final class ResourceTests: XCTestCase {
         let details: OrderedDictionary<String, String> = [
             Keys.appVersion.rawValue: "1",
             Keys.uuid.rawValue: "123",
-            Keys.country.rawValue: "uk",
             Keys.osVersion.rawValue: "13",
             Keys.deviceType.rawValue:  "ios",
             Keys.carrier.rawValue: "apple",
@@ -84,7 +80,6 @@ final class ResourceTests: XCTestCase {
         enum Keys: String, CodingKey {
             case appVersion = "app.version"
             case uuid = "device.id"
-            case country = "device.country"
             case osVersion = "os.version"
             case deviceType = "device.type"
             case carrier = "device.carrier"
@@ -94,7 +89,6 @@ final class ResourceTests: XCTestCase {
         let details: OrderedDictionary<String, String> = [
             Keys.appVersion.rawValue: "1",
             Keys.uuid.rawValue: "123",
-            Keys.country.rawValue: "uk",
             Keys.osVersion.rawValue: "13",
             Keys.deviceType.rawValue:  "ios",
             Keys.carrier.rawValue: "apple",
