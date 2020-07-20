@@ -129,12 +129,12 @@ internal struct DeviceFormatter: JSONEncodable {
                     .compactMap { $0 }
                     .joined()
                 
-                if !names.isEmpty {
+                if !names.isEmpty, names != "Carrier" {
                     details[Keys.Carrier.name.rawValue] = names
                 }
             }
         } else if let carrier = networkInfo.subscriberCellularProvider {
-            if let name = carrier.carrierName, !name.isEmpty {
+            if let name = carrier.carrierName, !name.isEmpty, name != "Carrier" {
                 details[Keys.Carrier.name.rawValue] = name
             }
         }
