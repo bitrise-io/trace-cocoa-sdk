@@ -18,8 +18,6 @@ final class Session {
     
     var resource: Resource? {
         didSet {
-            Logger.print(.application, "Resource created for this session")
-            
             resource?.session = uuid.string
             
             if let resources = try? resource?.dictionary() {
@@ -29,6 +27,8 @@ final class Session {
             
             if let oldValue = oldValue {
                 resource?.network = oldValue.network
+            } else {
+                Logger.print(.application, "Resource created for this session")
             }
         }
     }
@@ -42,7 +42,7 @@ final class Session {
     // MARK: - Init
     
     // Update the session every 15 seconds
-    internal init(timeout: Double = 15.0, delay: Double = 0.25) {
+    internal init(timeout: Double = 15.0, delay: Double = 0.05) {
         self.repeater = Repeater(timeout)
         self.delay = delay
         self.uuid = ULID()
