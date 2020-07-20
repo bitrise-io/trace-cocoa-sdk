@@ -49,7 +49,6 @@ internal struct DeviceFormatter: JSONEncodable {
         
         enum Carrier: String {
             case name = "device.carrier"
-            case country = "device.country"
         }
         
         enum SDK: String {
@@ -129,26 +128,14 @@ internal struct DeviceFormatter: JSONEncodable {
                     .map { $0.value.carrierName }
                     .compactMap { $0 }
                     .joined()
-                let countries = carriers
-                    .map { $0.value.isoCountryCode }
-                    .compactMap { $0 }
-                    .joined()
                 
                 if !names.isEmpty {
                     details[Keys.Carrier.name.rawValue] = names
-                }
-                
-                if !countries.isEmpty {
-                    details[Keys.Carrier.country.rawValue] = countries
                 }
             }
         } else if let carrier = networkInfo.subscriberCellularProvider {
             if let name = carrier.carrierName, !name.isEmpty {
                 details[Keys.Carrier.name.rawValue] = name
-            }
-            
-            if let code = carrier.isoCountryCode, !code.isEmpty {
-                details[Keys.Carrier.country.rawValue] = code
             }
         }
         #endif

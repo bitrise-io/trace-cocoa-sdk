@@ -18,7 +18,6 @@ Resource:
         "app.session.id": "55466D9C-4A4B-48EB-A39F-74A9FF6C95BC",
         "app.version": "1.0.0",
         "device.carrier": "",
-        "device.country": "",
         "device.id": "AE148DAE-EF47-48D0-B3BE-FEA88A77FC67",
         "device.jailbroken": "false",
         "device.network": "",
