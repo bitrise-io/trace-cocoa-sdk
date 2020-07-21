@@ -15,7 +15,7 @@ extension Metric.Descriptor {
     
     enum Name: String, Codable {
         
-        // MARK: - MVP
+        // MARK: - Metric
         
         case appRequestSizeBytes = "app.request.size.bytes"
         case appResponseSizeBytes = "app.response.size.bytes"
@@ -28,7 +28,7 @@ extension Metric.Descriptor {
         case appMemoryBytes = "app.memory.bytes"
         case systemMemoryBytes = "system.memory.bytes"
         
-        // MARK: - Post MVP
+        // MARK: - Post MVP (Needs reviewing)
         
         case subviewRenderLatencyMS = "subview.render.latency.ms" // Post MVP
         case appSessionMilliseconds = "app.session.milliseconds" // Post MVP
