@@ -42,7 +42,7 @@ final class Session {
     // MARK: - Init
     
     // Update the session every 15 seconds
-    internal init(timeout: Double = 15.0, delay: Double = 0.05) {
+    internal init(timeout: Double = 15.0, delay: Double = 0.25) {
         self.repeater = Repeater(timeout)
         self.delay = delay
         self.uuid = ULID()
@@ -60,9 +60,14 @@ final class Session {
         repeater.state = .resume
         repeater.handler = handler
         
+        // Must use main thread for resource
         DispatchQueue.main.asyncAfter(
             deadline: .now() + delay,
             execute: { [weak self] in self?.updateResource() }
+            execute: { [weak self] in
+                self?.updateResource()
+                self?.sendHardwareDetails()
+            }
         )
     }
     
