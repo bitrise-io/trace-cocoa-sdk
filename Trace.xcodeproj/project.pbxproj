@@ -289,7 +289,6 @@
 		109136E024ACE64E00476EF6 /* CollaterTests+SystemCpuPct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109136DF24ACE64E00476EF6 /* CollaterTests+SystemCpuPct.swift */; };
 		109136E224ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109136E124ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift */; };
 		109136E424ACE69400476EF6 /* CollaterTests+AppMemoryBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109136E324ACE69400476EF6 /* CollaterTests+AppMemoryBytes.swift */; };
-		109136E624ACE6A800476EF6 /* CollaterTests+SystemMemoryBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109136E524ACE6A800476EF6 /* CollaterTests+SystemMemoryBytes.swift */; };
 		109136E924ADE06C00476EF6 /* systemMemoryBytes_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 109136E724ADE06B00476EF6 /* systemMemoryBytes_no_match.json */; };
 		109136EA24ADE06C00476EF6 /* systemMemoryBytes_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 109136E824ADE06C00476EF6 /* systemMemoryBytes_match.json */; };
 		109136F024AE127C00476EF6 /* processCpuPct_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 109136EE24AE127C00476EF6 /* processCpuPct_match.json */; };
@@ -827,7 +826,6 @@
 		109136DF24ACE64E00476EF6 /* CollaterTests+SystemCpuPct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollaterTests+SystemCpuPct.swift"; path = "Tests/CollaterTests+SystemCpuPct.swift"; sourceTree = SOURCE_ROOT; };
 		109136E124ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollaterTests+ProcessCpuPct.swift"; path = "Tests/CollaterTests+ProcessCpuPct.swift"; sourceTree = SOURCE_ROOT; };
 		109136E324ACE69400476EF6 /* CollaterTests+AppMemoryBytes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollaterTests+AppMemoryBytes.swift"; path = "Tests/CollaterTests+AppMemoryBytes.swift"; sourceTree = SOURCE_ROOT; };
-		109136E524ACE6A800476EF6 /* CollaterTests+SystemMemoryBytes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollaterTests+SystemMemoryBytes.swift"; path = "Tests/CollaterTests+SystemMemoryBytes.swift"; sourceTree = SOURCE_ROOT; };
 		109136E724ADE06B00476EF6 /* systemMemoryBytes_no_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = systemMemoryBytes_no_match.json; path = Tests/systemMemoryBytes_no_match.json; sourceTree = SOURCE_ROOT; };
 		109136E824ADE06C00476EF6 /* systemMemoryBytes_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = systemMemoryBytes_match.json; path = Tests/systemMemoryBytes_match.json; sourceTree = SOURCE_ROOT; };
 		109136EE24AE127C00476EF6 /* processCpuPct_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = processCpuPct_match.json; path = Tests/processCpuPct_match.json; sourceTree = SOURCE_ROOT; };
@@ -2324,7 +2322,6 @@
 				101F4A1022B7946300F9DF4A /* MetricTests.swift */,
 				10916D70234B395300E02C14 /* ResourceTests.swift */,
 				109136C824ACCAAB00476EF6 /* CollaterTests.swift */,
-				109136E524ACE6A800476EF6 /* CollaterTests+SystemMemoryBytes.swift */,
 				109136E124ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift */,
 				109136E324ACE69400476EF6 /* CollaterTests+AppMemoryBytes.swift */,
 				109136DD24ACE63900476EF6 /* CollaterTests+AppStartupLatencyMS.swift */,
@@ -3344,7 +3341,6 @@
 				1072919C231FE142007A18C7 /* QueueTests.swift in Sources */,
 				105962D9243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift in Sources */,
 				109136E224ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift in Sources */,
-				109136E624ACE6A800476EF6 /* CollaterTests+SystemMemoryBytes.swift in Sources */,
 				108CDEC823FC0A5700153BEB /* ReportingSinkTests.swift in Sources */,
 				10866F372294686600D77D56 /* LoggerTests.swift in Sources */,
 				108EF3C3231EBFEB0029FD65 /* DataTaskFormatterTests.swift in Sources */,

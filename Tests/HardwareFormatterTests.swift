@@ -49,7 +49,7 @@ final class HardwareFormatterTests: XCTestCase {
         XCTAssertNil(metrics.resource)
         XCTAssertNotNil(hardware.details)
         
-        XCTAssertEqual(metrics.metrics.count, 4)
+        XCTAssertEqual(metrics.metrics.count, 3)
     }
     
     func testReadMetrics_readOne() {

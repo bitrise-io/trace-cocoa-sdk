@@ -26,7 +26,6 @@ extension Metric.Descriptor {
         case systemCpuPct = "system.cpu.pct"
         case processCpuPct = "process.cpu.pct"
         case appMemoryBytes = "app.memory.bytes"
-        case systemMemoryBytes = "system.memory.bytes"
         
         // MARK: - Post MVP (Needs reviewing)
         
@@ -46,7 +45,6 @@ extension Metric.Descriptor {
                  .appStartupLatencyMS,
                  .systemCpuPct,
                  .appMemoryBytes,
-                 .systemMemoryBytes,
                  .processCpuPct,
                  .viewFrameRate,
                  .httpSessionConfiguration,
@@ -71,7 +69,6 @@ extension Metric.Descriptor {
                  .appStartupLatencyMS,
                  .systemCpuPct,
                  .appMemoryBytes,
-                 .systemMemoryBytes,
                  .processCpuPct,
                  .viewFrameRate,
                  .appSessionMilliseconds,
