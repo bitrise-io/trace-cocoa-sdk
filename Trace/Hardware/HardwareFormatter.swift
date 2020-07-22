@@ -41,7 +41,6 @@ internal struct HardwareFormatter: JSONEncodable {
         var details = detailsForSystemCPU
         details.merge(detailsForApplicationCPU)
         details.merge(detailsForApplicationMemory)
-        details.merge(detailsForSystemMemory)
         
         return OrderedDictionary<String, String>(uniqueKeysWithValues: details)
     }
@@ -87,25 +86,6 @@ internal struct HardwareFormatter: JSONEncodable {
         
         return [
             "res": String(memory.applicationUsage.used),
-            "total": String(memory.applicationUsage.total),
-            "timestamp": timestamp
-        ]
-    }
-    
-    private var detailsForSystemMemory: OrderedDictionary<String, String> {
-        var timestamp = ""
-        
-        if let usage = memory.systemUsage.timestamp.jsonString() {
-            timestamp = usage
-        }
-        
-        return [
-            "free": String(memory.systemUsage.free),
-            "active": String(memory.systemUsage.active),
-            "inactive": String(memory.systemUsage.inactive),
-            "wired": String(memory.systemUsage.wired),
-            "compressed": String(memory.systemUsage.compressed),
-            "total": String(memory.systemUsage.total),
             "timestamp": timestamp
         ]
     }
@@ -116,49 +96,7 @@ extension HardwareFormatter: Metricable {
     // MARK: - Metric
     
     internal var metrics: Metrics {
-        return Metrics([systemMetric, applicationMetric, applicationMemoryUsage, systemMemoryUsage])
-    }
-    
-    private var systemMemoryUsage: Metric {
-        var keys = [Metric.Descriptor.Key]()
-        var timeseries = [Metric.Timeseries]()
-        let value = memory.systemUsage
-        
-        keys.append(.init("memory.state"))
-        timeseries.append(
-            Metric.Timeseries(.value("free"), points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.free.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("active"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.active.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("inactive"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.inactive.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("wired"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.wired.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("total"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.total.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("compressed"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.compressed.rounded(to: 1))])
-        )
-        
-        let descriptor = Metric.Descriptor(
-            name: .systemMemoryBytes,
-            description: "System Memory Usage",
-            unit: .bytes,
-            type: .double,
-            keys: keys
-        )
-        let metric = Metric(descriptor: descriptor, timeseries: timeseries)
-        
-        return metric
+        return Metrics([systemMetric, applicationMetric, applicationMemoryUsage])
     }
     
     private var applicationMemoryUsage: Metric {
@@ -171,10 +109,6 @@ extension HardwareFormatter: Metricable {
         timeseries.append(Metric.Timeseries(
             .value("res"),
             points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.used.rounded(to: 1))])
-        )
-        timeseries.append(Metric.Timeseries(
-            .value("total"),
-            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.total.rounded(to: 1))])
         )
         
         let descriptor = Metric.Descriptor(
