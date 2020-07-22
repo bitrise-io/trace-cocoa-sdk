@@ -20,15 +20,15 @@ final class Session {
         didSet {
             resource?.session = uuid.string
             
-            if let resources = try? resource?.dictionary() {
-                // TODO: use enum instead of string
-                Trace.shared.crash.userInfo["Resource"] = resources
-            }
-            
             if let oldValue = oldValue {
                 resource?.network = oldValue.network
             } else {
                 Logger.print(.application, "Resource created for this session")
+            }
+            
+            if let resources = try? resource?.dictionary() {
+                // TODO: use enum instead of string
+                Trace.shared.crash.userInfo["Resource"] = resources
             }
         }
     }
@@ -63,7 +63,6 @@ final class Session {
         // Must use main thread for resource
         DispatchQueue.main.asyncAfter(
             deadline: .now() + delay,
-            execute: { [weak self] in self?.updateResource() }
             execute: { [weak self] in
                 self?.updateResource()
                 self?.sendHardwareDetails()
