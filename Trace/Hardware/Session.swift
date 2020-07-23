@@ -100,7 +100,10 @@ final class Session {
     func restart() {
         repeater.state = .resume
         
-        DispatchQueue.main.async { [weak self] in self?.updateResource() }
+        DispatchQueue.main.async { [weak self] in
+            self?.updateResource()
+            self?.sendHardwareDetails()
+        }
         
         uuid = ULID()
     }
