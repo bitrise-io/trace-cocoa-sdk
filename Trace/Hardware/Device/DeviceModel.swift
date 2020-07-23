@@ -8,9 +8,10 @@
 
 import UIKit
 
-public extension UIDevice {
+internal extension UIDevice {
     
-    /// pares the device name as the standard name
+    // MARK: - Device Name
+    
     var modelName: String {
         
         #if targetEnvironment(simulator)
@@ -70,7 +71,9 @@ public extension UIDevice {
         case "AppleTV5,3":                              return "Apple TV"
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"
-        default:                                        return deviceIdentifier
+        default:
+            Logger.print(.internalError, "Unknown device type \(deviceIdentifier)")
+            return deviceIdentifier
         }
     }
     
