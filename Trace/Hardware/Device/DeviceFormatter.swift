@@ -84,7 +84,7 @@ internal struct DeviceFormatter: JSONEncodable {
             details[Keys.uuid.rawValue] = temporary
         }
         
-        details[Keys.model.rawValue] = device.model
+        details[Keys.model.rawValue] = device.modelName
         details[Keys.systemVersion.rawValue] = device.systemVersion
         details[Keys.platform.rawValue] = "iOS"
         
