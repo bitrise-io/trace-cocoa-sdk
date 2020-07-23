@@ -103,6 +103,10 @@
 		104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555E2322563C006247C4 /* ViewFilterTests.swift */; platformFilter = ios; };
 		104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556023225845006247C4 /* ViewControllerFilterTests.swift */; platformFilter = ios; };
 		104F556323225AFC006247C4 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556223225AFC006247C4 /* SessionTests.swift */; platformFilter = ios; };
+		1053593524C9899F0007F2E0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053593424C9899F0007F2E0 /* CollectionViewController.swift */; };
+		1053593724C989C90007F2E0 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1053593624C989C90007F2E0 /* Collection.storyboard */; };
+		1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1053593824C991FF0007F2E0 /* CollectionViewCell.xib */; };
+		1053593B24C9A6E30007F2E0 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053593A24C9A6E30007F2E0 /* CollectionViewCell.swift */; };
 		1053AAAE23FC5ED600F90393 /* RandomSwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053AAAD23FC5ED600F90393 /* RandomSwiftFile.swift */; platformFilter = ios; };
 		1053AAAF23FC689A00F90393 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993C23F6E99900989C14 /* libc++.tbd */; platformFilter = ios; };
 		1053AAB023FCB6E300F90393 /* Container+DeepSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 10673C5B23EC1E68002D7CD1 /* Container+DeepSearch.m */; platformFilter = ios; };
@@ -578,6 +582,10 @@
 		104F555E2322563C006247C4 /* ViewFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewFilterTests.swift; path = Tests/ViewFilterTests.swift; sourceTree = SOURCE_ROOT; };
 		104F556023225845006247C4 /* ViewControllerFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerFilterTests.swift; path = Tests/ViewControllerFilterTests.swift; sourceTree = SOURCE_ROOT; };
 		104F556223225AFC006247C4 /* SessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionTests.swift; path = Tests/SessionTests.swift; sourceTree = SOURCE_ROOT; };
+		1053593424C9899F0007F2E0 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1053593624C989C90007F2E0 /* Collection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
+		1053593824C991FF0007F2E0 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		1053593A24C9A6E30007F2E0 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		1053AAAC23FC5ED600F90393 /* CrashReportingTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrashReportingTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1053AAAD23FC5ED600F90393 /* RandomSwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSwiftFile.swift; sourceTree = "<group>"; };
 		1053AAB323FCB8BC00F90393 /* processed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = processed.json; path = Mocks/processed.json; sourceTree = "<group>"; };
@@ -1422,12 +1430,11 @@
 		104A6974229401260065F218 /* iOSDemo */ = {
 			isa = PBXGroup;
 			children = (
-				10350D9B24C222180004F6D7 /* iOSDemo.entitlements */,
-				800DC5F7247D6D6C00FC8C73 /* PerformanceUITests */,
 				104A69B0229403840065F218 /* Application */,
 				104A69B4229404FF0065F218 /* View Controller */,
 				104A69B3229403E20065F218 /* Supporting Files */,
 				104A6994229401280065F218 /* iOSDemoUITests */,
+				800DC5F7247D6D6C00FC8C73 /* PerformanceUITests */,
 				104A6989229401280065F218 /* iOSDemoTests */,
 				80AD1A3D2473E806001DA4E2 /* PerformanceTests */,
 			);
@@ -1477,6 +1484,7 @@
 				103ABC872445FF27001BC364 /* prod */,
 				103ABC852445FF17001BC364 /* staging */,
 				104A697C229401280065F218 /* Assets.xcassets */,
+				10350D9B24C222180004F6D7 /* iOSDemo.entitlements */,
 				104A697E229401280065F218 /* LaunchScreen.storyboard */,
 				104A6981229401280065F218 /* Info.plist */,
 				10D056FD236C407C00443D4D /* iOSDemo-Bridging-Header.h */,
@@ -1492,6 +1500,7 @@
 				107B2C5923560466002E7A3D /* Tabs */,
 				10FC45D1230EE65D0077BF2C /* Network */,
 				1087A00122DE06AF005F8F83 /* WebView */,
+				1053593324C989800007F2E0 /* Collection */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -1505,6 +1514,17 @@
 				104EA0C32382A407004C07CE /* GestureViewController.swift */,
 			);
 			path = Control;
+			sourceTree = "<group>";
+		};
+		1053593324C989800007F2E0 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				1053593A24C9A6E30007F2E0 /* CollectionViewCell.swift */,
+				1053593824C991FF0007F2E0 /* CollectionViewCell.xib */,
+				1053593624C989C90007F2E0 /* Collection.storyboard */,
+				1053593424C9899F0007F2E0 /* CollectionViewController.swift */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		1053AAB223FCB8A900F90393 /* Mocks */ = {
@@ -2794,8 +2814,10 @@
 				104A697D229401280065F218 /* Assets.xcassets in Resources */,
 				104EA0C2238294FA004C07CE /* Control.storyboard in Resources */,
 				107B2C5B23560474002E7A3D /* Tabs.storyboard in Resources */,
+				1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */,
 				1087A00022DE06A7005F8F83 /* WebView.storyboard in Resources */,
 				10FC45D5230EE94D0077BF2C /* Network.storyboard in Resources */,
+				1053593724C989C90007F2E0 /* Collection.storyboard in Resources */,
 				103ABC822445FED6001BC364 /* bitrise_configuration.plist in Resources */,
 				104A697B229401260065F218 /* Main.storyboard in Resources */,
 			);
@@ -3381,6 +3403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1053593524C9899F0007F2E0 /* CollectionViewController.swift in Sources */,
 				10FC45D7230F3C9D0077BF2C /* CrashViewController.swift in Sources */,
 				104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */,
 				107B2C5F235604C3002E7A3D /* SecondTabViewController.swift in Sources */,
@@ -3388,6 +3411,7 @@
 				10FC45D3230EE6730077BF2C /* NetworkViewController.swift in Sources */,
 				1046CC3D22BB882200A8762F /* View.swift in Sources */,
 				104A6978229401260065F218 /* ViewController.swift in Sources */,
+				1053593B24C9A6E30007F2E0 /* CollectionViewCell.swift in Sources */,
 				107B2C5D235604B9002E7A3D /* FirstTabViewController.swift in Sources */,
 				104A69B22294039C0065F218 /* AppDelegate+Application.swift in Sources */,
 				104EA0C023829461004C07CE /* ControlViewController.swift in Sources */,
@@ -3846,7 +3870,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = iOSDemo/iOSDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -3880,7 +3904,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = iOSDemo/iOSDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
