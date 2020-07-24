@@ -12,19 +12,24 @@ internal extension UIDevice {
     
     // MARK: - Device Name
     
-    var modelName: String {
+    func getModelName(forcedDevice: String = "") -> String {
+        var deviceIdentifier = ""
         
-        #if targetEnvironment(simulator)
-        let deviceIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
-        #else
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let deviceIdentifier = machineMirror.children.reduce("") { deviceIdentifier, element in
-            guard let value = element.value as? Int8 , value != 0 else { return deviceIdentifier }
-            return deviceIdentifier + String(UnicodeScalar(UInt8(value)))
+        if !forcedDevice.isEmpty {
+            deviceIdentifier = forcedDevice
+        } else {
+            #if targetEnvironment(simulator)
+            deviceIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
+            #else
+            var systemInfo = utsname()
+            uname(&systemInfo)
+            let machineMirror = Mirror(reflecting: systemInfo.machine)
+            deviceIdentifier = machineMirror.children.reduce("") { deviceIdentifier, element in
+                guard let value = element.value as? Int8 , value != 0 else { return deviceIdentifier }
+                return deviceIdentifier + String(UnicodeScalar(UInt8(value)))
+            }
+            #endif
         }
-        #endif
         
         switch deviceIdentifier {
         case "iPod5,1":                                 return "iPod Touch 5"
