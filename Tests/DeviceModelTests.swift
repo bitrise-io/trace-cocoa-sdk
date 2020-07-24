@@ -25,4 +25,8 @@ class DeviceModelTests: XCTestCase {
         XCTAssertEqual(UIDevice.current.getModelName(forcedDevice: "iPhone10,6"), "iPhone X")
         XCTAssertEqual(UIDevice.current.getModelName(forcedDevice: "iPhone10,5"), "iPhone 8 Plus")
     }
+
+    func testUnknownDeviceType() {
+          XCTAssertEqual(UIDevice.current.getModelName(forcedDevice: "iPhone1000"), "iPhone1000")
+    }
 }
