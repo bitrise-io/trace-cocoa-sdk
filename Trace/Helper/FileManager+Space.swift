@@ -54,10 +54,11 @@ extension FileManager {
             if let space = url {
                 totalSpace = space
             }
-        } else if let systemAttributes = try? attributesOfFileSystem(forPath: directory),
-            // Finds the details by using OS file system metadata
+        }
+        
+        // Finds the details by using OS file system metadata
+        if totalSpace == 0, let systemAttributes = try? attributesOfFileSystem(forPath: directory),
             let freeSpace = (systemAttributes[.systemFreeSize] as? NSNumber)?.int64Value {
-            
             totalSpace = freeSpace
         }
         
