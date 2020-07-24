@@ -47,6 +47,8 @@ extension UIViewController {
                 start = value.timeInterval
             } else if let value = awakeFromNib {
                 start = value.timeInterval
+            } else {
+                Logger.print(.internalError, "Failed to find view controller start time")
             }
             
             return start

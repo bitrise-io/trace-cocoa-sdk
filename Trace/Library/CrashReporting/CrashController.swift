@@ -93,7 +93,7 @@ public final class CrashController: NSObject {
             
             return true
         } catch {
-            Logger.print(.crash, "Failed to submit report")
+            Logger.print(.crash, "Failed to create crash report")
             
             return false
         }

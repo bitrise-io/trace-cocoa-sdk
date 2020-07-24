@@ -21,7 +21,7 @@ internal extension Network {
         } else if let statusCode = statusCode,
             clientStatusCodes.contains(statusCode) == true {
             if statusCode == StatusCode.unauthorized.rawValue {
-                Logger.print(.application, "Authentication token is unauthorized")
+                Logger.print(.application, "Authentication token is unauthorized, please validate on Trace setting page: https://trace.bitrise.io/settings")
             }
             
             completion(.failure(.client))

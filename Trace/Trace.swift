@@ -10,7 +10,18 @@ import Foundation
 import UIKit
 import JavaScriptCore.JSContextRef
 
-/// Trace SDK
+/**
+ Trace SDK
+
+ Trace: https://trace.bitrise.io
+ What Trace? https://www.bitrise.io/add-ons/trace-mobile-monitoring
+ Getting started guide: https://trace.bitrise.io/o/getting-started
+ Trace configuration settings: https://trace.bitrise.io/settings
+ 
+ Did you know Trace is open sourced? https://github.com/bitrise-io/trace-cocoa-sdk
+ Report issues: https://github.com/bitrise-io/trace-cocoa-sdk/issues/new
+ 
+*/
 @objcMembers
 @objc(BRTrace)
 final public class Trace: NSObject {
@@ -92,7 +103,7 @@ final public class Trace: NSObject {
             
             Logger.print(.launch, "Bitrise Trace setup complete")
         } catch {
-            Logger.print(.internalError, "Application failed to read configuration file, all data will be cached until it's resolved")
+            Logger.print(.internalError, "Application failed to read configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
         }
         
         // Check XCode environment variables. this only works when running with a debugger i.e in Run app or Tests

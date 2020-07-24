@@ -53,6 +53,8 @@ internal extension UIView {
             
             if let didMove = didMoveToSuperview?.timeInterval {
                 end = didMove
+            } else {
+                Logger.print(.internalError, "Failed to find view end time")
             }
             
             // since the many ways to create a view it's best to check all and in the correct lifecycle order
@@ -60,6 +62,8 @@ internal extension UIView {
                 start = value.timeInterval
             } else if let value = initWithFrame {
                 start = value.timeInterval
+            } else {
+                Logger.print(.internalError, "Failed to find view start time")
             }
             
             let result = end - start
