@@ -29,7 +29,7 @@ internal extension Network {
             return nil
         }
         guard !configuration.additionalHeaders.isEmpty else {
-            Logger.print(.network, "Request cached as bitrise_configuration file has not been set")
+            Logger.print(.network, "Request cached as bitrise_configuration.plist file has not been set. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
             
             completion(.failure(.noAuthentication))
             

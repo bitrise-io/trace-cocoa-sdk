@@ -99,7 +99,7 @@ public final class TraceModel: NSObject, Codable {
         resource = try container.decodeIfPresent(Resource.self, forKey: .resource)
         
         if resource == nil {
-            Logger.print(.internalError, "Resource was not found in existing trace model")
+            Logger.print(.internalError, "Resource was not found in the existing trace model")
         }
         
         attributes = try container.decodeIfPresent([String: String].self, forKey: .attributes)
