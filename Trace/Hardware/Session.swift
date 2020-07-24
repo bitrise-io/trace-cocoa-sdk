@@ -21,7 +21,9 @@ final class Session {
             resource?.session = uuid.string
             
             if let oldValue = oldValue {
-                resource?.network = oldValue.network
+                if !oldValue.network.isEmpty && resource?.network.isEmpty == true {
+                    resource?.network = oldValue.network
+                }
             } else {
                 Logger.print(.application, "Resource created for this session")
             }
