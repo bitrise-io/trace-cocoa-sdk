@@ -404,6 +404,7 @@
 		800DC604247D6E3900FC8C73 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993E23F6E9A300989C14 /* libz.tbd */; };
 		800DC605247D6E3F00FC8C73 /* libTrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A694C2293FB060065F218 /* libTrace.a */; };
 		8092D30024C9E82200A4240F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8092D2FF24C9E82200A4240F /* DeviceModel.swift */; };
+		8092D30224CA4CEA00A4240F /* DeviceModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8092D30124CA4CEA00A4240F /* DeviceModelTests.swift */; };
 		8098671324644DCE009A357C /* NetworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA2AEA24631161008604D3 /* NetworkUITests.swift */; };
 		809C3D8E246AA3E200293B6C /* LifecycleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809C3D8D246AA3E200293B6C /* LifecycleUITests.swift */; };
 		80A9AE7824766337007192DD /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A9AE7724766337007192DD /* DatabaseTests.swift */; };
@@ -948,6 +949,7 @@
 		800DC5FA247D6D6C00FC8C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800DC600247D6DB100FC8C73 /* LoadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadTests.swift; sourceTree = "<group>"; };
 		8092D2FF24C9E82200A4240F /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		8092D30124CA4CEA00A4240F /* DeviceModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelTests.swift; sourceTree = "<group>"; };
 		809C3D8D246AA3E200293B6C /* LifecycleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LifecycleUITests.swift; path = iOSDemo/iOSDemoUITests/LifecycleUITests.swift; sourceTree = SOURCE_ROOT; };
 		80A9AE7724766337007192DD /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseTests.swift; path = PerformanceTests/DatabaseTests.swift; sourceTree = SOURCE_ROOT; };
 		80AD1A3C2473E806001DA4E2 /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2226,6 +2228,7 @@
 			children = (
 				10CA877D22A4574A003702B1 /* DeviceTests.swift */,
 				10729197231FDC08007A18C7 /* DeviceFormatterTests.swift */,
+				8092D30124CA4CEA00A4240F /* DeviceModelTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -3318,6 +3321,7 @@
 				104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */,
 				105962E3243F87BD00047D29 /* SelectorTests.m in Sources */,
 				10AC27E723440FE300780890 /* TracerTest.swift in Sources */,
+				8092D30224CA4CEA00A4240F /* DeviceModelTests.swift in Sources */,
 				101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */,
 				10D7E8FC23450E730032FBA3 /* JSONEncodableTests.swift in Sources */,
 				10D7E8FA2344FE580032FBA3 /* FPSTests.swift in Sources */,
