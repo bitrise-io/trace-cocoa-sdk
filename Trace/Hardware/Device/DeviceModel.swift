@@ -19,7 +19,11 @@ internal extension UIDevice {
             deviceIdentifier = forcedDevice
         } else {
             #if targetEnvironment(simulator)
-            deviceIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"]!
+            if let strongModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
+                deviceIdentifier = strongModelIdentifier
+            } else {
+                Logger.print(.internalError, "Simulator device type not returned.")
+            }
             #else
             var systemInfo = utsname()
             uname(&systemInfo)
