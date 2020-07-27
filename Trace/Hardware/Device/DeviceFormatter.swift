@@ -63,7 +63,6 @@ internal struct DeviceFormatter: JSONEncodable {
         case model = "device.type"
         case platform = "app.platform"
         case systemVersion = "os.version"
-        case name = "device.name"
         case jailbroken = "device.jailbroken"
     }
 
@@ -85,9 +84,8 @@ internal struct DeviceFormatter: JSONEncodable {
             details[Keys.uuid.rawValue] = temporary
         }
         
-        details[Keys.model.rawValue] = device.model
+        details[Keys.model.rawValue] = device.getModelName()
         details[Keys.systemVersion.rawValue] = device.systemVersion
-        details[Keys.name.rawValue] = device.name
         details[Keys.platform.rawValue] = "iOS"
         
         let locale = Locale.current
