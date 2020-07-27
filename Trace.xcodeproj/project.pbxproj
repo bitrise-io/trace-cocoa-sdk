@@ -3893,9 +3893,9 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"'$(BUILT_PRODUCTS_DIR)/libTrace.a'",
 					"$(inherited)",
+					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.iOSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3927,9 +3927,9 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"'$(BUILT_PRODUCTS_DIR)/libTrace.a'",
 					"$(inherited)",
+					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.iOSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
