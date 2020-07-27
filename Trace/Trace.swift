@@ -103,7 +103,7 @@ final public class Trace: NSObject {
             
             Logger.print(.launch, "Bitrise Trace setup complete")
         } catch {
-            Logger.print(.internalError, "Application failed to read configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
+            Logger.print(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
         }
         
         // Check XCode environment variables. this only works when running with a debugger i.e in Run app or Tests

@@ -28,11 +28,11 @@ Each framework can be easier found in Xcode's framework list. These are currentl
 
 ### Install from Bitrise workflow step site
 
-Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and librares are done for you. The step *must* come before the Xcode Archive & Export  step.
+Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step *must* come before the Xcode Archive & Export step.
 
-### Install directly from source
+### Install directly from the source code
 
-Add the follow step inside your `bitrise.yml` file if the step project is in your repo folder
+Add the following step inside your `bitrise.yml` file if the step project is in your repo folder
 
 ```yml
 - path::./step/:
@@ -70,7 +70,7 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 $ pod install
 ```
 
-Now that the SDK is setup in your project, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
+Now that the SDK is set up in your project, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
@@ -136,7 +136,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 * Open the new `trace-cocoa-sdk` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 
-<img src="assets/embedded_xcode_project_example.png" width=40%>
+<img src="assets/embedded_xcode_project_example.png" width=30%>
 
 * Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "General" panel.
@@ -146,7 +146,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-force_load '$(BUILT_PRODUCTS_DIR)/libTrace.a'`
 
-<img src="assets/other_linker_flags_via_submodule_example.png" width=90%>
+<img src="assets/other_linker_flags_via_submodule_example.png" width=70%>
 
 Note: don't worry about other attributes on the list.
 
@@ -156,7 +156,7 @@ Note: don't worry about other attributes on the list.
 
 SDk binaries is hosted on Firebase, download the latest version [here](https://monitoring-sdk.firebaseapp.com/latest/libTrace.a) or download a specific version by adding the version details inside the [url](https://monitoring-sdk.firebaseapp.com/latest/libTrace.a) i.e https://monitoring-sdk.firebaseapp.com/{MAJOR.MINOR.PITCH}/libTrace.a
 
-By default navigating to root of the SDK site will always redirect to latest version.
+By default navigating to the root of the SDK site will always redirect to latest version.
 
 # Common problems
 
@@ -172,7 +172,7 @@ By default navigating to root of the SDK site will always redirect to latest ver
 
 <img src="assets/library_not_found_example.png" width=90%>
 
-This error is caused by Xcode not being able to locate Trace library. By default, our installation guide you using the easiest approach. To resolve this error go to `Other Linker Flags` or `OTHER_LDFLAGS` in your application target and enter `-force_load CORRECT_PATH_TO_libTrace.a'`
+This error is caused by Xcode not being able to locate Trace library. By default, our installation guide uses the easiest approach. To resolve this error go to `Other Linker Flags` or `OTHER_LDFLAGS` in your application target and enter `-force_load CORRECT_PATH_TO_libTrace.a'`
 
 #### Can't find collector token
 
@@ -183,7 +183,7 @@ Make sure `bitrise_configuration.plist` is included in your project and the targ
 #### Can't find collector token
 
 `[Bitrise:Trace/internalError] Bitrise configuration file is missing from Bundle.main`
-`[Bitrise:Trace/internalError] Application failed to read configuration file, all data will be cached until it's resolved`
+`[Bitrise:Trace/internalError] Application failed to read the configuration file, all data will be cached until it's resolved`
 
 Add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
 
@@ -193,4 +193,4 @@ Add the collector token (`bitrise_configuration.plist`) found in the [setting pa
 Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `58094b309e443f16273a75d87a3065a9fafd2540`
 
 # License
-Trace is released under the MIT license. See LICENSE for details.
+Trace is released under the MIT license. See [LICENSE](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE) for details.
