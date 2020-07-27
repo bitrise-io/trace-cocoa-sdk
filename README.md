@@ -7,12 +7,12 @@ Use Trace to:
 - *Assess the impact*: Focus on resolving the issues which are most impactful to your users.
 - *Trace the cause*: Spend less time trying to reproduce issues.
 
-*[Trace website](https://trace.bitrise.io)  *[What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  *[Getting started guide](https://trace.bitrise.io/o/getting-started)  *[Trace configuration settings](https://trace.bitrise.io/settings)
+[* Trace website](https://trace.bitrise.io)  [* What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  [* Getting started guide](https://trace.bitrise.io/o/getting-started)  [* Trace configuration settings](https://trace.bitrise.io/settings)
 
 ## Requirements
 
 - iOS 10.0+ 
-- Xcode 11.5+
+- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 11.5+
 - Swift 5.2.4
 
 ## Installation
@@ -176,7 +176,7 @@ This error is caused by Xcode not being able to locate Trace library. By default
 
 #### Can't find collector token
 
-<img src="assets/add_bitrise_configuration_example.png">
+<img src="assets/add_bitrise_configuration_example.png" width=50%>
 
 Make sure `bitrise_configuration.plist` is included in your project and the target membership is set to the correct one.
 
