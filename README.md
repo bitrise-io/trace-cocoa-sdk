@@ -113,7 +113,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Download `libTrace.a` static library assert from [Github release page](https://github.com/bitrise-io/trace-cocoa-sdk/releases). Please select the first file under asset's called `libTrace.a`.
 * Drop the library at the root of your Xcode project. i.e same directory as your `xcproject/xcworkspace` project.
 
-<img src="assets/library_path_example.png" width=90%>
+<img src="assets/library_path_example.png" width=70%>
 
 * Next in Xcode, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
@@ -136,7 +136,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 * Open the new `trace-cocoa-sdk` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 
-<img src="assets/embedded_xcode_project_example.png" width=90%>
+<img src="assets/embedded_xcode_project_example.png" width=40%>
 
 * Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "General" panel.
