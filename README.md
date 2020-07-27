@@ -176,7 +176,7 @@ This error is caused by Xcode not being able to locate Trace library. By default
 
 #### Can't find collector token
 
-<img src="assets/add_bitrise_configuration_example.png" width=50%>
+<img src="assets/add_bitrise_configuration_example.png" width=80%>
 
 Make sure `bitrise_configuration.plist` is included in your project and the target membership is set to the correct one.
 
