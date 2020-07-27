@@ -113,13 +113,13 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Download `libTrace.a` static library assert from [Github release page](https://github.com/bitrise-io/trace-cocoa-sdk/releases). Please select the first file under asset's called `libTrace.a`.
 * Drop the library at the root of your Xcode project. i.e same directory as your `xcproject/xcworkspace` project.
 
-<img src="assets/library_path_example.png">
+<img src="assets/library_path_example.png" width=90%>
 
 * Next in Xcode, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-force_load libTrace.a`
 
-<img src="assets/other_linker_flags_example.png">
+<img src="assets/other_linker_flags_example.png" width=90%>
 
 `Note: The code snippet assumes the library is in the same directory as your `xcproject/xcworkspace` project.` If you use a different location add the new path.
 
@@ -136,7 +136,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 * Open the new `trace-cocoa-sdk` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 
-<img src="assets/embedded_xcode_project_example.png">
+<img src="assets/embedded_xcode_project_example.png" width=90%>
 
 * Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "General" panel.
@@ -146,7 +146,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 * Now, In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-force_load '$(BUILT_PRODUCTS_DIR)/libTrace.a'`
 
-<img src="assets/other_linker_flags_via_submodule_example.png">
+<img src="assets/other_linker_flags_via_submodule_example.png" width=90%>
 
 Note: don't worry about other attributes on the list.
 
@@ -162,7 +162,7 @@ By default navigating to root of the SDK site will always redirect to latest ver
 
 #### C++ system library is not linked
 
-<img src="assets/c++_not_linked_error_example.png">
+<img src="assets/c++_not_linked_error_example.png" width=90%>
 
 * Click on the + button under the "Frameworks, Libraries and Embedded Content" section.
 * Add `libz.tbd` and `libc++.tbd`.
@@ -170,13 +170,13 @@ By default navigating to root of the SDK site will always redirect to latest ver
 
 #### Can't find Trace library
 
-<img src="assets/library_not_found_example.png">
+<img src="assets/library_not_found_example.png" width=90%>
 
 This error is caused by Xcode not being able to locate Trace library. By default, our installation guide you using the easiest approach. To resolve this error go to `Other Linker Flags` or `OTHER_LDFLAGS` in your application target and enter `-force_load CORRECT_PATH_TO_libTrace.a'`
 
 #### Can't find collector token
 
-<img src="assets/add_bitrise_configuration_example.png" width=80%>
+<img src="assets/add_bitrise_configuration_example.png" width=90%>
 
 Make sure `bitrise_configuration.plist` is included in your project and the target membership is set to the correct one.
 
