@@ -14,7 +14,7 @@ import JavaScriptCore.JSContextRef
  Trace SDK
 
  Trace: https://trace.bitrise.io
- What Trace? https://www.bitrise.io/add-ons/trace-mobile-monitoring
+ What's Trace? https://www.bitrise.io/add-ons/trace-mobile-monitoring
  Getting started guide: https://trace.bitrise.io/o/getting-started
  Trace configuration settings: https://trace.bitrise.io/settings
  
