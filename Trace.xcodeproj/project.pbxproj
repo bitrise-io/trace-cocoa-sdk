@@ -3886,8 +3886,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-force_load",
-					libTrace.a,
+					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.iOSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3920,8 +3919,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-force_load",
-					libTrace.a,
+					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.iOSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
