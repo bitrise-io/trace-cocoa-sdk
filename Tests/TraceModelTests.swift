@@ -388,4 +388,38 @@ final class TraceModelTests: XCTestCase {
         
         XCTAssertFalse(span.validate())
     }
+    
+    func testTraceSpan_invalidBySameTime() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            end: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
+    
+    func testTraceSpan_invalidByNoEndTime() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            end: nil,
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
 }
