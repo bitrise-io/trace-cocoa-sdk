@@ -24,12 +24,18 @@ internal extension UIDevice {
             } else {
                 Logger.print(.internalError, "Simulator device type not returned.")
             }
+            #elseif targetEnvironment(macCatalyst)
+                deviceIdentifier = "Mac Catalyst"
             #else
+            
             var systemInfo = utsname()
             uname(&systemInfo)
+            
             let machineMirror = Mirror(reflecting: systemInfo.machine)
+            
             deviceIdentifier = machineMirror.children.reduce("") { deviceIdentifier, element in
-                guard let value = element.value as? Int8 , value != 0 else { return deviceIdentifier }
+                guard let value = element.value as? Int8, value != 0 else { return deviceIdentifier }
+                
                 return deviceIdentifier + String(UnicodeScalar(UInt8(value)))
             }
             #endif
@@ -80,10 +86,11 @@ internal extension UIDevice {
         case "AppleTV5,3":                              return "Apple TV"
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"
+        case "Mac Catalyst":                            return "Mac Catalyst"
         default:
             Logger.print(.internalError, "Unknown device type \(deviceIdentifier)")
+            
             return deviceIdentifier
         }
     }
-    
 }

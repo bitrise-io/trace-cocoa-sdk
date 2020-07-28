@@ -70,7 +70,7 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 $ pod install
 ```
 
-Now that the SDK is set up in your project, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
+Now that the SDK is set up in your workspace, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
@@ -134,7 +134,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 `$ git submodule add https://github.com/bitrise-io/trace-cocoa-sdk.git`
 
-* Open the new `trace-cocoa-sdk` folder, and drag the `Trace.xcodeproj` into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
+* Open the new `trace-cocoa-sdk` folder, and drag the `Trace.xcodeproj` (blue project file`.xcodeproj`) into the Project Navigator of your application's Xcode project. They should appear nested underneath your application's blue project icon. 
 
 <img src="assets/embedded_xcode_project_example.png" width=30%>
 
