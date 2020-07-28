@@ -282,6 +282,11 @@ extension TraceModel {
             try container.encode(start, forKey: .start)
             try container.encode(end, forKey: .end)
             try container.encode(attribute, forKey: .attributes)
+            
+            #if Debug
+                // TODO: only for private beta testing. remove before GA
+                spanValidator(start: start, end: end)
+            #endif
         }
         
         // MARK: - Copy
@@ -301,6 +306,32 @@ extension TraceModel {
             
             return copy
         }
+
+        // MARK: - Span validator
+        
+        /// :nodoc:
+        @discardableResult
+        private func spanValidator(start: Timestamp, end: Timestamp?) -> Bool {
+             guard let strongEnd = end else {
+                 return true
+             }
+             
+             var valid = true
+             if start.seconds > strongEnd.seconds {
+                 valid = false
+             } else if start.seconds == strongEnd.seconds {
+                 if start.nanos > strongEnd.nanos {
+                     valid = false
+                 }
+             }
+             
+            //GA info
+             if !valid {
+                 Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
+             }
+             
+             return valid
+         }
     }
 }
 
