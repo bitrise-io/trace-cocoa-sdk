@@ -63,10 +63,10 @@ extension TraceModel {
             
             private func setup() {
                 #if Debug
-                    // TODO: only for private beta testing. remove before GA
-                    if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                        Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
-                    }
+                // TODO: only for private beta testing. remove before GA
+                if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                }
                 #endif
             }
         }
@@ -258,7 +258,7 @@ extension TraceModel {
                     debugDescription: "")
                 )
             }
-        
+            
             spanId = span
             parentSpanId = try container.decode(String?.self, forKey: .parentSpanId)?.fromHex
             name = try container.decode(Name.self, forKey: .name)
@@ -284,8 +284,8 @@ extension TraceModel {
             try container.encode(attribute, forKey: .attributes)
             
             #if Debug
-                // TODO: only for private beta testing. remove before GA
-                spanValidator(start: start, end: end)
+            // TODO: only for private beta testing. remove before GA
+            spanValidator(span: self)
             #endif
         }
         
@@ -306,32 +306,32 @@ extension TraceModel {
             
             return copy
         }
-
+        
         // MARK: - Span validator
         
         /// :nodoc:
         @discardableResult
-        private func spanValidator(start: Timestamp, end: Timestamp?) -> Bool {
-             guard let strongEnd = end else {
-                 return true
-             }
-             
-             var valid = true
-             if start.seconds > strongEnd.seconds {
-                 valid = false
-             } else if start.seconds == strongEnd.seconds {
-                 if start.nanos > strongEnd.nanos {
-                     valid = false
-                 }
-             }
-             
+        public func spanValidator(span: Span) -> Bool {
+            guard let strongEnd = span.end else {
+                return true
+            }
+            
+            var valid = true
+            if span.start.seconds > strongEnd.seconds {
+                valid = false
+            } else if span.start.seconds == strongEnd.seconds {
+                if span.start.nanos > strongEnd.nanos {
+                    valid = false
+                }
+            }
+            
             //GA info
-             if !valid {
-                 Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
-             }
-             
-             return valid
-         }
+            if !valid {
+                Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
+            }
+            
+            return valid
+        }
     }
 }
 
