@@ -285,7 +285,7 @@ extension TraceModel {
             
             #if Debug
             // TODO: only for private beta testing. remove before GA
-            spanValidator(span: self)
+            validate()
             #endif
         }
         
@@ -311,21 +311,20 @@ extension TraceModel {
         
         /// :nodoc:
         @discardableResult
-        public func spanValidator(span: Span) -> Bool {
-            guard let strongEnd = span.end else {
-                return true
+        internal func validate() -> Bool {
+            guard let strongEnd = end else {
+                return false
             }
             
             var valid = true
-            if span.start.seconds > strongEnd.seconds {
+            if start.seconds > strongEnd.seconds {
                 valid = false
-            } else if span.start.seconds == strongEnd.seconds {
-                if span.start.nanos > strongEnd.nanos {
+            } else if start.seconds == strongEnd.seconds {
+                if start.nanos > strongEnd.nanos {
                     valid = false
                 }
             }
             
-            //GA info
             if !valid {
                 Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
             }

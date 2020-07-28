@@ -352,7 +352,7 @@ final class TraceModelTests: XCTestCase {
             attribute: attribute
         )
         
-        XCTAssert(span.spanValidator(span: span))
+        XCTAssert(span.validate())
     }
     
     func testTraceSpan_invalidBySeconds() {
@@ -369,7 +369,7 @@ final class TraceModelTests: XCTestCase {
             attribute: attribute
         )
         
-        XCTAssertFalse(span.spanValidator(span: span))
+        XCTAssertFalse(span.validate())
     }
     
     func testTraceSpan_invalidByNanos() {
@@ -386,6 +386,6 @@ final class TraceModelTests: XCTestCase {
             attribute: attribute
         )
         
-        XCTAssertFalse(span.spanValidator(span: span))
+        XCTAssertFalse(span.validate())
     }
 }
