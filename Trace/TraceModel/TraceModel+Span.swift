@@ -320,7 +320,7 @@ extension TraceModel {
             if start.seconds > strongEnd.seconds {
                 valid = false
             } else if start.seconds == strongEnd.seconds {
-                if start.nanos > strongEnd.nanos || start.nanos == strongEnd.nanos {
+                if start.nanos >= strongEnd.nanos {
                     valid = false
                 }
             }
