@@ -337,4 +337,89 @@ final class TraceModelTests: XCTestCase {
         XCTAssertEqual(model.spans.count, 5002)
         XCTAssertTrue(model.isComplete)
     }
+    
+    func testTraceSpan_valid() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 100, nanos: 001),
+            end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
+            attribute: attribute
+        )
+        
+        XCTAssert(span.validate())
+    }
+    
+    func testTraceSpan_invalidBySeconds() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 300, nanos: 001),
+            end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
+    
+    func testTraceSpan_invalidByNanos() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            end: TraceModel.Span.Timestamp(seconds: 200, nanos: 000),
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
+    
+    func testTraceSpan_invalidBySameTime() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            end: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
+    
+    func testTraceSpan_invalidByNoEndTime() {
+        let attribute = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let traceId = "1234"
+        let span = TraceModel.Span(
+            traceId: traceId,
+            spanId: "1234",
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 200, nanos: 001),
+            end: nil,
+            attribute: attribute
+        )
+        
+        XCTAssertFalse(span.validate())
+    }
 }

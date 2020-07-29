@@ -63,10 +63,10 @@ extension TraceModel {
             
             private func setup() {
                 #if Debug
-                    // TODO: only for private beta testing. remove before GA
-                    if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                        Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
-                    }
+                // TODO: only for private beta testing. remove before GA
+                if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
+                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                }
                 #endif
             }
         }
@@ -258,7 +258,7 @@ extension TraceModel {
                     debugDescription: "")
                 )
             }
-        
+            
             spanId = span
             parentSpanId = try container.decode(String?.self, forKey: .parentSpanId)?.fromHex
             name = try container.decode(Name.self, forKey: .name)
@@ -282,6 +282,11 @@ extension TraceModel {
             try container.encode(start, forKey: .start)
             try container.encode(end, forKey: .end)
             try container.encode(attribute, forKey: .attributes)
+            
+            #if Debug
+            // TODO: only for private beta testing. remove before GA
+            validate()
+            #endif
         }
         
         // MARK: - Copy
@@ -300,6 +305,31 @@ extension TraceModel {
             )
             
             return copy
+        }
+        
+        // MARK: - Span validator
+        
+        /// :nodoc:
+        @discardableResult
+        internal func validate() -> Bool {
+            guard let strongEnd = end else {
+                return false
+            }
+            
+            var valid = true
+            if start.seconds > strongEnd.seconds {
+                valid = false
+            } else if start.seconds == strongEnd.seconds {
+                if start.nanos >= strongEnd.nanos {
+                    valid = false
+                }
+            }
+            
+            if !valid {
+                Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
+            }
+            
+            return valid
         }
     }
 }
