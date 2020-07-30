@@ -40,6 +40,21 @@ final class WebViewController: UIViewController {
         let bitrise = URL(string: "https://bitrise.io")!
         
         // pre load website
+        webView.navigationDelegate = self
         webView.load(URLRequest(url: bitrise))
+    }
+}
+
+extension WebViewController: WKNavigationDelegate {
+    
+    // MARK: - WKNavigationDelegate
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        print("Demo - \(navigationResponse)")
+        
+        _ = navigationResponse.canShowMIMEType
+        _ = navigationResponse.isForMainFrame
+        
+        decisionHandler(.allow)
     }
 }
