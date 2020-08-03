@@ -20,14 +20,9 @@ final class Tracer {
         label: Constants.SDK.name.rawValue + ".Tracer",
         qos: .background
     )
-
-    var traces: [TraceModel] = [] {
-        didSet {
-            if let last = traces.last {
-                Logger.print(.traceModel, last)
-            }
-        }
-    }
+    
+    /// Should be private but required for testing
+    var traces: [TraceModel] = []
     
     // MARK: - Init
     
@@ -42,6 +37,14 @@ final class Tracer {
     
     private func setup() {
         
+    }
+    
+    // MARK: - Trace
+    
+    func add(_ trace: TraceModel) {
+        traces.append(trace)
+        
+        Logger.print(.traceModel, trace)
     }
     
     // MARK: - Child
