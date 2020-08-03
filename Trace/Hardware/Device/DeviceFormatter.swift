@@ -117,7 +117,7 @@ internal struct DeviceFormatter: JSONEncodable {
         details[Keys.Disk.freeDiskSpace.rawValue] = fileManager.freeDiskSpace
         details[Keys.Disk.usedDiskSpace.rawValue] = fileManager.usedDiskSpace
         
-        #if !targetEnvironment(macCatalyst)
+        #if !targetEnvironment(macCatalyst) && !targetEnvironment(simulator)
         let networkInfo = CTTelephonyNetworkInfo()
         
         if #available(iOS 12.0, *) {
