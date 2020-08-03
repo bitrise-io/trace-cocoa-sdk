@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 /// Example of using a normal table view with a request and child view. somewhat of a complex setup!
 final class ViewController: UITableViewController {
@@ -58,6 +59,24 @@ final class ViewController: UITableViewController {
     
     private func setup() {
         view.addSubview(customView)
+    }
+    
+    // MARK: - Safari
+    
+    private func navigateToSafari() {
+        let url: URL! = URL(string: "https://github.com")
+        let viewController = SFSafariViewController(url: url)
+        
+        navigationController?.present(viewController, animated: true)
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 7: navigateToSafari()
+        default: break
+        }
     }
     
     // MARK: - Test

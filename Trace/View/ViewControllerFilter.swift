@@ -42,6 +42,12 @@ internal extension UIViewController {
         case FPUIActionExtensionViewController
         case ASCredentialProviderViewController
         case PKPaymentAuthorizationViewController
+        case SFBrowserRemoteViewController
+        case SFBrowserServiceViewController
+        case SFReaderAppearanceMainViewController
+        case SFReaderEnabledWebViewController
+        case SFReaderViewController
+        case SFWebViewController
         
         // Banned for MVP
         case UIPageController
