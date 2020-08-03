@@ -341,6 +341,9 @@ extension TraceModel.Span {
     
     /// :nodoc:
     public override var description: String {
-        return "\(type(of: self)) \(spanId) name: \(name.value), id: \(traceId ?? "nil"), is complete: \(end != nil)"
+        let date = Date.date(from: start)
+        let time = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        
+        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), isComplete: \(end != nil) startTime: \(time)"
     }
 }
