@@ -52,17 +52,19 @@ internal enum Time {
         return from(date)
     }
     
+    /// Absolute time
+    internal static var current: Double {
+        // Use CA library to maximise performance
+        return CACurrentMediaTime()
+    }
+    
+    // MARK: - Timestamp
+    
     internal static func from(_ date: Date) -> Timestamp {
         let time = date.timeIntervalSince1970
         let split = time.splitAtDecimal
         
         return Timestamp(seconds: split.integer, nanos: split.fractional, timeInterval: time)
-    }
-    
-    /// Absolute time
-    internal static var current: Double {
-        // Use CA library to maximise performance
-        return CACurrentMediaTime()
     }
     
     // MARK: - Timer

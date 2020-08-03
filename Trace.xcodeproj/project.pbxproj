@@ -121,6 +121,8 @@
 		1053AABD23FD72D000F90393 /* KSCrashMonitor_System.m in Sources */ = {isa = PBXBuildFile; fileRef = 10673C7123EC1E68002D7CD1 /* KSCrashMonitor_System.m */; platformFilter = ios; };
 		1053AABE23FD72D500F90393 /* KSCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10673C6623EC1E68002D7CD1 /* KSCString.m */; platformFilter = ios; };
 		1053AABF23FD72DD00F90393 /* KSCrashReportFilterAppleFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 10673C6223EC1E68002D7CD1 /* KSCrashReportFilterAppleFmt.m */; platformFilter = ios; };
+		10574D0824D85F2600391D6C /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10574D0724D85F2600391D6C /* Date+Helper.swift */; };
+		10574D0A24D8606700391D6C /* DateHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10574D0924D8606700391D6C /* DateHelperTests.swift */; };
 		1059295023096CE10004D340 /* Metric+Descriptor+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059294F23096CE10004D340 /* Metric+Descriptor+Keys.swift */; };
 		105929522309A2D50004D340 /* Metric+Collater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105929512309A2D50004D340 /* Metric+Collater.swift */; };
 		10592954230AF2590004D340 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10592953230AF2590004D340 /* Resource.swift */; };
@@ -592,6 +594,8 @@
 		1053AAAD23FC5ED600F90393 /* RandomSwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSwiftFile.swift; sourceTree = "<group>"; };
 		1053AAB323FCB8BC00F90393 /* processed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = processed.json; path = Mocks/processed.json; sourceTree = "<group>"; };
 		1053AAB423FCB8BC00F90393 /* raw.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = raw.json; path = Mocks/raw.json; sourceTree = "<group>"; };
+		10574D0724D85F2600391D6C /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
+		10574D0924D8606700391D6C /* DateHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateHelperTests.swift; path = Tests/DateHelperTests.swift; sourceTree = SOURCE_ROOT; };
 		1059294F23096CE10004D340 /* Metric+Descriptor+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metric+Descriptor+Keys.swift"; sourceTree = "<group>"; };
 		105929512309A2D50004D340 /* Metric+Collater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metric+Collater.swift"; sourceTree = "<group>"; };
 		10592953230AF2590004D340 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -2241,6 +2245,7 @@
 				10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */,
 				1036436F2357D2E200B084E2 /* StringTests.swift */,
 				10E49095235DAD6F0047691F /* OrderedDictionaryTests.swift */,
+				10574D0924D8606700391D6C /* DateHelperTests.swift */,
 				10F2874C23C378F200F9D03A /* JailbrokeTests.swift */,
 				10B8DF1C242A72EE0055D41E /* DoubleTests.swift */,
 				101055E2241BEE1D0088BD24 /* DataTests.swift */,
@@ -2287,6 +2292,7 @@
 				1006100C23576729004EFC2C /* String+Hex.swift */,
 				101055DA241BACAB0088BD24 /* Data+Helper.swift */,
 				10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */,
+				10574D0724D85F2600391D6C /* Date+Helper.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -3272,6 +3278,7 @@
 				8092D30024C9E82200A4240F /* DeviceModel.swift in Sources */,
 				10127B8722E75BED004B1F4C /* Persistent.swift in Sources */,
 				1091772523313545007CE2F0 /* TraceDAO.swift in Sources */,
+				10574D0824D85F2600391D6C /* Date+Helper.swift in Sources */,
 				10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */,
 				10673CFB23EC1E68002D7CD1 /* KSCrashMonitor.c in Sources */,
 				100575A5229D8994000343EE /* Network+Configuration.swift in Sources */,
@@ -3374,6 +3381,7 @@
 				108CDEC823FC0A5700153BEB /* ReportingSinkTests.swift in Sources */,
 				10866F372294686600D77D56 /* LoggerTests.swift in Sources */,
 				108EF3C3231EBFEB0029FD65 /* DataTaskFormatterTests.swift in Sources */,
+				10574D0A24D8606700391D6C /* DateHelperTests.swift in Sources */,
 				108CDECB23FC0E7300153BEB /* FilterPipelineTests.swift in Sources */,
 				10350D9924C203B70004F6D7 /* TimestampValidatorTests.swift in Sources */,
 				10EFEC11234799B60037CBBD /* SwiftOnlyLoadTests.swift in Sources */,
