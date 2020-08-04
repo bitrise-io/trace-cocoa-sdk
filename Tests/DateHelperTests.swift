@@ -41,13 +41,14 @@ final class DateTests: XCTestCase {
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.dateStyle = .short
         formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "en_GB")
+        formatter.timeZone = TimeZone(identifier: "GMT")
         
         let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
         
-        
-        XCTAssertEqual(stringDate, "7/2/20, 10:23 AM")
+        XCTAssertEqual(stringDate, "02/07/2020, 09:23")
     }
     
     func testTimestamp_date2() {
@@ -68,11 +69,12 @@ final class DateTests: XCTestCase {
         formatter.dateStyle = .none
         formatter.timeStyle = .full
         formatter.locale = Locale(identifier: "en_GB")
+        formatter.timeZone = TimeZone(identifier: "GMT")
         
         let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
         
-        XCTAssertEqual(stringDate, "14:29:57 British Summer Time")
+        XCTAssertEqual(stringDate, "13:29:57 Greenwich Mean Time")
     }
 }
