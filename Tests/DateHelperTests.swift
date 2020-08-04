@@ -45,7 +45,12 @@ final class DateTests: XCTestCase {
         let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
-        XCTAssertEqual(stringDate, "7/2/20, 10:23 AM")
+        
+        if TimeZone.current.isDaylightSavingTime(for: date) {
+            XCTAssertEqual(stringDate, "7/2/20, 10:23 AM")
+        } else {
+            XCTAssertEqual(stringDate, "7/2/20, 09:23 AM")
+        }
     }
     
     func testTimestamp_date2() {
@@ -61,15 +66,20 @@ final class DateTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertNotEqual(date, Date())
         
-        
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.dateStyle = .none
         formatter.timeStyle = .full
+        formatter.locale = Locale(identifier: "en_GB")
         
         let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
-        XCTAssertEqual(stringDate, "2:29:57 PM British Summer Time")
+        
+        if TimeZone.current.isDaylightSavingTime(for: date) {
+            XCTAssertEqual(stringDate, "14:29:57 British Summer Time")
+        } else {
+            XCTAssertEqual(stringDate, "13:29:57 British Summer Time")
+        }
     }
 }
