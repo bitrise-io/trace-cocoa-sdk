@@ -58,6 +58,11 @@ extension UIViewController {
         var viewRenderingLatency: Double {
             let start: Double = initTimeInterval
             let end = viewDidAppear?.timeInterval ?? 0.0
+            
+            if end == 0.0 {
+                Logger.print(.internalError, "Failed to find view controller end time")
+            }
+            
             let result = end - start
             
             return result
