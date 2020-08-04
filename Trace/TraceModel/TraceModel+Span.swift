@@ -317,6 +317,7 @@ extension TraceModel {
             }
             
             var valid = true
+            
             if start.seconds > strongEnd.seconds {
                 valid = false
             } else if start.seconds == strongEnd.seconds {

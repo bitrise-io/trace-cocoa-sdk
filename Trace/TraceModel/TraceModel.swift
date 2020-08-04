@@ -162,6 +162,6 @@ extension TraceModel {
     
     /// :nodoc:
     public override var description: String {
-        return "Spans: \(spans.count), root: \(String(describing: root.description))"
+        return "Spans: \(spans.count), root: \(root.description)"
     }
 }
