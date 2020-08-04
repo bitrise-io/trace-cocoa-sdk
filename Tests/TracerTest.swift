@@ -21,7 +21,8 @@ final class TracerTests: XCTestCase {
         let session = Session()
         let scheduler = Scheduler(with: network)
         let queue = Queue(with: scheduler, database, session)
-        let tracer = Tracer(with: queue, session)
+        let crash = CrashController(with: scheduler)
+        let tracer = Tracer(with: queue, session, crash)
         
         return tracer
     }()
@@ -211,6 +212,10 @@ final class TracerTests: XCTestCase {
         tracer.add(trace)
         
         XCTAssertEqual(tracer.traces.count, 1)
+        
+        tracer.finishAll()
+        
+        XCTAssertEqual(tracer.traces.count, 0)
     }
     
     func testTracer_add100Trace() {
@@ -223,5 +228,25 @@ final class TracerTests: XCTestCase {
         }
         
         XCTAssertEqual(tracer.traces.count, 101)
+        
+        tracer.finishAll()
+        
+        XCTAssertEqual(tracer.traces.count, 0)
+    }
+    
+    func testTracer_addDuplicateTrace() {
+        XCTAssertEqual(tracer.traces.count, 0)
+        
+        let trace = TraceModel.start(with: "addTrace")
+        
+        tracer.add(trace)
+        tracer.add(trace)
+        tracer.add(trace)
+        
+        XCTAssertEqual(tracer.traces.count, 1)
+        
+        tracer.finishAll()
+        
+        XCTAssertEqual(tracer.traces.count, 0)
     }
 }

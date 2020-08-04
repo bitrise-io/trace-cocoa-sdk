@@ -62,7 +62,6 @@ internal extension UIViewController {
                 let shared = Trace.shared
                 
                 shared.tracer.add(trace)
-                shared.crash.userInfo["Trace Id"] = trace.traceId
             }
         }
     }
