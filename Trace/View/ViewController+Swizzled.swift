@@ -204,7 +204,11 @@ internal extension UIViewController {
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil,
-            using: { [weak self] _ in self?.restart() }
+            using: { [weak self] _ in
+                Logger.print(.traceModel, "Generating new trace because app came back to foreground")
+                
+                self?.restart()
+            }
         )
     }
     
