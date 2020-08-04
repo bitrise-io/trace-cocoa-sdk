@@ -71,8 +71,8 @@ final public class Trace: NSObject {
         queue = Queue(with: scheduler, database, session) // make sure queue startup first
         
         lifecycle = Lifecycle()
-        tracer = Tracer(with: queue, session)
         crash = CrashController(with: scheduler)
+        tracer = Tracer(with: queue, session, crash)
         
         fps = FPS()
         

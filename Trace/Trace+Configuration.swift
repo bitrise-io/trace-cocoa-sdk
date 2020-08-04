@@ -20,7 +20,7 @@ public final class Configuration: NSObject {
     
     // MARK: - Property
     
-    /// debug logs
+    /// Debug logs
     public var logs: Bool = true
     
     // MARK: - Init

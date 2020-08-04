@@ -16,6 +16,7 @@ final class Tracer {
     
     private let queue: Queue
     private let session: Session
+    private let crash: CrashController
     private let dispatchQueue = DispatchQueue(
         label: Constants.SDK.name.rawValue + ".Tracer",
         qos: .background
@@ -26,9 +27,10 @@ final class Tracer {
     
     // MARK: - Init
     
-    init(with queue: Queue, _ session: Session) {
+    init(with queue: Queue, _ session: Session, _ crash: CrashController) {
         self.queue = queue
         self.session = session
+        self.crash = crash
         
         setup()
     }
@@ -43,6 +45,7 @@ final class Tracer {
     
     func add(_ trace: TraceModel) {
         traces.append(trace)
+        crash.userInfo["Trace Id"] = trace.traceId
         
         Logger.print(.traceModel, trace)
     }
