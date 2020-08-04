@@ -39,7 +39,7 @@ extension UIDevice {
     var isJailbroken: Bool {
         let result: Bool
         
-        #if targetEnvironment(simulator)
+        #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
             result = false
         #else
             let jailbroke = Jailbroke()

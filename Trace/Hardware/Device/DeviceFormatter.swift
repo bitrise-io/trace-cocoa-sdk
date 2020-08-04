@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-#if !targetEnvironment(macCatalyst)
+#if !targetEnvironment(macCatalyst) && !targetEnvironment(simulator)
 import CoreTelephony.CTTelephonyNetworkInfo
 #endif
 
