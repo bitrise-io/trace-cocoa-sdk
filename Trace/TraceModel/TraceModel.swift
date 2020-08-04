@@ -147,6 +147,17 @@ public final class TraceModel: NSObject, Codable {
 /// Exclude class
 extension TraceModel {
     
+    // MARK: - Equatable
+    
+    /// :nodoc:
+    public override func isEqual(_ object: Any?) -> Bool {
+        let lhs = self
+        
+        guard let rhs = object as? TraceModel else { return false }
+        
+        return lhs.traceId == rhs.traceId
+    }
+    
     // MARK: - Description
     
     /// :nodoc:

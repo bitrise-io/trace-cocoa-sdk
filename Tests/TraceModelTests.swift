@@ -425,4 +425,47 @@ final class TraceModelTests: XCTestCase {
         
         XCTAssertFalse(span.validate())
     }
+    
+    func testIsEqual_true() {
+        let model = TraceModel.start(with: "1")
+        let result = model == model
+        
+        XCTAssertEqual(model, model)
+        XCTAssertTrue(result)
+    }
+    
+    func testIsEqual_false() {
+        let model1 = TraceModel.start(with: "1")
+        let model2 = TraceModel.start(with: "2")
+        let result = model1 == model2
+        
+        XCTAssertNotEqual(model1, model2)
+        XCTAssertFalse(result)
+    }
+    
+    func testIsEqual_contains_true() {
+        let model = TraceModel.start(with: "1")
+        let models = [model]
+        
+        let result1 = models.contains(model)
+        let result2 = models.contains { $0 == model }
+        
+        XCTAssertTrue(result1)
+        XCTAssertTrue(result2)
+    }
+    
+    func testIsEqual_contains_false() {
+        let model1 = TraceModel.start(with: "1")
+        let model2 = TraceModel.start(with: "2")
+        let model3 = TraceModel.start(with: "3")
+        let models = [model1, model2, model3]
+        
+        let newModel = TraceModel.start(with: "4")
+        
+        let result1 = models.contains(newModel)
+        let result2 = models.contains { $0 == newModel }
+        
+        XCTAssertFalse(result1)
+        XCTAssertFalse(result2)
+    }
 }
