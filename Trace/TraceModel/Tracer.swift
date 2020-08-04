@@ -22,7 +22,7 @@ final class Tracer {
     )
     
     /// Should be private but required for testing
-    var traces: [TraceModel] = []
+    private(set) var traces: [TraceModel] = []
     
     // MARK: - Init
     

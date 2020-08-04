@@ -43,7 +43,7 @@ final class TracerTests: XCTestCase {
         
         let trace = TraceModel.start(with: "test")
         
-        tracer.traces.append(trace)
+        tracer.add(trace)
         
         XCTAssertEqual(tracer.traces.count, 1)
     }
@@ -52,7 +52,7 @@ final class TracerTests: XCTestCase {
         for i in 0...100 {
             let trace = TraceModel.start(with: "test \(i)")
             
-            tracer.traces.append(trace)
+            tracer.add(trace)
         }
         
         XCTAssertEqual(tracer.traces.count, 101)
@@ -62,7 +62,7 @@ final class TracerTests: XCTestCase {
         for i in 0...1000 {
             let trace = TraceModel.start(with: "test \(i)")
             
-            tracer.traces.append(trace)
+            tracer.add(trace)
         }
         
         XCTAssertEqual(tracer.traces.count, 1001)
@@ -77,14 +77,14 @@ final class TracerTests: XCTestCase {
             end: TraceModel.Span.Timestamp(seconds: 1, nanos: 1)
         )
         
-        tracer.traces.append(.start(with: "test0"))
+        tracer.add(.start(with: "test0"))
         tracer.addChild([span])
         
         XCTAssertNil(tracer.traces.filter { $0.spans.isEmpty }.first)
     }
     
     func testTracer_addChildSpan_100() {
-        tracer.traces.append(.start(with: "test 100"))
+        tracer.add(.start(with: "test 100"))
         
         for i in 0...100 {
             let span = TraceModel.Span(
@@ -101,7 +101,7 @@ final class TracerTests: XCTestCase {
     }
     
     func testTracer_addChildSpan_1000() {
-        tracer.traces.append(.start(with: "test 1000"))
+        tracer.add(.start(with: "test 1000"))
         
         for i in 0...1000 {
             let span = TraceModel.Span(
@@ -118,7 +118,7 @@ final class TracerTests: XCTestCase {
     }
     
     func testTracer_addChildSpan_1500() {
-        tracer.traces.append(.start(with: "test 10000"))
+        tracer.add(.start(with: "test 10000"))
         
         for i in 0...1500 {
             let span = TraceModel.Span(
@@ -141,7 +141,7 @@ final class TracerTests: XCTestCase {
         
         XCTAssertFalse(trace.isComplete)
         
-        tracer.traces.append(trace)
+        tracer.add(trace)
         tracer.finish(trace)
         
         XCTAssertTrue(trace.isComplete)
@@ -156,8 +156,8 @@ final class TracerTests: XCTestCase {
         XCTAssertFalse(trace1.isComplete)
         XCTAssertFalse(trace2.isComplete)
         
-        tracer.traces.append(trace1)
-        tracer.traces.append(trace2)
+        tracer.add(trace1)
+        tracer.add(trace2)
         tracer.finish(trace1)
         
         XCTAssertTrue(trace1.isComplete)
@@ -173,7 +173,7 @@ final class TracerTests: XCTestCase {
         
         XCTAssertFalse(trace.isComplete)
         
-        tracer.traces.append(trace)
+        tracer.add(trace)
         tracer.finishAll()
         
         XCTAssertTrue(trace.isComplete)
@@ -188,7 +188,7 @@ final class TracerTests: XCTestCase {
         
         XCTAssertFalse(trace.isComplete)
         
-        tracer.traces.append(trace)
+        tracer.add(trace)
         tracer.finishAll()
         tracer.finishAll()
         tracer.finishAll()
@@ -199,5 +199,29 @@ final class TracerTests: XCTestCase {
         XCTAssertTrue(trace.isComplete)
         
         XCTAssertNil(tracer.traces.filter { !$0.isComplete }.first)
+    }
+    
+    func testTracer_addTrace() {
+        XCTAssertEqual(tracer.traces.count, 0)
+        
+        let trace = TraceModel.start(with: "addTrace")
+        
+        XCTAssertFalse(trace.isComplete)
+        
+        tracer.add(trace)
+        
+        XCTAssertEqual(tracer.traces.count, 1)
+    }
+    
+    func testTracer_add100Trace() {
+        XCTAssertEqual(tracer.traces.count, 0)
+        
+        for i in 0...100 {
+            let trace = TraceModel.start(with: "addTrace \(i)")
+            
+            tracer.add(trace)
+        }
+        
+        XCTAssertEqual(tracer.traces.count, 101)
     }
 }
