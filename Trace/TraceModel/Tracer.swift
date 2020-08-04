@@ -43,11 +43,20 @@ final class Tracer {
     
     // MARK: - Trace
     
-    func add(_ trace: TraceModel) {
+    @discardableResult
+    func add(_ trace: TraceModel) -> Bool {
+        guard !traces.contains(trace) else {
+            Logger.print(.internalError, "Trying to add duplicate trace with traceId: \(trace.traceId)")
+            
+            return false
+        }
+        
         traces.append(trace)
         crash.userInfo["Trace Id"] = trace.traceId
         
         Logger.print(.traceModel, trace)
+        
+        return true
     }
     
     // MARK: - Child

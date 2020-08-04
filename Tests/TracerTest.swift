@@ -240,6 +240,9 @@ final class TracerTests: XCTestCase {
         let trace = TraceModel.start(with: "addTrace")
         
         tracer.add(trace)
+        
+        XCTAssertEqual(tracer.traces.count, 1)
+        
         tracer.add(trace)
         tracer.add(trace)
         
