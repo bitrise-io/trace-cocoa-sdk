@@ -66,7 +66,7 @@ extension UIViewController {
         // MARK: - Description
         
         var description: String {
-            return "\(type(of: self)) - name: \(String(describing: name)) init: \(String(describing: `init`)), initWithCoder: \(String(describing: initWithCoder)), initWithNib: \(String(describing: initWithNib)), awakeFromNib: \(String(describing: awakeFromNib)), loadView: \(String(describing: loadView)), viewDidLoad: \(String(describing: viewDidLoad)), viewWillAppear: \(String(describing: viewWillAppear)), viewDidAppear: \(String(describing: viewDidAppear)), viewWillLayoutSubviews: \(String(describing: viewWillLayoutSubviews)), viewDidLayoutSubviews: \(String(describing: viewDidLayoutSubviews)), viewWillDisappear: \(String(describing: viewWillDisappear)), viewDidDisappear: \(String(describing: viewDidDisappear)), didReceiveMemoryWarning: \(String(describing: didReceiveMemoryWarning))"
+            return "\(type(of: self)) - name: \(name) init: \(String(describing: `init`)), initWithCoder: \(String(describing: initWithCoder)), initWithNib: \(String(describing: initWithNib)), awakeFromNib: \(String(describing: awakeFromNib)), loadView: \(String(describing: loadView)), viewDidLoad: \(String(describing: viewDidLoad)), viewWillAppear: \(String(describing: viewWillAppear)), viewDidAppear: \(String(describing: viewDidAppear)), viewWillLayoutSubviews: \(String(describing: viewWillLayoutSubviews)), viewDidLayoutSubviews: \(String(describing: viewDidLayoutSubviews)), viewWillDisappear: \(String(describing: viewWillDisappear)), viewDidDisappear: \(String(describing: viewDidDisappear)), didReceiveMemoryWarning: \(String(describing: didReceiveMemoryWarning))"
         }
     }
 }

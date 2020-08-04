@@ -74,7 +74,7 @@ internal extension UIView {
         // MARK: - Description
         
         var description: String {
-            return "\(type(of: self)) - name: \(String(describing: name)), initWithCoder: \(String(describing: initWithCoder)), initWithFrame: \(String(describing: initWithFrame)), layoutSubviews: \(String(describing: layoutSubviews)), draw: \(String(describing: draw)), didMoveToSuperview: \(String(describing: didMoveToSuperview)), didMoveToWindow: \(String(describing: didMoveToWindow)), removeFromSuperview: \(String(describing: removeFromSuperview))"
+            return "\(type(of: self)) - name: \(name), initWithCoder: \(String(describing: initWithCoder)), initWithFrame: \(String(describing: initWithFrame)), layoutSubviews: \(String(describing: layoutSubviews)), draw: \(String(describing: draw)), didMoveToSuperview: \(String(describing: didMoveToSuperview)), didMoveToWindow: \(String(describing: didMoveToWindow)), removeFromSuperview: \(String(describing: removeFromSuperview))"
         }
     }
     
