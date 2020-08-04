@@ -61,7 +61,7 @@ internal extension UIViewController {
             if !isInternalClass && !isBannedClass {
                 let shared = Trace.shared
                 
-                shared.tracer.traces.append(trace)
+                shared.tracer.add(trace)
                 shared.crash.userInfo["Trace Id"] = trace.traceId
             }
         }
@@ -205,17 +205,7 @@ internal extension UIViewController {
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil,
-            using: { [weak self] _ in
-                if let newTrace = self?.generateTrace {
-                    let shared = Trace.shared
-                    
-                    if let currentTrace = self?.trace {
-                        shared.tracer.finish(currentTrace)
-                    }
-                    
-                    self?.trace = newTrace
-                }
-            }
+            using: { [weak self] _ in self?.restart() }
         )
     }
     
@@ -225,5 +215,16 @@ internal extension UIViewController {
             
             willEnterForegroundNotification = nil
         }
+    }
+    
+    // MARK: - Restart
+    
+    func restart() {
+        let newTrace = generateTrace
+        
+        let shared = Trace.shared
+        shared.tracer.finish(trace)
+            
+        trace = newTrace
     }
 }

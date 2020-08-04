@@ -353,6 +353,9 @@ final class TraceModelTests: XCTestCase {
         )
         
         XCTAssert(span.validate())
+        XCTAssertNotNil(span.description)
+        XCTAssertNotNil(span.debugDescription)
+        XCTAssertNotNil(span.snapshotDescription)
     }
     
     func testTraceSpan_invalidBySeconds() {
