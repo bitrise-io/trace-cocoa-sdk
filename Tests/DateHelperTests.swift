@@ -37,7 +37,12 @@ final class DateTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertNotEqual(date, Date())
         
-        let stringDate = DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        
+        let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
         XCTAssertEqual(stringDate, "7/2/20, 10:23 AM")
@@ -56,7 +61,13 @@ final class DateTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertNotEqual(date, Date())
         
-        let stringDate = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .full)
+        
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.dateStyle = .none
+        formatter.timeStyle = .full
+        
+        let stringDate = formatter.string(from: date)
         
         XCTAssertNotNil(stringDate)
         XCTAssertEqual(stringDate, "2:29:57 PM British Summer Time")
