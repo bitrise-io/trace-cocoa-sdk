@@ -47,8 +47,8 @@
 #pragma mark - Constants -
 // ============================================================================
 
-#define kThreadPrimary "KSCrash Exception Handler (Primary)"
-#define kThreadSecondary "KSCrash Exception Handler (Secondary)"
+#define kThreadPrimary "Bitrise Trace Exception Handler (Primary)"
+#define kThreadSecondary "Bitrise Trace Exception Handler (Secondary)"
 
 
 // ============================================================================
