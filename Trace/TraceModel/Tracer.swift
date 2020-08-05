@@ -105,7 +105,7 @@ final class Tracer {
     // MARK: - Finish
     
     func finish(_ trace: TraceModel) {
-        Logger.print(.traceModel, "Tracing finished for \(trace.traceId)")
+        Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(trace.root.name.value)")
 
         dispatchQueue.sync {
             trace.finish()
