@@ -104,7 +104,14 @@ final class Tracer {
     
     // MARK: - Finish
     
-    func finish(_ trace: TraceModel) {
+    @discardableResult
+    func finish(_ trace: TraceModel) -> Bool {
+        guard traces.contains(trace) else {
+            Logger.print(.internalError, "Inactive trace tried to finish while it's not the active")
+            
+            return false
+        }
+        
         Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(trace.root.name.value)")
 
         dispatchQueue.sync {
@@ -112,6 +119,8 @@ final class Tracer {
 
             save()
         }
+        
+        return true
     }
     
     func finishAll() {
