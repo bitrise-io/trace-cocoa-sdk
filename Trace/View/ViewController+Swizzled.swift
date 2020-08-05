@@ -223,6 +223,9 @@ internal extension UIViewController {
     // MARK: - Restart
     
     func restart() {
+        guard !isInternalClass else { return }
+        guard !isBannedClass else { return }
+        
         let newTrace = generateTrace
         
         let shared = Trace.shared
