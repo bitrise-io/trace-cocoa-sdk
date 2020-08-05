@@ -143,9 +143,11 @@ final class TracerTests: XCTestCase {
         XCTAssertFalse(trace.isComplete)
         
         tracer.add(trace)
-        tracer.finish(trace)
+        
+        let result = tracer.finish(trace)
         
         XCTAssertTrue(trace.isComplete)
+        XCTAssertTrue(result)
     }
     
     func testTracer_finishOne() {
@@ -159,10 +161,12 @@ final class TracerTests: XCTestCase {
         
         tracer.add(trace1)
         tracer.add(trace2)
-        tracer.finish(trace1)
+        
+        let result = tracer.finish(trace1)
         
         XCTAssertTrue(trace1.isComplete)
         XCTAssertFalse(trace2.isComplete)
+        XCTAssertTrue(result)
         
         XCTAssertNotNil(tracer.traces.filter { !$0.isComplete }.first)
     }
@@ -200,6 +204,20 @@ final class TracerTests: XCTestCase {
         XCTAssertTrue(trace.isComplete)
         
         XCTAssertNil(tracer.traces.filter { !$0.isComplete }.first)
+    }
+    
+    func testTracer_finish_fails() {
+        XCTAssertEqual(tracer.traces.count, 0)
+        
+        let trace = TraceModel.start(with: "test1")
+        
+        XCTAssertFalse(trace.isComplete)
+        
+        // not a trace trace
+        let result = tracer.finish(trace)
+        
+        XCTAssertFalse(trace.isComplete)
+        XCTAssertFalse(result)
     }
     
     func testTracer_addTrace() {
