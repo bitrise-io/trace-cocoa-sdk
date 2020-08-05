@@ -205,7 +205,7 @@ internal extension UIViewController {
             object: nil,
             queue: nil,
             using: { [weak self] _ in
-                Logger.print(.traceModel, "Generating new trace because app came back to foreground")
+                Logger.print(.traceModel, "Generating new trace because the app has come back to foreground")
                 
                 self?.restart()
             }
