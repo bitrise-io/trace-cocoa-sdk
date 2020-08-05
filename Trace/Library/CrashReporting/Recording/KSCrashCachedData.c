@@ -177,7 +177,7 @@ void ksccd_init(int pollingIntervalInSeconds)
     int error = pthread_create(&g_cacheThread,
                            &attr,
                            &monitorCachedData,
-                           "KSCrash Cached Data Monitor");
+                           "Bitrise Trace Cached Data Monitor");
     if(error != 0)
     {
         KSLOG_ERROR("pthread_create_suspended_np: %s", strerror(error));

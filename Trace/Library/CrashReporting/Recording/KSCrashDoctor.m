@@ -553,9 +553,9 @@ typedef enum
         NSArray* symbols = [e callStackSymbols];
         if(symbols)
         {
-            return [NSString stringWithFormat:@"No diagnosis due to exception %@:\n%@\nPlease file a bug report to the KSCrash project.", e, symbols];
+            return [NSString stringWithFormat:@"No diagnosis due to exception %@:\n%@\nPlease file a issue on https://github.com/bitrise-io/trace-cocoa-sdk/issues", e, symbols];
         }
-        return [NSString stringWithFormat:@"No diagnosis due to exception %@\nPlease file a bug report to the KSCrash project.", e];
+        return [NSString stringWithFormat:@"No diagnosis due to exception %@\nPlease file a issue on https://github.com/bitrise-io/trace-cocoa-sdk/issues", e];
     }
 }
 
