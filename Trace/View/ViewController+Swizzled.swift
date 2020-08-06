@@ -43,22 +43,15 @@ internal extension UIViewController {
     
     // MARK: - Property
     
-    var trace: TraceModel {
+    var trace: TraceModel? {
         get {
-            if let trace = objc_getAssociatedObject(self, &AssociatedKey.trace) as? TraceModel {
-                return trace
-            } else {
-                let trace = generateTrace
-                
-                self.trace = trace
-                
-                return trace
-            }
+            return objc_getAssociatedObject(self, &AssociatedKey.trace) as? TraceModel
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKey.trace, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
-            if !isInternalClass && !isBannedClass {
+            // set it as the active trace in tracer
+            if let trace = newValue {
                 let shared = Trace.shared
                 
                 shared.tracer.add(trace)
@@ -68,9 +61,7 @@ internal extension UIViewController {
     
     var willEnterForegroundNotification: NSObjectProtocol? {
         get {
-            let notification = objc_getAssociatedObject(self, &AssociatedKey.foreground) as? NSObjectProtocol
-            
-            return notification
+            return objc_getAssociatedObject(self, &AssociatedKey.foreground) as? NSObjectProtocol
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKey.foreground, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -81,21 +72,13 @@ internal extension UIViewController {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
-        let coder = Selectors(
-            original: #selector(UIViewController.init(coder:)),
-            alternative: #selector(UIViewController.init(bitrise_coder:))
-        )
-        let nibName = Selectors(
-            original: #selector(UIViewController.init(nibName:bundle:)),
-            alternative: #selector(UIViewController.init(bitrise_nibName:bundle:))
-        )
-        let awakeFromNib = Selectors(
-            original: #selector(UIViewController.awakeFromNib),
-            alternative: #selector(UIViewController.bitrise_awakeFromNib)
-        )
         let viewDidLoad = Selectors(
             original: #selector(UIViewController.viewDidLoad),
             alternative: #selector(UIViewController.bitrise_viewDidLoad)
+        )
+        let viewWillAppear = Selectors(
+            original: #selector(UIViewController.viewWillAppear(_:)),
+            alternative: #selector(UIViewController.bitrise_viewWillAppear(_:))
         )
         let viewDidAppear = Selectors(
             original: #selector(UIViewController.viewDidAppear(_:)),
@@ -110,10 +93,8 @@ internal extension UIViewController {
             alternative: #selector(UIViewController.bitrise_title)
         )
         
-        _ = self.swizzleInstanceMethod(coder)
-        _ = self.swizzleInstanceMethod(nibName)
-        _ = self.swizzleInstanceMethod(awakeFromNib)
         _ = self.swizzleInstanceMethod(viewDidLoad)
+        _ = self.swizzleInstanceMethod(viewWillAppear)
         _ = self.swizzleInstanceMethod(viewDidAppear)
         _ = self.swizzleInstanceMethod(viewDidDisappear)
         _ = self.swizzleInstanceMethod(title)
@@ -131,46 +112,32 @@ internal extension UIViewController {
         if let title = title, !title.isEmpty, title != " " {
             let name = "\(title) (\(type(of: self)))"
             
-            trace.root.name.value = name
+            trace?.root.name.value = name
         }
-    }
-
-    // MARK: - Init
-    
-    @objc
-    convenience init?(bitrise_coder aDecoder: NSCoder) {
-        self.init(bitrise_coder: aDecoder)
-        
-        // Should i still create Trace object? would it be better to have a condition
-        _ = trace
-    }
-
-    @objc
-    convenience init(bitrise_nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.init(bitrise_nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        // Should i still create Trace object? would it be better to have a condition
-        _ = trace
-    }
-    
-    @objc
-    func bitrise_awakeFromNib() {
-        self.bitrise_awakeFromNib()
-        
-        // Should i still create Trace object? would it be better to have a condition
-        _ = trace
     }
 
     // MARK: - Load
 
     @objc
     func bitrise_viewDidLoad() {
+        start()
+        
         self.bitrise_viewDidLoad()
-                
+        
         observePresentation()
     }
     
     // MARK: - Appear
+    
+    @objc
+    func bitrise_viewWillAppear(_ animated: Bool) {
+        // Coming back from navigation stack
+        if trace == nil || trace?.isComplete == true {
+            start()
+        }
+        
+        self.bitrise_viewWillAppear(animated)
+    }
 
     @objc
     func bitrise_viewDidAppear(_ animated: Bool) {
@@ -183,9 +150,7 @@ internal extension UIViewController {
 
     @objc
     func bitrise_viewDidDisappear(_ animated: Bool) {
-        if !isInternalClass && !isBannedClass {
-            Trace.shared.tracer.finish(trace)
-        }
+        stop()
         
         removeObservingPresentation()
         
@@ -220,17 +185,49 @@ internal extension UIViewController {
         }
     }
     
-    // MARK: - Restart
+    // MARK: - Start/Stop/Restart
     
-    func restart() {
-        guard !isInternalClass else { return }
-        guard !isBannedClass else { return }
+    @discardableResult
+    func start() -> Bool {
+        guard !isInternalClass else { return false }
+        guard !isBannedClass else { return false }
+        
+        trace = generateTrace
+        
+        return true
+    }
+    
+    @discardableResult
+    func stop() -> Bool {
+        guard !isInternalClass else { return false }
+        guard !isBannedClass else { return false }
+        
+        var result = false
+        
+        if let currentTrace = trace {
+            let shared = Trace.shared
+            
+            result = shared.tracer.finish(currentTrace)
+            trace = nil
+        }
+        
+        return result
+    }
+    
+    @discardableResult
+    func restart() -> Bool {
+        guard !isInternalClass else { return false }
+        guard !isBannedClass else { return false }
         
         let newTrace = generateTrace
         
-        let shared = Trace.shared
-        shared.tracer.finish(trace)
+        if let trace = trace {
+            let shared = Trace.shared
+            shared.tracer.finish(trace)
+        }
             
         trace = newTrace
+        
+        return true
     }
 }
