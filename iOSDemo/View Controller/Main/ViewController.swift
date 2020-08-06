@@ -73,7 +73,7 @@ final class ViewController: UITableViewController {
         view.addSubview(customView)
     }
     
-    // MARK: - Safari
+    // MARK: - Navigation
     
     private func navigateToSafari() {
         let url: URL! = URL(string: "https://github.com")
@@ -82,11 +82,44 @@ final class ViewController: UITableViewController {
         navigationController?.present(viewController, animated: true)
     }
     
+    private func navigateUsingShow() {
+        let viewController = UIViewController()
+        viewController.title = "Navigate using Show"
+        viewController.view.backgroundColor = .systemYellow
+        
+        show(viewController, sender: nil)
+    }
+    
+    private func navigateUsingShowDetail() {
+        let viewController = UIViewController()
+        viewController.title = "Navigate using Show Detail"
+        viewController.view.backgroundColor = .systemTeal
+        
+        showDetailViewController(viewController, sender: nil)
+    }
+    
+    private func navigateUsingPresent() {
+        fatalError("Unimplemented")
+    }
+    
+    private func navigateUsingPopover() {
+        fatalError("Unimplemented")
+    }
+    
+    private func navigateUsingCustom() {
+        fatalError("Unimplemented")
+    }
+    
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 7: navigateToSafari()
+        case 8: navigateUsingShow()
+        case 9: navigateUsingShowDetail()
+        case 10: navigateUsingPresent()
+        case 11: navigateUsingPopover()
+        case 12: navigateUsingCustom()
         default: break
         }
     }
