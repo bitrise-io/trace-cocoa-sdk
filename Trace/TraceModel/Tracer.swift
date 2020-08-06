@@ -106,11 +106,7 @@ final class Tracer {
     
     @discardableResult
     func finish(_ trace: TraceModel) -> Bool {
-        guard traces.contains(trace) else {
-            Logger.print(.internalError, "Inactive trace tried to finish while it's not the active")
-            
-            return false
-        }
+        guard traces.contains(trace) else { return false }
         
         Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(trace.root.name.value)")
 

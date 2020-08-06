@@ -57,37 +57,52 @@ final class TraceTests: XCTestCase {
         XCTAssertNotEqual(Trace.currentSession, 0.0)
     }
     
-    func testUIViewController_customName() {
+    func testUIViewController_customName_before() {
         let viewController = UIViewController()
+        viewController.title = "Test"
+        _ = viewController.view
+
+        XCTAssertNotNil(viewController.trace)
+        XCTAssertFalse(viewController.trace!.isComplete)
+        XCTAssertNotNil(viewController.trace?.root)
+        XCTAssertEqual(viewController.trace?.root.name.value as! String, "Test (UIViewController)")
+        XCTAssertEqual(viewController.trace?.spans.count, 1)
+    }
+    
+    func testUIViewController_customName_after() {
+        let viewController = UIViewController()
+        _ = viewController.view
         viewController.title = "Test"
 
         XCTAssertNotNil(viewController.trace)
-        XCTAssertFalse(viewController.trace.isComplete)
-        XCTAssertNotNil(viewController.trace.root)
-        XCTAssertEqual(viewController.trace.root.name.value as! String, "Test (UIViewController)")
-        XCTAssertEqual(viewController.trace.spans.count, 1)
+        XCTAssertFalse(viewController.trace!.isComplete)
+        XCTAssertNotNil(viewController.trace?.root)
+        XCTAssertEqual(viewController.trace?.root.name.value as! String, "Test (UIViewController)")
+        XCTAssertEqual(viewController.trace?.spans.count, 1)
     }
     
     func testUIViewController_noCustomName() {
         let viewController = UIViewController()
-
+        _ = viewController.view
+        
         XCTAssertNotNil(viewController.trace)
-        XCTAssertFalse(viewController.trace.isComplete)
-        XCTAssertNotNil(viewController.trace.root)
-        XCTAssertEqual(viewController.trace.root.name.value as! String, "UIViewController")
-        XCTAssertEqual(viewController.trace.spans.count, 1)
+        XCTAssertFalse(viewController.trace!.isComplete)
+        XCTAssertNotNil(viewController.trace?.root)
+        XCTAssertEqual(viewController.trace?.root.name.value as! String, "UIViewController")
+        XCTAssertEqual(viewController.trace?.spans.count, 1)
     }
     
     func testUIViewController_customClass() {
         class CustomViewController: UIViewController { }
         
         let viewController = CustomViewController()
+        _ = viewController.view
         
         XCTAssertNotNil(viewController.trace)
-        XCTAssertFalse(viewController.trace.isComplete)
-        XCTAssertNotNil(viewController.trace.root)
-        XCTAssertEqual(viewController.trace.root.name.value as! String, "CustomViewController")
-        XCTAssertEqual(viewController.trace.spans.count, 1)
+        XCTAssertFalse(viewController.trace!.isComplete)
+        XCTAssertNotNil(viewController.trace?.root)
+        XCTAssertEqual(viewController.trace?.root.name.value as! String, "CustomViewController")
+        XCTAssertEqual(viewController.trace?.spans.count, 1)
     }
     
     func testUIViewController_customClassAndName() {
@@ -95,11 +110,12 @@ final class TraceTests: XCTestCase {
         
         let viewController = CustomViewController()
         viewController.title = "Custom"
+        _ = viewController.view
         
         XCTAssertNotNil(viewController.trace)
-        XCTAssertFalse(viewController.trace.isComplete)
-        XCTAssertNotNil(viewController.trace.root)
-        XCTAssertEqual(viewController.trace.root.name.value as! String, "Custom (CustomViewController)")
-        XCTAssertEqual(viewController.trace.spans.count, 1)
+        XCTAssertFalse(viewController.trace!.isComplete)
+        XCTAssertNotNil(viewController.trace?.root)
+        XCTAssertEqual(viewController.trace?.root.name.value as! String, "Custom (CustomViewController)")
+        XCTAssertEqual(viewController.trace?.spans.count, 1)
     }
 }
