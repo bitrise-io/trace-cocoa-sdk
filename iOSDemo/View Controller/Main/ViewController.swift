@@ -29,6 +29,10 @@ final class ViewController: UITableViewController {
     
     // MARK: - Lifecycle
     
+    override func loadView() {
+        super.loadView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,14 @@ final class ViewController: UITableViewController {
         print("DEMO - viewWillAppear")
         
         makeNetworkRequest()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
