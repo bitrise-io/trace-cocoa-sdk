@@ -13,6 +13,10 @@ final class GestureViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func loadView() {
+        super.loadView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +25,14 @@ final class GestureViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
