@@ -99,7 +99,10 @@ final class ViewController: UITableViewController {
     }
     
     private func navigateUsingPresent() {
-        fatalError("Unimplemented")
+        let url: URL! = URL(string: "https://github.com")
+        let viewController = SFSafariViewController(url: url)
+        
+        present(viewController, animated: true)
     }
     
     private func navigateUsingPopover() {
@@ -108,6 +111,10 @@ final class ViewController: UITableViewController {
     
     private func navigateUsingCustom() {
         fatalError("Unimplemented")
+    }
+    
+    private func navigateUsingSegue() {
+        performSegue(withIdentifier: String(describing: SegueViewController.self), sender: nil)
     }
     
     // MARK: - UITableViewDelegate
@@ -120,6 +127,7 @@ final class ViewController: UITableViewController {
         case 10: navigateUsingPresent()
         case 11: navigateUsingPopover()
         case 12: navigateUsingCustom()
+        case 13: navigateUsingSegue()
         default: break
         }
     }
