@@ -361,6 +361,7 @@
 		10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA877A22A453FF003702B1 /* DeviceFormatter.swift */; };
 		10CA877E22A4574A003702B1 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA877D22A4574A003702B1 /* DeviceTests.swift */; platformFilter = ios; };
 		10CA878222A493B4003702B1 /* FileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA878022A49364003702B1 /* FileManagerTests.swift */; platformFilter = ios; };
+		10CA938824DD5C2E00F6A95E /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938724DD5C2E00F6A95E /* SegueViewController.swift */; };
 		10D1E47922E8A96F007BD5E1 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47822E8A96F007BD5E1 /* Entities.swift */; };
 		10D1E47C22E9AA83007BD5E1 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */; };
 		10D1E48022EB0088007BD5E1 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47F22EB0088007BD5E1 /* Repeater.swift */; };
@@ -907,6 +908,7 @@
 		10CA877A22A453FF003702B1 /* DeviceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFormatter.swift; sourceTree = "<group>"; };
 		10CA877D22A4574A003702B1 /* DeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceTests.swift; path = Tests/Device/DeviceTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA878022A49364003702B1 /* FileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerTests.swift; path = Tests/Helper/FileManagerTests.swift; sourceTree = SOURCE_ROOT; };
+		10CA938724DD5C2E00F6A95E /* SegueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
 		10D056FD236C407C00443D4D /* iOSDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		10D1E47822E8A96F007BD5E1 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
@@ -1509,6 +1511,7 @@
 				10FC45D1230EE65D0077BF2C /* Network */,
 				1087A00122DE06AF005F8F83 /* WebView */,
 				1053593324C989800007F2E0 /* Collection */,
+				10CA938624DD5BF800F6A95E /* Segue */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -2253,6 +2256,14 @@
 				1091373624AF8E7700476EF6 /* URLStructureTests.swift */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		10CA938624DD5BF800F6A95E /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				10CA938724DD5C2E00F6A95E /* SegueViewController.swift */,
+			);
+			path = Segue;
 			sourceTree = "<group>";
 		};
 		10D1E47A22E9AA79007BD5E1 /* Scheduler */ = {
@@ -3419,6 +3430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA938824DD5C2E00F6A95E /* SegueViewController.swift in Sources */,
 				1053593524C9899F0007F2E0 /* CollectionViewController.swift in Sources */,
 				10FC45D7230F3C9D0077BF2C /* CrashViewController.swift in Sources */,
 				104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */,
