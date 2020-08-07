@@ -2759,7 +2759,6 @@
 					};
 					80AD1A3B2473E806001DA4E2 = {
 						CreatedOnToolsVersion = 11.4.1;
-						TestTargetID = 104A6972229401260065F218;
 					};
 				};
 			};
@@ -4296,7 +4295,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSDemo.app/iOSDemo";
 			};
 			name = Debug;
 		};
@@ -4316,7 +4314,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSDemo.app/iOSDemo";
 			};
 			name = Release;
 		};
