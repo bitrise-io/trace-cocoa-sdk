@@ -9,12 +9,17 @@
 import Foundation
 import QuartzCore.CABase
 
+protocol Timestampable {
+    var seconds: Int { get }
+    var nanos: Int { get }
+}
+
 /// Time helper
 internal enum Time {
     
     // MARK: - Timestamp
     
-    struct Timestamp: Encodable {
+    struct Timestamp: Timestampable, Encodable {
         
         // MARK: - Property
         
