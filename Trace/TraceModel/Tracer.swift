@@ -150,7 +150,7 @@ final class Tracer {
 
                     toBeSavedTraces.append(trace)
                 } else {
-                    Logger.print(.internalError, "Disregarding trace as it's less than 5000 nanosecond \(trace)")
+                    Logger.print(.internalError, "Disregarding trace as it's less than 0.125 Millisecond \(trace)")
                     // also removes from trace list since it's does pass validation
                 }
             } else {
