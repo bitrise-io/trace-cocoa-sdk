@@ -61,7 +61,7 @@ internal struct NanosecondValidator {
         if start.seconds < end.seconds {
             result = true
         } else if start.seconds == end.seconds {
-            let diff = start.nanos - end.nanos
+            let diff = end.nanos - start.nanos
             
             if diff >= nanos {
                 result = true
