@@ -137,15 +137,17 @@ final class Tracer {
         traces.removeAll { trace in
             // don't remove active traces
             guard trace.isComplete else { return false }
-
+            
             let root: TraceModel.Span = trace.root
-            let start = root.start
-            let end = root.end
-            let validator = NanosecondValidator(start: start, end: end)
             
             // avoid apending invalid traces i.e negative timestamp
-            if trace.root.validate() {
-                if validator.isGreaterThanOrEqual(5000) {
+            if root.validate() {
+                let start = root.start
+                let end = root.end
+                let validator = NanosecondValidator(start: start, end: end)
+                
+                if validator.isGreaterThanOrEqual(125000) { // 0.125 Millisecond
+
                     toBeSavedTraces.append(trace)
                 } else {
                     Logger.print(.internalError, "Disregarding trace as it's less than 5000 nanosecond \(trace)")
