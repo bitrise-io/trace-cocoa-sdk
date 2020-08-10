@@ -97,15 +97,21 @@ internal struct Metric: Codable {
     
     // MARK: - Validate
     
-    private func validate() {
+    @discardableResult
+    private func validate() -> Bool {
         let count = descriptor.keys.count
+        var result = true
         
         // validate
         for series in timeseries where series.values.count != count {
             let message = "Metric keys:\(count), values:\(series.values.count) mismatch for \(descriptor.name)"
             
             Logger.print(.internalError, message)
+            
+            result = false
         }
+        
+        return result
     }
     
     // MARK: - Encode
