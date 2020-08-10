@@ -307,14 +307,12 @@ extension TraceModel {
             return copy
         }
         
-        // MARK: - Span validator
+        // MARK: - Validator
         
         /// :nodoc:
         @discardableResult
         internal func validate() -> Bool {
-            guard let strongEnd = end else {
-                return false
-            }
+            guard let strongEnd = end else { return false }
             
             var valid = true
             

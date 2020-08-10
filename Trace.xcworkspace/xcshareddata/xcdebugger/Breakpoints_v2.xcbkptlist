@@ -94,8 +94,8 @@
             filePath = "Trace/TraceModel/TraceModel+Span.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "validate()"
             landmarkType = "7">
          </BreakpointContent>
