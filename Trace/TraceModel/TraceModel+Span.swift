@@ -43,7 +43,7 @@ extension TraceModel {
         
         // MARK: - Model
         
-        struct Timestamp: Codable {
+        struct Timestamp: Timestampable, Codable {
             
             // MARK: - Property
             

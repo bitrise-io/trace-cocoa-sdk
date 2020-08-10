@@ -130,4 +130,80 @@ final class TimestampValidatorTests: XCTestCase {
         
         XCTAssertTrue(result)
     }
+    
+    func testNanosecond_passes_greaterThan() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674656, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595012132, nanos: 1000, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertTrue(result)
+    }
+    
+    func testNanosecond_passes_greaterThan_100() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674650, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595002132, nanos: 674701, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testNanosecond_passes_greaterThan_1000() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674650, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595002132, nanos: 675650, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testNanosecond_passes_greaterThan_10000() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674650, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595002132, nanos: 684650, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testNanosecond_passes_equal() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674656, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595002132, nanos: 674656, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(5000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testNanosecond_passes_lessThan() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595222132, nanos: 674656, timeInterval: 0),
+            end: Time.Timestamp(seconds: 1595002132, nanos: 674696, timeInterval: 0)
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testNanosecond_fails_noEnd() {
+        let validator = NanosecondValidator(
+            start: Time.Timestamp(seconds: 1595002132, nanos: 674656, timeInterval: 0),
+            end: nil
+        )
+        let result = validator.isGreaterThanOrEqual(1000)
+        
+        XCTAssertFalse(result)
+    }
+    
+    
+    
+    // isValid(seconds: 1595002108, nanos: 291347)
+    // seconds: 1595002058, nanos: 630856)
+    // 1595002059, nanos: 542365, timeInterval: 0)
 }

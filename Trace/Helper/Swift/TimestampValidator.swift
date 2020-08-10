@@ -42,3 +42,32 @@ internal struct TimestampValidator {
         return false
     }
 }
+
+/// Check timestamp to see if it's greater than X
+internal struct NanosecondValidator {
+    
+    // MARK: - Property
+    
+    let start: Timestampable
+    let end: Timestampable?
+    
+    // MARK: - Validator
+    
+    func isGreaterThanOrEqual(_ nanos: Int) -> Bool {
+        guard let end = end else { return false }
+        
+        var result = false
+        
+        if start.seconds < end.seconds {
+            result = true
+        } else if start.seconds == end.seconds {
+            let diff = start.nanos - end.nanos
+            
+            if diff >= nanos {
+                result = true
+            }
+        }
+        
+        return result
+    }
+}
