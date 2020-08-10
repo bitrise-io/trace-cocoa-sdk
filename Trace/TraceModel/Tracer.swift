@@ -135,10 +135,27 @@ final class Tracer {
         var toBeSavedTraces: [TraceModel] = []
 
         traces.removeAll { trace in
+            // don't remove active traces
             guard trace.isComplete else { return false }
 
-            toBeSavedTraces.append(trace)
-
+            let root: TraceModel.Span = trace.root
+            let start = root.start
+            let end = root.end
+            let validator = NanosecondValidator(start: start, end: end)
+            
+            // avoid apending invalid traces i.e negative timestamp
+            if trace.root.validate() {
+                if validator.isGreaterThanOrEqual(5000) {
+                    toBeSavedTraces.append(trace)
+                } else {
+                    Logger.print(.internalError, "Disregarding trace as it's less than 5000 nanosecond \(trace)")
+                    // also removes from trace list since it's does pass validation
+                }
+            } else {
+                Logger.print(.internalError, "Disregarding invalid trace \(trace)")
+                // also removes from trace list since it's complete
+            }
+            
             return true
         }
 
