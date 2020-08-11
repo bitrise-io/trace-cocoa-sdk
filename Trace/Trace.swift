@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import UIKit
-import JavaScriptCore.JSContextRef
+import QuartzCore.CABase
 
 /**
  Trace SDK
@@ -50,6 +49,7 @@ final public class Trace: NSObject {
     private let network: Network
     internal let queue: Queue
     internal let database: Database
+    internal let tracer: Tracer
     private let lifecycle: Lifecycle
     private let session: Session
     private let fps: FPS
@@ -57,8 +57,6 @@ final public class Trace: NSObject {
     
     /// Crash controller
     public let crash: CrashController
-    
-    internal let tracer: Tracer
     
     // MARK: - Init
     
@@ -92,34 +90,8 @@ final public class Trace: NSObject {
     }
     
     private func setupConfiguration() {
-        do {
-            // Check configuration file
-            let configuration = try BitriseConfigurationInteractor()
-            network.authorization = configuration.model.token
-            
-            if let environment = configuration.model.environment {
-                Constants.API = environment
-            }
-            
-            Logger.print(.launch, "Bitrise Trace setup complete")
-        } catch {
-            Logger.print(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
-        }
-        
-        #if Debug
-        // Check XCode environment variables. this only works when running with a debugger i.e in Run app or Tests
-        let environment = ProcessInfo.processInfo.environment
-        
-        if let configuration = try? BitriseConfiguration(dictionary: environment) {
-            Logger.print(.application, "Overriding configuration from Xcode environment variables")
-                
-            network.authorization = configuration.token
-            
-            if let api = configuration.environment {
-                Constants.API = api
-            }
-        }
-        #endif
+        let configurationInteractor = TraceConfigurationInteractor(network: network)
+        configurationInteractor.setup()
     }
     
     private func setupCrashReporting() {
@@ -129,19 +101,7 @@ final public class Trace: NSObject {
     }
     
     private func setupSwizzle() {
-        URLSessionTaskMetrics.bitrise_swizzle_methods()
-        URLSession.bitrise_swizzle_methods()
-        
-        UIViewController.bitrise_swizzle_methods()
-        UIView.bitrise_swizzle_methods()
-        
-        // Disabled: only for prototyping
-        // UIControl_Swizzled.bitrise_swizzle_methods()
-        // UIGestureRecognizer.bitrise_swizzle_methods()
-        
-        NSError.bitrise_swizzle_methods()
-        
-        JSContext.bitrise_swizzle_methods()
+        TraceSwizzleInteractor.setup()
     }
     
     // MARK: - Session

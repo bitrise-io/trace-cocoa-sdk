@@ -15,6 +15,7 @@ internal struct BitriseConfiguration: Decodable {
     internal enum CodingKeys: String, CodingKey {
         case token = "APM_COLLECTOR_TOKEN"
         case environment = "APM_COLLECTOR_ENVIRONMENT"
+        case installationSource = "APM_INSTALLATION_SOURCE"
     }
     
     // MARK: - Property
@@ -24,6 +25,9 @@ internal struct BitriseConfiguration: Decodable {
     
     /// Environment, Optional..
     let environment: URL?
+    
+    /// Source of installation, Optional i.e Bitrise
+    let installationSource: String?
     
     // MARK: - Init
     
@@ -37,6 +41,12 @@ internal struct BitriseConfiguration: Decodable {
             environment = url
         } else {
             environment = nil
+        }
+        
+        if let value = try container.decodeIfPresent(String.self, forKey: .installationSource) {
+            installationSource = value
+        } else {
+            installationSource = nil
         }
     }
 }
