@@ -48,6 +48,8 @@ internal extension Network {
         case contentType = "Content-Type"
         /// accept
         case accept = "Accept"
+        /// installationSource
+        case installationSource = "X-Bitrise_sdk_installation"
     }
 
     /// HTTP Method

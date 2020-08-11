@@ -362,6 +362,8 @@
 		10CA877E22A4574A003702B1 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA877D22A4574A003702B1 /* DeviceTests.swift */; platformFilter = ios; };
 		10CA878222A493B4003702B1 /* FileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA878022A49364003702B1 /* FileManagerTests.swift */; platformFilter = ios; };
 		10CA938824DD5C2E00F6A95E /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938724DD5C2E00F6A95E /* SegueViewController.swift */; };
+		10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938A24E2E01800F6A95E /* TraceConfigurationInteractor.swift */; };
+		10CA938D24E2E23200F6A95E /* TraceSwizzleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938C24E2E23200F6A95E /* TraceSwizzleInteractor.swift */; };
 		10D1E47922E8A96F007BD5E1 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47822E8A96F007BD5E1 /* Entities.swift */; };
 		10D1E47C22E9AA83007BD5E1 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */; };
 		10D1E48022EB0088007BD5E1 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47F22EB0088007BD5E1 /* Repeater.swift */; };
@@ -909,6 +911,8 @@
 		10CA877D22A4574A003702B1 /* DeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceTests.swift; path = Tests/Device/DeviceTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA878022A49364003702B1 /* FileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerTests.swift; path = Tests/Helper/FileManagerTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA938724DD5C2E00F6A95E /* SegueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
+		10CA938A24E2E01800F6A95E /* TraceConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceConfigurationInteractor.swift; path = Configuration/TraceConfigurationInteractor.swift; sourceTree = "<group>"; };
+		10CA938C24E2E23200F6A95E /* TraceSwizzleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceSwizzleInteractor.swift; path = Configuration/TraceSwizzleInteractor.swift; sourceTree = "<group>"; };
 		10D056FD236C407C00443D4D /* iOSDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		10D1E47822E8A96F007BD5E1 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
@@ -1374,7 +1378,7 @@
 			isa = PBXGroup;
 			children = (
 				104A694F2293FB060065F218 /* Trace.swift */,
-				10B01F85229413A000846ED7 /* Trace+Configuration.swift */,
+				10CA938924E2DFE900F6A95E /* Trace */,
 				108D308E2327A7D7002757CC /* TraceModel */,
 				1087A00E22E076CD005F8F83 /* Configuration */,
 				10D1E47D22E9AA88007BD5E1 /* Queue */,
@@ -2264,6 +2268,16 @@
 				10CA938724DD5C2E00F6A95E /* SegueViewController.swift */,
 			);
 			path = Segue;
+			sourceTree = "<group>";
+		};
+		10CA938924E2DFE900F6A95E /* Trace */ = {
+			isa = PBXGroup;
+			children = (
+				10B01F85229413A000846ED7 /* Trace+Configuration.swift */,
+				10CA938A24E2E01800F6A95E /* TraceConfigurationInteractor.swift */,
+				10CA938C24E2E23200F6A95E /* TraceSwizzleInteractor.swift */,
+			);
+			name = Trace;
 			sourceTree = "<group>";
 		};
 		10D1E47A22E9AA79007BD5E1 /* Scheduler */ = {
@@ -3291,12 +3305,14 @@
 				10574D0824D85F2600391D6C /* Date+Helper.swift in Sources */,
 				10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */,
 				10673CFB23EC1E68002D7CD1 /* KSCrashMonitor.c in Sources */,
+				10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */,
 				100575A5229D8994000343EE /* Network+Configuration.swift in Sources */,
 				10673D2323EC65B1002D7CD1 /* ReportingSink.swift in Sources */,
 				10673D2123EC1E68002D7CD1 /* Punycode.cpp in Sources */,
 				1046CC3F22BB894800A8762F /* ViewFormatter.swift in Sources */,
 				10673D1C23EC1E68002D7CD1 /* KSCrashReport.c in Sources */,
 				10673CF923EC1E68002D7CD1 /* KSCrashMonitor_Signal.c in Sources */,
+				10CA938D24E2E23200F6A95E /* TraceSwizzleInteractor.swift in Sources */,
 				10CA8766229F1AE5003702B1 /* TraceService.swift in Sources */,
 				105929522309A2D50004D340 /* Metric+Collater.swift in Sources */,
 				10879FF922DC897D005F8F83 /* Error+Swizzled.swift in Sources */,

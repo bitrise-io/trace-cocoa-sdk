@@ -76,6 +76,9 @@ final class BitriseConfigurationInteractorTests: XCTestCase {
             XCTAssertNotNil(model)
             XCTAssertNotNil(model.token)
             XCTAssertFalse(model.token.isEmpty)
+            XCTAssertNotNil(model.installationSource)
+            XCTAssertEqual(model.installationSource, "Trace step")
+            XCTAssertTrue(model.installationSource?.isEmpty == false)
             XCTAssertNil(model.environment)
         } catch let error {
             XCTFail(error.localizedDescription)
