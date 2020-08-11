@@ -106,6 +106,7 @@ final public class Trace: NSObject {
             Logger.print(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
         }
         
+        #if Debug
         // Check XCode environment variables. this only works when running with a debugger i.e in Run app or Tests
         let environment = ProcessInfo.processInfo.environment
         
@@ -118,6 +119,7 @@ final public class Trace: NSObject {
                 Constants.API = api
             }
         }
+        #endif
     }
     
     private func setupCrashReporting() {
