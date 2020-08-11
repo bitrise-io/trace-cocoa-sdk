@@ -147,7 +147,6 @@ final class Tracer {
                 let validator = NanosecondValidator(start: start, end: end)
                 
                 if validator.isGreaterThanOrEqual(125000) { // 0.125 Millisecond
-
                     toBeSavedTraces.append(trace)
                 } else {
                     Logger.print(.internalError, "Disregarding trace as it's less than 0.125 Millisecond \(trace)")

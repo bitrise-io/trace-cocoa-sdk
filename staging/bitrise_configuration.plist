@@ -6,5 +6,7 @@
 	<string>9449cf8e-fd8f-4c2f-9d7c-188c6e0f1c8f</string>
 	<key>APM_COLLECTOR_ENVIRONMENT</key>
 	<string>https://stagcollector.apm.bitrise.io</string>
+	<key>APM_INSTALLATION_SOURCE</key>
+	<string></string>
 </dict>
 </plist>
