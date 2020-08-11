@@ -58,20 +58,25 @@ final public class Trace: NSObject {
     /// Crash controller
     public let crash: CrashController
     
+    // MARK: - Static Method
+    
+    /// Internal use only
+    internal static func reset() {
+        let session = CACurrentMediaTime()
+        Trace.currentSession = session
+    }
+    
     // MARK: - Init
     
     private override init() {
         session = Session()
         network = Network()
         database = Database()
-        
         scheduler = Scheduler(with: network)
         queue = Queue(with: scheduler, database, session) // make sure queue startup first
-        
         lifecycle = Lifecycle()
         crash = CrashController(with: scheduler)
         tracer = Tracer(with: queue, session, crash)
-        
         fps = FPS()
         
         super.init()
@@ -96,21 +101,11 @@ final public class Trace: NSObject {
     
     private func setupCrashReporting() {
         CrashReporting.observe()
-        
         crash.setup()
     }
     
     private func setupSwizzle() {
         TraceSwizzleInteractor.setup()
-    }
-    
-    // MARK: - Session
-    
-    /// Internal use only
-    internal static func reset() {
-        let session = CACurrentMediaTime()
-        
-        Trace.currentSession = session
     }
     
     // MARK: - Lifecycle
@@ -120,7 +115,6 @@ final public class Trace: NSObject {
         Trace.reset()
         queue.restart()
         session.restart()
-        
         crash.scheduleNewReports()
     }
 }
