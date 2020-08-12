@@ -42,6 +42,7 @@ final class TraceTests: XCTestCase {
         
         XCTAssertNotNil(trace)
         XCTAssertNotNil(configuration)
+        XCTAssertEqual(Trace.configuration.enabled, configuration.enabled)
         XCTAssertEqual(Trace.configuration, configuration)
     }
     

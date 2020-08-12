@@ -69,6 +69,10 @@ final public class Trace: NSObject {
     // MARK: - Init
     
     private override init() {
+        if !Trace.configuration.enabled {
+            Logger.print(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
+        }
+        
         session = Session()
         network = Network()
         database = Database()

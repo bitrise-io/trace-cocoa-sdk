@@ -20,6 +20,17 @@ public final class Configuration: NSObject {
     
     // MARK: - Property
     
+    /// Enabled Trace. This does not do anything after SDK has started up
+    public var enabled: Bool = true {
+        didSet {
+            Logger.print(.application, "Configuration.enabled has been set to \(enabled)")
+            
+            if enabled {
+                Logger.print(.launch, "Call Swift: `Trace.shared` or Objective-c: `BRTrace.shared` method to start the SDK")
+            }
+        }
+    }
+    
     /// Debug logs
     public var logs: Bool = true
     

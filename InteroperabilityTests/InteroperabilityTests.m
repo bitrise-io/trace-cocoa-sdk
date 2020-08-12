@@ -50,6 +50,7 @@
     XCTAssertNotNil(configuration);
     XCTAssertNotNil(configuration2);
     XCTAssertEqual(configuration.logs, configuration2.logs);
+    XCTAssertEqual(configuration.enabled, configuration2.enabled);
 }
 
 - (void)testAttributes {
