@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -1059,13 +1059,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9209038956C2C9AC6F6A8301 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF6E4EC46AA3C6B643C3E0AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2524,7 +2517,6 @@
 				104A69C5229407BE0065F218 /* Create Swift header and copy to build path */,
 				104A695A2293FC340065F218 /* Run SwiftLint linter tool */,
 				1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */,
-				FF6E4EC46AA3C6B643C3E0AF /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2777,7 +2769,7 @@
 				};
 			};
 			buildConfigurationList = 104A69472293FB060065F218 /* Build configuration list for PBXProject "Trace" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

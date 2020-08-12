@@ -167,7 +167,7 @@ final class ViewController: UITableViewController {
             delegateQueue: nil
         )
         let task = session.dataTask(with: url) { [weak self] _, _, _ in
-            print("DEMO - made network request")
+            print("DEMO - network request completed")
             
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
