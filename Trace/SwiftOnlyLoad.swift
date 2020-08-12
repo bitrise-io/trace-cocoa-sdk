@@ -30,7 +30,6 @@ internal final class SwiftOnlyLoad: NSObject, SelfAware {
             
             let company = Constants.SDK.company.rawValue
             let name = Constants.SDK.name.rawValue
-            let message = company + " " + name + " " + "starting up using app runloop"
             let message = company + " " + name + " " + "starting up using application's runloop"
             
             Logger.print(.launch, message)
@@ -46,7 +45,9 @@ extension UIApplication {
     
     // MARK: - Property
     
-    private static let run: Void = {
+    private static let bitrise_run: Void = {
+        guard Trace.configuration.enabled else { return }
+        
         // Get a list of classes thanks to Objective-c runtime
         let typeCount = Int(objc_getClassList(nil, 0))
         let types = UnsafeMutablePointer<AnyClass>.allocate(capacity: typeCount)
@@ -76,7 +77,7 @@ extension UIApplication {
         // Fallback plan if the SDK doesn't start using -force_load approach
         
         // Method is only called once.
-        UIApplication.run // Called before applicationDidFinishLaunching since the app delegate conforms to UIResponder class by default on all Xcode projects. For others that use a custom version this would fail
+        UIApplication.bitrise_run // Called before applicationDidFinishLaunching since the app delegate conforms to UIResponder class by default on all Xcode projects. For others that use a custom version this would fail
         
         return super.next
     }
