@@ -22,7 +22,7 @@ internal extension UIDevice {
             if let strongModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
                 deviceIdentifier = strongModelIdentifier
             } else {
-                Logger.print(.internalError, "Simulator device type not returned.")
+                Logger.print(.internalError, "Simulator device type not returned")
             }
             #elseif targetEnvironment(macCatalyst)
                 deviceIdentifier = "Mac Catalyst"

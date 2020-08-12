@@ -24,7 +24,7 @@ final class AppDelegate: UIResponder {
     
     func setup() {
         timer = .scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { _ in
-            // nothing fancy only used for running random tests
+            // Nothing fancy only used for running tests
         })
     }
 }
