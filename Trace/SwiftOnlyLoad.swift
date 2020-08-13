@@ -23,6 +23,9 @@ internal final class SwiftOnlyLoad: NSObject, SelfAware {
     
     // MARK: - SelfAware
     
+    /// Third and last attempt at starting SDK
+    /// Uses the run loop to start th SDK.
+    /// This stage is very late in the app's initialisation
     static func awake() {
         // Update session timeout values only if the SDK hasn't been started yet
         if Trace.currentSession == 0 {
