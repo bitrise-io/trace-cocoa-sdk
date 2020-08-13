@@ -16,7 +16,9 @@
 
 #pragma mark - Constructor/Destructor
 
-/// :nodoc:
+/// Second attempt at starting SDK
+/// Using library constructor to start the SDK
+/// By default when the SDK is moved to memory the SDK `constructor` method is called
 __attribute__((constructor)) static void ObjectiveCOnlyLoad(void) {
     if (BRTrace.configuration.enabled == NO) {
         NSLog(@"[Bitrise:Trace/launch] SDK disabled");
@@ -93,6 +95,10 @@ __attribute__((destructor)) static void ObjectiveCOnlyUnload() {
 
 #pragma mark - ObjectiveCOnlyLoadUsingClassMethod
 
+/// First attempt at starting SDK
+/// This class gets called first when the SDK moved into memory as the runtime
+/// try to find all classes with `load` class method
+/// In Xcode build settings the file is the first one to get processed and called
 @interface ObjectiveCOnlyLoadUsingClassMethod : NSObject
 
 + (void)load;
