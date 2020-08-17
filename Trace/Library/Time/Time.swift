@@ -10,6 +10,9 @@ import Foundation
 import QuartzCore.CABase
 
 protocol Timestampable {
+    
+    // MARK: - Property
+    
     var seconds: Int { get }
     var nanos: Int { get }
 }
