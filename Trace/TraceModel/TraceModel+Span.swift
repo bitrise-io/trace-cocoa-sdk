@@ -59,6 +59,13 @@ extension TraceModel {
                 setup()
             }
             
+            init(from timestampable: Timestampable) {
+                self.seconds = timestampable.seconds
+                self.nanos = timestampable.nanos
+                
+                setup()
+            }
+            
             // MARK: - Setup
             
             private func setup() {
@@ -68,6 +75,31 @@ extension TraceModel {
                     Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
                 }
                 #endif
+            }
+            
+            // MARK: - Static
+            
+            /// Return the difference in milliseconds
+            static func - (lhs: TraceModel.Span.Timestamp, rhs: TraceModel.Span.Timestamp) -> Double {
+                let calendar = Calendar.current
+                let start = Date.date(from: lhs)
+                let end = Date.date(from: rhs)
+                let dateComponents = calendar.dateComponents([.nanosecond], from: end, to: start)
+                let nanosecond = dateComponents.nanosecond ?? .max
+                let millisecond = round(Double(nanosecond) / 1000000)
+                
+                return millisecond
+            }
+            
+            /// Add milliseconds to a timestamp
+            static func + (lhs: TraceModel.Span.Timestamp, rhs: Double) -> Timestampable {
+                let calendar = Calendar.current
+                let date = Date.date(from: lhs)
+                let nanosecond = Int(round(rhs * 1000000))
+                let newDate: Date! = calendar.date(byAdding: .nanosecond, value: nanosecond, to: date)
+                let timestamp = Time.from(newDate)
+                
+                return timestamp
             }
         }
         

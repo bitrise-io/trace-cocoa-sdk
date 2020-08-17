@@ -364,6 +364,7 @@
 		10CA938824DD5C2E00F6A95E /* SegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938724DD5C2E00F6A95E /* SegueViewController.swift */; };
 		10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938A24E2E01800F6A95E /* TraceConfigurationInteractor.swift */; };
 		10CA938D24E2E23200F6A95E /* TraceSwizzleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938C24E2E23200F6A95E /* TraceSwizzleInteractor.swift */; };
+		10CA938F24E5A35D00F6A95E /* TimestampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA938E24E5A35D00F6A95E /* TimestampTests.swift */; };
 		10D1E47922E8A96F007BD5E1 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47822E8A96F007BD5E1 /* Entities.swift */; };
 		10D1E47C22E9AA83007BD5E1 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */; };
 		10D1E48022EB0088007BD5E1 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47F22EB0088007BD5E1 /* Repeater.swift */; };
@@ -913,6 +914,7 @@
 		10CA938724DD5C2E00F6A95E /* SegueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueViewController.swift; sourceTree = "<group>"; };
 		10CA938A24E2E01800F6A95E /* TraceConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceConfigurationInteractor.swift; path = Configuration/TraceConfigurationInteractor.swift; sourceTree = "<group>"; };
 		10CA938C24E2E23200F6A95E /* TraceSwizzleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceSwizzleInteractor.swift; path = Configuration/TraceSwizzleInteractor.swift; sourceTree = "<group>"; };
+		10CA938E24E5A35D00F6A95E /* TimestampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimestampTests.swift; path = Tests/TimestampTests.swift; sourceTree = SOURCE_ROOT; };
 		10D056FD236C407C00443D4D /* iOSDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		10D1E47822E8A96F007BD5E1 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
@@ -2063,6 +2065,7 @@
 				108D3094232921C2002757CC /* TraceModelTests.swift */,
 				108D3096232921DF002757CC /* SpanTests.swift */,
 				10AC27E623440FE300780890 /* TracerTest.swift */,
+				10CA938E24E5A35D00F6A95E /* TimestampTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -3390,6 +3393,7 @@
 				1028C8A6230173A400E07839 /* TimeTests.swift in Sources */,
 				10CA877022A09832003702B1 /* TraceServiceTests.swift in Sources */,
 				109136DC24ACE62000476EF6 /* CollaterTests+AppCrashTotal.swift in Sources */,
+				10CA938F24E5A35D00F6A95E /* TimestampTests.swift in Sources */,
 				103643702357D2E200B084E2 /* StringTests.swift in Sources */,
 				10962098229D59EF00E16003 /* LoggerObjcTests.m in Sources */,
 				10B8DF20242A7DDB0055D41E /* ULIDTests.swift in Sources */,

@@ -12,7 +12,7 @@ extension Date {
     
     // MARK: - Timestamp {
     
-    static func date(from timestamp: TraceModel.Span.Timestamp) -> Date {
+    static func date<T: Timestampable>(from timestamp: T) -> Date {
         let joinedValue = Double("\(timestamp.seconds).\(timestamp.nanos)") ?? 0.0
         let date = Date(timeIntervalSince1970: joinedValue)
         
