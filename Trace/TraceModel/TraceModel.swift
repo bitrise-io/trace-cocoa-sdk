@@ -138,9 +138,25 @@ public final class TraceModel: NSObject, Codable {
     
     internal func finish(with timestamp: Time.Timestamp = Time.timestamp) {
         // finish trace session by recording a end time
+        let zeroPointOne: Double = 100 // i.e 0.1 milliseconds
+        let end = Span.Timestamp(seconds: timestamp.seconds, nanos: timestamp.nanos)
+        
         spans
             .filter { $0.end == nil }
-            .forEach { $0.end = Span.Timestamp(seconds: timestamp.seconds, nanos: timestamp.nanos) }
+            .forEach {
+                let start = $0.start
+                let result = end - start
+                let isGreaterThanOrEqualTo = result >= zeroPointOne
+                
+                if isGreaterThanOrEqualTo {
+                    $0.end = end
+                } else {
+                    let roundedUp = end + result
+                    let roundedUpTimeStamp = Span.Timestamp(from: roundedUp)
+                    
+                    $0.end = roundedUpTimeStamp
+                }
+            }
     }
 }
 

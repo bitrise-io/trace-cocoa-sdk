@@ -161,4 +161,23 @@ final class SpanTests: XCTestCase {
         
         assertSnapshot(matching: root, as: .json)
     }
+    
+    func testTimestampFromProtocol() {
+        let timestamp = Time.from(Date(timeIntervalSince1970: 1))
+        let convertedTimestamp = TraceModel.Span.Timestamp(from: timestamp)
+        
+        XCTAssertNotNil(timestamp)
+        XCTAssertNotNil(convertedTimestamp)
+        XCTAssertEqual(timestamp.seconds, convertedTimestamp.seconds)
+        XCTAssertEqual(timestamp.nanos, convertedTimestamp.nanos)
+    }
+    
+    func testTimestampFromProtocol_not_zeros() {
+        let timestamp = Time.from(Date(timeIntervalSince1970: 99999999.9999))
+        let convertedTimestamp = TraceModel.Span.Timestamp(from: timestamp)
+        
+        XCTAssertNotEqual(convertedTimestamp.seconds, 0)
+        XCTAssertNotEqual(convertedTimestamp.nanos, 0)
+        XCTAssertNotEqual(convertedTimestamp.seconds, convertedTimestamp.nanos)
+    }
 }
