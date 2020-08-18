@@ -468,4 +468,22 @@ final class TraceModelTests: XCTestCase {
         XCTAssertFalse(result1)
         XCTAssertFalse(result2)
     }
+    
+    func testTraceModel_finish_positive_timestamp() {
+        let model = TraceModel.start(with: "start")
+        model.finish()
+        
+        XCTAssertEqual(model.spans.count, 1)
+        XCTAssertNotNil(model.spans[0].end)
+    }
+    
+    func testTraceModel_finish_negative_timestamp() {
+        let pastTime = Time.from(Date(timeIntervalSince1970: 1))
+        
+        let model = TraceModel.start(with: "start")
+        model.finish(with: pastTime)
+        
+        XCTAssertEqual(model.spans.count, 1)
+        XCTAssertNotNil(model.spans[0].end)
+    }
 }
