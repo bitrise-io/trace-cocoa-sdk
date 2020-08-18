@@ -142,16 +142,7 @@ final class Tracer {
             
             // avoid apending invalid traces i.e negative timestamp
             if root.validate() {
-                let start = root.start
-                let end = root.end
-                let validator = NanosecondValidator(start: start, end: end)
-                
-                if validator.isGreaterThanOrEqual(125000) { // 0.125 Millisecond
-                    toBeSavedTraces.append(trace)
-                } else {
-                    Logger.print(.internalError, "Disregarding trace as it's less than 0.125 Millisecond \(trace)")
-                    // also removes from trace list since it's does pass validation
-                }
+                toBeSavedTraces.append(trace)
             } else {
                 Logger.print(.internalError, "Disregarding invalid trace \(trace)")
                 // also removes from trace list since it's complete
