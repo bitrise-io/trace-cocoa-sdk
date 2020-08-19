@@ -195,32 +195,32 @@ static void removeObjectForKeyPath(id container, NSString* keyPath)
 
 @implementation NSDictionary (DeepSearch)
 
-- (id) objectForDeepKey:(NSArray*) deepKey
+- (id) bitrise_objectForDeepKey:(NSArray*) deepKey
 {
     return objectForDeepKey(self, deepKey);
 }
 
-- (id) objectForKeyPath:(NSString*) keyPath
+- (id) bitrise_objectForKeyPath:(NSString*) keyPath
 {
     return objectForKeyPath(self, keyPath);
 }
 
-- (void) setObject:(id) anObject forDeepKey:(NSArray*) deepKey
+- (void) bitrise_setObject:(id) anObject forDeepKey:(NSArray*) deepKey
 {
     setObjectForDeepKey(self, anObject, deepKey);
 }
 
-- (void) setObject:(id) anObject forKeyPath:(NSString*) keyPath
+- (void) bitrise_setObject:(id) anObject forKeyPath:(NSString*) keyPath
 {
     setObjectForKeyPath(self, anObject, keyPath);
 }
 
-- (void) removeObjectForDeepKey:(NSArray*) deepKey
+- (void) bitrise_removeObjectForDeepKey:(NSArray*) deepKey
 {
     removeObjectForDeepKey(self, deepKey);
 }
 
-- (void) removeObjectForKeyPath:(NSString*) keyPath
+- (void) bitrise_removeObjectForKeyPath:(NSString*) keyPath
 {
     removeObjectForKeyPath(self, keyPath);
 }

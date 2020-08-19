@@ -71,7 +71,7 @@
  *
  * @param deepKey A set of keys to drill down with.
  */
-- (id) objectForDeepKey:(NSArray*) deepKey;
+- (id) bitrise_objectForDeepKey:(NSArray*) deepKey;
 
 
 /** Do a deep search using the specified keys.
@@ -81,7 +81,7 @@
  *
  * @param keyPath A full key path, separated by slash (e.g. @"a/b/c")
  */
-- (id) objectForKeyPath:(NSString*) keyPath;
+- (id) bitrise_objectForKeyPath:(NSString*) keyPath;
 
 
 #pragma mark - Mutators
@@ -95,7 +95,7 @@
  * If the lookup fails at any level, it will throw an exception describing which
  * object in the hierarchy did not respond to any object accessor methods.
  */
-- (void) setObject:(id) anObject forDeepKey:(NSArray*) deepKey;
+- (void) bitrise_setObject:(id) anObject forDeepKey:(NSArray*) deepKey;
 
 /** Set an associated object at the specified key path.
  *
@@ -106,7 +106,7 @@
  * If the lookup fails at any level, it will throw an exception describing which
  * object in the hierarchy did not respond to any object accessor methods.
  */
-- (void) setObject:(id) anObject forKeyPath:(NSString*) keyPath;
+- (void) bitrise_setObject:(id) anObject forKeyPath:(NSString*) keyPath;
 
 /** Remove an associated object at the specified deep key.
  *
@@ -117,7 +117,7 @@
  * If the lookup fails at any level, it will throw an exception describing which
  * object in the hierarchy did not respond to any object accessor methods.
  */
-- (void) removeObjectForDeepKey:(NSArray*) deepKey;
+- (void) bitrise_removeObjectForDeepKey:(NSArray*) deepKey;
 
 /** Remove an associated object at the specified key path.
  *
@@ -128,6 +128,6 @@
  * If the lookup fails at any level, it will throw an exception describing which
  * object in the hierarchy did not respond to any object accessor methods.
  */
-- (void) removeObjectForKeyPath:(NSString*) keyPath;
+- (void) bitrise_removeObjectForKeyPath:(NSString*) keyPath;
 
 @end

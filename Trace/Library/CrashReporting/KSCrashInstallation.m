@@ -272,7 +272,7 @@ static void crashCallback(const KSCrashReportWriter* writer)
     }
     if([errors length] > 0)
     {
-        return [NSError errorWithDomain:[[self class] description]
+        return [NSError bitrise_errorWithDomain:[[self class] description]
                                    code:0
                             description:@"Installation properties failed validation: %@", errors];
     }
@@ -354,7 +354,7 @@ static void crashCallback(const KSCrashReportWriter* writer)
     id<KSCrashReportFilter> sink = [self sink];
     if(sink == nil)
     {
-        onCompletion(nil, NO, [NSError errorWithDomain:[[self class] description]
+        onCompletion(nil, NO, [NSError bitrise_errorWithDomain:[[self class] description]
                                                   code:0
                                            description:@"Sink was nil (subclasses must implement method \"sink\")"]);
         return;

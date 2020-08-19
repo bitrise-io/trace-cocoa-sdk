@@ -406,7 +406,7 @@ SYNTHESIZE_CRASH_STATE_PROPERTY(BOOL, crashedLastLaunch)
     if(self.sink == nil)
     {
         kscrash_callCompletion(onCompletion, reports, NO,
-                                 [NSError errorWithDomain:[[self class] description]
+                                 [NSError bitrise_errorWithDomain:[[self class] description]
                                                      code:0
                                               description:@"No sink set. Crash reports not sent."]);
         return;
