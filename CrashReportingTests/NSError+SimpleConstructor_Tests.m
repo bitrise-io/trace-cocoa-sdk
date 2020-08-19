@@ -37,7 +37,7 @@
 
 - (void) testErrorWithDomain
 {
-    NSError* error = [NSError errorWithDomain:@"Domain" code:10 description:@"A description %d", 1];
+    NSError* error = [NSError bitrise_errorWithDomain:@"Domain" code:10 description:@"A description %d", 1];
     NSString* expectedDomain = @"Domain";
     NSInteger expectedCode = 10;
     NSString* expectedDescription = @"A description 1";

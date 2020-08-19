@@ -167,7 +167,7 @@ static int onElement(KSJSONCodec* codec, NSString* name, id element)
 {
     if(codec->_currentContainer == nil)
     {
-        codec.error = [NSError errorWithDomain:@"KSJSONCodecObjC"
+        codec.error = [NSError bitrise_errorWithDomain:@"KSJSONCodecObjC"
                                           code:0
                                    description:@"Type %@ not allowed as top level container",
                        [element class]];
@@ -278,7 +278,7 @@ static int onEndContainer(void* const userData)
 
     if([codec->_containerStack count] == 0)
     {
-        codec.error = [NSError errorWithDomain:@"KSJSONCodecObjC"
+        codec.error = [NSError bitrise_errorWithDomain:@"KSJSONCodecObjC"
                                           code:0
                                    description:@"Already at the top level; no container left to end"];
         return KSJSON_ERROR_INVALID_DATA;
@@ -318,7 +318,7 @@ static int encodeObject(KSJSONCodec* codec, id object, NSString* name, KSJSONEnc
         result = ksjson_addStringElement(context, cName, data.bytes, (int)data.length);
         if(result == KSJSON_ERROR_INVALID_CHARACTER)
         {
-            codec.error = [NSError errorWithDomain:@"KSJSONCodecObjC"
+            codec.error = [NSError bitrise_errorWithDomain:@"KSJSONCodecObjC"
                                               code:0
                                        description:@"Invalid character in %@", object];
         }
@@ -399,7 +399,7 @@ static int encodeObject(KSJSONCodec* codec, id object, NSString* name, KSJSONEnc
         return ksjson_addDataElement(context, cName, data.bytes, (int)data.length);
     }
 
-    codec.error = [NSError errorWithDomain:@"KSJSONCodecObjC"
+    codec.error = [NSError bitrise_errorWithDomain:@"KSJSONCodecObjC"
                                       code:0
                                description:@"Could not determine type of %@", [object class]];
     return KSJSON_ERROR_INVALID_DATA;
@@ -445,7 +445,7 @@ static int encodeObject(KSJSONCodec* codec, id object, NSString* name, KSJSONEnc
                                (__bridge void*)codec, &errorOffset);
     if(result != KSJSON_OK && codec.error == nil)
     {
-        codec.error = [NSError errorWithDomain:@"KSJSONCodecObjC"
+        codec.error = [NSError bitrise_errorWithDomain:@"KSJSONCodecObjC"
                                           code:0
                                    description:@"%s (offset %d)",
                        ksjson_stringForError(result),

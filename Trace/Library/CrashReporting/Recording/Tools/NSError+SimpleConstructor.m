@@ -29,7 +29,7 @@
 
 @implementation NSError (SimpleConstructor)
 
-+ (NSError*) errorWithDomain:(NSString*) domain code:(NSInteger) code description:(NSString*) fmt, ...
++ (NSError*) bitrise_errorWithDomain:(NSString*) domain code:(NSInteger) code description:(NSString*) fmt, ...
 {
     va_list args;
     va_start(args, fmt);
