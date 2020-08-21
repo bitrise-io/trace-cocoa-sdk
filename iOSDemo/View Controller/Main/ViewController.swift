@@ -82,6 +82,17 @@ final class ViewController: UITableViewController {
         navigationController?.present(viewController, animated: true)
     }
     
+    private func navigateToNibViewController() {
+        let nibViewController = UINib(nibName: "NibViewController", bundle: .main)
+        let viewController = nibViewController.instantiate(withOwner: self, options: nil)[0] as! UIViewController
+        let nibView = UINib(nibName: "NibView", bundle: .main)
+        let view = nibView.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        viewController.view = view
+        
+        show(viewController, sender: nil)
+    }
+    
     private func navigateUsingShow() {
         let viewController = UIViewController()
         viewController.title = "Navigate using Show"
@@ -128,6 +139,7 @@ final class ViewController: UITableViewController {
         case 11: navigateUsingPopover()
         case 12: navigateUsingCustom()
         case 13: navigateUsingSegue()
+        case 14: navigateToNibViewController()
         default: break
         }
     }

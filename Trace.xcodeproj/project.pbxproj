@@ -326,6 +326,9 @@
 		109177232331316A007CE2F0 /* DBTrace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109177222331316A007CE2F0 /* DBTrace+CoreDataProperties.swift */; };
 		1091772523313545007CE2F0 /* TraceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091772423313545007CE2F0 /* TraceDAO.swift */; };
 		10962098229D59EF00E16003 /* LoggerObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10962097229D59EF00E16003 /* LoggerObjcTests.m */; platformFilter = ios; };
+		109B39EE24EFC42C00E44676 /* NibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109B39ED24EFC42C00E44676 /* NibViewController.xib */; };
+		109B39F024EFC51400E44676 /* NibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B39EF24EFC51400E44676 /* NibViewController.swift */; };
+		109B39F224EFC9CB00E44676 /* NibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109B39F124EFC9CB00E44676 /* NibView.xib */; };
 		10AC27E1234409EA00780890 /* DBTraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E0234409EA00780890 /* DBTraceTests.swift */; platformFilter = ios; };
 		10AC27E323440C8700780890 /* TraceDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E223440C8700780890 /* TraceDAOTests.swift */; platformFilter = ios; };
 		10AC27E523440CF600780890 /* MetricDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E423440CF600780890 /* MetricDAOTests.swift */; platformFilter = ios; };
@@ -875,6 +878,9 @@
 		109177222331316A007CE2F0 /* DBTrace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBTrace+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1091772423313545007CE2F0 /* TraceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceDAO.swift; sourceTree = "<group>"; };
 		10962097229D59EF00E16003 /* LoggerObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoggerObjcTests.m; path = Tests/Library/Log/LoggerObjcTests.m; sourceTree = SOURCE_ROOT; };
+		109B39ED24EFC42C00E44676 /* NibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibViewController.xib; sourceTree = "<group>"; };
+		109B39EF24EFC51400E44676 /* NibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibViewController.swift; sourceTree = "<group>"; };
+		109B39F124EFC9CB00E44676 /* NibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibView.xib; sourceTree = "<group>"; };
 		10AC27E0234409EA00780890 /* DBTraceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBTraceTests.swift; path = Tests/DBTraceTests.swift; sourceTree = SOURCE_ROOT; };
 		10AC27E223440C8700780890 /* TraceDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceDAOTests.swift; path = Tests/TraceDAOTests.swift; sourceTree = SOURCE_ROOT; };
 		10AC27E423440CF600780890 /* MetricDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetricDAOTests.swift; path = Tests/MetricDAOTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1505,6 +1511,7 @@
 			isa = PBXGroup;
 			children = (
 				1087A00422DE07B8005F8F83 /* Main */,
+				109B39EC24EFC3F300E44676 /* NIB */,
 				104EA0BE238293EF004C07CE /* Control */,
 				107B2C5923560466002E7A3D /* Tabs */,
 				10FC45D1230EE65D0077BF2C /* Network */,
@@ -2076,6 +2083,16 @@
 				1091373324AF5EFD00476EF6 /* Json.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		109B39EC24EFC3F300E44676 /* NIB */ = {
+			isa = PBXGroup;
+			children = (
+				109B39ED24EFC42C00E44676 /* NibViewController.xib */,
+				109B39F124EFC9CB00E44676 /* NibView.xib */,
+				109B39EF24EFC51400E44676 /* NibViewController.swift */,
+			);
+			path = NIB;
 			sourceTree = "<group>";
 		};
 		10B01F8322940BE200846ED7 /* Supporting Files */ = {
@@ -2841,6 +2858,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109B39EE24EFC42C00E44676 /* NibViewController.xib in Resources */,
 				104A6980229401280065F218 /* LaunchScreen.storyboard in Resources */,
 				104A697D229401280065F218 /* Assets.xcassets in Resources */,
 				104EA0C2238294FA004C07CE /* Control.storyboard in Resources */,
@@ -2848,6 +2866,7 @@
 				1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */,
 				1087A00022DE06A7005F8F83 /* WebView.storyboard in Resources */,
 				10FC45D5230EE94D0077BF2C /* Network.storyboard in Resources */,
+				109B39F224EFC9CB00E44676 /* NibView.xib in Resources */,
 				1053593724C989C90007F2E0 /* Collection.storyboard in Resources */,
 				103ABC822445FED6001BC364 /* bitrise_configuration.plist in Resources */,
 				104A697B229401260065F218 /* Main.storyboard in Resources */,
@@ -3444,6 +3463,7 @@
 				10CA938824DD5C2E00F6A95E /* SegueViewController.swift in Sources */,
 				1053593524C9899F0007F2E0 /* CollectionViewController.swift in Sources */,
 				10FC45D7230F3C9D0077BF2C /* CrashViewController.swift in Sources */,
+				109B39F024EFC51400E44676 /* NibViewController.swift in Sources */,
 				104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */,
 				107B2C5F235604C3002E7A3D /* SecondTabViewController.swift in Sources */,
 				1087A00322DE06BC005F8F83 /* WebViewController.swift in Sources */,
