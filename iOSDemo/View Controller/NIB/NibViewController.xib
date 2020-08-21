@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController restorationIdentifier="NibViewController" title="NibViewController" nibName="NibViewController" id="YIK-AA-I6X" customClass="NibViewController" customModule="iOSDemo" customModuleProvider="target">
+        <viewController restorationIdentifier="NibViewController" title="NibViewController" nibName="" id="YIK-AA-I6X" customClass="NibViewController" customModule="iOSDemo" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="ac2-6G-RXm">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
