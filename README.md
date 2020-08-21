@@ -190,7 +190,7 @@ Add the collector token (`bitrise_configuration.plist`) found in the [setting pa
 # Miscellaneous
 
 ### Special thanks to
-Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `58094b309e443f16273a75d87a3065a9fafd2540`
+Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `d8845bd622f4cf469ba65e9be42de116e1548478`, branch: master, date: (18th August)
 
 # License
 Trace is released under the MIT license. See [LICENSE](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE) for details.
