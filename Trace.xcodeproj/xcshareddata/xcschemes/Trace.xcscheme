@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Trace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "104A6972229401260065F218"
+               BuildableName = "iOSDemo.app"
+               BlueprintName = "iOSDemo"
+               ReferencedContainer = "container:Trace.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
