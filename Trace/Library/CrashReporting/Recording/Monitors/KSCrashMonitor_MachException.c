@@ -331,7 +331,7 @@ static void* handleExceptions(void* const userData)
         kssc_initCursor(&g_stackCursor, NULL, NULL);
         if(ksmc_getContextForThread(exceptionMessage.thread.name, machineContext, true))
         {
-            kssc_initWithMachineContext(&g_stackCursor, 100, machineContext);
+            kssc_initWithMachineContext(&g_stackCursor, KSSC_MAX_STACK_DEPTH, machineContext);
             KSLOG_TRACE("Fault address 0x%x, instruction address 0x%x", kscpu_faultAddress(machineContext), kscpu_instructionAddress(machineContext));
             if(exceptionMessage.exception == EXC_BAD_ACCESS)
             {

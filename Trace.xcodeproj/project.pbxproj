@@ -329,6 +329,8 @@
 		109B39EE24EFC42C00E44676 /* NibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109B39ED24EFC42C00E44676 /* NibViewController.xib */; };
 		109B39F024EFC51400E44676 /* NibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B39EF24EFC51400E44676 /* NibViewController.swift */; };
 		109B39F224EFC9CB00E44676 /* NibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109B39F124EFC9CB00E44676 /* NibView.xib */; };
+		109B39F524F0136F00E44676 /* KSCxaThrowSwapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 109B39F424F0136F00E44676 /* KSCxaThrowSwapper.c */; };
+		109B39F924F02D4000E44676 /* KSgetsect.c in Sources */ = {isa = PBXBuildFile; fileRef = 109B39F824F02D4000E44676 /* KSgetsect.c */; };
 		10AC27E1234409EA00780890 /* DBTraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E0234409EA00780890 /* DBTraceTests.swift */; platformFilter = ios; };
 		10AC27E323440C8700780890 /* TraceDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E223440C8700780890 /* TraceDAOTests.swift */; platformFilter = ios; };
 		10AC27E523440CF600780890 /* MetricDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC27E423440CF600780890 /* MetricDAOTests.swift */; platformFilter = ios; };
@@ -881,6 +883,11 @@
 		109B39ED24EFC42C00E44676 /* NibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibViewController.xib; sourceTree = "<group>"; };
 		109B39EF24EFC51400E44676 /* NibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibViewController.swift; sourceTree = "<group>"; };
 		109B39F124EFC9CB00E44676 /* NibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibView.xib; sourceTree = "<group>"; };
+		109B39F324F0136F00E44676 /* KSCxaThrowSwapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSCxaThrowSwapper.h; sourceTree = "<group>"; };
+		109B39F424F0136F00E44676 /* KSCxaThrowSwapper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KSCxaThrowSwapper.c; sourceTree = "<group>"; };
+		109B39F624F02C1400E44676 /* KSPlatformSpecificDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSPlatformSpecificDefines.h; sourceTree = "<group>"; };
+		109B39F724F02D4000E44676 /* KSgetsect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSgetsect.h; sourceTree = "<group>"; };
+		109B39F824F02D4000E44676 /* KSgetsect.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = KSgetsect.c; sourceTree = "<group>"; };
 		10AC27E0234409EA00780890 /* DBTraceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBTraceTests.swift; path = Tests/DBTraceTests.swift; sourceTree = SOURCE_ROOT; };
 		10AC27E223440C8700780890 /* TraceDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceDAOTests.swift; path = Tests/TraceDAOTests.swift; sourceTree = SOURCE_ROOT; };
 		10AC27E423440CF600780890 /* MetricDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetricDAOTests.swift; path = Tests/MetricDAOTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1796,8 +1803,13 @@
 				10673CBC23EC1E68002D7CD1 /* KSMach.c */,
 				10673CBD23EC1E68002D7CD1 /* KSDynamicLinker.h */,
 				10673CBE23EC1E68002D7CD1 /* KSCPU_arm64.c */,
+				109B39F724F02D4000E44676 /* KSgetsect.h */,
+				109B39F824F02D4000E44676 /* KSgetsect.c */,
 				10673CBF23EC1E68002D7CD1 /* KSMachineContext.h */,
+				109B39F624F02C1400E44676 /* KSPlatformSpecificDefines.h */,
 				10673CC023EC1E68002D7CD1 /* KSID.c */,
+				109B39F324F0136F00E44676 /* KSCxaThrowSwapper.h */,
+				109B39F424F0136F00E44676 /* KSCxaThrowSwapper.c */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -2981,7 +2993,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3017,7 +3030,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3072,7 +3086,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		10A9C80A23E8809B00DCBF4F /* 5. Create folder with new version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3258,6 +3273,7 @@
 				10673D1723EC1E68002D7CD1 /* KSMach.c in Sources */,
 				10673CF123EC1E68002D7CD1 /* KSCrashReportStore.c in Sources */,
 				10673CF523EC1E68002D7CD1 /* KSCrashMonitor_Zombie.c in Sources */,
+				109B39F924F02D4000E44676 /* KSgetsect.c in Sources */,
 				10673D2023EC1E68002D7CD1 /* Demangle.cpp in Sources */,
 				10673D1B23EC1E68002D7CD1 /* KSCrashDoctor.m in Sources */,
 				10673CF323EC1E68002D7CD1 /* KSCrashMonitor_System.m in Sources */,
@@ -3325,6 +3341,7 @@
 				10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */,
 				10673CFB23EC1E68002D7CD1 /* KSCrashMonitor.c in Sources */,
 				10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */,
+				109B39F524F0136F00E44676 /* KSCxaThrowSwapper.c in Sources */,
 				100575A5229D8994000343EE /* Network+Configuration.swift in Sources */,
 				10673D2323EC65B1002D7CD1 /* ReportingSink.swift in Sources */,
 				10673D2123EC1E68002D7CD1 /* Punycode.cpp in Sources */,
@@ -3821,7 +3838,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_CFLAGS = (
+					"-fembed-bitcode",
+					"-fno-optimize-sibling-calls",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fembed-bitcode",
@@ -3860,7 +3880,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_CFLAGS = (
+					"-fembed-bitcode",
+					"-fno-optimize-sibling-calls",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fembed-bitcode",

@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <limits.h>
 
 
 // ============================================================================
@@ -1049,17 +1050,23 @@ static int decodeElement(const char* const name, KSJSONDecodeContext* context)
         case '5': case '6': case '7': case '8': case '9':
         {
             // Try integer conversion.
-            int64_t accum = 0;
+            uint64_t accum = 0;
+            bool isOverflow = false;
             const char* const start = context->bufferPtr;
 
             for(; context->bufferPtr < context->bufferEnd && isdigit(*context->bufferPtr); context->bufferPtr++)
             {
-                accum = accum * 10 + (*context->bufferPtr - '0');
-                unlikely_if(accum < 0)
+                unlikely_if((isOverflow = accum > (ULLONG_MAX / 10)))
                 {
-                    // Overflow
                     break;
                 }
+                accum *= 10;
+                int nextDigit = (*context->bufferPtr - '0');
+                unlikely_if((isOverflow = accum > (ULLONG_MAX - nextDigit)))
+                {
+                    break;
+                }
+                accum += nextDigit;
             }
 
             unlikely_if(context->bufferPtr >= context->bufferEnd)
@@ -1068,10 +1075,14 @@ static int decodeElement(const char* const name, KSJSONDecodeContext* context)
                 return KSJSON_ERROR_INCOMPLETE;
             }
 
-            if(!isFPChar(*context->bufferPtr) && accum >= 0)
+            if(!isFPChar(*context->bufferPtr) && !isOverflow)
             {
-                accum *= sign;
-                return context->callbacks->onIntegerElement(name, accum, context->userData);
+                if(sign > 0 || accum <= ((uint64_t)LLONG_MAX + 1))
+                {
+                    int64_t signedAccum = accum;
+                    signedAccum *= sign;
+                    return context->callbacks->onIntegerElement(name, signedAccum, context->userData);
+                }
             }
 
             while(context->bufferPtr < context->bufferEnd && isFPChar(*context->bufferPtr))
