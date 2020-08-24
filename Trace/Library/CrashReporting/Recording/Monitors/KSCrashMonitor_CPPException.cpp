@@ -77,8 +77,12 @@ static KSStackCursor g_stackCursor;
 #pragma mark - Callbacks -
 // ============================================================================
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 static void captureStackTrace(void* thrown_exception, std::type_info* tinfo, void (*dest)(void*))
 {
+#pragma clang diagnostic pop
+    
     if(g_captureNextStackTrace)
     {
         kssc_initSelfThread(&g_stackCursor, 2);
