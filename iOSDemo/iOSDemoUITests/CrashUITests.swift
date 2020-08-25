@@ -14,17 +14,17 @@ class CrashUITests: XCTestCase {
     
     let app = XCUIApplication()
     
-    var isDebugMode: Bool {
+    let isDebugMode: Bool = {
         let result: Bool
         
-        #if Debug
+        #if DEBUG || Debug || debug
         result = true
         #else
         result = false
         #endif
         
         return result
-    }
+    }()
     
     // MARK: - Setup
     
@@ -35,9 +35,11 @@ class CrashUITests: XCTestCase {
     
     // MARK: - Tests
     
-    func testCrashAndRestart_crash() {
-        try! XCTSkipIf(isDebugMode, "Testing crash disabled while running in debug mode")
-        
+    func testCrashAndRestart_crash() throws {
+        guard !isDebugMode else {
+            throw XCTSkip("Testing crash disabled while running in debug mode")
+        }
+                
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.app.terminate()
         }
@@ -52,8 +54,10 @@ class CrashUITests: XCTestCase {
         XCTAssertTrue(result)
     }
     
-    func testCrashAndRestart_validation() {
-        try! XCTSkipIf(isDebugMode, "Testing crash disabled while running in debug mode")
+    func testCrashAndRestart_validation() throws {
+        guard !isDebugMode else {
+            throw XCTSkip("Testing crash disabled while running in debug mode")
+        }
         
         if app.state == .notRunning {
             app.launch()
