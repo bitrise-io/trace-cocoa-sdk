@@ -148,7 +148,7 @@ static NSString* getBasePath()
         self.catchZombies = NO;
         self.maxReportCount = 10;
         self.searchQueueNames = NO;
-        self.monitoring = KSCrashMonitorTypeProductionSafe;
+        self.monitoring = KSCrashMonitorTypeProductionSafeMinimal;
     }
     return self;
 }
