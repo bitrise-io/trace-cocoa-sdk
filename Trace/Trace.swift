@@ -94,7 +94,13 @@ final public class Trace: NSObject {
         Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue)")
         
         setupConfiguration()
+        
+        #if DEBUG || Debug || debug
+        Logger.print(.crash, "disabled since app running in Debug mode")
+        #else
         setupCrashReporting()
+        #endif
+        
         setupSwizzle()
     }
     
