@@ -48,8 +48,7 @@ internal protocol CRUD {
     
     // MARK: - Delete
     
-    func delete(_ object: T)
-    func delete(_ objects: [T])
+    func delete(_ objects: [NSManagedObjectID])
 }
 
 /// Helper to manage database objects without repeating code
@@ -93,40 +92,13 @@ internal extension CRUD where T: NSManagedObject {
     
     // MARK: - Delete
     
-    func delete(_ object: T) {
-        delete([object])
-    }
-    
-    func delete(_ objects: [T]) {
-        persistent.privateContext.perform {
-            let context = self.persistent.privateContext
-            
-            // delete
-            objects.forEach {
-                let backgroundObject = context.object(with: $0.objectID)
-                
-                context.delete(backgroundObject)
-            }
-            
-            // save
-            try? context.save()
-            
-            if self.test_completion != nil {
-                DispatchQueue.main.async { self.test_completion?() }
-            }
-        }
-    }
-    
     func delete(_ ids: [NSManagedObjectID]) {
         let context = persistent.privateContext
-        
         context.perform {
             let objects: [NSManagedObject] = ids.compactMap {
                 do {
                     return try context.existingObject(with: $0)
                 } catch {
-                    Logger.print(.database, "Failed to find object with id: \(error.localizedDescription)")
-                    
                     return nil
                 }
             }
