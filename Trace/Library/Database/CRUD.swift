@@ -116,6 +116,35 @@ internal extension CRUD where T: NSManagedObject {
             }
         }
     }
+    
+    func delete(_ ids: [NSManagedObjectID]) {
+        let context = persistent.privateContext
+        
+        context.perform {
+            let objects: [NSManagedObject] = ids.compactMap {
+                do {
+                    return try context.existingObject(with: $0)
+                } catch {
+                    Logger.print(.database, "Failed to find object with id: \(error.localizedDescription)")
+                    
+                    return nil
+                }
+            }
+            
+            objects.forEach { context.delete($0) }
+            
+            // save
+            do {
+                try context.save()
+            } catch {
+                Logger.print(.database, "Failed to save database")
+            }
+            
+            if self.test_completion != nil {
+                DispatchQueue.main.async { self.test_completion?() }
+            }
+        }
+    }
 }
 
 /// Fetch

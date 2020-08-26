@@ -149,15 +149,14 @@ internal final class Queue {
                         }
                     }
                     
+                    let ids = Set(trace.spans.map { $0.traceId })
+                    let toBeDeleted = dbModels.filter { ids.contains($0.traceId) }
+                    let toBeDeletedObjectIds = toBeDeleted.map { $0.objectID }
+                    
                     self?.scheduler.schedule(trace, {
                         switch $0 {
-                        case .success:
-                            let ids = Set(trace.spans.map { $0.traceId })
-                            let toBeDeleted = dbModels.filter { ids.contains($0.traceId) }
-                            
-                            self?.database.dao.trace.delete(toBeDeleted)
-                        case .failure:
-                            Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
+                        case .success: self?.database.dao.trace.delete(toBeDeletedObjectIds)
+                        case .failure: Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
                 }
