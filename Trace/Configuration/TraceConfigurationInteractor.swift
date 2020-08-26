@@ -43,7 +43,7 @@ internal struct TraceConfigurationInteractor {
             result = false
         }
         
-        #if Debug
+        #if DEBUG || Debug || debug
         // Check XCode environment variables. this only works when running with a debugger i.e in Run app or Tests
         let environment = ProcessInfo.processInfo.environment
         

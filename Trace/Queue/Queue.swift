@@ -107,8 +107,20 @@ internal final class Queue {
                 
                 self?.scheduler.schedule(model, {
                     switch $0 {
-                    case .success: self?.database.dao.metric.delete(dbModelObjectIds)
-                    case .failure: Logger.print(.queue, "Failed to submit metric, will try again in 1 minute")
+                    case .success:
+                        let dao = self?.database.dao.metric
+                        
+                        #if DEBUG || Debug || debug
+                        Logger.print(.database, "Metric count before delete: \(dao?.count(in: .background) ?? 0)")
+                        #endif
+                        
+                        dao?.delete(dbModelObjectIds)
+                        
+                        #if DEBUG || Debug || debug
+                        Logger.print(.database, "Metric count after delete: \(dao?.count(in: .background) ?? 0)")
+                        #endif
+                    case .failure:
+                        Logger.print(.queue, "Failed to submit metric, will try again in 1 minute")
                     }
                 })
             } catch {
@@ -156,8 +168,20 @@ internal final class Queue {
                     
                     self?.scheduler.schedule(trace, {
                         switch $0 {
-                        case .success: self?.database.dao.trace.delete(toBeDeletedObjectIds)
-                        case .failure: Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
+                        case .success:
+                            let dao = self?.database.dao.trace
+                            
+                            #if DEBUG || Debug || debug
+                            Logger.print(.database, "Trace count before delete: \(dao?.count(in: .background) ?? 0)")
+                            #endif
+                            
+                            dao?.delete(toBeDeletedObjectIds)
+                            
+                            #if DEBUG || Debug || debug
+                            Logger.print(.database, "Trace count after delete: \(dao?.count(in: .background) ?? 0)")
+                            #endif
+                        case .failure:
+                            Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
                 }
@@ -172,6 +196,7 @@ internal final class Queue {
     internal func add(_ metrics: Metrics, force: Bool = false, delay: Bool = false) {
         let operation = { [weak self] in
             var save = true
+            let dao = self?.database.dao.metric
             
             if let last = self?.lastSave {
                 let calendar = Calendar.current
@@ -181,15 +206,25 @@ internal final class Queue {
                 if let second = components.second, second >= Queue.timeout {
                     save = true
                     self?.lastSave = Date()
+                    
+                    #if DEBUG || Debug || debug
+                    Logger.print(.database, "Metric count before save: \(dao?.count(in: .background) ?? 0)")
+                    #endif
                 } else {
                     save = false
                 }
             }
             
-            self?.database.dao.metric.create(
+            dao?.create(
                 with: metrics,
                 save: save
             )
+            
+            if save {
+                #if DEBUG || Debug || debug
+                Logger.print(.database, "Metric count after save: \(dao?.count(in: .background) ?? 0)")
+                #endif
+            }
             
             if force {
                 self?.schedule()
@@ -208,6 +243,7 @@ internal final class Queue {
     internal func add(_ traces: [TraceModel], force: Bool = false, delay: Bool = false) {
         let operation = { [weak self] in
             var save = true
+            let dao = self?.database.dao.trace
             
             if let last = self?.lastSave {
                 let calendar = Calendar.current
@@ -217,6 +253,10 @@ internal final class Queue {
                 if let second = components.second, second >= Queue.timeout {
                     save = true
                     self?.lastSave = Date()
+                    
+                    #if DEBUG || Debug || debug
+                    Logger.print(.database, "Trace count before save: \(dao?.count(in: .background) ?? 0)")
+                    #endif
                 } else {
                     save = false
                 }
@@ -234,7 +274,13 @@ internal final class Queue {
                 $0.attributes = attributes
             }
             
-            self?.database.dao.trace.create(with: traces, save: save, synchronous: false)
+            dao?.create(with: traces, save: save, synchronous: false)
+            
+            if save {
+                #if DEBUG || Debug || debug
+                Logger.print(.database, "Trace count after save: \(dao?.count(in: .background) ?? 0)")
+                #endif
+            }
             
             if force {
                 self?.schedule()
