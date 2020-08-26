@@ -69,7 +69,7 @@ extension TraceModel {
             // MARK: - Setup
             
             private func setup() {
-                #if Debug
+                #if DEBUG || Debug || debug
                 // TODO: only for private beta testing. remove before GA
                 if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
                     Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
@@ -315,7 +315,7 @@ extension TraceModel {
             try container.encode(end, forKey: .end)
             try container.encode(attribute, forKey: .attributes)
             
-            #if Debug
+            #if DEBUG || Debug || debug
             // TODO: only for private beta testing. remove before GA
             validate()
             #endif
