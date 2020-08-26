@@ -28,8 +28,9 @@ final class DBTraceTests: XCTestCase {
     func testReadObject() {
         let persistent = Database().persistent
         let request: NSFetchRequest<DBTrace> = DBTrace.fetchRequest()
+        let context = persistent.privateContext
         
-        let trace = DBTrace(context: persistent.privateContext)
+        let trace = DBTrace(context: context)
         trace.date = Date()
         trace.json = NSData()
         trace.traceId = "t1"

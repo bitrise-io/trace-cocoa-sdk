@@ -43,8 +43,8 @@ final class DatabaseTests: XCTestCase {
         XCTAssertEqual(count, 0)
     }
     
-    func testDatabase_saveAll() {
-        let descriptor = Metric.Descriptor(name: .appRequestSizeBytes, description: "test", unit: .percent, type: .cumulativeDistribution, keys: [])
+    func testDatabase_saveAll_false() {
+        let descriptor = Metric.Descriptor(name: .appRequestSizeBytes, description: "test 1", unit: .percent, type: .cumulativeDistribution, keys: [])
         
         database.dao.metric.create(with: MetricDAO.M(descriptor: descriptor, timeseries: []), save: false)
         
@@ -53,7 +53,25 @@ final class DatabaseTests: XCTestCase {
         database.saveAll {
             sleep(2)
             
-            XCTAssertEqual(self.database.dao.metric.count(in: .view), 1)
+            XCTAssertEqual(self.database.dao.metric.count(in: .view), 0)
         }  
+    }
+    
+    func testDatabase_saveAll_true() {
+        let descriptor = Metric.Descriptor(name: .appRequestSizeBytes, description: "test 2", unit: .percent, type: .cumulativeDistribution, keys: [])
+        
+        database.dao.metric.create(with: [MetricDAO.M(descriptor: descriptor, timeseries: [])], save: true, synchronous: true)
+        
+        sleep(2)
+        
+        XCTAssertEqual(database.dao.metric.count(in: .background), 0)
+        
+        database.saveAll {
+            sleep(2)
+            
+            XCTAssertEqual(self.database.dao.metric.count(in: .view), 1)
+        }
+        
+        XCTAssertEqual(self.database.dao.metric.count(in: .view), 1)
     }
 }
