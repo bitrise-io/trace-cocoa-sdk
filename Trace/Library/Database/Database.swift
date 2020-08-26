@@ -31,7 +31,7 @@ final internal class Database {
         internal func managedObjectContext(for persistent: Persistent) -> NSManagedObjectContext {
             switch self {
             case .view: return persistent.viewContext
-            case .background: return persistent.privateContext
+            case .background: return persistent.newBackgroundContext()
             }
         }
     }
@@ -72,11 +72,17 @@ final internal class Database {
     
     // MARK: - State
     
-    internal func saveAll(_ competion: (() -> Void)?=nil) {
-        persistent.privateContext.performAndWait { [weak self] in
-            try? self?.persistent.privateContext.save()
+    internal func saveAll(_ completion: (() -> Void)?=nil) {
+        let context = persistent.privateContext
+        context.performAndWait {
+            // save
+            do {
+                try context.save()
+            } catch {
+                Logger.print(.database, "Failed to save database after a delete operation")
+            }
             
-            competion?()
+            completion?()
         }
     }
     
@@ -101,16 +107,20 @@ final internal class Database {
             return
         }
         
-        persistent.privateContext.perform { [weak self] in
-            let context = self?.persistent.privateContext
-            
+        let context = persistent.privateContext
+        context.perform {
             let requests = [
                 NSBatchDeleteRequest(fetchRequest: DBMetric.fetchRequest()),
                 NSBatchDeleteRequest(fetchRequest: DBTrace.fetchRequest())
             ]
-            requests.forEach { _ = try? context?.execute($0) }
+            requests.forEach { _ = try? context.execute($0) }
             
-            try? context?.save()
+            // save
+            do {
+                try context.save()
+            } catch {
+                Logger.print(.database, "Failed to reset database")
+            }
         }
     }
 }

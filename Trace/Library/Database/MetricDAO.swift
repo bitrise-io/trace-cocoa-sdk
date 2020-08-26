@@ -60,9 +60,9 @@ internal final class MetricDAO: CRUD {
     ///
     /// - Parameter models: data models
     func create(with models: [M], save: Bool, synchronous: Bool) {
+        let context = persistent.privateContext
+        
         let function: () -> Void = {
-            let context = self.persistent.privateContext
-            
             do {
                 let _: [T?] = try models.map {
                     let date = Date()
@@ -99,9 +99,9 @@ internal final class MetricDAO: CRUD {
         }
         
         if synchronous {
-            persistent.privateContext.performAndWait(function)
+            context.performAndWait(function)
         } else {
-            persistent.privateContext.perform(function)
+            context.perform(function)
         }
     }
 }

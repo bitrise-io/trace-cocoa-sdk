@@ -28,8 +28,9 @@ final class DBMetricTests: XCTestCase {
     func testReadObject() {
         let persistent = Database().persistent
         let request: NSFetchRequest<DBMetric> = DBMetric.fetchRequest()
+        let context = persistent.privateContext
         
-        let metric = DBMetric(context: persistent.privateContext)
+        let metric = DBMetric(context: context)
         metric.date = Date()
         metric.json = NSData()
         metric.name = "test"

@@ -18,7 +18,7 @@ final internal class Persistent: NSPersistentContainer {
     
     // MARK: - Property
     
-    lazy var privateContext: NSManagedObjectContext = self.newBackgroundContext()
+    var privateContext: NSManagedObjectContext { self.newBackgroundContext() }
     
     // MARK: - Setup
     

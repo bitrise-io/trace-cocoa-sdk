@@ -57,13 +57,17 @@ internal extension CRUD where T: NSManagedObject {
     // MARK: - Update
     
     func update(id objectId: NSManagedObjectID, _ update: @escaping (inout T?) -> Bool) {
-        persistent.privateContext.perform {
-            let context = self.persistent.privateContext
-            
+        let context = persistent.privateContext
+        context.perform {
             var object = context.object(with: objectId) as? T
             
             if update(&object) {
-                try? context.save()
+                // save
+                do {
+                    try context.save()
+                } catch {
+                    Logger.print(.database, "Failed to save database after a update operation")
+                }
             }
             
             if self.test_completion != nil {
@@ -73,15 +77,19 @@ internal extension CRUD where T: NSManagedObject {
     }
     
     func update(ids objectIds: [NSManagedObjectID], _ update: @escaping (inout [T]) -> Bool) {
-        persistent.privateContext.perform {
-            let context = self.persistent.privateContext
-            
+        let context = self.persistent.privateContext
+        context.perform {
             var objects = objectIds
                 .map { id -> T? in context.object(with: id) as? T }
                 .compactMap { $0 }
             
             if update(&objects) {
-                try? context.save()
+                // save
+                do {
+                    try context.save()
+                } catch {
+                    Logger.print(.database, "Failed to save database after a update operation")
+                }
             }
             
             if self.test_completion != nil {
@@ -109,7 +117,7 @@ internal extension CRUD where T: NSManagedObject {
             do {
                 try context.save()
             } catch {
-                Logger.print(.database, "Failed to save database")
+                Logger.print(.database, "Failed to save database after a delete operation")
             }
             
             if self.test_completion != nil {
@@ -156,8 +164,10 @@ internal extension CRUD where T: NSManagedObject {
         
         var count = 0
         
-        if let countRequest = try? managedObjectContext.count(for: request) {
-            count = countRequest
+        do {
+            count = try managedObjectContext.count(for: request)
+        } catch {
+            Logger.print(.database, "Cannot count DB record: \(error.localizedDescription)")
         }
         
         return count
@@ -173,9 +183,15 @@ internal extension CRUD where T: NSManagedObject {
         request.fetchLimit = 1
         request.predicate = predicate
         
-        let one = try? managedObjectContext.fetch(request)
+        var model: T?
         
-        return one?.first
+        do {
+            model = try managedObjectContext.fetch(request).first
+        } catch {
+            Logger.print(.database, "Cannot fetch single request: \(error.localizedDescription)")
+        }
+        
+        return model
     }
     
     // pecker:ignore
@@ -192,8 +208,12 @@ internal extension CRUD where T: NSManagedObject {
         
         var all = [T]()
         
-        if let records = try? managedObjectContext.fetch(request) {
+        do {
+            let records = try managedObjectContext.fetch(request)
+            
             all.append(contentsOf: records)
+        } catch {
+            Logger.print(.database, "Cannot fetch request: \(error.localizedDescription)")
         }
         
         return all
@@ -208,13 +228,16 @@ internal extension CRUD where T: NSManagedObject {
             request.fetchLimit = limit
         }
         
-        persistent.privateContext.perform {
-            let context = self.persistent.privateContext
-         
+        let context = persistent.privateContext
+        context.perform {
             var models = [T]()
             
-            if let records = try? context.fetch(request) {
+            do {
+                let records = try context.fetch(request)
+                
                 models.append(contentsOf: records)
+            } catch {
+                Logger.print(.database, "Cannot fetch all in background: \(error.localizedDescription)")
             }
             
             completion(models)
