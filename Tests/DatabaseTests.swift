@@ -14,7 +14,15 @@ final class DatabaseTests: XCTestCase {
     
     // MARK: - Property
     
-    let database = Database()
+    let database: Database = {
+        guard Trace.currentSession == 0 else {
+            print("Using existing database since Trace SDK is active")
+            
+            return Trace.shared.database
+        }
+        
+        return Database()
+    }()
     
     // MARK: - Setup
     
@@ -36,7 +44,7 @@ final class DatabaseTests: XCTestCase {
     func testDatabase_reset() {
         database.reset()
         
-        sleep(2)
+        sleep(1)
         
         let count = database.dao.metric.count(in: .view)
         
@@ -51,27 +59,25 @@ final class DatabaseTests: XCTestCase {
         XCTAssertEqual(database.dao.metric.count(in: .background), 0)
         
         database.saveAll {
-            sleep(2)
+            sleep(1)
             
             XCTAssertEqual(self.database.dao.metric.count(in: .view), 0)
         }  
     }
     
     func testDatabase_saveAll_true() {
+        database.reset()
+        
         let descriptor = Metric.Descriptor(name: .appRequestSizeBytes, description: "test 2", unit: .percent, type: .cumulativeDistribution, keys: [])
-        
-        database.dao.metric.create(with: [MetricDAO.M(descriptor: descriptor, timeseries: [])], save: true, synchronous: true)
-        
-        sleep(2)
         
         XCTAssertEqual(database.dao.metric.count(in: .background), 0)
         
+        database.dao.metric.create(with: [MetricDAO.M(descriptor: descriptor, timeseries: [])], save: true, synchronous: true)
+        
         database.saveAll {
-            sleep(2)
+            sleep(1)
             
             XCTAssertEqual(self.database.dao.metric.count(in: .view), 1)
         }
-        
-        XCTAssertEqual(self.database.dao.metric.count(in: .view), 1)
     }
 }

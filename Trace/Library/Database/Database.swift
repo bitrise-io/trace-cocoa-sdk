@@ -96,6 +96,7 @@ final internal class Database {
         // Test only
         if hasMemoryPersistent {
             persistent.viewContext.reset()
+            persistent.newBackgroundContext().reset()
             
             persistent.persistentStoreCoordinator.persistentStores.forEach {
                 try? persistent.persistentStoreCoordinator.remove($0)
