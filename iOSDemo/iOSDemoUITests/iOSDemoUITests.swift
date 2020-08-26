@@ -26,7 +26,7 @@ final class iOSDemoUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        sleep(45)
+        sleep(10)
         
         let result = app.wait(for: .runningForeground, timeout: 5)
         
