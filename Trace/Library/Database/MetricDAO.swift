@@ -91,7 +91,9 @@ internal final class MetricDAO: CRUD {
                 if let affectedObjects = cocoaError.userInfo[key] as? [T] {
                     Logger.print(.database, "Writting metric failed. Removing affected objects \(affectedObjects.count)")
                     
-                    self.delete(affectedObjects)
+                    let affectedObjectIds = affectedObjects.map { $0.objectID }
+                    
+                    self.delete(affectedObjectIds)
                 }
             }
         }
