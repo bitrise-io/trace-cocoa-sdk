@@ -65,4 +65,11 @@ final class MetricDAOTests: XCTestCase {
         
         dao.create(with: model, save: false)
     }
+    
+//        fetchRequest
+    //    fetchedResultsController
+    //    count
+    //    one
+    //    all
+    //    allInBackground
 }

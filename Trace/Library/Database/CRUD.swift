@@ -157,17 +157,18 @@ internal extension CRUD where T: NSManagedObject {
     // MARK: - Count
     
     func count(in context: Database.Context) -> Int {
-        let managedObjectContext = context.managedObjectContext(for: persistent)
-        
-        let request = fetchRequest
-        request.resultType = .countResultType
-        
         var count = 0
         
-        do {
-            count = try managedObjectContext.count(for: request)
-        } catch {
-            Logger.print(.database, "Cannot count DB record: \(error.localizedDescription)")
+        let managedObjectContext = context.managedObjectContext(for: persistent)
+        managedObjectContext.performAndWait {
+            let request = fetchRequest
+            request.resultType = .countResultType
+            
+            do {
+                count = try managedObjectContext.count(for: request)
+            } catch {
+                Logger.print(.database, "Cannot count DB record: \(error.localizedDescription)")
+            }
         }
         
         return count
@@ -177,18 +178,19 @@ internal extension CRUD where T: NSManagedObject {
     
     // pecker:ignore
     func one(in context: Database.Context, where predicate: NSPredicate?=nil) -> T? {
-        let managedObjectContext = context.managedObjectContext(for: persistent)
-        
-        let request = fetchRequest
-        request.fetchLimit = 1
-        request.predicate = predicate
-        
         var model: T?
         
-        do {
-            model = try managedObjectContext.fetch(request).first
-        } catch {
-            Logger.print(.database, "Cannot fetch single request: \(error.localizedDescription)")
+        let managedObjectContext = context.managedObjectContext(for: persistent)
+        managedObjectContext.performAndWait {
+            let request = fetchRequest
+            request.fetchLimit = 1
+            request.predicate = predicate
+            
+            do {
+                model = try managedObjectContext.fetch(request).first
+            } catch {
+                Logger.print(.database, "Cannot fetch single request: \(error.localizedDescription)")
+            }
         }
         
         return model
@@ -196,24 +198,25 @@ internal extension CRUD where T: NSManagedObject {
     
     // pecker:ignore
     func all(in context: Database.Context, where predicate: NSPredicate?=nil, sort sortDescriptors: [NSSortDescriptor]?=nil, limit: Int?=nil) -> [T] {
-        let managedObjectContext = context.managedObjectContext(for: persistent)
-        
-        let request = fetchRequest
-        request.predicate = predicate
-        request.sortDescriptors = sortDescriptors
-        
-        if let limit = limit {
-            request.fetchLimit = limit
-        }
-        
         var all = [T]()
         
-        do {
-            let records = try managedObjectContext.fetch(request)
+        let managedObjectContext = context.managedObjectContext(for: persistent)
+        managedObjectContext.performAndWait {
+            let request = fetchRequest
+            request.predicate = predicate
+            request.sortDescriptors = sortDescriptors
             
-            all.append(contentsOf: records)
-        } catch {
-            Logger.print(.database, "Cannot fetch request: \(error.localizedDescription)")
+            if let limit = limit {
+                request.fetchLimit = limit
+            }
+            
+            do {
+                let records = try managedObjectContext.fetch(request)
+                
+                all.append(contentsOf: records)
+            } catch {
+                Logger.print(.database, "Cannot fetch request: \(error.localizedDescription)")
+            }
         }
         
         return all
