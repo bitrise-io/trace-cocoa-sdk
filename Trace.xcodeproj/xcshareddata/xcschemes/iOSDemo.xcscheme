@@ -27,6 +27,7 @@
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       shouldUseLaunchSchemeArgsEnv = "NO"
+      disableMainThreadChecker = "YES"
       systemAttachmentLifetime = "keepNever"
       userAttachmentLifetime = "keepAlways">
       <MacroExpansion>
@@ -52,8 +53,7 @@
       </EnvironmentVariables>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "104A6985229401280065F218"
@@ -76,9 +76,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80AD1A3B2473E806001DA4E2"
-               BuildableName = "PerformanceTests.xctest"
-               BlueprintName = "PerformanceTests"
+               BlueprintIdentifier = "800DC5F5247D6D6C00FC8C73"
+               BuildableName = "PerformanceUITests.xctest"
+               BlueprintName = "PerformanceUITests"
                ReferencedContainer = "container:Trace.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -86,9 +86,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "800DC5F5247D6D6C00FC8C73"
-               BuildableName = "PerformanceUITests.xctest"
-               BlueprintName = "PerformanceUITests"
+               BlueprintIdentifier = "80AD1A3B2473E806001DA4E2"
+               BuildableName = "PerformanceTests.xctest"
+               BlueprintName = "PerformanceTests"
                ReferencedContainer = "container:Trace.xcodeproj">
             </BuildableReference>
          </TestableReference>
