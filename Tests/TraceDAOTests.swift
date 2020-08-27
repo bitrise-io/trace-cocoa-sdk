@@ -135,6 +135,7 @@ final class TraceDAOTests: XCTestCase {
         }
         
         XCTAssertNotNil(dao)
+        XCTAssertFalse(traces.isEmpty)
         
         wait(for: [expect], timeout: 5)
     }
