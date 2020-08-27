@@ -31,6 +31,7 @@ final class LifecycleTests: XCTestCase {
     func testSendNotification_passes() {
         var result = false
         
+        Trace.shared.queue.observation = nil
         Trace.shared.queue.observation = { _ in result = true }
         
         [
@@ -42,11 +43,14 @@ final class LifecycleTests: XCTestCase {
         ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
         
         XCTAssertTrue(result)
+        
+        Trace.shared.queue.observation = nil
     }
     
     func testSendNotification_foreground_observationDoesNotGetTriggered() {
         var result = false
         
+        Trace.shared.queue.observation = nil
         Trace.shared.queue.observation = { _ in result = true }
         
         [UIApplication.didFinishLaunchingNotification].forEach {
@@ -54,11 +58,14 @@ final class LifecycleTests: XCTestCase {
         }
         
         XCTAssertFalse(result)
+        
+        Trace.shared.queue.observation = nil
     }
     
     func testSendNotification_foreground_observationDoesGetTriggered() {
         var result = false
         
+        Trace.shared.queue.observation = nil
         Trace.shared.queue.observation = { _ in result = true }
         
         [
@@ -67,5 +74,7 @@ final class LifecycleTests: XCTestCase {
         ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
         
         XCTAssertTrue(result)
+        
+        Trace.shared.queue.observation = nil
     }
 }
