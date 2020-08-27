@@ -26,7 +26,16 @@ final class DBMetricTests: XCTestCase {
     // MARK: - Tests
     
     func testReadObject() {
-        let persistent = Database().persistent
+        let database: Database = {
+            guard Trace.currentSession == 0 else {
+                print("Using existing database since Trace SDK is active")
+                
+                return Trace.shared.database
+            }
+            
+            return Database()
+        }()
+        let persistent = database.persistent
         let request: NSFetchRequest<DBMetric> = DBMetric.fetchRequest()
         let context = persistent.privateContext
         
