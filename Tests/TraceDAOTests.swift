@@ -135,7 +135,7 @@ final class TraceDAOTests: XCTestCase {
         
         XCTAssertNotNil(dao)
         
-        wait(for: [expect], timeout: 2testFetch_all)
+        wait(for: [expect], timeout: 2)
     }
     
     func testUpdate() {
