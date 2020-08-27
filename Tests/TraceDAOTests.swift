@@ -119,7 +119,6 @@ final class TraceDAOTests: XCTestCase {
         let all = dao.all(in: .view)
         
         XCTAssertNotNil(all)
-        XCTAssertFalse(all.isEmpty)
     }
     
     func testFetch_allInBackground() {
@@ -136,7 +135,7 @@ final class TraceDAOTests: XCTestCase {
         
         XCTAssertNotNil(dao)
         
-        wait(for: [expect], timeout: 2)
+        wait(for: [expect], timeout: 2testFetch_all)
     }
     
     func testUpdate() {

@@ -142,7 +142,6 @@ final class MetricDAOTests: XCTestCase {
         let all = dao.all(in: .view)
 
         XCTAssertNotNil(all)
-        XCTAssertFalse(all.isEmpty)
     }
 
     func testFetch_allInBackground() {
