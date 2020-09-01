@@ -1,5 +1,5 @@
 // swift-tools-version:5.3
-// swiftlint:disable prefixed_toplevel_constant
+// swiftlint:disable prefixed_toplevel_constant trailing_newline
 
 import PackageDescription
 
@@ -17,7 +17,7 @@ let package = Package(
         .library(name: trace, targets: [trace]) // type: .`static`
     ],
     targets: [
-        .target(name: trace, path: "SDK/latest/libTrace")
+        .target(name: trace, path: "Trace/")
     ],
     swiftLanguageVersions: [.v5]
 )

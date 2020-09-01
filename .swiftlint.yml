@@ -54,6 +54,7 @@ excluded:
   - Scripts
   - PerformanceUITests
   - PerformanceTests
+  - Package.swift
 trailing_whitespace:
   ignores_empty_lines: true
 function_parameter_count:
