@@ -26,9 +26,40 @@ internal final class Queue {
     private let session: Session
     private let repeater: Repeater
     
-    private var lastSave: Date = Date()
-    
+    private var lastSavedForMetric: Date = Date()
+    private var lastSavedForTrace: Date = Date()
     internal var observation: ((Metrics) -> Void)?
+    
+    private var isMetricRequiredToBeSaved: Bool {
+        let result: Bool
+        let calendar = Calendar.current
+        let date = Date()
+        let from = lastSavedForMetric
+        let components = calendar.dateComponents([.second], from: from, to: date)
+        
+        if let second = components.second, second >= Queue.timeout {
+            result = true
+        } else {
+            result = false
+        }
+        
+        return result
+    }
+    private var isTraceRequiredToBeSaved: Bool {
+        let result: Bool
+        let calendar = Calendar.current
+        let date = Date()
+        let from = lastSavedForTrace
+        let components = calendar.dateComponents([.second], from: from, to: date)
+        
+        if let second = components.second, second >= Queue.timeout {
+            result = true
+        } else {
+            result = false
+        }
+        
+        return result
+    }
     
     // MARK: - Init
     
@@ -52,6 +83,7 @@ internal final class Queue {
     
     private func setup() {
         let handler: () -> Void = { [weak self] in
+            self?.savePendingManagedObjects()
             self?.schedule()
         }
         
@@ -156,6 +188,9 @@ internal final class Queue {
                     let ids = Set(trace.spans.map { $0.traceId })
                     let toBeDeleted = dbModels.filter { ids.contains($0.traceId) }
                     let toBeDeletedObjectIds = toBeDeleted.map { $0.objectID }
+                
+                    let howManyRootSpans = trace.spans.filter { $0.parentSpanId == nil }.count
+                    let howManyChildSpans = trace.spans.filter { $0.parentSpanId != nil }.count
                     
                     self?.scheduler.schedule(trace, {
                         switch $0 {
@@ -166,6 +201,8 @@ internal final class Queue {
                             Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
+                    
+                    Logger.print(.queue, "Scheduled Trace root spans: \(howManyRootSpans), child spans: \(howManyChildSpans)")
                 }
             } catch {
                 Logger.print(.queue, "Failed to create Trace class from json: \(error)")
@@ -176,21 +213,21 @@ internal final class Queue {
     // MARK: - Add
     
     internal func add(_ metrics: Metrics, force: Bool = false, delay: Bool = false) {
-        let operation = { [weak self] in
+        let lastSaved = lastSavedForMetric
+        
+        let operation = { [weak self, lastSaved] in
             var save = true
             let dao = self?.database.dao.metric
             
-            if let last = self?.lastSave {
-                let calendar = Calendar.current
-                let date = Date()
-                let components = calendar.dateComponents([.second], from: last, to: date)
-                
-                if let second = components.second, second >= Queue.timeout {
-                    save = true
-                    self?.lastSave = Date()
-                } else {
-                    save = false
-                }
+            let calendar = Calendar.current
+            let date = Date()
+            let components = calendar.dateComponents([.second], from: lastSaved, to: date)
+            
+            if let second = components.second, second >= Queue.timeout {
+                save = true
+                self?.lastSavedForMetric = Date()
+            } else {
+                save = false
             }
             
             dao?.create(
@@ -213,21 +250,21 @@ internal final class Queue {
     }
     
     internal func add(_ traces: [TraceModel], force: Bool = false, delay: Bool = false) {
-        let operation = { [weak self] in
+        let lastSaved = lastSavedForTrace
+        
+        let operation = { [weak self, lastSaved] in
             var save = true
             let dao = self?.database.dao.trace
             
-            if let last = self?.lastSave {
-                let calendar = Calendar.current
-                let date = Date()
-                let components = calendar.dateComponents([.second], from: last, to: date)
-                
-                if let second = components.second, second >= Queue.timeout {
-                    save = true
-                    self?.lastSave = Date()
-                } else {
-                    save = false
-                }
+            let calendar = Calendar.current
+            let date = Date()
+            let components = calendar.dateComponents([.second], from: lastSaved, to: date)
+            
+            if let second = components.second, second >= Queue.timeout {
+                save = true
+                self?.lastSavedForTrace = Date()
+            } else {
+                save = false
             }
             
             let attributes = Trace.shared.attributes
@@ -256,11 +293,34 @@ internal final class Queue {
         }
     }
     
+    // MARK: - Pending/Save
+    
+    @discardableResult
+    private func savePendingManagedObjects() -> Bool {
+        guard isTraceRequiredToBeSaved || isMetricRequiredToBeSaved else {
+            return false
+        }
+        
+        save()
+        
+        return true
+    }
+    
+    private func save() {
+        let date = Date()
+        
+        database.saveAll()
+        
+        lastSavedForTrace = date
+        lastSavedForMetric = date
+    }
+    
     // MARK: - State
     
     func restart() {
         repeater.state = .resume
         
+        savePendingManagedObjects()
         schedule()
     }
 }
