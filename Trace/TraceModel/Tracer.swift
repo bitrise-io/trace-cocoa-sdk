@@ -62,6 +62,15 @@ final class Tracer {
     // MARK: - Child
     
     func addChild(_ spans: [TraceModel.Span]) {
+        #if DEBUG || Debug || debug
+        // TODO: only for private beta testing. remove before GA
+        spans.forEach {
+            if !$0.validate() {
+                Logger.print(.internalError, "Child span has invalid timestamp")
+            }
+        }
+        #endif
+        
         guard let trace: TraceModel = {
             if Thread.isMainThread {
                 if let model = UIApplication.shared.currentViewController()?.trace {
@@ -70,10 +79,16 @@ final class Tracer {
             } else if let model = DispatchQueue.main.sync(execute: { UIApplication.shared.currentViewController()?.trace }) {
                 return model
             }
-
-            Logger.print(.traceModel, "Using last trace as current active view controller was not found")
-                            
-            return traces.last
+                     
+            if let lastKnownTrace = traces.last {
+                Logger.print(.traceModel, "Using last trace as current active view controller was not found")
+                
+                return lastKnownTrace
+            }
+            
+            Logger.print(.traceModel, "No active trace found")
+            
+            return nil
         }() else {
             Logger.print(.internalError, "Failed to find active trace")
                         
@@ -93,8 +108,10 @@ final class Tracer {
             spans.forEach {
                 $0.traceId = traceId
                 
-                if $0.parentSpanId != nil { // exclude root span i.e parentSpanId is nil
+                if $0.parentSpanId == nil { // exclude root span i.e parentSpanId is nil
                     $0.parentSpanId = parentSpanId
+                } else {
+                    Logger.print(.traceModel, "Property parentSpanId not set as it may be a root span")
                 }
             }
             
@@ -106,14 +123,18 @@ final class Tracer {
     
     @discardableResult
     func finish(_ trace: TraceModel) -> Bool {
-        guard traces.contains(trace) else { return false }
+        guard traces.contains(trace) else {
+            Logger.print(.traceModel, "Failed to find trace model: \(trace.traceId)")
+            
+            return false
+        }
         
         Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(trace.root.name.value)")
 
         dispatchQueue.sync {
             trace.finish()
 
-            save()
+            sendToQueue()
         }
         
         return true
@@ -125,13 +146,13 @@ final class Tracer {
         dispatchQueue.sync {
             traces.forEach { $0.finish() }
 
-            save()
+            sendToQueue()
         }
     }
     
-    // MARK: - Save
+    // MARK: - Queueing
     
-    private func save() {
+    private func sendToQueue() {
         var toBeSavedTraces: [TraceModel] = []
 
         traces.removeAll { trace in
@@ -140,7 +161,7 @@ final class Tracer {
             
             let root: TraceModel.Span = trace.root
             
-            // avoid apending invalid traces i.e negative timestamp
+            // avoid appending invalid traces i.e negative timestamp
             if root.validate() {
                 toBeSavedTraces.append(trace)
             } else {
@@ -150,7 +171,7 @@ final class Tracer {
             
             return true
         }
-
+        
         queue.add(toBeSavedTraces)
     }
 }
