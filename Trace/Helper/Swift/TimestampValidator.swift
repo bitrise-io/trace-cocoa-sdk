@@ -54,7 +54,11 @@ internal struct NanosecondValidator {
     // MARK: - Validator
     
     func isGreaterThanOrEqual(_ nanos: Int) -> Bool {
-        guard let end = end else { return false }
+        guard let end = end else {
+            Logger.print(.application, "Nanosecond validator does not have end timestamp")
+            
+            return false
+        }
         
         var result = false
         
@@ -66,6 +70,10 @@ internal struct NanosecondValidator {
             if diff >= nanos {
                 result = true
             }
+        }
+        
+        if !result {
+            Logger.print(.application, "Nanosecond validator found invalid timestamp")
         }
         
         return result

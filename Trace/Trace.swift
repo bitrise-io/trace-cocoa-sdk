@@ -96,7 +96,7 @@ final public class Trace: NSObject {
         setupConfiguration()
         
         #if DEBUG || Debug || debug
-        Logger.print(.crash, "disabled since app running in Debug mode")
+        Logger.print(.crash, "Disabled since app is running in Debug mode")
         #else
         setupCrashReporting()
         #endif

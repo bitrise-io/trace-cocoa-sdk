@@ -151,11 +151,20 @@ public final class TraceModel: NSObject, Codable {
                 if isGreaterThanOrEqualTo {
                     $0.end = end
                 } else {
+                    Logger.print(.internalError, "Span end timestamp rounded up by 0.1 milliseconds")
+                    
                     let roundedUp = end + result
                     let roundedUpTimeStamp = Span.Timestamp(from: roundedUp)
                     
                     $0.end = roundedUpTimeStamp
                 }
+                
+                #if DEBUG || Debug || debug
+                // TODO: only for private beta testing. remove before GA
+                if !$0.validate() {
+                    Logger.print(.internalError, "Span has invalid timestamp")
+                }
+                #endif
             }
     }
 }
