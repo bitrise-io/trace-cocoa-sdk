@@ -344,7 +344,11 @@ extension TraceModel {
         /// :nodoc:
         @discardableResult
         internal func validate() -> Bool {
-            guard let strongEnd = end else { return false }
+            guard let strongEnd = end else {
+                Logger.print(.traceModel, "Trace end timestamp is not set")
+                
+                return false
+            }
             
             var valid = true
             

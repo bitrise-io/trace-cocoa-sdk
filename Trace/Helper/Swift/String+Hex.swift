@@ -43,6 +43,10 @@ extension String {
         let data = Data(bytes)
         let string = String(data: data, encoding: .utf8)
         
+        if string == nil || string?.isEmpty == true || string == " " {
+            Logger.print(.internalError, "Failed to convert HEX to UTF 8 string")
+        }
+        
         return string
     }
 }
