@@ -1,0 +1,7 @@
+module Trace_Private {
+    header "Library/CrashReporting/KSCrashInstallation.h"
+    header "Library/CrashReporting/Reporting/Tools/KSCString.h"
+    header "Library/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
+    
+    export *
+}
