@@ -34,6 +34,7 @@
 		100575A9229D8994000343EE /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A4229D8994000343EE /* Routable.swift */; };
 		1006100D23576729004EFC2C /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006100C23576729004EFC2C /* String+Hex.swift */; };
 		1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F5772350DFEF00689B2B /* OrderedDictionary.swift */; };
+		100993D4250009AE006C7FB4 /* Trace.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993BF24FFFF84006C7FB4 /* Trace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CA2417AEDF0088BD24 /* CrashesService.swift */; };
 		101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CC2417AEE70088BD24 /* CrashesService+Router.swift */; };
 		101055CF2417B3BC0088BD24 /* Crash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CE2417B3BC0088BD24 /* Crash.swift */; };
@@ -539,8 +540,9 @@
 		100575A4229D8994000343EE /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		1006100C23576729004EFC2C /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
 		1008F5772350DFEF00689B2B /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
-		100993BC24FFCFDE006C7FB4 /* Trace_Private.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Trace_Private.modulemap; sourceTree = "<group>"; };
-		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = TracePrivate/module.modulemap; sourceTree = "<group>"; };
+		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		100993BF24FFFF84006C7FB4 /* Trace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
+		100993D5250019DD006C7FB4 /* Trace_Private.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = Trace_Private.modulemap; path = TracePrivate/Trace_Private.modulemap; sourceTree = "<group>"; };
 		100C503A24A2142A007777EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		100C503C24A21437007777EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		101055CA2417AEDF0088BD24 /* CrashesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
@@ -1454,6 +1456,7 @@
 		104A694E2293FB060065F218 /* Trace */ = {
 			isa = PBXGroup;
 			children = (
+				100993BF24FFFF84006C7FB4 /* Trace.h */,
 				104A694F2293FB060065F218 /* Trace.swift */,
 				10CA938924E2DFE900F6A95E /* Trace */,
 				108D308E2327A7D7002757CC /* TraceModel */,
@@ -1471,8 +1474,6 @@
 				10B01F95229421B300846ED7 /* Helper */,
 				10B01F8322940BE200846ED7 /* Supporting Files */,
 				10866F3D22946AD200D77D56 /* Tests */,
-				100993BC24FFCFDE006C7FB4 /* Trace_Private.modulemap */,
-				100993BE24FFD074006C7FB4 /* module.modulemap */,
 			);
 			path = Trace;
 			sourceTree = "<group>";
@@ -2240,6 +2241,8 @@
 			children = (
 				10866F38229469E100D77D56 /* Tests */,
 				10B01F912294163E00846ED7 /* Constants.swift */,
+				100993BE24FFD074006C7FB4 /* module.modulemap */,
+				100993D5250019DD006C7FB4 /* Trace_Private.modulemap */,
 				10C0489623E0756300822835 /* Trace-Bridging-Header.h */,
 				10BBCF91229D3FD2004589FA /* SwiftOnlyLoad.swift */,
 				10BBCF32229D2B79004589FA /* ObjectiveCOnlyLoad.m */,
@@ -2668,11 +2671,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		100993D325000994006C7FB4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100993D4250009AE006C7FB4 /* Trace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		104A694B2293FB060065F218 /* Trace */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 104A69532293FB060065F218 /* Build configuration list for PBXNativeTarget "Trace" */;
 			buildPhases = (
+				100993D325000994006C7FB4 /* Headers */,
 				104A69482293FB060065F218 /* Sources */,
 				104A69C5229407BE0065F218 /* Create Swift header and copy to build path */,
 				104A695A2293FC340065F218 /* Run SwiftLint linter tool */,
@@ -4069,7 +4084,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private.modulemap";
+				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -4122,7 +4137,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private.modulemap";
+				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
