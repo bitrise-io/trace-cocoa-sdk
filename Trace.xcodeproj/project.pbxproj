@@ -539,6 +539,8 @@
 		100575A4229D8994000343EE /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		1006100C23576729004EFC2C /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
 		1008F5772350DFEF00689B2B /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		100993BC24FFCFDE006C7FB4 /* Trace_Private.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Trace_Private.modulemap; sourceTree = "<group>"; };
+		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = TracePrivate/module.modulemap; sourceTree = "<group>"; };
 		100C503A24A2142A007777EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		100C503C24A21437007777EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		101055CA2417AEDF0088BD24 /* CrashesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
@@ -1469,6 +1471,8 @@
 				10B01F95229421B300846ED7 /* Helper */,
 				10B01F8322940BE200846ED7 /* Supporting Files */,
 				10866F3D22946AD200D77D56 /* Tests */,
+				100993BC24FFCFDE006C7FB4 /* Trace_Private.modulemap */,
+				100993BE24FFD074006C7FB4 /* module.modulemap */,
 			);
 			path = Trace;
 			sourceTree = "<group>";
@@ -4041,6 +4045,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
@@ -4050,6 +4055,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.6.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				ENABLE_TESTABILITY = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -4063,6 +4069,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
+				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -4074,6 +4081,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Trace";
 				SWIFT_OBJC_BRIDGING_HEADER = "Trace/Trace-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4089,6 +4097,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
@@ -4098,6 +4107,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.6.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				ENABLE_TESTABILITY = NO;
 				GCC_OPTIMIZATION_LEVEL = z;
@@ -4112,6 +4122,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
+				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -4123,6 +4134,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Trace";
 				SWIFT_OBJC_BRIDGING_HEADER = "Trace/Trace-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
