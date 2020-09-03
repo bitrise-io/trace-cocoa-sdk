@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double TraceVersionNumber;
 FOUNDATION_EXPORT const unsigned char TraceVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Trace/PublicHeader.h>
-
-#import <Trace/PublicHeader.h>
