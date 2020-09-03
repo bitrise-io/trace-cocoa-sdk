@@ -1,0 +1,6 @@
+module TraceInternal {
+  umbrella header "TraceInternal.h"
+  
+  export *
+  module * { export * }
+}

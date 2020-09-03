@@ -8,6 +8,9 @@ module TracePrivate {
     header "Library/CrashReporting/KSCrashInstallation.h"
     header "Library/CrashReporting/Reporting/Tools/KSCString.h"
     header "Library/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
-
+    
+    /// TODO: Used for testing
+    header "../TraceInternal/BRMain.h"
+    
     export *
 }

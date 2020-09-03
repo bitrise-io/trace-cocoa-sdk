@@ -35,6 +35,10 @@
 		1006100D23576729004EFC2C /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006100C23576729004EFC2C /* String+Hex.swift */; };
 		1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F5772350DFEF00689B2B /* OrderedDictionary.swift */; };
 		100993D4250009AE006C7FB4 /* Trace.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993BF24FFFF84006C7FB4 /* Trace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		100993E525003E17006C7FB4 /* libTraceInternal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100993DA25003BB1006C7FB4 /* libTraceInternal.a */; };
+		100993EA25005803006C7FB4 /* TraceInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993DC25003BB1006C7FB4 /* TraceInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		100993EE250059F6006C7FB4 /* BRMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993EC250059F6006C7FB4 /* BRMain.h */; };
+		100993EF250059F6006C7FB4 /* BRMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 100993ED250059F6006C7FB4 /* BRMain.m */; };
 		101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CA2417AEDF0088BD24 /* CrashesService.swift */; };
 		101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CC2417AEE70088BD24 /* CrashesService+Router.swift */; };
 		101055CF2417B3BC0088BD24 /* Crash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CE2417B3BC0088BD24 /* Crash.swift */; };
@@ -437,6 +441,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		100993E325003DF3006C7FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 104A69442293FB060065F218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100993D925003BB1006C7FB4;
+			remoteInfo = TraceInternal;
+		};
 		104A69682293FDA20065F218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 104A69442293FB060065F218 /* Project object */;
@@ -530,6 +541,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		100993D825003BB1006C7FB4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1005759C229D87B2000343EE /* JSONDecoder+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Helper.swift"; sourceTree = "<group>"; };
 		1005759D229D87B2000343EE /* Encodable+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+JSON.swift"; sourceTree = "<group>"; };
@@ -543,6 +566,11 @@
 		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		100993BF24FFFF84006C7FB4 /* Trace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
 		100993D5250019DD006C7FB4 /* Trace_Private.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = Trace_Private.modulemap; path = TracePrivate/Trace_Private.modulemap; sourceTree = "<group>"; };
+		100993DA25003BB1006C7FB4 /* libTraceInternal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTraceInternal.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		100993DC25003BB1006C7FB4 /* TraceInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TraceInternal.h; sourceTree = "<group>"; };
+		100993EB25005976006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		100993EC250059F6006C7FB4 /* BRMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMain.h; sourceTree = "<group>"; };
+		100993ED250059F6006C7FB4 /* BRMain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMain.m; sourceTree = "<group>"; };
 		100C503A24A2142A007777EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		100C503C24A21437007777EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		101055CA2417AEDF0088BD24 /* CrashesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
@@ -1029,6 +1057,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		100993D725003BB1006C7FB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		104A695F2293FDA20065F218 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1113,6 +1148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100993E525003E17006C7FB4 /* libTraceInternal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1158,6 +1194,17 @@
 				1005759D229D87B2000343EE /* Encodable+JSON.swift */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		100993DB25003BB1006C7FB4 /* TraceInternal */ = {
+			isa = PBXGroup;
+			children = (
+				100993DC25003BB1006C7FB4 /* TraceInternal.h */,
+				100993EB25005976006C7FB4 /* module.modulemap */,
+				100993EC250059F6006C7FB4 /* BRMain.h */,
+				100993ED250059F6006C7FB4 /* BRMain.m */,
+			);
+			path = TraceInternal;
 			sourceTree = "<group>";
 		};
 		101055C92417AEBF0088BD24 /* Crashes */ = {
@@ -1426,6 +1473,7 @@
 				1070AB9124748AAE00F15090 /* UploadDSYM */,
 				109B3A2924F3BE3F00E44676 /* SwiftUIDemo */,
 				109B3A4024F3BE4200E44676 /* SwiftUIDemoUITests */,
+				100993DB25003BB1006C7FB4 /* TraceInternal */,
 				104A694D2293FB060065F218 /* Products */,
 				77250CF182DC42294716073C /* Pods */,
 				82F58DA35A9B2D1C5A2E9C94 /* Frameworks */,
@@ -1449,6 +1497,7 @@
 				800DC5F6247D6D6C00FC8C73 /* PerformanceUITests.xctest */,
 				109B3A2824F3BE3F00E44676 /* SwiftUIDemo.app */,
 				109B3A3D24F3BE4200E44676 /* SwiftUIDemoUITests.xctest */,
+				100993DA25003BB1006C7FB4 /* libTraceInternal.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2680,9 +2729,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		100993E9250057E5006C7FB4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100993EA25005803006C7FB4 /* TraceInternal.h in Headers */,
+				100993EE250059F6006C7FB4 /* BRMain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		100993D925003BB1006C7FB4 /* TraceInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 100993E025003BB1006C7FB4 /* Build configuration list for PBXNativeTarget "TraceInternal" */;
+			buildPhases = (
+				100993E9250057E5006C7FB4 /* Headers */,
+				100993D625003BB1006C7FB4 /* Sources */,
+				100993D725003BB1006C7FB4 /* Frameworks */,
+				100993D825003BB1006C7FB4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TraceInternal;
+			productName = TraceInternal;
+			productReference = 100993DA25003BB1006C7FB4 /* libTraceInternal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		104A694B2293FB060065F218 /* Trace */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 104A69532293FB060065F218 /* Build configuration list for PBXNativeTarget "Trace" */;
@@ -2697,6 +2773,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				100993E425003DF3006C7FB4 /* PBXTargetDependency */,
 			);
 			name = Trace;
 			productName = Trace;
@@ -2935,6 +3012,9 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
+					100993D925003BB1006C7FB4 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					104A694B2293FB060065F218 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
@@ -3014,6 +3094,7 @@
 				109B3A3C24F3BE4200E44676 /* SwiftUIDemoUITests */,
 				1070AB8F24748AAE00F15090 /* UploadDSYM */,
 				1070AB9A24748CD800F15090 /* UploadDSYMTests */,
+				100993D925003BB1006C7FB4 /* TraceInternal */,
 			);
 		};
 /* End PBXProject section */
@@ -3403,6 +3484,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		100993D625003BB1006C7FB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100993EF250059F6006C7FB4 /* BRMain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		104A69482293FB060065F218 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3830,6 +3919,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		100993E425003DF3006C7FB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100993D925003BB1006C7FB4 /* TraceInternal */;
+			targetProxy = 100993E325003DF3006C7FB4 /* PBXContainerItemProxy */;
+		};
 		104A69692293FDA20065F218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -3932,6 +4026,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		100993E125003BB1006C7FB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 72SA8V3WYL;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				OTHER_CFLAGS = (
+					"-fembed-bitcode",
+					"-fno-optimize-sibling-calls",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fembed-bitcode",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		100993E225003BB1006C7FB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 72SA8V3WYL;
+				GCC_OPTIMIZATION_LEVEL = z;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				OTHER_CFLAGS = (
+					"-fembed-bitcode",
+					"-fno-optimize-sibling-calls",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fembed-bitcode",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
 		104A69512293FB060065F218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4738,6 +4886,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		100993E025003BB1006C7FB4 /* Build configuration list for PBXNativeTarget "TraceInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100993E125003BB1006C7FB4 /* Debug */,
+				100993E225003BB1006C7FB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		104A69472293FB060065F218 /* Build configuration list for PBXProject "Trace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
