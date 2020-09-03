@@ -39,11 +39,16 @@
 		100993EA25005803006C7FB4 /* TraceInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993DC25003BB1006C7FB4 /* TraceInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100993EE250059F6006C7FB4 /* BRMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993EC250059F6006C7FB4 /* BRMain.h */; };
 		100993EF250059F6006C7FB4 /* BRMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 100993ED250059F6006C7FB4 /* BRMain.m */; };
+		100993F82500EA9C006C7FB4 /* ReportingSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F12500EA9B006C7FB4 /* ReportingSink.swift */; };
+		100993F92500EA9C006C7FB4 /* CrashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F22500EA9B006C7FB4 /* CrashController.swift */; };
+		100993FA2500EA9C006C7FB4 /* FilterPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F32500EA9B006C7FB4 /* FilterPipeline.swift */; };
+		100993FB2500EA9C006C7FB4 /* Crash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F42500EA9B006C7FB4 /* Crash.swift */; };
+		100993FC2500EA9C006C7FB4 /* FilterStringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F52500EA9B006C7FB4 /* FilterStringToData.swift */; };
+		100993FD2500EA9C006C7FB4 /* CrashController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F62500EA9B006C7FB4 /* CrashController+Testing.swift */; };
+		100993FE2500EA9C006C7FB4 /* AppleCrashFormatInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F72500EA9B006C7FB4 /* AppleCrashFormatInterpreter.swift */; };
 		101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CA2417AEDF0088BD24 /* CrashesService.swift */; };
 		101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CC2417AEE70088BD24 /* CrashesService+Router.swift */; };
-		101055CF2417B3BC0088BD24 /* Crash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CE2417B3BC0088BD24 /* Crash.swift */; };
 		101055D12417B4610088BD24 /* CrashesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D02417B4610088BD24 /* CrashesServiceTests.swift */; platformFilter = ios; };
-		101055D32417D9400088BD24 /* CrashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D22417D9400088BD24 /* CrashController.swift */; };
 		101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D42417F6EA0088BD24 /* CrashControllerTests.swift */; platformFilter = ios; };
 		101055D7241961410088BD24 /* Network+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D6241961410088BD24 /* Network+Upload.swift */; };
 		101055D9241A70510088BD24 /* Network+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D8241A70510088BD24 /* Network+Validation.swift */; };
@@ -131,7 +136,6 @@
 		1059295023096CE10004D340 /* Metric+Descriptor+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059294F23096CE10004D340 /* Metric+Descriptor+Keys.swift */; };
 		105929522309A2D50004D340 /* Metric+Collater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105929512309A2D50004D340 /* Metric+Collater.swift */; };
 		10592954230AF2590004D340 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10592953230AF2590004D340 /* Resource.swift */; };
-		105962D7243CB7D000047D29 /* AppleCrashFormatInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105962D6243CB7D000047D29 /* AppleCrashFormatInterpreter.swift */; };
 		105962D9243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105962D8243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift */; platformFilter = ios; };
 		105962DB243CDF2B00047D29 /* outOfBound.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DA243CDF2B00047D29 /* outOfBound.crash */; platformFilter = ios; };
 		105962DE243E12C700047D29 /* noTraceId.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DC243E12C700047D29 /* noTraceId.crash */; platformFilter = ios; };
@@ -140,7 +144,6 @@
 		105A4B6D246028C5007ECEF1 /* Decodable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105A4B6C246028C5007ECEF1 /* Decodable+Helper.swift */; };
 		105A4B6E2460338F007ECEF1 /* BitriseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */; };
 		105DC59C22FC275200CEA9CC /* ViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105DC59B22FC275200CEA9CC /* ViewFilter.swift */; };
-		1063D9B22431FD6A004E0874 /* CrashController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063D9B12431FD6A004E0874 /* CrashController+Testing.swift */; };
 		1064993D23F6E99A00989C14 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993C23F6E99900989C14 /* libc++.tbd */; platformFilter = ios; };
 		1064993F23F6E9A300989C14 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993E23F6E9A300989C14 /* libz.tbd */; platformFilter = ios; };
 		1064994223F6E9B400989C14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064994123F6E9B400989C14 /* Foundation.framework */; platformFilter = ios; };
@@ -149,7 +152,6 @@
 		1064994623F6F4C900989C14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064994323F6E9C300989C14 /* SystemConfiguration.framework */; platformFilter = ios; };
 		1064994823F6F4DC00989C14 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993E23F6E9A300989C14 /* libz.tbd */; platformFilter = ios; };
 		1064994923F6F4E800989C14 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993C23F6E99900989C14 /* libc++.tbd */; platformFilter = ios; };
-		1064994B23F6F90400989C14 /* FilterStringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064994A23F6F90400989C14 /* FilterStringToData.swift */; };
 		1064C8D82295637300787D8C /* CPUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8D72295637300787D8C /* CPUTests.swift */; platformFilter = ios; };
 		1064C8DB2295706900787D8C /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8DA2295706900787D8C /* Memory.swift */; };
 		1064C8DE229610DA00787D8C /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8DD229610DA00787D8C /* Host.swift */; };
@@ -207,7 +209,6 @@
 		10673D1F23EC1E68002D7CD1 /* KSCrashInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10673CDC23EC1E68002D7CD1 /* KSCrashInstallation.m */; };
 		10673D2023EC1E68002D7CD1 /* Demangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10673CE223EC1E68002D7CD1 /* Demangle.cpp */; };
 		10673D2123EC1E68002D7CD1 /* Punycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10673CE523EC1E68002D7CD1 /* Punycode.cpp */; };
-		10673D2323EC65B1002D7CD1 /* ReportingSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10673D2223EC65B1002D7CD1 /* ReportingSink.swift */; };
 		106D1C8222980D4E00E02CFE /* SwizzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D1C8122980D4E00E02CFE /* SwizzleTests.swift */; platformFilter = ios; };
 		1070AB9324748AAE00F15090 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070AB9224748AAE00F15090 /* main.swift */; };
 		1070AB9E24748CD900F15090 /* UploadDSYMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070AB9D24748CD900F15090 /* UploadDSYMTests.swift */; };
@@ -236,7 +237,6 @@
 		1087A00D22DF82C5005F8F83 /* JSValue+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00C22DF82C5005F8F83 /* JSValue+Swizzled.swift */; };
 		1087A01022E07700005F8F83 /* BitriseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */; };
 		1087A01222E07FF1005F8F83 /* BitriseConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A01122E07FF1005F8F83 /* BitriseConfigurationInteractor.swift */; };
-		108CDEBE23FAA6BF00153BEB /* FilterPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108CDEBD23FAA6BF00153BEB /* FilterPipeline.swift */; };
 		108CDEC823FC0A5700153BEB /* ReportingSinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108CDEC723FC0A5700153BEB /* ReportingSinkTests.swift */; platformFilter = ios; };
 		108CDECB23FC0E7300153BEB /* FilterPipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108CDECA23FC0E7300153BEB /* FilterPipelineTests.swift */; platformFilter = ios; };
 		108CDECE23FC2EA600153BEB /* FilterStringToDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108CDECC23FC2E8B00153BEB /* FilterStringToDataTests.swift */; platformFilter = ios; };
@@ -571,13 +571,18 @@
 		100993EB25005976006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		100993EC250059F6006C7FB4 /* BRMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMain.h; sourceTree = "<group>"; };
 		100993ED250059F6006C7FB4 /* BRMain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMain.m; sourceTree = "<group>"; };
+		100993F12500EA9B006C7FB4 /* ReportingSink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportingSink.swift; sourceTree = "<group>"; };
+		100993F22500EA9B006C7FB4 /* CrashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashController.swift; sourceTree = "<group>"; };
+		100993F32500EA9B006C7FB4 /* FilterPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPipeline.swift; sourceTree = "<group>"; };
+		100993F42500EA9B006C7FB4 /* Crash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crash.swift; sourceTree = "<group>"; };
+		100993F52500EA9B006C7FB4 /* FilterStringToData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterStringToData.swift; sourceTree = "<group>"; };
+		100993F62500EA9B006C7FB4 /* CrashController+Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CrashController+Testing.swift"; sourceTree = "<group>"; };
+		100993F72500EA9B006C7FB4 /* AppleCrashFormatInterpreter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleCrashFormatInterpreter.swift; sourceTree = "<group>"; };
 		100C503A24A2142A007777EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		100C503C24A21437007777EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		101055CA2417AEDF0088BD24 /* CrashesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
 		101055CC2417AEE70088BD24 /* CrashesService+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrashesService+Router.swift"; sourceTree = "<group>"; };
-		101055CE2417B3BC0088BD24 /* Crash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crash.swift; sourceTree = "<group>"; };
 		101055D02417B4610088BD24 /* CrashesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashesServiceTests.swift; path = Tests/CrashesServiceTests.swift; sourceTree = SOURCE_ROOT; };
-		101055D22417D9400088BD24 /* CrashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashController.swift; sourceTree = "<group>"; };
 		101055D42417F6EA0088BD24 /* CrashControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashControllerTests.swift; path = Tests/CrashControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		101055D6241961410088BD24 /* Network+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Upload.swift"; sourceTree = "<group>"; };
 		101055D8241A70510088BD24 /* Network+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Validation.swift"; sourceTree = "<group>"; };
@@ -666,7 +671,6 @@
 		1059294F23096CE10004D340 /* Metric+Descriptor+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metric+Descriptor+Keys.swift"; sourceTree = "<group>"; };
 		105929512309A2D50004D340 /* Metric+Collater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metric+Collater.swift"; sourceTree = "<group>"; };
 		10592953230AF2590004D340 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		105962D6243CB7D000047D29 /* AppleCrashFormatInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleCrashFormatInterpreter.swift; sourceTree = "<group>"; };
 		105962D8243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppleCrashFormatInterpreterTests.swift; path = Tests/AppleCrashFormatInterpreterTests.swift; sourceTree = SOURCE_ROOT; };
 		105962DA243CDF2B00047D29 /* outOfBound.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = outOfBound.crash; path = "Supporting Files/outOfBound.crash"; sourceTree = "<group>"; };
 		105962DC243E12C700047D29 /* noTraceId.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = noTraceId.crash; path = "Supporting Files/noTraceId.crash"; sourceTree = "<group>"; };
@@ -674,12 +678,10 @@
 		105962E2243F87BD00047D29 /* SelectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectorTests.m; sourceTree = "<group>"; };
 		105A4B6C246028C5007ECEF1 /* Decodable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Helper.swift"; sourceTree = "<group>"; };
 		105DC59B22FC275200CEA9CC /* ViewFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFilter.swift; sourceTree = "<group>"; };
-		1063D9B12431FD6A004E0874 /* CrashController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrashController+Testing.swift"; sourceTree = "<group>"; };
 		1064993C23F6E99900989C14 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		1064993E23F6E9A300989C14 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		1064994123F6E9B400989C14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1064994323F6E9C300989C14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		1064994A23F6F90400989C14 /* FilterStringToData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStringToData.swift; sourceTree = "<group>"; };
 		1064C8D72295637300787D8C /* CPUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CPUTests.swift; path = Tests/CPU/CPUTests.swift; sourceTree = SOURCE_ROOT; };
 		1064C8DA2295706900787D8C /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		1064C8DD229610DA00787D8C /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Host.swift; path = Host/Host.swift; sourceTree = "<group>"; };
@@ -808,7 +810,6 @@
 		10673CE723EC1E68002D7CD1 /* Punycode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Punycode.h; sourceTree = "<group>"; };
 		10673CE823EC1E68002D7CD1 /* Fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fallthrough.h; sourceTree = "<group>"; };
 		10673CE923EC1E68002D7CD1 /* LLVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLVM.h; sourceTree = "<group>"; };
-		10673D2223EC65B1002D7CD1 /* ReportingSink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingSink.swift; sourceTree = "<group>"; };
 		106D1C8122980D4E00E02CFE /* SwizzleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwizzleTests.swift; path = Tests/Library/Swizzle/SwizzleTests.swift; sourceTree = SOURCE_ROOT; };
 		1070AB9024748AAE00F15090 /* UploadDSYM */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UploadDSYM; sourceTree = BUILT_PRODUCTS_DIR; };
 		1070AB9224748AAE00F15090 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -842,7 +843,6 @@
 		1087A00C22DF82C5005F8F83 /* JSValue+Swizzled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSValue+Swizzled.swift"; sourceTree = "<group>"; };
 		1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseConfiguration.swift; sourceTree = "<group>"; };
 		1087A01122E07FF1005F8F83 /* BitriseConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseConfigurationInteractor.swift; sourceTree = "<group>"; };
-		108CDEBD23FAA6BF00153BEB /* FilterPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPipeline.swift; sourceTree = "<group>"; };
 		108CDEC723FC0A5700153BEB /* ReportingSinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportingSinkTests.swift; path = Tests/ReportingSinkTests.swift; sourceTree = SOURCE_ROOT; };
 		108CDECA23FC0E7300153BEB /* FilterPipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterPipelineTests.swift; path = Tests/FilterPipelineTests.swift; sourceTree = SOURCE_ROOT; };
 		108CDECC23FC2E8B00153BEB /* FilterStringToDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStringToDataTests.swift; path = Tests/FilterStringToDataTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1205,6 +1205,20 @@
 				100993ED250059F6006C7FB4 /* BRMain.m */,
 			);
 			path = TraceInternal;
+			sourceTree = "<group>";
+		};
+		100993F02500EA64006C7FB4 /* CrashReportingSwift */ = {
+			isa = PBXGroup;
+			children = (
+				100993F72500EA9B006C7FB4 /* AppleCrashFormatInterpreter.swift */,
+				100993F42500EA9B006C7FB4 /* Crash.swift */,
+				100993F22500EA9B006C7FB4 /* CrashController.swift */,
+				100993F62500EA9B006C7FB4 /* CrashController+Testing.swift */,
+				100993F32500EA9B006C7FB4 /* FilterPipeline.swift */,
+				100993F52500EA9B006C7FB4 /* FilterStringToData.swift */,
+				100993F12500EA9B006C7FB4 /* ReportingSink.swift */,
+			);
+			path = CrashReportingSwift;
 			sourceTree = "<group>";
 		};
 		101055C92417AEBF0088BD24 /* Crashes */ = {
@@ -1738,10 +1752,6 @@
 			isa = PBXGroup;
 			children = (
 				101055DC241BED330088BD24 /* Tests */,
-				101055CE2417B3BC0088BD24 /* Crash.swift */,
-				105962D6243CB7D000047D29 /* AppleCrashFormatInterpreter.swift */,
-				101055D22417D9400088BD24 /* CrashController.swift */,
-				1063D9B12431FD6A004E0874 /* CrashController+Testing.swift */,
 				10673CDE23EC1E68002D7CD1 /* KSCrashInstallation.h */,
 				10673CDC23EC1E68002D7CD1 /* KSCrashInstallation.m */,
 				10673C5723EC1E68002D7CD1 /* Reporting */,
@@ -1770,8 +1780,6 @@
 				10673C5923EC1E68002D7CD1 /* KSCrashReportFilterAppleFmt.h */,
 				10673C6223EC1E68002D7CD1 /* KSCrashReportFilterAppleFmt.m */,
 				10673C6023EC1E68002D7CD1 /* KSCrashReportFilter.h */,
-				108CDEBD23FAA6BF00153BEB /* FilterPipeline.swift */,
-				1064994A23F6F90400989C14 /* FilterStringToData.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1799,7 +1807,6 @@
 			isa = PBXGroup;
 			children = (
 				108CDEC623FC0A3D00153BEB /* Tests */,
-				10673D2223EC65B1002D7CD1 /* ReportingSink.swift */,
 			);
 			path = Sinks;
 			sourceTree = "<group>";
@@ -2316,6 +2323,7 @@
 		10B01F96229421BA00846ED7 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				100993F02500EA64006C7FB4 /* CrashReportingSwift */,
 				1028C8BC2302B8BF00E07839 /* Tests */,
 				10B8DF19242A6B970055D41E /* ULID */,
 				10673C5623EC1E68002D7CD1 /* CrashReporting */,
@@ -3505,15 +3513,14 @@
 				10CA8768229F1B01003702B1 /* TraceService+Router.swift in Sources */,
 				1046CC3622B94B2100A8762F /* Queue.swift in Sources */,
 				10673D0223EC1E68002D7CD1 /* KSCPU_arm.c in Sources */,
-				1063D9B22431FD6A004E0874 /* CrashController+Testing.swift in Sources */,
 				10127B8422E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift in Sources */,
 				10F2BC9522B24EAC0074EE5D /* SessionConfigurationFormatter.swift in Sources */,
 				10673D1423EC1E68002D7CD1 /* KSJSONCodec.c in Sources */,
+				100993FD2500EA9C006C7FB4 /* CrashController+Testing.swift in Sources */,
 				10F2BC9722B291100074EE5D /* Metrics.swift in Sources */,
 				1087A01022E07700005F8F83 /* BitriseConfiguration.swift in Sources */,
 				10673D0E23EC1E68002D7CD1 /* KSSignalInfo.c in Sources */,
 				10FC45E123117EA50077BF2C /* Metric+Timeseries+Point.swift in Sources */,
-				1064994B23F6F90400989C14 /* FilterStringToData.swift in Sources */,
 				10CA877222A0997E003702B1 /* MetricsService.swift in Sources */,
 				1043FC9123144A7400F75D27 /* URLSessionTask+Helper.swift in Sources */,
 				10DCA0972306ADA500F0281E /* ViewControllerFilter.swift in Sources */,
@@ -3527,12 +3534,14 @@
 				10673D1223EC1E68002D7CD1 /* KSStackCursor_SelfThread.c in Sources */,
 				10673CF623EC1E68002D7CD1 /* KSCrashMonitor_NSException.m in Sources */,
 				1046CC3922BA87CF00A8762F /* ViewController+Swizzled.swift in Sources */,
+				100993FC2500EA9C006C7FB4 /* FilterStringToData.swift in Sources */,
 				1047952F22C69DC900E6B8A2 /* StartupFormatter.swift in Sources */,
 				10127B8F22E7648E004B1F4C /* MetricDAO.swift in Sources */,
 				10673D0D23EC1E68002D7CD1 /* KSLogger.c in Sources */,
 				1047952D22C67B4C00E6B8A2 /* Startup.swift in Sources */,
 				101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */,
 				10673CFD23EC1E68002D7CD1 /* KSDemangle_Swift.cpp in Sources */,
+				100993F92500EA9C006C7FB4 /* CrashController.swift in Sources */,
 				10673CF023EC1E68002D7CD1 /* KSCrash.m in Sources */,
 				1047952A22C5118D00E6B8A2 /* FPSFormatter.swift in Sources */,
 				10673D0423EC1E68002D7CD1 /* KSDynamicLinker.c in Sources */,
@@ -3549,6 +3558,7 @@
 				10673CFC23EC1E68002D7CD1 /* KSCrashMonitor_CPPException.cpp in Sources */,
 				10673CFE23EC1E68002D7CD1 /* NSError+SimpleConstructor.m in Sources */,
 				10673D1823EC1E68002D7CD1 /* KSCPU_arm64.c in Sources */,
+				100993F82500EA9C006C7FB4 /* ReportingSink.swift in Sources */,
 				10B01F99229421D700846ED7 /* Logger.swift in Sources */,
 				10F2BC8C22AFB4530074EE5D /* HardwareFormatter.swift in Sources */,
 				10FC45D0230EB2550077BF2C /* URLStructure.swift in Sources */,
@@ -3557,6 +3567,7 @@
 				100575A6229D8994000343EE /* Network+Request.swift in Sources */,
 				10673D1523EC1E68002D7CD1 /* KSThread.c in Sources */,
 				101055DB241BACAB0088BD24 /* Data+Helper.swift in Sources */,
+				100993FA2500EA9C006C7FB4 /* FilterPipeline.swift in Sources */,
 				10F2BC8822AFB2BC0074EE5D /* JSONEncodable.swift in Sources */,
 				10673D1723EC1E68002D7CD1 /* KSMach.c in Sources */,
 				10673CF123EC1E68002D7CD1 /* KSCrashReportStore.c in Sources */,
@@ -3569,14 +3580,12 @@
 				10B1BAF822F31ABF00DEA77B /* URLSessionTaskMetrics+Swizzled.swift in Sources */,
 				10673CF723EC1E68002D7CD1 /* KSCrashMonitor_MachException.c in Sources */,
 				1087A00922DF2EF6005F8F83 /* JSContext+Swizzled.swift in Sources */,
-				105962D7243CB7D000047D29 /* AppleCrashFormatInterpreter.swift in Sources */,
 				10673D0823EC1E68002D7CD1 /* KSDate.c in Sources */,
 				108D309923292974002757CC /* UUID.swift in Sources */,
 				10DCA093230420C800F0281E /* Encodable+Helper.swift in Sources */,
 				10673D0A23EC1E68002D7CD1 /* KSString.c in Sources */,
 				1047952622C504D600E6B8A2 /* UIApplication+ViewController.swift in Sources */,
 				1064C8DB2295706900787D8C /* Memory.swift in Sources */,
-				108CDEBE23FAA6BF00153BEB /* FilterPipeline.swift in Sources */,
 				10592954230AF2590004D340 /* Resource.swift in Sources */,
 				108D30932327A80A002757CC /* TraceModel+Span.swift in Sources */,
 				10F2BC9A22B296530074EE5D /* Metric.swift in Sources */,
@@ -3587,7 +3596,6 @@
 				10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */,
 				104EA0BB237EAE67004C07CE /* UIApplication+Screenshot.swift in Sources */,
 				101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */,
-				101055CF2417B3BC0088BD24 /* Crash.swift in Sources */,
 				1059295023096CE10004D340 /* Metric+Descriptor+Keys.swift in Sources */,
 				10FC45DF23117AA70077BF2C /* Timeseriesble.swift in Sources */,
 				10673D0523EC1E68002D7CD1 /* KSJSONCodecObjC.m in Sources */,
@@ -3629,9 +3637,9 @@
 				10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */,
 				10673CFB23EC1E68002D7CD1 /* KSCrashMonitor.c in Sources */,
 				10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */,
+				100993FB2500EA9C006C7FB4 /* Crash.swift in Sources */,
 				109B39F524F0136F00E44676 /* KSCxaThrowSwapper.c in Sources */,
 				100575A5229D8994000343EE /* Network+Configuration.swift in Sources */,
-				10673D2323EC65B1002D7CD1 /* ReportingSink.swift in Sources */,
 				10673D2123EC1E68002D7CD1 /* Punycode.cpp in Sources */,
 				1046CC3F22BB894800A8762F /* ViewFormatter.swift in Sources */,
 				10673D1C23EC1E68002D7CD1 /* KSCrashReport.c in Sources */,
@@ -3654,7 +3662,7 @@
 				10879FED22D23F4A005F8F83 /* CrashReporting.swift in Sources */,
 				1064C8E42296DEBD00787D8C /* Swizzle.swift in Sources */,
 				1028C8C82302F2DD00E07839 /* Session.swift in Sources */,
-				101055D32417D9400088BD24 /* CrashController.swift in Sources */,
+				100993FE2500EA9C006C7FB4 /* AppleCrashFormatInterpreter.swift in Sources */,
 				10673D1923EC1E68002D7CD1 /* KSID.c in Sources */,
 				10F2BC9022B051690074EE5D /* TaskMetricsFormatter.swift in Sources */,
 				10879FF122D25C50005F8F83 /* CrashFormatter.swift in Sources */,
