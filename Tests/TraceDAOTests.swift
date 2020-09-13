@@ -145,9 +145,19 @@ final class TraceDAOTests: XCTestCase {
         let dao = database.dao.trace
         dao.create(with: [model], save: true, synchronous: true)
         
+        sleep(1)
+        
         let dbModel = dao.one(in: .view)
         
         XCTAssertNotNil(dbModel)
+        
+        if dbModel == nil {
+            expect.fulfill()
+            
+            XCTFail("DB object does not exist in database")
+            
+            return;
+        }
         
         let date = Date()
         
