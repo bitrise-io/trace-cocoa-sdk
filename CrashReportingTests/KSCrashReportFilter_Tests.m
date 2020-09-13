@@ -29,11 +29,13 @@
 
 #import "KSCrashReportFilter.h"
 #import "NSError+SimpleConstructor.h"
+#import "BRFilterStringToData.h"
+#import "BRFilterPipeline.h"
 
-#if __has_include(<Trace/Trace-Swift.h>)
-#import <Trace/Trace-Swift.h> // Framework
+#if __has_include(<TraceInternal/TraceInternal.h>)
+#import <TraceInternal/TraceInternal.h> // Framework
 #else
-#import <Trace-Swift.h> // Static library
+#import <TraceInternal.h> // Static library
 #endif
 
 @interface KSCrash_TestNilFilter: NSObject <KSCrashReportFilter>
@@ -129,7 +131,7 @@
     NSArray* expected = [NSArray arrayWithObjects:@"11232323", @"2", @"3", nil];
     NSArray* filters = @[[[BRFilterStringToData alloc] init]];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters:filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters:filters];
     
     [filter filterReports:expected onCompletion:^(NSArray* filteredReports,
                                                   BOOL completed,
@@ -146,7 +148,7 @@
     NSArray* expected = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     NSArray* filters = @[[BRFilterStringToData new]];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters:filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters:filters];
     
     filter = filter;
     
@@ -165,7 +167,7 @@
     NSArray* expected = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     NSArray* filters = @[];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters:filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters:filters];
     
     [filter filterReports:expected onCompletion:^(NSArray* filteredReports,
                                                   BOOL completed,
@@ -182,7 +184,7 @@
     NSArray* expected1 = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     NSArray* filters = @[[KSCrash_TestFilter filterWithDelay:0 completed:NO error:nil]];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters:filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters:filters];
     
     [filter filterReports:expected1 onCompletion:^(NSArray* filteredReports,
                                                    BOOL completed,
@@ -199,7 +201,7 @@
     NSArray* expected1 = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     NSArray* filters = @[[KSCrash_TestNilFilter filter]];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters:filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters:filters];
     
     [filter filterReports:expected1 onCompletion:^(NSArray* filteredReports,
                                                    BOOL completed,
@@ -219,7 +221,7 @@
     __weak id weakReports = reports;
     __weak id weakFilter = filter;
     
-    __block BRFilterPipeline* pipeline = [BRFilterPipeline withFilters:@[filter]];
+    __block BRFilterPipeline* pipeline = [BRFilterPipeline filters:@[filter]];
     [pipeline filterReports:reports
                onCompletion:^(__unused NSArray* filteredReports,
                               __unused BOOL completed,
@@ -245,7 +247,7 @@
     __weak id weakReports = reports;
     __weak id weakFilter = filter;
 
-    __block BRFilterPipeline* pipeline = [BRFilterPipeline withFilters:@[filter]];
+    __block BRFilterPipeline* pipeline = [BRFilterPipeline filters:@[filter]];
     [pipeline filterReports:reports
                onCompletion:^(__unused NSArray* filteredReports,
                               __unused BOOL completed,
@@ -291,7 +293,7 @@
     NSArray* expected = [NSArray arrayWithObjects:@"1", @"2", nil];
     NSArray* filters = @[[BRFilterStringToData new]];
     
-    id<KSCrashReportFilter> filter = [BRFilterPipeline withFilters: filters];
+    id<KSCrashReportFilter> filter = [BRFilterPipeline filters: filters];
     
     [filter filterReports:expected onCompletion:^(NSArray* filteredReports,
                                                   BOOL completed,

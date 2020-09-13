@@ -63,11 +63,15 @@
     Class logger = NSClassFromString(@"BRLoggerObjc");
     
     XCTAssertNotNil(logger);
-    
+
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     BOOL result = [logger performSelector:@selector(print:for:)
                             withObject:@"test"
                             withObject:@"launch"
     ];
+#pragma clang diagnostic pop
     
     // check if i can run still...
     int test = 1 + 1;
@@ -80,11 +84,15 @@
     Class logger = NSClassFromString(@"BRLoggerObjc");
     
     XCTAssertNotNil(logger);
-    
+
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     BOOL result = [logger performSelector:@selector(print:for:)
                             withObject:@"test"
                             withObject:@"fail"
     ];
+#pragma clang diagnostic pop
     
     // check if i can run still...
     int test = 1 + 1;
@@ -94,3 +102,6 @@
 }
 
 @end
+
+
+

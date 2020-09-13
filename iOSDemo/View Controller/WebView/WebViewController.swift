@@ -50,7 +50,7 @@ extension WebViewController: WKNavigationDelegate {
     // MARK: - WKNavigationDelegate
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        print("Demo - \(navigationResponse)")
+        print("Demo - decidePolicyFor navigationResponse")
         
         _ = navigationResponse.canShowMIMEType
         _ = navigationResponse.isForMainFrame
