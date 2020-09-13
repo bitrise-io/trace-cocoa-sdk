@@ -1,7 +1,9 @@
-module Trace_Private {
-    header "Library/CrashReporting/KSCrashInstallation.h"
-    header "Library/CrashReporting/Reporting/Tools/KSCString.h"
-    header "Library/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
-    
-    export *
-}
+//module Trace_Private {
+//    header "Trace-Swift.h"
+////    header "../TraceInternal/BRReportingSink.h"
+////    header "../TraceInternal/KSCrashInstallation.h"
+////    header "../TraceInternal/CrashReporting/Reporting/Tools/KSCString.h"
+////    header "../TraceInternal/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
+////    
+//    export *
+//}

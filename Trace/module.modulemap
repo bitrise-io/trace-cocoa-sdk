@@ -5,12 +5,12 @@
  This file lives inside a folder, and that folder is the actual module. In Xcode the SWIFT_INCLUDE_PATHS needs to include the parent directory to that folder.
  */
 module TracePrivate {
-    header "Library/CrashReporting/KSCrashInstallation.h"
-    header "Library/CrashReporting/Reporting/Tools/KSCString.h"
-    header "Library/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
-    
     /// TODO: Used for testing
-    header "../TraceInternal/BRMain.h"
-    
+    header "Trace-Swift.h"
+//    header "../TraceInternal/BRReportingSink.h"
+//    header "../TraceInternal/KSCrashInstallation.h"
+//    header "../TraceInternal/CrashReporting/Reporting/Tools/KSCString.h"
+//    header "../TraceInternal/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
+//
     export *
 }
