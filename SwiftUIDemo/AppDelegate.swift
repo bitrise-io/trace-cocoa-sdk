@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Trace
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
