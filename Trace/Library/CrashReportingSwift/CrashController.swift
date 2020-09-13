@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TraceInternal
 
 /// CrashController
 @objcMembers
@@ -18,7 +19,7 @@ public final class CrashController: NSObject {
     private let scheduler: Scheduler
     
     /// Internal use only
-    internal lazy var installation = KSCrashInstallation()
+    internal lazy var installation: TraceInternal.KSCrashInstallation = KSCrashInstallation()
     
     internal var userInfo: [AnyHashable: Any] {
         get {
@@ -52,15 +53,15 @@ public final class CrashController: NSObject {
     internal func scheduleNewReports() {
         installation.allReports { [weak self] processedReports, _, _ in
             var count = 0
-            
+
             if let processedCount = processedReports?.count {
                 count = processedCount
-                
+
                 if processedCount != 0 {
                     Logger.print(.crash, "Report count: \(count)")
                 }
             }
-            
+
             processedReports?
                 .compactMap { $0 as? Data }
                 .forEach { self?.send(report: $0) }

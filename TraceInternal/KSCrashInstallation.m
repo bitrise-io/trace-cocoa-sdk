@@ -32,12 +32,10 @@
 #import "KSLogger.h"
 #import "NSError+SimpleConstructor.h"
 #import <objc/runtime.h>
+#import "BRFilterPipeline.h"
+#import "BRReportingSink.h"
 
-#if __has_include(<Trace/Trace-Swift.h>)
-#import <Trace/Trace-Swift.h> // Framework
-#else
-#import <Trace-Swift.h> // Static library
-#endif
+#import <TraceInternal/BRReportingSink.h>
 
 /** Max number of properties that can be defined for writing to the report */
 #define kMaxProperties 500
@@ -362,7 +360,7 @@ static void crashCallback(const KSCrashReportWriter* writer)
     
     NSArray<KSCrashReportFilter>* _Nonnull filters = [NSArray<KSCrashReportFilter> arrayWithObjects: self.prependedFilters, sink, nil];
     
-    sink = [BRFilterPipeline withFilters: filters];
+    sink = [BRFilterPipeline filters: filters];
 
     KSCrash* handler = [KSCrash sharedInstance];
     handler.sink = sink;
@@ -378,7 +376,7 @@ static void crashCallback(const KSCrashReportWriter* writer)
 - (id<KSCrashReportFilter>) sink {
     NSString *bundleName = NSBundle.mainBundle.infoDictionary[@"CFBundleName"];
     NSString *filename = [NSString stringWithFormat:@"crash-report-%@-%%d.crash", bundleName];
-    BRReportingSink* sink = [[BRReportingSink alloc] initWith: filename];
+    BRReportingSink* sink = [[BRReportingSink alloc] initWithFileName: filename];
     
     return sink.filter;
 }

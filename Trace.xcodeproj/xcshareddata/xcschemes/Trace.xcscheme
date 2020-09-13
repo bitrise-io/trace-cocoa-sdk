@@ -78,16 +78,6 @@
                ReferencedContainer = "container:Trace.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "108CDED323FC544800153BEB"
-               BuildableName = "CrashReportingTests.xctest"
-               BlueprintName = "CrashReportingTests"
-               ReferencedContainer = "container:Trace.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

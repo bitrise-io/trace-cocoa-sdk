@@ -15,7 +15,7 @@ public extension CrashController {
     
     /// Testing only unformatted in JSON
     var allReports: [Any] {
-        let reports = installation.allReport()
+        let reports: [Any] = installation.allReport()
         
         Logger.print(.internalError, "Warning: Do not use in production app, method only intended for testing")
         Logger.print(.crash, "Report count: \(reports.count)")
@@ -30,13 +30,13 @@ public extension CrashController {
         installation.allReports { [weak self] reports, result, error in
             Logger.print(.internalError, "Warning: Do not use in production app, method only intended for testing")
             Logger.print(.crash, "Report count: \(result)")
-            
+
             if let error = error {
                 Logger.print(.internalError, error.localizedDescription)
             }
-            
+
             completion(reports ?? [])
-            
+
             self?.cleanUp()
         }
     }
