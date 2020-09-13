@@ -1,20 +1,17 @@
 //
-//  BRMain.h
+//  BRFilterStringToData.h
 //  TraceInternal
 //
-//  Created by Shams Ahmed on 02/09/2020.
+//  Created by Shams Ahmed on 03/09/2020.
 //  Copyright © 2020 Bitrise. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "KSCrashReportFilter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// TODO: Used for testing
-@interface BRMain : NSObject
-
-/// TODO: Used for testing
-- (void)test;
+@interface BRFilterStringToData : NSObject<KSCrashReportFilter>
 
 @end
 
