@@ -21,7 +21,7 @@ internal struct Entities {
     
     // MARK: - Entity
     
-    private var trace: NSEntityDescription {
+    internal var trace: NSEntityDescription {
         let name = String(describing: DBTrace.self)
         
         let entity = NSEntityDescription()
@@ -32,7 +32,7 @@ internal struct Entities {
         return entity
     }
     
-    private var metric: NSEntityDescription {
+    internal var metric: NSEntityDescription {
         let name = String(describing: DBMetric.self)
         
         let entity = NSEntityDescription()

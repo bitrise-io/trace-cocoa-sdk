@@ -11,6 +11,8 @@ import Foundation
 import CoreData
 
 /// Internal use only
+@objc(DBMetric)
+@objcMembers
 internal final class DBMetric: NSManagedObject {
     
     // MARK: - NSManagedObject

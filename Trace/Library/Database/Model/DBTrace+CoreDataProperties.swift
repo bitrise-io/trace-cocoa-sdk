@@ -36,3 +36,5 @@ extension DBTrace {
         return NSFetchRequest<DBTrace>(entityName: String(describing: DBTrace.self))
     }
 }
+
+extension DBTrace: Identifiable { }
