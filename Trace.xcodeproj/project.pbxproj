@@ -1236,6 +1236,7 @@
 		10BB4E7925082F000044AB9E /* BRObjectiveCOnlyLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObjectiveCOnlyLoad.m; sourceTree = "<group>"; };
 		10BB4E92250926B90044AB9E /* BRObjectiveCOnlyLoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObjectiveCOnlyLoadTests.m; sourceTree = "<group>"; };
 		10BB4EAD250A83DC0044AB9E /* NSManagedObject+Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Entity.swift"; path = "Tests/NSManagedObject+Entity.swift"; sourceTree = SOURCE_ROOT; };
+		10BB4EB5250ED0400044AB9E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		10BBCF91229D3FD2004589FA /* SwiftOnlyLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOnlyLoad.swift; sourceTree = "<group>"; };
 		10C0498B23E093FE00822835 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		10C0498D23E0941500822835 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -2023,6 +2024,7 @@
 		104A69432293FB060065F218 = {
 			isa = PBXGroup;
 			children = (
+				10BB4EB5250ED0400044AB9E /* Package.swift */,
 				104A694E2293FB060065F218 /* Trace */,
 				104A69632293FDA20065F218 /* Tests */,
 				104A69A6229403370065F218 /* InteroperabilityTests */,

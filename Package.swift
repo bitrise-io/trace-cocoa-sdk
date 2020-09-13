@@ -1,11 +1,9 @@
 // swift-tools-version:5.3
-// swiftlint:disable prefixed_toplevel_constant trailing_newline
 
 import PackageDescription
 
 let packageName = "BitriseTrace"
 let trace = "Trace"
-let testsName = "Tests"
 
 let package = Package(
     name: packageName,
@@ -14,10 +12,10 @@ let package = Package(
         .macOS(.v10_15)
     ],
     products: [
-        .library(name: trace, targets: [trace]) // type: .`static`
+        .library(name: trace, targets: [trace])
     ],
     targets: [
-        .target(name: trace, path: "Trace/")
+        .binaryTarget(name: trace, path: "SDK/latest/\(trace).xcframework") // use Github release
     ],
     swiftLanguageVersions: [.v5]
 )
