@@ -37,3 +37,5 @@ extension DBMetric {
         return NSFetchRequest<DBMetric>(entityName: String(describing: DBMetric.self))
     }
 }
+
+extension DBMetric: Identifiable { }

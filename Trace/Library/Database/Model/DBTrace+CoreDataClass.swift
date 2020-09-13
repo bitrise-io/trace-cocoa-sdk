@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 
 /// Internal use only
+@objc(DBTrace)
+@objcMembers
 internal final class DBTrace: NSManagedObject {
  
     // MARK: - NSManagedObject
