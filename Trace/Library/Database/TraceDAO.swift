@@ -55,14 +55,23 @@ internal final class TraceDAO: CRUD {
     func create(with models: [M], save: Bool, synchronous: Bool) {
         let context = persistent.privateContext
         
-        let function: () -> Void = {
+        let function: () -> Void = { [weak self] in
             do {
                 let _: [T?] = try models.map {
                     let date = Date()
                     let id = $0.traceId
                     let json = try $0.json() as NSData
                     
-                    let trace = T(context: context)
+                    let className = String(describing: T.self)
+                    let trace: T
+                    
+                    if let entity = self?.persistent.managedObjectModel.entitiesByName[className] {
+                        // When unit testing, CoreData gets into difficulty in understanding which entity to use in memory since the are many tests that create them.
+                        trace = T(entity: entity, insertInto: context)
+                    } else {
+                        trace = T(context: context)
+                    }
+                    
                     trace.traceId = id
                     trace.json = json
                     trace.date = date
@@ -74,8 +83,8 @@ internal final class TraceDAO: CRUD {
                     try context.save()
                 }
                 
-                if self.test_completion != nil {
-                    DispatchQueue.main.async { self.test_completion?() }
+                if self?.test_completion != nil {
+                    DispatchQueue.main.async { self?.test_completion?() }
                 }
             } catch {
                 let cocoaError = error as NSError
@@ -86,7 +95,7 @@ internal final class TraceDAO: CRUD {
                     
                     let affectedObjectIds = affectedObjects.map { $0.objectID }
                     
-                    self.delete(affectedObjectIds)
+                    self?.delete(affectedObjectIds)
                 }
             }
         }
