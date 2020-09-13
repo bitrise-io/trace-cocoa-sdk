@@ -8,7 +8,6 @@
 
 import Foundation
 import QuartzCore.CABase
-import TracePrivate
 
 /**
  Trace SDK
@@ -34,8 +33,8 @@ final public class Trace: NSObject {
     /// Configuration
     public static var configuration: Configuration = .default
     
-    /// :nodoc:
-    internal private(set) static var currentSession: CFTimeInterval = 0.0
+    /// Current session time interval
+    public private(set) static var currentSession: CFTimeInterval = 0.0
     
     // MARK: - Property
     
@@ -65,15 +64,17 @@ final public class Trace: NSObject {
     internal static func reset() {
         let session = CACurrentMediaTime()
         Trace.currentSession = session
-        
-        /// TODO: Used for testing
-        let xxx: BRMain = BRMain()
-        xxx.test()
     }
     
     // MARK: - Init
     
     private override init() {
+        if Trace.currentSession == 0 {
+            Logger.print(.internalError, "SDK launched without a valid startup session")
+            
+            Trace.reset()
+        }
+        
         if !Trace.configuration.enabled {
             Logger.print(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
         }
