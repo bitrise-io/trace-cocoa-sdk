@@ -66,10 +66,18 @@ internal final class Startup {
     // MARK: - Process
     
     private func process() {
+        let currentSession = Trace.currentSession
+        
+        guard currentSession != 0 else {
+            Logger.print(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
+            
+            return
+        }
+        
         // Compare start and end time.
         // Start time is updated when the SDK start
         let time = Time.current
-        let result = time - Trace.currentSession
+        let result = time - currentSession
         let formatter = StartupFormatter(result, status: .cold)
         
         Trace.shared.queue.add(formatter.metrics)

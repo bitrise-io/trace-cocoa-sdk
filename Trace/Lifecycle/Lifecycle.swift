@@ -131,8 +131,16 @@ final internal class Lifecycle {
     }
     
     private func process() {
+        let currentSession = Trace.currentSession
+        
+        guard currentSession != 0 else {
+            Logger.print(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
+            
+            return
+        }
+        
         let time = Time.current
-        let session = time - Trace.currentSession
+        let session = time - currentSession
         let formatter = StartupFormatter(session, status: .warm)
         
         Trace.shared.queue.add(formatter.metrics)
