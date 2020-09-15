@@ -192,8 +192,7 @@
 		101055DB241BACAB0088BD24 /* Data+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055DA241BACAB0088BD24 /* Data+Helper.swift */; };
 		101055E1241BED990088BD24 /* CrashesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055E0241BED990088BD24 /* CrashesTest.swift */; };
 		101055E3241BEE1D0088BD24 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055E2241BEE1D0088BD24 /* DataTests.swift */; };
-		10127B8322E75AD8004B1F4C /* DBMetric+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8122E75AD8004B1F4C /* DBMetric+CoreDataClass.swift */; };
-		10127B8422E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8222E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift */; };
+		10127B8322E75AD8004B1F4C /* DBMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8122E75AD8004B1F4C /* DBMetric.swift */; };
 		10127B8722E75BED004B1F4C /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8622E75BED004B1F4C /* Persistent.swift */; };
 		10127B8922E75EC4004B1F4C /* CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8822E75EC4004B1F4C /* CRUD.swift */; };
 		10127B8B22E7620A004B1F4C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8A22E7620A004B1F4C /* Database.swift */; };
@@ -398,8 +397,7 @@
 		10916D71234B395300E02C14 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10916D70234B395300E02C14 /* ResourceTests.swift */; };
 		1091771D232F8CF1007CE2F0 /* Tracer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091771C232F8CF1007CE2F0 /* Tracer.swift */; };
 		1091771F232FE761007CE2F0 /* ViewController+Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091771E232FE761007CE2F0 /* ViewController+Metric.swift */; };
-		109177212331315D007CE2F0 /* DBTrace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109177202331315D007CE2F0 /* DBTrace+CoreDataClass.swift */; };
-		109177232331316A007CE2F0 /* DBTrace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109177222331316A007CE2F0 /* DBTrace+CoreDataProperties.swift */; };
+		109177212331315D007CE2F0 /* DBTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109177202331315D007CE2F0 /* DBTrace.swift */; };
 		1091772523313545007CE2F0 /* TraceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091772423313545007CE2F0 /* TraceDAO.swift */; };
 		10962098229D59EF00E16003 /* LoggerObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10962097229D59EF00E16003 /* LoggerObjcTests.m */; };
 		109B39EE24EFC42C00E44676 /* NibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 109B39ED24EFC42C00E44676 /* NibViewController.xib */; };
@@ -821,7 +819,6 @@
 		1008F5772350DFEF00689B2B /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		100993BF24FFFF84006C7FB4 /* Trace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
-		100993D5250019DD006C7FB4 /* Trace_Private.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = Trace_Private.modulemap; path = TracePrivate/Trace_Private.modulemap; sourceTree = "<group>"; };
 		100993DA25003BB1006C7FB4 /* libTraceInternal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTraceInternal.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		100993DC25003BB1006C7FB4 /* TraceInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TraceInternal.h; sourceTree = "<group>"; };
 		100993EB25005976006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -975,8 +972,7 @@
 		101055DA241BACAB0088BD24 /* Data+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Helper.swift"; sourceTree = "<group>"; };
 		101055E0241BED990088BD24 /* CrashesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashesTest.swift; path = Tests/CrashesTest.swift; sourceTree = SOURCE_ROOT; };
 		101055E2241BEE1D0088BD24 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTests.swift; path = Tests/DataTests.swift; sourceTree = SOURCE_ROOT; };
-		10127B8122E75AD8004B1F4C /* DBMetric+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBMetric+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10127B8222E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBMetric+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10127B8122E75AD8004B1F4C /* DBMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBMetric.swift; sourceTree = "<group>"; };
 		10127B8622E75BED004B1F4C /* Persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		10127B8822E75EC4004B1F4C /* CRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUD.swift; sourceTree = "<group>"; };
 		10127B8A22E7620A004B1F4C /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -1194,8 +1190,7 @@
 		10916D70234B395300E02C14 /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResourceTests.swift; path = Tests/ResourceTests.swift; sourceTree = SOURCE_ROOT; };
 		1091771C232F8CF1007CE2F0 /* Tracer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracer.swift; sourceTree = "<group>"; };
 		1091771E232FE761007CE2F0 /* ViewController+Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Metric.swift"; sourceTree = "<group>"; };
-		109177202331315D007CE2F0 /* DBTrace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBTrace+CoreDataClass.swift"; sourceTree = "<group>"; };
-		109177222331316A007CE2F0 /* DBTrace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBTrace+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		109177202331315D007CE2F0 /* DBTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTrace.swift; sourceTree = "<group>"; };
 		1091772423313545007CE2F0 /* TraceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceDAO.swift; sourceTree = "<group>"; };
 		10962097229D59EF00E16003 /* LoggerObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoggerObjcTests.m; path = Tests/Library/Log/LoggerObjcTests.m; sourceTree = SOURCE_ROOT; };
 		109B39ED24EFC42C00E44676 /* NibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibViewController.xib; sourceTree = "<group>"; };
@@ -1805,10 +1800,8 @@
 		10127B8522E75BAC004B1F4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				10127B8122E75AD8004B1F4C /* DBMetric+CoreDataClass.swift */,
-				10127B8222E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift */,
-				109177202331315D007CE2F0 /* DBTrace+CoreDataClass.swift */,
-				109177222331316A007CE2F0 /* DBTrace+CoreDataProperties.swift */,
+				10127B8122E75AD8004B1F4C /* DBMetric.swift */,
+				109177202331315D007CE2F0 /* DBTrace.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2591,7 +2584,6 @@
 				10866F38229469E100D77D56 /* Tests */,
 				10B01F912294163E00846ED7 /* Constants.swift */,
 				100993BE24FFD074006C7FB4 /* module.modulemap */,
-				100993D5250019DD006C7FB4 /* Trace_Private.modulemap */,
 				10BBCF91229D3FD2004589FA /* SwiftOnlyLoad.swift */,
 			);
 			name = "Supporting Files";
@@ -4090,7 +4082,6 @@
 				10127B8B22E7620A004B1F4C /* Database.swift in Sources */,
 				10CA8768229F1B01003702B1 /* TraceService+Router.swift in Sources */,
 				1046CC3622B94B2100A8762F /* Queue.swift in Sources */,
-				10127B8422E75AD8004B1F4C /* DBMetric+CoreDataProperties.swift in Sources */,
 				10F2BC9522B24EAC0074EE5D /* SessionConfigurationFormatter.swift in Sources */,
 				100993FD2500EA9C006C7FB4 /* CrashController+Testing.swift in Sources */,
 				10F2BC9722B291100074EE5D /* Metrics.swift in Sources */,
@@ -4114,7 +4105,7 @@
 				10866F4222946B4E00D77D56 /* CPU.swift in Sources */,
 				1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */,
 				10B1BB6D22F9AAB900DEA77B /* Lifecycle.swift in Sources */,
-				10127B8322E75AD8004B1F4C /* DBMetric+CoreDataClass.swift in Sources */,
+				10127B8322E75AD8004B1F4C /* DBMetric.swift in Sources */,
 				1064C8DE229610DA00787D8C /* Host.swift in Sources */,
 				10B1BB6F22F9B35600DEA77B /* SessionFormatter.swift in Sources */,
 				10F2BC9E22B29D6A0074EE5D /* Metric+Timeseries.swift in Sources */,
@@ -4146,7 +4137,7 @@
 				10FC45DF23117AA70077BF2C /* Timeseriesble.swift in Sources */,
 				10DCA09523045D5B00F0281E /* Double+Helper.swift in Sources */,
 				1005759F229D87B2000343EE /* Encodable+JSON.swift in Sources */,
-				109177212331315D007CE2F0 /* DBTrace+CoreDataClass.swift in Sources */,
+				109177212331315D007CE2F0 /* DBTrace.swift in Sources */,
 				101055D7241961410088BD24 /* Network+Upload.swift in Sources */,
 				104EA0C62382AA61004C07CE /* Gesture+Swizzled.swift in Sources */,
 				10F2874B23C36C3100F9D03A /* UIDevice+Jailbreak.swift in Sources */,
@@ -4182,7 +4173,6 @@
 				105A4B6D246028C5007ECEF1 /* Decodable+Helper.swift in Sources */,
 				10D1E47922E8A96F007BD5E1 /* Entities.swift in Sources */,
 				10CA877922A453B3003702B1 /* FileManager+Space.swift in Sources */,
-				109177232331316A007CE2F0 /* DBTrace+CoreDataProperties.swift in Sources */,
 				10879FED22D23F4A005F8F83 /* CrashReporting.swift in Sources */,
 				1064C8E42296DEBD00787D8C /* Swizzle.swift in Sources */,
 				1028C8C82302F2DD00E07839 /* Session.swift in Sources */,
@@ -4797,7 +4787,6 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -4861,7 +4850,6 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULEMAP_FILE = "";
-				MODULEMAP_PRIVATE_FILE = "$(SRCROOT)/Trace/Trace_Private/Trace_Private.modulemap";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
