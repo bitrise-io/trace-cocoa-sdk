@@ -1,5 +1,5 @@
 //
-//  DBTrace+CoreDataProperties.swift
+//  DBTrace.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 17/09/2019.
@@ -9,8 +9,11 @@
 import Foundation
 import CoreData
 
-extension DBTrace {
-    
+/// Internal use only
+@objc(DBTrace)
+@objcMembers
+internal final class DBTrace: NSManagedObject, Identifiable {
+
     // MARK: - Enum
     
     enum Key: String {
@@ -30,11 +33,16 @@ extension DBTrace {
     /// Internal use only
     @NSManaged internal var date: Date
     
-    // MARK: - Fetch Request
+    // MARK: - Class - Fetch Request
     
     @nonobjc internal class func fetchRequest() -> NSFetchRequest<DBTrace> {
         return NSFetchRequest<DBTrace>(entityName: String(describing: DBTrace.self))
     }
-}
 
-extension DBTrace: Identifiable { }
+    // MARK: - Init
+    
+    /// Internal use only
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
+}
