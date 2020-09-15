@@ -44,6 +44,7 @@ internal final class SwiftOnlyLoad: NSObject, SelfAware {
 }
 
 /// Internal use only
+/// This class may depend on having -ObjC in Other linker flags
 extension UIApplication {
     
     // MARK: - Property
