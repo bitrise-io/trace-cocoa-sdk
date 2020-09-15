@@ -7,10 +7,6 @@
 module TracePrivate {
     /// TODO: Used for testing
     header "Trace-Swift.h"
-//    header "../TraceInternal/BRReportingSink.h"
-//    header "../TraceInternal/KSCrashInstallation.h"
-//    header "../TraceInternal/CrashReporting/Reporting/Tools/KSCString.h"
-//    header "../TraceInternal/CrashReporting/Reporting/Filters/KSCrashReportFilterAppleFmt.h"
-//
+
     export *
 }
