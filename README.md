@@ -3,9 +3,9 @@
 
 Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.
 Use Trace to:
-- *Detect the problem*: Know about issues before your users report them.
-- *Assess the impact*: Focus on resolving the issues which are most impactful to your users.
-- *Trace the cause*: Spend less time trying to reproduce issues.
+- **Detect the problem**: Know about issues before your users report them.
+- **Assess the impact**: Focus on resolving the issues which are most impactful to your users.
+- **Trace the cause**: Spend less time trying to reproduce issues.
 
 [* Trace website](https://trace.bitrise.io)  [* What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  [* Getting started guide](https://trace.bitrise.io/o/getting-started)  [* Trace configuration settings](https://trace.bitrise.io/settings)
 
@@ -28,7 +28,7 @@ Each framework can be easier found in Xcode's framework list. These are currentl
 
 ### Install from Bitrise workflow step site
 
-Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step *must* come before the Xcode Archive & Export step.
+Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step **must** come before the Xcode Archive & Export step.
 
 ### Install directly from the source code
 
@@ -104,21 +104,22 @@ trace build Trace --platform iOS
 ### [Swift Package Manager](https://swift.org/package-manager)
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
-*Add library to your project using one of the following method:*
-*Package.swift*
+**Add library to your project using one of the following method**
+
+**Package.swift**
 ```swift
 dependencies: [
     .package(url: "https://github.com/bitrise-io/trace-cocoa-sdk.git", .upToNextMajor(from: "1.6.1"))
 ]
 ```
 
-*Xcode*
+**Xcode**
 Follow [Apple guide](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)
 
 Enter `https://github.com/bitrise-io/trace-cocoa-sdk.git` when prompt
 
 
-*Add other linker flags to project*
+**Add other linker flags to project**
 * Select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-ObjC -l z -l c++`
