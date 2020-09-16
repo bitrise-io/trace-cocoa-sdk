@@ -31,7 +31,7 @@
 - (void)testInclude {
     Class class = NSClassFromString(@"BRInternalObjectiveCOnlyLoadUsingClassMethod");
     
-    XCTAssertNil(class);
+    XCTAssertNotNil(class);
 }
 
 @end
