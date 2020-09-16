@@ -8,8 +8,7 @@
   "swift_version": "5.3",
   "authors": {
     "Shams Ahmed": "shams.ahmed@bitrise.io",
-    "Colin Hemmings": "colin.hemmings@bitrise.io",
-    "Mukund Agarwal": "mukund.agarwal@bitrise.io"
+    "Colin Hemmings": "colin.hemmings@bitrise.io"
   },
   "license": {
     "type": "MIT",
