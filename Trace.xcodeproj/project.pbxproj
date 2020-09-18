@@ -3889,7 +3889,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating .xcframework file from device and simulator library\"\n\nxcodebuild -create-xcframework -library \"${BUILD_DIR}/Release-iphoneos/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphoneos/include/\" -library \"${BUILD_DIR}/Release-iphonesimulator/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphonesimulator/include/\" -output \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\necho \"Created Trace.xcframework file:  ${BUILD_DIR}/Release-universal/Trace.xcframework\"\n";
+			shellScript = "echo \"Creating .xcframework file from device and simulator library\"\n\nrm -r \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\nxcodebuild -create-xcframework -library \"${BUILD_DIR}/Release-iphoneos/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphoneos/include/\" -library \"${BUILD_DIR}/Release-iphonesimulator/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphonesimulator/include/\" -output \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\necho \"Created Trace.xcframework file:  ${BUILD_DIR}/Release-universal/Trace.xcframework\"\n";
 		};
 		10BB4EB1250BC7F40044AB9E /* 5. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3943,7 +3943,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\necho \"Copying ${PROJECT_NAME}.xcframework to SDK latest folder\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.xcframework\" \"${PROJECT_DIR}/SDK/latest/${PROJECT_NAME}.xcframework\"\n\necho \"Copied ${PROJECT_NAME}.xcframework to SDK latest folder\"\n";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\necho \"Copying ${PROJECT_NAME}.xcframework to SDK latest folder\"\n\nrm -r \"${PROJECT_DIR}/SDK/latest/${PROJECT_NAME}.xcframework\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.xcframework\" \"${PROJECT_DIR}/SDK/latest/${PROJECT_NAME}.xcframework\"\n\necho \"Copied ${PROJECT_NAME}.xcframework to SDK latest folder\"\n";
 		};
 		10BB4EB4250E85020044AB9E /* 9. Zip Trace.xcframework */ = {
 			isa = PBXShellScriptBuildPhase;

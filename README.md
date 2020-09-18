@@ -7,9 +7,10 @@ Use Trace to:
 - **Assess the impact**: Focus on resolving the issues which are most impactful to your users.
 - **Trace the cause**: Spend less time trying to reproduce issues.
 
-[* What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)
+* [What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)
 
-Note: Following links requires the user to be signed-in and have the Trace addon*
+*Note: Following links requires the user to be signed-in and have the Trace addon*  
+  
 [* Trace](https://trace.bitrise.io) [* Getting started guide](https://trace.bitrise.io/o/getting-started) [* Trace configuration settings](https://trace.bitrise.io/settings)
 
 ## Requirements
