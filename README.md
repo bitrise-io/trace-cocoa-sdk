@@ -7,7 +7,10 @@ Use Trace to:
 - **Assess the impact**: Focus on resolving the issues which are most impactful to your users.
 - **Trace the cause**: Spend less time trying to reproduce issues.
 
-[* Trace website](https://trace.bitrise.io)  [* What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  [* Getting started guide](https://trace.bitrise.io/o/getting-started)  [* Trace configuration settings](https://trace.bitrise.io/settings)
+[* What's Trace?](https://www.bitrise.io/add-ons/trace-mobile-monitoring)
+
+Note: Following links requires the user to be signed-in and have the Trace addon*
+[* Trace](https://trace.bitrise.io) [* Getting started guide](https://trace.bitrise.io/o/getting-started) [* Trace configuration settings](https://trace.bitrise.io/settings)
 
 ## Requirements
 
@@ -104,27 +107,28 @@ trace build Trace --platform iOS
 ### [Swift Package Manager](https://swift.org/package-manager)
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
-**Add library to your project using one of the following method**
+**Add the library to your project using one of the following methods:**
 
-**Package.swift**
+**Using `Package.swift` with Swift CLI**
+
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bitrise-io/trace-cocoa-sdk.git", .upToNextMajor(from: "1.6.1"))
+    .package(url: "https://github.com/bitrise-io/trace-cocoa-sdk.git", .upToNextMajor(from: "1.7.0"))
 ]
 ```
+Add Trace SDK as a dependency inside your `Package.swift` file. Please look at the [release section](https://github.com/bitrise-io/trace-cocoa-sdk/releases) for the latest stable version of the SDK.
 
-**Xcode**
-Follow [Apple guide](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)
+**Using Xcode Swift package manager integration**
+To add a package dependency to your Xcode project/workspace, select `File > Swift Packages > Add Package Dependency` and enter the repository URL `https://github.com/bitrise-io/trace-cocoa-sdk.git`. 
 
-Enter `https://github.com/bitrise-io/trace-cocoa-sdk.git` when prompt
+Also, you can also navigate to your target’s General pane, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button, select Add Other, and choose Add Package Dependency.
 
-
-**Add other linker flags to project**
+**Adding `Other Linker Flags to application target**
 * Select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-ObjC -l z -l c++`
 
-In your project add `import Trace` and call `Trace.shared`.
+In your project add `import Trace` and call `let trace = Trace.shared` to start the SDK.
 
 * And that's it!
 
