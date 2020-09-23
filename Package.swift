@@ -2,20 +2,23 @@
 
 import PackageDescription
 
+let version = "1.7.1"
 let name = "BitriseTrace"
 let trace = "Trace"
 let product: Product = .library(name: trace, targets: [trace])
+let url = "https://github.com/bitrise-io/trace-cocoa-sdk/releases/download/\(version)/Trace.xcframework.zip"
+let checksum = "82f10c051e7f7cb203006f066e80bb9dcab1e0da0771bcdb1622bdf644a62fae"
 
 let target: Target = .binaryTarget(
     name: trace,
-    url: "https://github.com/bitrise-io/trace-cocoa-sdk/releases/download/1.7.1/Trace.xcframework.zip",
-    checksum: "82f10c051e7f7cb203006f066e80bb9dcab1e0da0771bcdb1622bdf644a62fae"
+    url: url,
+    checksum: checksum
 )
 
 /**
-Adding linkerSettings in Xcode 12 beta causes:
-- Xcode to crash
-- Swift CLI to report exceptions 
+Adding linkerSettings in Xcode 12.2 beta causes:
+- Xcode crashes
+- Swift CLI reports exceptions
 
 TODO: Wait for Xcode 12 GM to be released
 */
