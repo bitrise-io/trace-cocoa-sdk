@@ -3907,7 +3907,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# https://developer.apple.com/forums/thread/123253\n\necho \"Removing all instances of Trace. in all .swiftinterface files\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\necho \"Removed all instances of Trace. in all .swiftinterface files\"\n";
+			shellScript = "# https://developer.apple.com/forums/thread/123253\n\necho \"Removing all instances of Trace. in all .swiftinterface files\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\ncd \"${BUILD_DIR}/Release-maccatalyst/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\necho \"Removed all instances of Trace. in all .swiftinterface files\"\n";
 		};
 		10BB4EB2250BDCCE0044AB9E /* 6. Remove `import TraceInternal` from all Trace .swiftinterface files */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3925,7 +3925,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Removing import TraceInternal from all .swiftinterface to make the SDK build\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n";
+			shellScript = "echo \"Removing import TraceInternal from all .swiftinterface to make the SDK build\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n\ncd \"${BUILD_DIR}/Release-maccatalyst/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n";
 		};
 		10BB4EB3250BF03A0044AB9E /* 8. Copy Trace.xcframework SDK latest folder */ = {
 			isa = PBXShellScriptBuildPhase;
