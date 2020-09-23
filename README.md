@@ -1,5 +1,5 @@
 # [<img src="assets/logo.jpeg"  width="80" height="80">](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  Trace SDK
-[![Bitrise status](https://app.bitrise.io/app/fa31931683b0dd17.svg?token=MpCmFyjh7KE7W785Tb3Keg)](https://app.bitrise.io/app/fa31931683b0dd17#/builds)[![Cocoapods](https://img.shields.io/cocoapods/v/BitriseTrace)](https://cocoapods.org/pods/BitriseTrace)![Cocoapods platforms](https://img.shields.io/cocoapods/p/BitriseTrace)[![Cocoapods](https://img.shields.io/cocoapods/l/BitriseTrace)](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE)![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen)![Swift version](https://img.shields.io/badge/Swift-5.3-red)![SPM](https://img.shields.io/badge/SPM-compatible-red)[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fbitrise)](https://twitter.com/bitrise)[![Join Slack group](https://img.shields.io/badge/Chat-Slack-blue?link=https://chat.bitrise.io/)](https://chat.bitrise.io/)[![BCH compliance](https://bettercodehub.com/edge/badge/bitrise-io/trace-cocoa-sdk?branch=main)](https://bettercodehub.com/results/bitrise-io/trace-cocoa-sdk)
+[![Bitrise status](https://app.bitrise.io/app/fa31931683b0dd17.svg?token=MpCmFyjh7KE7W785Tb3Keg)](https://app.bitrise.io/app/fa31931683b0dd17#/builds)[![Cocoapods](https://img.shields.io/cocoapods/v/BitriseTrace)](https://cocoapods.org/pods/BitriseTrace)![Cocoapods platforms](https://img.shields.io/cocoapods/p/BitriseTrace)![Mac Catalyst](https://img.shields.io/badge/Platform-Mac%20Catalyst-brightgreen)[![Cocoapods](https://img.shields.io/cocoapods/l/BitriseTrace)](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE)![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen)![Swift version](https://img.shields.io/badge/Swift-5.3-red)![SPM](https://img.shields.io/badge/SPM-compatible-red)[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fbitrise)](https://twitter.com/bitrise)[![Join Slack group](https://img.shields.io/badge/Chat-Slack-blue?link=https://chat.bitrise.io/)](https://chat.bitrise.io/)[![BCH compliance](https://bettercodehub.com/edge/badge/bitrise-io/trace-cocoa-sdk?branch=main)](https://bettercodehub.com/results/bitrise-io/trace-cocoa-sdk)
 
 Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.
 Use Trace to:
@@ -16,7 +16,7 @@ Use Trace to:
 ## Requirements
 
 - iOS 10.0+ 
-- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12+
+- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12.2+
 - Swift 5.3
 
 ## Installation
@@ -105,7 +105,7 @@ sed -i -e 's/MACH_O_TYPE = mh_dylib/MACH_O_TYPE = staticlib/g' Carthage/Checkout
 trace build Trace --platform iOS
 ```
 
-### [Swift Package Manager](https://swift.org/package-manager)
+### [Swift Package Manager](https://swift.org/package-manager) (iOS and Mac Catalyst compatible)
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
 **Add the library to your project using one of the following methods:**
@@ -215,6 +215,16 @@ Make sure `bitrise_configuration.plist` is included in your project and the targ
 `[Bitrise:Trace/internalError] Application failed to read the configuration file, all data will be cached until it's resolved`
 
 Add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
+
+# Limitations
+
+#### `-force_load` and `-all_load`
+
+`.XCFramework` does not currently allow developers to load a library at App launch. This only affects SPM packages only. No workaround are available right now.
+
+#### Mac catalyst support 
+
+Mac catalyst support is only available in SPM and Manual installations as we should `.XCFramework`. Using `lipo` to create a static library does not work since it cannot understand architecture that are similar but have a different flavor to support Mac's. 
 
 # Miscellaneous
 
