@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 10F7031022A6A79200618F27 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
 			buildPhases = (
-				10A9C80C23E8822500DCBF4F /* 1. Build Device and Simulator library */,
+				10A9C80C23E8822500DCBF4F /* 1. Build Device, Simulator and Mac catalyst library */,
 				10F7031322A6A7F100618F27 /* 2. Create universal static library */,
 				10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */,
 				10B1BAFC22F336D500DEA77B /* 4. Zip universal static library */,
@@ -3427,7 +3427,7 @@
 			attributes = {
 				CLASSPREFIX = BR;
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
 					100993D925003BB1006C7FB4 = {
@@ -3817,7 +3817,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/latest/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\nln -s \"${PROJECT_DIR}/SDK/latest/libTrace.a\" \"${PROJECT_DIR}\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
+			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/latest/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\nln -f -n \"${PROJECT_DIR}/SDK/latest/libTrace.a\" \"${PROJECT_DIR}\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
 		};
 		10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3837,7 +3837,7 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copying library to SDK latest folder\"\n\n# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 4. Copy library to project root\ncp \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${PROJECT_DIR}/SDK/latest/lib${PROJECT_NAME}.a\"\n\necho \"${PROJECT_DIR}/SDK/latest/lib${PROJECT_NAME}.a\"\necho \"Copied library to SDK latest folder\"\n";
 		};
-		10A9C80C23E8822500DCBF4F /* 1. Build Device and Simulator library */ = {
+		10A9C80C23E8822500DCBF4F /* 1. Build Device, Simulator and Mac catalyst library */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3846,7 +3846,7 @@
 			);
 			inputPaths = (
 			);
-			name = "1. Build Device and Simulator library";
+			name = "1. Build Device, Simulator and Mac catalyst library";
 			outputFileListPaths = (
 			);
 			outputPaths = (
