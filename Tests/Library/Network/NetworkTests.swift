@@ -87,7 +87,7 @@ final class NetworkTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 10.0) { _ in }
+        waitForExpectations(timeout: 15.0) { _ in }
         
         _ = task
     }
@@ -107,7 +107,7 @@ final class NetworkTests: XCTestCase {
         
         XCTAssertNotNil(task)
         
-        waitForExpectations(timeout: 10.0) { _ in }
+        waitForExpectations(timeout: 15.0) { _ in }
         
         _ = task
     }
@@ -128,7 +128,7 @@ final class NetworkTests: XCTestCase {
         
         XCTAssertNotNil(task)
         
-        waitForExpectations(timeout: 10.0) { _ in }
+        waitForExpectations(timeout: 15.0) { _ in }
         
         _ = task
     }
@@ -170,7 +170,7 @@ final class NetworkTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 10.0) { _ in }
+        waitForExpectations(timeout: 15.0) { _ in }
         
         XCTAssertNotNil(task)
         XCTAssertEqual(task?.originalRequest?.allHTTPHeaderFields?["Authorization"]!, "xxx")
