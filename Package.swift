@@ -7,7 +7,7 @@ let name = "BitriseTrace"
 let trace = "Trace"
 let product: Product = .library(name: trace, targets: [trace])
 let url = "https://github.com/bitrise-io/trace-cocoa-sdk/releases/download/\(version)/Trace.xcframework.zip"
-let checksum = "82f10c051e7f7cb203006f066e80bb9dcab1e0da0771bcdb1622bdf644a62fae"
+let checksum = "8aa6ee04c990aeac8cc4abf360f6e039843dd736c485b4a83c73dbec53b6aa0e"
 
 let target: Target = .binaryTarget(
     name: trace,
