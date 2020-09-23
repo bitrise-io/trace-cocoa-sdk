@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1200"
+   LastUpgradeVersion = "1220"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "NO"
@@ -45,6 +45,7 @@
       debugXPCServices = "NO"
       debugServiceExtension = "internal"
       enableGPUFrameCaptureMode = "3"
+      enableGPUValidationMode = "1"
       allowLocationSimulation = "NO"
       viewDebuggingEnabled = "No"
       queueDebuggingEnabled = "No"
