@@ -3889,7 +3889,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating .xcframework file from device and simulator library\"\n\nrm -r \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\nxcodebuild -create-xcframework -library \"${BUILD_DIR}/Release-iphoneos/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphoneos/include/\" -library \"${BUILD_DIR}/Release-iphonesimulator/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphonesimulator/include/\" -output \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\necho \"Created Trace.xcframework file:  ${BUILD_DIR}/Release-universal/Trace.xcframework\"\n";
+			shellScript = "echo \"Creating .xcframework file from device, simulator and macCatalyst static library\"\n\nrm -r \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\nxcodebuild -create-xcframework -library \"${BUILD_DIR}/Release-iphoneos/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphoneos/include/\" -library \"${BUILD_DIR}/Release-iphonesimulator/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphonesimulator/include/\" -library \"${BUILD_DIR}/Release-maccatalyst/libTrace.a\" -headers \"${BUILD_DIR}/Release-maccatalyst/include/\" -output \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\necho \"Created Trace.xcframework file:  ${BUILD_DIR}/Release-universal/Trace.xcframework\"\n";
 		};
 		10BB4EB1250BC7F40044AB9E /* 5. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */ = {
 			isa = PBXShellScriptBuildPhase;
