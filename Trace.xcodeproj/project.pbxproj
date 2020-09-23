@@ -3961,7 +3961,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n\n";
+			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
