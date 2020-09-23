@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for Trace.
+//! Project version number for TraceInternal.
 FOUNDATION_EXPORT double TraceInternalVersionNumber;
 
-//! Project version string for Trace.
+//! Project version string for TraceInternal.
 FOUNDATION_EXPORT const unsigned char TraceInternalVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TraceInternal/PublicHeader.h>

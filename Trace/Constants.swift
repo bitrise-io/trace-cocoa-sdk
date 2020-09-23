@@ -15,7 +15,7 @@ internal enum Constants {
     internal enum SDK: String {
         case company = "Bitrise"
         case name = "Trace"
-        case version = "1.7.0" // Static library does not include a .plist with details about package. Would be nice to automate this the version details on this class
+        case version = "1.7.1" // Static library does not include a .plist with details about package. Would be nice to automate this the version details on this class
     }
     
     // MARK: - URL
