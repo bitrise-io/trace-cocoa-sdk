@@ -6,7 +6,7 @@ let version = "1.7.1"
 let name = "BitriseTrace"
 let trace = "Trace"
 let product: Product = .library(name: trace, targets: [trace])
-let path = "/SDK/\(version)/Trace.xcframework"
+let path = "SDK/\(version)/Trace.xcframework"
 
 let target: Target = .binaryTarget(
     name: trace,
