@@ -6,15 +6,12 @@ let version = "1.7.1"
 let name = "BitriseTrace"
 let trace = "Trace"
 let product: Product = .library(name: trace, targets: [trace])
-let url = "https://github.com/bitrise-io/trace-cocoa-sdk/releases/download/\(version)/Trace.xcframework.zip"
-let checksum = "8aa6ee04c990aeac8cc4abf360f6e039843dd736c485b4a83c73dbec53b6aa0e"
+let path = "/SDK/\(version)/Trace.xcframework"
 
 let target: Target = .binaryTarget(
     name: trace,
-    url: url,
-    checksum: checksum
+    path: path
 )
-
 /**
 Adding linkerSettings in Xcode 12.2 beta causes:
 - Xcode crashes
