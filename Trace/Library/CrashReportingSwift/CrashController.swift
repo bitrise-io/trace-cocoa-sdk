@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TraceInternal
+//import TraceInternal
 
 /// CrashController
 @objcMembers
@@ -19,14 +19,14 @@ public final class CrashController: NSObject {
     private let scheduler: Scheduler
     
     /// Internal use only
-    internal lazy var installation: TraceInternal.KSCrashInstallation = KSCrashInstallation()
+//    internal lazy var installation: TraceInternal.KSCrashInstallation = KSCrashInstallation()
     
     internal var userInfo: [AnyHashable: Any] {
         get {
-            return installation.userInfo
+            return [:] // installation.userInfo
         }
         set {
-            installation.userInfo = newValue
+//            installation.userInfo = newValue
         }
     }
     
@@ -43,7 +43,7 @@ public final class CrashController: NSObject {
     /// Call setup before acessing crash installation
     /// Called afterward SDK has started
     internal func setup() {
-        installation.install()
+        // installation.install()
         
         scheduleNewReports()
     }
@@ -51,21 +51,21 @@ public final class CrashController: NSObject {
     // MARK: - Schedule
     
     internal func scheduleNewReports() {
-        installation.allReports { [weak self] processedReports, _, _ in
-            var count = 0
-
-            if let processedCount = processedReports?.count {
-                count = processedCount
-
-                if processedCount != 0 {
-                    Logger.print(.crash, "Report count: \(count)")
-                }
-            }
-
-            processedReports?
-                .compactMap { $0 as? Data }
-                .forEach { self?.send(report: $0) }
-        }
+//        installation.allReports { [weak self] processedReports, _, _ in
+//            var count = 0
+//
+//            if let processedCount = processedReports?.count {
+//                count = processedCount
+//
+//                if processedCount != 0 {
+//                    Logger.print(.crash, "Report count: \(count)")
+//                }
+//            }
+//
+//            processedReports?
+//                .compactMap { $0 as? Data }
+//                .forEach { self?.send(report: $0) }
+//        }
     }
     
     // MARK: - Send
@@ -104,7 +104,7 @@ public final class CrashController: NSObject {
     
     @discardableResult
     internal func cleanUp() -> Bool {
-        installation.deleteAllReports()
+        // installation.deleteAllReports()
         
         return true
     }
