@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import QuartzCore.CABase
 
 /**
  Trace SDK
@@ -62,7 +61,7 @@ final public class Trace: NSObject {
     
     /// Internal use only
     internal static func reset() {
-        let session = CACurrentMediaTime()
+        let session = Time.current
         Trace.currentSession = session
     }
     
