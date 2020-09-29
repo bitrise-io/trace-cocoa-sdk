@@ -1,11 +1,18 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let version = "1.0.0"
+let version = "1.7.1"
 let name = "BitriseTrace"
+let trace = "Trace"
 let traceInternal = "TraceInternal"
-let product: Product = .library(name: traceInternal, targets: [traceInternal])
+let product: Product = .library(name: trace, targets: [trace])
 let targets: [Target] = [
+    .target(
+        name: trace,
+        dependencies: [.target(name: traceInternal)],
+        path: "\(trace)/",
+        exclude: []
+    ),
     .target(
         name: traceInternal,
         path: "\(traceInternal)/",
