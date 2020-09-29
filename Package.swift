@@ -21,17 +21,16 @@ let targets: [Target] = [
         cxxSettings: [
             .define("GCC_ENABLE_CPP_EXCEPTIONS", to: "YES"),
             .headerSearchPath(".."),
-            .headerSearchPath("../"),
-            .headerSearchPath("CrashReporting/llvm/Support/"),
-            .headerSearchPath("CrashReporting/llvm/Config/"),
-            .headerSearchPath("CrashReporting/llvm/ADT/"),
-            .headerSearchPath("CrashReporting/swift/"),
+            .headerSearchPath("CrashReporting/llvm/Support"),
+            .headerSearchPath("CrashReporting/llvm/Config"),
+            .headerSearchPath("CrashReporting/llvm/ADT"),
+            .headerSearchPath("CrashReporting/swift"),
             .headerSearchPath("CrashReporting/swift/Basic"),
-            .headerSearchPath("CrashReporting/Recording/"),
+            .headerSearchPath("CrashReporting/Recording"),
             .headerSearchPath("CrashReporting/Recording/Tools"),
             .headerSearchPath("CrashReporting/Recording/Monitors"),
-            .headerSearchPath("CrashReporting/Reporting/Filters/"),
-            .headerSearchPath("CrashReporting/Reporting/Tools/")
+            .headerSearchPath("CrashReporting/Reporting/Filters"),
+            .headerSearchPath("CrashReporting/Reporting/Tools")
         ],
         linkerSettings: [
             .linkedLibrary("c++"),
