@@ -17,3 +17,5 @@ FOUNDATION_EXPORT const unsigned char TraceInternalVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <TraceInternal/PublicHeader.h>
 
 #import <KSCrashInstallation.h>
+#import <KSCrashReportFilter.h>
+#import <KSCrashReportWriter.h>
