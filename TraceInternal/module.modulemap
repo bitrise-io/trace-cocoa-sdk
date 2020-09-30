@@ -1,4 +1,6 @@
 module TraceInternal {
+  header "CrashReporting/Reporting/Filters/KSCrashReportFilter.h"
+  header "CrashReporting/Recording/KSCrashReportWriter.h"
   header "KSCrashInstallation.h"
 
   export *
