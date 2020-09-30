@@ -5,22 +5,22 @@ let package = Package(
     name: "KSCrash",
     products: [
         .library(
-            name: "KSCrash",
+            name: "TraceInternal",
             targets: [
-                "KSCrash/Installations",
-                "KSCrash/Recording",
-                "KSCrash/Recording/Monitors",
-                "KSCrash/Recording/Tools",
-                "KSCrash/Reporting/Filters",
-                "KSCrash/Reporting/Filters/Tools",
-                "KSCrash/Reporting/Tools",
-                "KSCrash/swift/Basic"
+                "TraceInternal_Installations",
+                "TraceInternal_Recording",
+                "TraceInternal_Recording_Monitors",
+                "TraceInternal_Recording_Tools",
+                "TraceInternal_Reporting_Filters",
+                "TraceInternal_Reporting_Filters_Tools",
+                "TraceInternal_Reporting_Tools",
+                "TraceInternal_Swift"
             ]
         )
     ],
     targets: [
         .target(
-            name: "KSCrash/Installations",
+            name: "TraceInternal_Installations",
             path: "TraceInternal/Installations",
             publicHeadersPath: ".",
             cxxSettings: [
@@ -32,7 +32,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Recording",
+            name: "TraceInternal_Recording",
             path: "TraceInternal/CrashReporting/Recording",
             exclude: [
                 "Monitors",
@@ -47,7 +47,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Recording/Monitors",
+            name: "TraceInternal_Recording_Monitors",
             path: "TraceInternal/CrashReporting/Recording/Monitors",
             publicHeadersPath: ".",
             cxxSettings: [
@@ -59,7 +59,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Recording/Tools",
+            name: "TraceInternal_Recording_Tools",
             path: "TraceInternal/CrashReporting/Recording/Tools",
             publicHeadersPath: ".",
             cxxSettings: [
@@ -72,7 +72,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Reporting/Filters",
+            name: "TraceInternal_Reporting_Filters",
             path: "TraceInternal/CrashReporting/Reporting/Filters",
             exclude: [
                 "Tools"
@@ -87,7 +87,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Reporting/Filters/Tools",
+            name: "TraceInternal_Reporting_Filters_Tools",
             path: "TraceInternal/CrashReporting/Reporting/Filters/Tools",
             publicHeadersPath: ".",
             cxxSettings: [
@@ -95,7 +95,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/Reporting/Tools",
+            name: "TraceInternal_Reporting_Tools",
             path: "TraceInternal/CrashReporting/Reporting/Tools",
             publicHeadersPath: ".",
             cxxSettings: [
@@ -104,7 +104,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "KSCrash/swift/Basic",
+            name: "TraceInternal_Swift",
             path: "TraceInternal/CrashReporting/swift/Basic",
             publicHeadersPath: ".",
             cxxSettings: [
