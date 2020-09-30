@@ -167,19 +167,9 @@
 		1009950A2500EBF0006C7FB4 /* Punycode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009948A2500EBF0006C7FB4 /* Punycode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1009950B2500EBF0006C7FB4 /* Fallthrough.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009948B2500EBF0006C7FB4 /* Fallthrough.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1009950C2500EBF0006C7FB4 /* LLVM.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009948C2500EBF0006C7FB4 /* LLVM.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		100995102500EEBF006C7FB4 /* BRFilterPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009950E2500EEBF006C7FB4 /* BRFilterPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		100995112500EEBF006C7FB4 /* BRFilterPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 1009950F2500EEBF006C7FB4 /* BRFilterPipeline.m */; };
-		10099514250111B0006C7FB4 /* BRReportingSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 10099512250111B0006C7FB4 /* BRReportingSink.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		10099515250111B0006C7FB4 /* BRReportingSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 10099513250111B0006C7FB4 /* BRReportingSink.m */; };
-		1009951825012DB6006C7FB4 /* BRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009951625012DB6006C7FB4 /* BRLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1009951925012DB6006C7FB4 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1009951725012DB6006C7FB4 /* BRLogger.m */; };
-		1009951C2501359E006C7FB4 /* BRFilterStringToData.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009951A2501359E006C7FB4 /* BRFilterStringToData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1009951D2501359E006C7FB4 /* BRFilterStringToData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1009951B2501359E006C7FB4 /* BRFilterStringToData.m */; };
 		1009952025014C45006C7FB4 /* libTraceInternal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100993DA25003BB1006C7FB4 /* libTraceInternal.a */; };
 		100995232501547B006C7FB4 /* Container+DeepSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 100994042500EBEF006C7FB4 /* Container+DeepSearch.m */; };
 		10099524250154D0006C7FB4 /* NSError+SimpleConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1009942D2500EBEF006C7FB4 /* NSError+SimpleConstructor.m */; };
-		1009952825025605006C7FB4 /* KSCrashInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1009952625025605006C7FB4 /* KSCrashInstallation.m */; };
-		1009952925025605006C7FB4 /* KSCrashInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009952725025605006C7FB4 /* KSCrashInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CA2417AEDF0088BD24 /* CrashesService.swift */; };
 		101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CC2417AEE70088BD24 /* CrashesService+Router.swift */; };
 		101055D12417B4610088BD24 /* CrashesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D02417B4610088BD24 /* CrashesServiceTests.swift */; };
@@ -195,6 +185,19 @@
 		10127B8B22E7620A004B1F4C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8A22E7620A004B1F4C /* Database.swift */; };
 		10127B8D22E7643D004B1F4C /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8C22E7643D004B1F4C /* DAO.swift */; };
 		10127B8F22E7648E004B1F4C /* MetricDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10127B8E22E7648E004B1F4C /* MetricDAO.swift */; };
+		101796FA25251248005F27B9 /* KSCrashReportWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796ED25251247005F27B9 /* KSCrashReportWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		101796FB25251248005F27B9 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796EE25251247005F27B9 /* BRLogger.m */; };
+		101796FC25251248005F27B9 /* KSCrashReportFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796EF25251247005F27B9 /* KSCrashReportFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		101796FD25251248005F27B9 /* BRFilterPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796F025251247005F27B9 /* BRFilterPipeline.m */; };
+		101796FE25251248005F27B9 /* BRReportingSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796F125251247005F27B9 /* BRReportingSink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		101796FF25251248005F27B9 /* KSCrashInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796F225251247005F27B9 /* KSCrashInstallation.m */; };
+		1017970025251248005F27B9 /* BRFilterStringToData.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796F325251247005F27B9 /* BRFilterStringToData.m */; };
+		1017970125251248005F27B9 /* BRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796F425251247005F27B9 /* BRLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1017970225251248005F27B9 /* BRReportingSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796F525251247005F27B9 /* BRReportingSink.m */; };
+		1017970325251248005F27B9 /* BRFilterPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796F625251247005F27B9 /* BRFilterPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1017970425251248005F27B9 /* BRObjectiveCOnlyLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 101796F725251247005F27B9 /* BRObjectiveCOnlyLoad.m */; };
+		1017970525251248005F27B9 /* BRFilterStringToData.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796F825251247005F27B9 /* BRFilterStringToData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1017970625251248005F27B9 /* KSCrashInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 101796F925251247005F27B9 /* KSCrashInstallation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		101F4A0F22B7931700F9DF4A /* DescriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F4A0E22B7931700F9DF4A /* DescriptorTests.swift */; };
 		101F4A1122B7946300F9DF4A /* MetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F4A1022B7946300F9DF4A /* MetricTests.swift */; };
 		102070BC24604DF400A75C45 /* DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102070BB24604DF400A75C45 /* DecodableTests.swift */; };
@@ -428,7 +431,6 @@
 		10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1A242A6BC00055D41E /* ULID.swift */; };
 		10B8DF1D242A72EE0055D41E /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1C242A72EE0055D41E /* DoubleTests.swift */; };
 		10B8DF20242A7DDB0055D41E /* ULIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */; };
-		10BB4E18250785C90044AB9E /* KSCrashInstallation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009952725025605006C7FB4 /* KSCrashInstallation.h */; };
 		10BB4E1A250785C90044AB9E /* KSCrashReportFilterAppleFmt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994022500EBEF006C7FB4 /* KSCrashReportFilterAppleFmt.h */; };
 		10BB4E1B250785C90044AB9E /* Container+DeepSearch.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994052500EBEF006C7FB4 /* Container+DeepSearch.h */; };
 		10BB4E1C250785C90044AB9E /* KSVarArgs.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994062500EBEF006C7FB4 /* KSVarArgs.h */; };
@@ -498,10 +500,6 @@
 		10BB4E5E250785C90044AB9E /* Punycode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009948A2500EBF0006C7FB4 /* Punycode.h */; };
 		10BB4E5F250785C90044AB9E /* Fallthrough.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009948B2500EBF0006C7FB4 /* Fallthrough.h */; };
 		10BB4E60250785C90044AB9E /* LLVM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009948C2500EBF0006C7FB4 /* LLVM.h */; };
-		10BB4E61250785C90044AB9E /* BRFilterPipeline.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009950E2500EEBF006C7FB4 /* BRFilterPipeline.h */; };
-		10BB4E62250785C90044AB9E /* BRReportingSink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10099512250111B0006C7FB4 /* BRReportingSink.h */; };
-		10BB4E63250785C90044AB9E /* BRLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009951625012DB6006C7FB4 /* BRLogger.h */; };
-		10BB4E64250785C90044AB9E /* BRFilterStringToData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009951A2501359E006C7FB4 /* BRFilterStringToData.h */; };
 		10BB4E65250786530044AB9E /* KSSysCtl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994332500EBEF006C7FB4 /* KSSysCtl.h */; };
 		10BB4E6925078EEC0044AB9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BB4E6825078EEC0044AB9E /* SystemConfiguration.framework */; };
 		10BB4E6B25078EF40044AB9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BB4E6A25078EF40044AB9E /* Foundation.framework */; };
@@ -513,7 +511,6 @@
 		10BB4E762507C4EF0044AB9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BB4E6825078EEC0044AB9E /* SystemConfiguration.framework */; };
 		10BB4E772507C4FA0044AB9E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BB4E6C25078EFF0044AB9E /* libz.tbd */; };
 		10BB4E782507C5050044AB9E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10BB4E6E25078F070044AB9E /* libc++.tbd */; };
-		10BB4E7A25082F010044AB9E /* BRObjectiveCOnlyLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BB4E7925082F000044AB9E /* BRObjectiveCOnlyLoad.m */; };
 		10BB4E93250926B90044AB9E /* BRObjectiveCOnlyLoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BB4E92250926B90044AB9E /* BRObjectiveCOnlyLoadTests.m */; };
 		10BB4EAE250A83DC0044AB9E /* NSManagedObject+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BB4EAD250A83DC0044AB9E /* NSManagedObject+Entity.swift */; };
 		10BBCF92229D3FD2004589FA /* SwiftOnlyLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBCF91229D3FD2004589FA /* SwiftOnlyLoad.swift */; };
@@ -719,7 +716,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				10BB4E65250786530044AB9E /* KSSysCtl.h in CopyFiles */,
-				10BB4E18250785C90044AB9E /* KSCrashInstallation.h in CopyFiles */,
 				10BB4E1A250785C90044AB9E /* KSCrashReportFilterAppleFmt.h in CopyFiles */,
 				10BB4E1B250785C90044AB9E /* Container+DeepSearch.h in CopyFiles */,
 				10BB4E1C250785C90044AB9E /* KSVarArgs.h in CopyFiles */,
@@ -789,10 +785,6 @@
 				10BB4E5E250785C90044AB9E /* Punycode.h in CopyFiles */,
 				10BB4E5F250785C90044AB9E /* Fallthrough.h in CopyFiles */,
 				10BB4E60250785C90044AB9E /* LLVM.h in CopyFiles */,
-				10BB4E61250785C90044AB9E /* BRFilterPipeline.h in CopyFiles */,
-				10BB4E62250785C90044AB9E /* BRReportingSink.h in CopyFiles */,
-				10BB4E63250785C90044AB9E /* BRLogger.h in CopyFiles */,
-				10BB4E64250785C90044AB9E /* BRFilterStringToData.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,16 +930,6 @@
 		1009948A2500EBF0006C7FB4 /* Punycode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Punycode.h; sourceTree = "<group>"; };
 		1009948B2500EBF0006C7FB4 /* Fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fallthrough.h; sourceTree = "<group>"; };
 		1009948C2500EBF0006C7FB4 /* LLVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLVM.h; sourceTree = "<group>"; };
-		1009950E2500EEBF006C7FB4 /* BRFilterPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterPipeline.h; sourceTree = "<group>"; };
-		1009950F2500EEBF006C7FB4 /* BRFilterPipeline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterPipeline.m; sourceTree = "<group>"; };
-		10099512250111B0006C7FB4 /* BRReportingSink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRReportingSink.h; sourceTree = "<group>"; };
-		10099513250111B0006C7FB4 /* BRReportingSink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRReportingSink.m; sourceTree = "<group>"; };
-		1009951625012DB6006C7FB4 /* BRLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
-		1009951725012DB6006C7FB4 /* BRLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
-		1009951A2501359E006C7FB4 /* BRFilterStringToData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterStringToData.h; sourceTree = "<group>"; };
-		1009951B2501359E006C7FB4 /* BRFilterStringToData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterStringToData.m; sourceTree = "<group>"; };
-		1009952625025605006C7FB4 /* KSCrashInstallation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCrashInstallation.m; sourceTree = "<group>"; };
-		1009952725025605006C7FB4 /* KSCrashInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCrashInstallation.h; sourceTree = "<group>"; };
 		100C503A24A2142A007777EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		100C503C24A21437007777EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		101055CA2417AEDF0088BD24 /* CrashesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashesService.swift; sourceTree = "<group>"; };
@@ -965,6 +947,20 @@
 		10127B8A22E7620A004B1F4C /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		10127B8C22E7643D004B1F4C /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		10127B8E22E7648E004B1F4C /* MetricDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDAO.swift; sourceTree = "<group>"; };
+		101796ED25251247005F27B9 /* KSCrashReportWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCrashReportWriter.h; sourceTree = "<group>"; };
+		101796EE25251247005F27B9 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
+		101796EF25251247005F27B9 /* KSCrashReportFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCrashReportFilter.h; sourceTree = "<group>"; };
+		101796F025251247005F27B9 /* BRFilterPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRFilterPipeline.m; sourceTree = "<group>"; };
+		101796F125251247005F27B9 /* BRReportingSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRReportingSink.h; sourceTree = "<group>"; };
+		101796F225251247005F27B9 /* KSCrashInstallation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCrashInstallation.m; sourceTree = "<group>"; };
+		101796F325251247005F27B9 /* BRFilterStringToData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRFilterStringToData.m; sourceTree = "<group>"; };
+		101796F425251247005F27B9 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
+		101796F525251247005F27B9 /* BRReportingSink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRReportingSink.m; sourceTree = "<group>"; };
+		101796F625251247005F27B9 /* BRFilterPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRFilterPipeline.h; sourceTree = "<group>"; };
+		101796F725251247005F27B9 /* BRObjectiveCOnlyLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRObjectiveCOnlyLoad.m; sourceTree = "<group>"; };
+		101796F825251247005F27B9 /* BRFilterStringToData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRFilterStringToData.h; sourceTree = "<group>"; };
+		101796F925251247005F27B9 /* KSCrashInstallation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCrashInstallation.h; sourceTree = "<group>"; };
+		1017976D25251430005F27B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		101F4A0E22B7931700F9DF4A /* DescriptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DescriptorTests.swift; path = Tests/Metric/DescriptorTests.swift; sourceTree = SOURCE_ROOT; };
 		101F4A1022B7946300F9DF4A /* MetricTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetricTests.swift; path = Tests/Metric/MetricTests.swift; sourceTree = SOURCE_ROOT; };
 		102070BB24604DF400A75C45 /* DecodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DecodableTests.swift; path = Tests/DecodableTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1218,7 +1214,6 @@
 		10BB4E6C25078EFF0044AB9E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		10BB4E6E25078F070044AB9E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		10BB4E742507C4E80044AB9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		10BB4E7925082F000044AB9E /* BRObjectiveCOnlyLoad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObjectiveCOnlyLoad.m; sourceTree = "<group>"; };
 		10BB4E92250926B90044AB9E /* BRObjectiveCOnlyLoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObjectiveCOnlyLoadTests.m; sourceTree = "<group>"; };
 		10BB4EAD250A83DC0044AB9E /* NSManagedObject+Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+Entity.swift"; path = "Tests/NSManagedObject+Entity.swift"; sourceTree = SOURCE_ROOT; };
 		10BB4EB5250ED0400044AB9E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -1477,19 +1472,10 @@
 		100993DB25003BB1006C7FB4 /* TraceInternal */ = {
 			isa = PBXGroup;
 			children = (
-				10BB4E7925082F000044AB9E /* BRObjectiveCOnlyLoad.m */,
-				1009952725025605006C7FB4 /* KSCrashInstallation.h */,
+				101796EC25251247005F27B9 /* Installations */,
 				103B16392524BB0E00FC4ED2 /* type_traits.h */,
-				1009952625025605006C7FB4 /* KSCrashInstallation.m */,
-				1009950E2500EEBF006C7FB4 /* BRFilterPipeline.h */,
-				1009950F2500EEBF006C7FB4 /* BRFilterPipeline.m */,
-				10099512250111B0006C7FB4 /* BRReportingSink.h */,
-				10099513250111B0006C7FB4 /* BRReportingSink.m */,
-				1009951625012DB6006C7FB4 /* BRLogger.h */,
-				1009951725012DB6006C7FB4 /* BRLogger.m */,
-				1009951A2501359E006C7FB4 /* BRFilterStringToData.h */,
-				1009951B2501359E006C7FB4 /* BRFilterStringToData.m */,
 				100993FF2500EBEF006C7FB4 /* CrashReporting */,
+				1017976D25251430005F27B9 /* module.modulemap */,
 			);
 			path = TraceInternal;
 			sourceTree = "<group>";
@@ -1791,6 +1777,26 @@
 				109177202331315D007CE2F0 /* DBTrace.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		101796EC25251247005F27B9 /* Installations */ = {
+			isa = PBXGroup;
+			children = (
+				101796ED25251247005F27B9 /* KSCrashReportWriter.h */,
+				101796EE25251247005F27B9 /* BRLogger.m */,
+				101796EF25251247005F27B9 /* KSCrashReportFilter.h */,
+				101796F025251247005F27B9 /* BRFilterPipeline.m */,
+				101796F125251247005F27B9 /* BRReportingSink.h */,
+				101796F225251247005F27B9 /* KSCrashInstallation.m */,
+				101796F325251247005F27B9 /* BRFilterStringToData.m */,
+				101796F425251247005F27B9 /* BRLogger.h */,
+				101796F525251247005F27B9 /* BRReportingSink.m */,
+				101796F625251247005F27B9 /* BRFilterPipeline.h */,
+				101796F725251247005F27B9 /* BRObjectiveCOnlyLoad.m */,
+				101796F825251247005F27B9 /* BRFilterStringToData.h */,
+				101796F925251247005F27B9 /* KSCrashInstallation.h */,
+			);
+			path = Installations;
 			sourceTree = "<group>";
 		};
 		1028C8A12301727800E07839 /* Time */ = {
@@ -3043,37 +3049,38 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				100995102500EEBF006C7FB4 /* BRFilterPipeline.h in Headers */,
+				101796FE25251248005F27B9 /* BRReportingSink.h in Headers */,
 				100994902500EBF0006C7FB4 /* Container+DeepSearch.h in Headers */,
 				103B163A2524BB0E00FC4ED2 /* type_traits.h in Headers */,
-				1009951825012DB6006C7FB4 /* BRLogger.h in Headers */,
 				1009950A2500EBF0006C7FB4 /* Punycode.h in Headers */,
 				100994D42500EBF0006C7FB4 /* KSCxaThrowSwapper.h in Headers */,
 				100994FE2500EBF0006C7FB4 /* llvm-config.h in Headers */,
 				100994912500EBF0006C7FB4 /* KSVarArgs.h in Headers */,
 				100994B62500EBF0006C7FB4 /* KSLogger.h in Headers */,
-				10099514250111B0006C7FB4 /* BRReportingSink.h in Headers */,
 				100994F92500EBF0006C7FB4 /* KSCrashDoctor.h in Headers */,
 				100994A02500EBF0006C7FB4 /* KSCrashMonitor.h in Headers */,
+				101796FC25251248005F27B9 /* KSCrashReportFilter.h in Headers */,
+				1017970525251248005F27B9 /* BRFilterStringToData.h in Headers */,
 				100994E32500EBF0006C7FB4 /* KSJSONCodecObjC.h in Headers */,
 				100994E92500EBF0006C7FB4 /* KSDynamicLinker.h in Headers */,
 				100994A72500EBF0006C7FB4 /* KSCrashMonitor_MachException.h in Headers */,
 				100994C32500EBF0006C7FB4 /* KSID.h in Headers */,
+				1017970125251248005F27B9 /* BRLogger.h in Headers */,
 				100994E22500EBF0006C7FB4 /* KSStackCursor_MachineContext.h in Headers */,
 				100995072500EBF0006C7FB4 /* DemangleNodes.h in Headers */,
 				100994DD2500EBF0006C7FB4 /* KSObjC.h in Headers */,
+				101796FA25251248005F27B9 /* KSCrashReportWriter.h in Headers */,
 				100994FC2500EBF0006C7FB4 /* Optional.h in Headers */,
 				1009949D2500EBF0006C7FB4 /* KSCrashMonitor_CPPException.h in Headers */,
 				100994982500EBF0006C7FB4 /* KSCrashMonitorContext.h in Headers */,
 				100994E02500EBF0006C7FB4 /* KSDate.h in Headers */,
 				100994F62500EBF0006C7FB4 /* KSCrashCachedData.h in Headers */,
 				100994BD2500EBF0006C7FB4 /* KSStackCursor_SelfThread.h in Headers */,
-				1009951C2501359E006C7FB4 /* BRFilterStringToData.h in Headers */,
 				100994EF2500EBF0006C7FB4 /* KSSystemCapabilities.h in Headers */,
-				1009952925025605006C7FB4 /* KSCrashInstallation.h in Headers */,
 				100995002500EBF0006C7FB4 /* AlignOf.h in Headers */,
 				100994BE2500EBF0006C7FB4 /* KSCPU.h in Headers */,
 				100994AF2500EBF0006C7FB4 /* KSSymbolicator.h in Headers */,
+				1017970325251248005F27B9 /* BRFilterPipeline.h in Headers */,
 				100994FF2500EBF0006C7FB4 /* Casting.h in Headers */,
 				100994C02500EBF0006C7FB4 /* KSMemory.h in Headers */,
 				100994F12500EBF0006C7FB4 /* KSCrashReportFixer.h in Headers */,
@@ -3085,6 +3092,7 @@
 				100994E52500EBF0006C7FB4 /* KSStackCursor.h in Headers */,
 				100994A22500EBF0006C7FB4 /* KSCrashMonitor_User.h in Headers */,
 				100994942500EBF0006C7FB4 /* KSCString.h in Headers */,
+				1017970625251248005F27B9 /* KSCrashInstallation.h in Headers */,
 				100994B42500EBF0006C7FB4 /* KSDebug.h in Headers */,
 				100994BF2500EBF0006C7FB4 /* KSDemangle_Swift.h in Headers */,
 				100994AC2500EBF0006C7FB4 /* KSCrashMonitor_Zombie.h in Headers */,
@@ -3996,8 +4004,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10BB4E7A25082F010044AB9E /* BRObjectiveCOnlyLoad.m in Sources */,
-				1009952825025605006C7FB4 /* KSCrashInstallation.m in Sources */,
 				1009949E2500EBF0006C7FB4 /* KSCrashMonitor_Zombie.c in Sources */,
 				100994D92500EBF0006C7FB4 /* KSMemory.c in Sources */,
 				100994CD2500EBF0006C7FB4 /* KSStackCursor_MachineContext.c in Sources */,
@@ -4005,15 +4011,16 @@
 				1009949C2500EBF0006C7FB4 /* KSCrashMonitor_AppState.c in Sources */,
 				1009948F2500EBF0006C7FB4 /* Container+DeepSearch.m in Sources */,
 				100994CC2500EBF0006C7FB4 /* KSStackCursor.c in Sources */,
+				101796FF25251248005F27B9 /* KSCrashInstallation.m in Sources */,
 				100994F22500EBF0006C7FB4 /* KSCrashDoctor.m in Sources */,
 				100994E12500EBF0006C7FB4 /* KSJSONCodec.c in Sources */,
 				100994E42500EBF0006C7FB4 /* KSThread.c in Sources */,
 				100994F32500EBF0006C7FB4 /* KSCrashReport.c in Sources */,
 				100994D52500EBF0006C7FB4 /* KSLogger.c in Sources */,
+				1017970225251248005F27B9 /* BRReportingSink.m in Sources */,
 				1009949F2500EBF0006C7FB4 /* KSCrashMonitor_NSException.m in Sources */,
 				100994DF2500EBF0006C7FB4 /* KSSysCtl.c in Sources */,
 				100994CA2500EBF0006C7FB4 /* KSJSONCodecObjC.m in Sources */,
-				1009951D2501359E006C7FB4 /* BRFilterStringToData.m in Sources */,
 				100994B72500EBF0006C7FB4 /* KSCPU_x86_32.c in Sources */,
 				100994A32500EBF0006C7FB4 /* KSCrashMonitorType.c in Sources */,
 				100994A82500EBF0006C7FB4 /* KSCrashMonitor_User.c in Sources */,
@@ -4021,6 +4028,7 @@
 				100994AB2500EBF0006C7FB4 /* KSCrashMonitor_CPPException.cpp in Sources */,
 				100994E62500EBF0006C7FB4 /* KSStackCursor_Backtrace.c in Sources */,
 				100994A42500EBF0006C7FB4 /* KSCrashMonitor_Signal.c in Sources */,
+				101796FB25251248005F27B9 /* BRLogger.m in Sources */,
 				100994D32500EBF0006C7FB4 /* KSSymbolicator.c in Sources */,
 				100994E72500EBF0006C7FB4 /* KSMach.c in Sources */,
 				100994A92500EBF0006C7FB4 /* KSCrashMonitor.c in Sources */,
@@ -4030,31 +4038,31 @@
 				100994D22500EBF0006C7FB4 /* KSCPU_x86_64.c in Sources */,
 				100994FA2500EBF0006C7FB4 /* KSCrashReportFixer.c in Sources */,
 				100994DA2500EBF0006C7FB4 /* KSgetsect.c in Sources */,
+				1017970025251248005F27B9 /* BRFilterStringToData.m in Sources */,
 				100994C72500EBF0006C7FB4 /* KSDynamicLinker.c in Sources */,
 				100994CF2500EBF0006C7FB4 /* KSDate.c in Sources */,
 				100994B22500EBF0006C7FB4 /* KSDemangle_Swift.cpp in Sources */,
 				100995082500EBF0006C7FB4 /* Punycode.cpp in Sources */,
-				10099515250111B0006C7FB4 /* BRReportingSink.m in Sources */,
 				100994D62500EBF0006C7FB4 /* KSSignalInfo.c in Sources */,
 				100994BA2500EBF0006C7FB4 /* KSFileUtils.c in Sources */,
 				100994D82500EBF0006C7FB4 /* KSDebug.c in Sources */,
 				100994EA2500EBF0006C7FB4 /* KSCPU_arm64.c in Sources */,
+				101796FD25251248005F27B9 /* BRFilterPipeline.m in Sources */,
 				100994DC2500EBF0006C7FB4 /* KSStackCursor_SelfThread.c in Sources */,
 				100994EE2500EBF0006C7FB4 /* KSCrashCachedData.c in Sources */,
 				100994DB2500EBF0006C7FB4 /* KSCPU.c in Sources */,
 				100994EC2500EBF0006C7FB4 /* KSID.c in Sources */,
-				100995112500EEBF006C7FB4 /* BRFilterPipeline.m in Sources */,
 				100995052500EBF0006C7FB4 /* Demangle.cpp in Sources */,
 				100994952500EBF0006C7FB4 /* KSCString.m in Sources */,
 				100994F72500EBF0006C7FB4 /* KSCrashC.c in Sources */,
 				100994B02500EBF0006C7FB4 /* KSCxaThrowSwapper.c in Sources */,
-				1009951925012DB6006C7FB4 /* BRLogger.m in Sources */,
 				100994C22500EBF0006C7FB4 /* KSMachineContext.c in Sources */,
 				100994BC2500EBF0006C7FB4 /* KSCPU_arm.c in Sources */,
 				100994D02500EBF0006C7FB4 /* KSDemangle_CPP.cpp in Sources */,
 				100994962500EBF0006C7FB4 /* KSCrash.m in Sources */,
 				1009949A2500EBF0006C7FB4 /* KSCrashMonitor_System.m in Sources */,
 				100994932500EBF0006C7FB4 /* KSCrashReportFilterAppleFmt.m in Sources */,
+				1017970425251248005F27B9 /* BRObjectiveCOnlyLoad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

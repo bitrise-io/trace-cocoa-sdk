@@ -10,20 +10,21 @@ let targets: [Target] = [
     .target(
         name: trace,
         dependencies: [.target(name: traceInternal)],
-        path: "\(trace)/"
+        path: "\(trace)/",
+        linkerSettings: [.linkedFramework("UIKit")]
     ),
     .target(
         name: traceInternal,
         dependencies: [
-            "TraceInternal_Recording", 
-            "TraceInternal_Recording_Monitors", 
-            "TraceInternal_Recording_Tools", 
-            "TraceInternal_Reporting_Filters", 
-            "TraceInternal_Reporting_Filters_Tools", 
-            "TraceInternal_Reporting_Tools", 
-            "TraceInternal_Swift"
+            .target(name: "\(traceInternal)_Recording"),
+            .target(name: "\(traceInternal)_Recording_Monitors"),
+            .target(name: "\(traceInternal)_Recording_Tools"),
+            .target(name: "\(traceInternal)_Reporting_Filters"),
+            .target(name: "\(traceInternal)_Reporting_Filters_Tools"),
+            .target(name: "\(traceInternal)_Reporting_Tools"),
+            .target(name: "\(traceInternal)_Swift")
         ],
-        path: "TraceInternal/Installations",
+        path: "\(traceInternal)/Installations",
         publicHeadersPath: ".",
         cxxSettings: [
             .headerSearchPath("../CrashReporting/Reporting/Filters"),
@@ -31,11 +32,16 @@ let targets: [Target] = [
             .headerSearchPath("../CrashReporting/Recording"),
             .headerSearchPath("../CrashReporting/Recording/Monitors"),
             .headerSearchPath("../CrashReporting/Recording/Tools")
+        ],
+        linkerSettings: [
+            .linkedLibrary("c++"),
+            .linkedLibrary("z"),
+            .linkedFramework("UIKit")
         ]
     ),
     .target(
-        name: "TraceInternal_Recording",
-        path: "TraceInternal/CrashReporting/Recording",
+        name: "\(traceInternal)_Recording",
+        path: "\(traceInternal)/CrashReporting/Recording",
         exclude: [
             "Monitors",
             "Tools"
@@ -49,8 +55,8 @@ let targets: [Target] = [
         ]
     ),
     .target(
-        name: "TraceInternal_Recording_Monitors",
-        path: "TraceInternal/CrashReporting/Recording/Monitors",
+        name: "\(traceInternal)_Recording_Monitors",
+        path: "\(traceInternal)/CrashReporting/Recording/Monitors",
         publicHeadersPath: ".",
         cxxSettings: [
             .define("GCC_ENABLE_CPP_EXCEPTIONS", to: "YES"),
@@ -61,8 +67,8 @@ let targets: [Target] = [
         ]
     ),
     .target(
-        name: "TraceInternal_Recording_Tools",
-        path: "TraceInternal/CrashReporting/Recording/Tools",
+        name: "\(traceInternal)_Recording_Tools",
+        path: "\(traceInternal)/CrashReporting/Recording/Tools",
         publicHeadersPath: ".",
         cxxSettings: [
             .headerSearchPath(".."),
@@ -74,8 +80,8 @@ let targets: [Target] = [
         ]
     ),
     .target(
-        name: "TraceInternal_Reporting_Filters",
-        path: "TraceInternal/CrashReporting/Reporting/Filters",
+        name: "\(traceInternal)_Reporting_Filters",
+        path: "\(traceInternal)/CrashReporting/Reporting/Filters",
         exclude: [
             "Tools"
         ],
@@ -89,16 +95,16 @@ let targets: [Target] = [
         ]
     ),
     .target(
-        name: "TraceInternal_Reporting_Filters_Tools",
-        path: "TraceInternal/CrashReporting/Reporting/Filters/Tools",
+        name: "\(traceInternal)_Reporting_Filters_Tools",
+        path: "\(traceInternal)/CrashReporting/Reporting/Filters/Tools",
         publicHeadersPath: ".",
         cxxSettings: [
             .headerSearchPath("../../../Recording/Tools")
         ]
     ),
     .target(
-        name: "TraceInternal_Reporting_Tools",
-        path: "TraceInternal/CrashReporting/Reporting/Tools",
+        name: "\(traceInternal)_Reporting_Tools",
+        path: "\(traceInternal)/CrashReporting/Reporting/Tools",
         publicHeadersPath: ".",
         cxxSettings: [
             .headerSearchPath("../../Recording"),
@@ -106,8 +112,8 @@ let targets: [Target] = [
         ]
     ),
     .target(
-        name: "TraceInternal_Swift",
-        path: "TraceInternal/CrashReporting/swift/Basic",
+        name: "\(traceInternal)_Swift",
+        path: "\(traceInternal)/CrashReporting/swift/Basic",
         publicHeadersPath: ".",
         cxxSettings: [
             .headerSearchPath(".."),
@@ -123,5 +129,6 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [product],
     targets: targets,
+    swiftLanguageVersions: [.v5],
     cxxLanguageStandard: .gnucxx11
 )

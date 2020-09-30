@@ -1,0 +1,5 @@
+module TraceInternal {
+  header "Installations/KSCrashInstallation.h"
+
+  export *
+}

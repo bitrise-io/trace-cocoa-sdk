@@ -13,27 +13,34 @@ import XCTest
 
 enum MockRouter: Routable {
     
-    static var baseURL = URL(string: "https://httpstat.us/")!
+    static var baseURL = URL(string: "https://httpbin.org")!
     
     case empty
     case clientError
     case serverError
     case badURL
+    case ok
     
     var method: Network.Method { return .get }
     
     var path: String {
+        let status = "status/"
+        let code: String
+        
         switch self {
-        case .badURL: return ""
-        case .clientError: return "404"
-        case .serverError: return "500"
-        case .empty: return ""
+        case .badURL: code = ""
+        case .ok: code = "202"
+        case .clientError: code = "404"
+        case .serverError: code = "500"
+        case .empty: code = ""
         }
+        
+        return status + code
     }
     
     func asURLRequest() throws -> URLRequest {
         switch self {
-        case .empty, .clientError, .serverError:
+            case .empty, .clientError, .serverError, .ok:
             var url = MockRouter.baseURL
             url.appendPathComponent(path)
             
@@ -80,7 +87,7 @@ final class NetworkTests: XCTestCase {
         let network = Network()
         network.authorization = "test"
         
-        let task = network.request(MockRouter.empty) {
+        let task = network.request(MockRouter.ok) {
             switch $0 {
             case .success: async.fulfill()
             case .failure: XCTFail()
@@ -163,7 +170,7 @@ final class NetworkTests: XCTestCase {
         ]
         
         var task: URLSessionTask?
-        task = network.request(MockRouter.empty) {
+        task = network.request(MockRouter.ok) {
             switch $0 {
             case .success: async.fulfill()
             case .failure: XCTFail()
