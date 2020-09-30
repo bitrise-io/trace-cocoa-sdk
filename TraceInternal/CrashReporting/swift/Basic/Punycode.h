@@ -21,8 +21,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef SWIFT_BASIC_PUNYCODE_H
-#define SWIFT_BASIC_PUNYCODE_H
+#ifndef CRASHREPORTING_SWIFT_BASIC_PUNYCODE_H
+#define CRASHREPORTING_SWIFT_BASIC_PUNYCODE_H
 
 //#include "swift/Basic/LLVM.h"
 //#include "llvm/ADT/StringRef.h"
@@ -54,5 +54,5 @@ bool decodePunycodeUTF8(StringRef InputPunycode, std::string &OutUTF8);
 } // end namespace Punycode
 } // end namespace swift
 
-#endif // SWIFT_BASIC_PUNYCODE_H
+#endif // CRASHREPORTING_SWIFT_BASIC_PUNYCODE_H
 

@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_SUPPORT_COMPILER_H
-#define LLVM_SUPPORT_COMPILER_H
+#ifndef CRASHREPORTING_LLVM_SUPPORT_COMPILER_H
+#define CRASHREPORTING_LLVM_SUPPORT_COMPILER_H
 
 #include "llvm-config.h"
 

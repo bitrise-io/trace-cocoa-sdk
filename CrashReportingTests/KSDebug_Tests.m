@@ -29,11 +29,11 @@
 
 #import "KSDebug.h"
 
-#if __has_include(<TraceInternal/TraceInternal.h>)
-#import <TraceInternal/TraceInternal.h> // Framework
-#else
-#import <TraceInternal.h> // Static library
-#endif
+//#if __has_include(<TraceInternal/TraceInternal.h>)
+//#import <TraceInternal/TraceInternal.h> // Framework
+//#else
+//#import <TraceInternal.h> // Static library
+//#endif
 
 @interface KSDebug_Tests : XCTestCase @end
 

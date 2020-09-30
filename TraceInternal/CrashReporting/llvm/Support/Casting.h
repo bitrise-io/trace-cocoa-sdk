@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_SUPPORT_CASTING_H
-#define LLVM_SUPPORT_CASTING_H
+#ifndef CRASHREPORTING_LLVM_SUPPORT_CASTING_H
+#define CRASHREPORTING_LLVM_SUPPORT_CASTING_H
 
 #include "Compiler.h"
 #include "type_traits.h"
