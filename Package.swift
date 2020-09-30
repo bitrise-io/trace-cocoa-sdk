@@ -6,21 +6,21 @@ let package = Package(
     products: [
         .library(
             name: "TraceInternal",
-            targets: [
-                "TraceInternal_Installations",
-                "TraceInternal_Recording",
-                "TraceInternal_Recording_Monitors",
-                "TraceInternal_Recording_Tools",
-                "TraceInternal_Reporting_Filters",
-                "TraceInternal_Reporting_Filters_Tools",
-                "TraceInternal_Reporting_Tools",
-                "TraceInternal_Swift"
-            ]
+            targets: ["TraceInternal_Installations"]
         )
     ],
     targets: [
         .target(
             name: "TraceInternal_Installations",
+            dependencies: [
+                "TraceInternal_Recording", 
+                "TraceInternal_Recording_Monitors", 
+                "TraceInternal_Recording_Tools", 
+                "TraceInternal_Reporting_Filters", 
+                "TraceInternal_Reporting_Filters_Tools", 
+                "TraceInternal_Reporting_Tools", 
+                "TraceInternal_Swift"
+            ],
             path: "TraceInternal/Installations",
             publicHeadersPath: ".",
             cxxSettings: [
