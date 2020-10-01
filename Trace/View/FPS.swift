@@ -100,11 +100,7 @@ final class FPS: FPSProtocol {
                 return "\(type(of: viewController))"
             }
             
-            guard let viewControllerName = viewController else {
-                Logger.print(.fps, "Failed to read FPS from view controller")
-                
-                return
-            }
+            guard let viewControllerName = viewController else { return }
             
             current = Result(timestamp: timestamp, fps: fps, viewController: viewControllerName)
             

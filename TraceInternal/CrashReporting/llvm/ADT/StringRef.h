@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_ADT_STRINGREF_H
-#define LLVM_ADT_STRINGREF_H
+#ifndef CRASHREPORTING_LLVM_ADT_STRINGREF_H
+#define CRASHREPORTING_LLVM_ADT_STRINGREF_H
 
 #include "Compiler.h"
 #include <algorithm>

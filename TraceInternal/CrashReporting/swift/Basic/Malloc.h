@@ -15,8 +15,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef SWIFT_BASIC_MALLOC_H
-#define SWIFT_BASIC_MALLOC_H
+#ifndef CRASHREPORTING_SWIFT_BASIC_MALLOC_H
+#define CRASHREPORTING_SWIFT_BASIC_MALLOC_H
 
 #include <cassert>
 #if defined(_MSC_VER)
@@ -56,4 +56,4 @@ inline void AlignedFree(void *p) {
 
 } // end namespace swift
 
-#endif // SWIFT_BASIC_MALLOC_H
+#endif // CRASHREPORTING_SWIFT_BASIC_MALLOC_H

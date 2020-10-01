@@ -11,8 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_SUPPORT_TYPE_TRAITS_H
-#define LLVM_SUPPORT_TYPE_TRAITS_H
+#ifndef CRASHREPORTING_LLVM_SUPPORT_TYPE_TRAITS_H
+#define CRASHREPORTING_LLVM_SUPPORT_TYPE_TRAITS_H
 
 #include <type_traits>
 #include <utility>

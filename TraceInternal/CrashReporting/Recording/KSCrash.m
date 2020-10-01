@@ -42,7 +42,9 @@
 
 #include <inttypes.h>
 
+#if KSCRASH_HAS_UIKIT
 #import <UIKit/UIKit.h>
+#endif
 
 // ============================================================================
 #pragma mark - Globals -

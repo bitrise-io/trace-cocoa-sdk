@@ -13,8 +13,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_ADT_OPTIONAL_H
-#define LLVM_ADT_OPTIONAL_H
+#ifndef CRASHREPORTING_LLVM_ADT_OPTIONAL_H
+#define CRASHREPORTING_LLVM_ADT_OPTIONAL_H
 
 #include "None.h"
 #include "AlignOf.h"
