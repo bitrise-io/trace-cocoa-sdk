@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_SUPPORT_ALIGNOF_H
-#define LLVM_SUPPORT_ALIGNOF_H
+#ifndef CRASHREPORTING_LLVM_SUPPORT_ALIGNOF_H
+#define CRASHREPORTING_LLVM_SUPPORT_ALIGNOF_H
 
 #include "Compiler.h"
 #include <cstddef>
@@ -256,4 +256,4 @@ struct AlignedCharArrayUnion : llvm::AlignedCharArray<
 };
 } // end namespace llvm
 
-#endif // LLVM_SUPPORT_ALIGNOF_H
+#endif // CRASHREPORTING_LLVM_SUPPORT_ALIGNOF_H

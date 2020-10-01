@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.35 clang-1200.0.32.4)
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.39 clang-1200.0.32.6)
 // swift-module-flags: -target i386-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Osize -module-name Trace
 import QuartzCore.CABase
 import SystemConfiguration.CaptiveNetwork

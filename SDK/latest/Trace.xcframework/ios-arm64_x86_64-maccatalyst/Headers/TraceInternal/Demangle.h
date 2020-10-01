@@ -10,8 +10,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef SWIFT_BASIC_DEMANGLE_H
-#define SWIFT_BASIC_DEMANGLE_H
+#ifndef CRASHREPORTING_SWIFT_BASIC_DEMANGLE_H
+#define CRASHREPORTING_SWIFT_BASIC_DEMANGLE_H
 
 #include <memory>
 #include <string>
@@ -423,4 +423,4 @@ static inline bool isDigit(int c) {
 } // end namespace Demangle
 } // end namespace swift
 
-#endif // SWIFT_BASIC_DEMANGLE_H
+#endif // CRASHREPORTING_SWIFT_BASIC_DEMANGLE_H
