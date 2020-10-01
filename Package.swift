@@ -126,7 +126,7 @@ let targets: [Target] = [
 
 let package = Package(
     name: name,
-    platforms: [.iOS(.v14)],
+    platforms: [.iOS(.v10)],
     products: [product],
     targets: targets,
     swiftLanguageVersions: [.v5],

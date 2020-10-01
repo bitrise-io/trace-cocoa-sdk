@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import <Foundation/Foundation.h>
-//#import <TraceInternal/TraceInternal.h>
 
 @interface BRObjectiveCOnlyLoadTests : XCTestCase
 

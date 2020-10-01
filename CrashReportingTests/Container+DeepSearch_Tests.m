@@ -28,14 +28,6 @@
 #import <XCTest/XCTest.h>
 
 #import "Container+DeepSearch.h"
-
-//#if __has_include(<TraceInternal/TraceInternal.h>)
-//#import <TraceInternal/TraceInternal.h> // Framework
-//#else
-//#import <TraceInternal.h> // Static library
-//#endif
-
-#import "Container+DeepSearch.h"
 #import "NSError+SimpleConstructor.h"
 
 @interface Container_DeepSearch_Tests : XCTestCase @end

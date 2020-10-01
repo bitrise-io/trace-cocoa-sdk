@@ -35,8 +35,6 @@
 #import "BRFilterPipeline.h"
 #import "BRReportingSink.h"
 
-// #import <TraceInternal/BRReportingSink.h>
-
 /** Max number of properties that can be defined for writing to the report */
 #define kMaxProperties 500
 

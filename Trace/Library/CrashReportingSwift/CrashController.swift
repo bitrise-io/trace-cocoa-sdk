@@ -43,7 +43,7 @@ public final class CrashController: NSObject {
     /// Call setup before acessing crash installation
     /// Called afterward SDK has started
     internal func setup() {
-         installation.install()
+        installation.install()
         
         scheduleNewReports()
     }
