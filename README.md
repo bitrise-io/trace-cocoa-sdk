@@ -16,7 +16,7 @@ Use Trace to:
 ## Requirements
 
 - iOS 10.0+ 
-- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12.2+
+- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12.0+
 - Swift 5.3
 
 ## Installation
@@ -119,15 +119,19 @@ dependencies: [
 ```
 Add Trace SDK as a dependency inside your `Package.swift` file. Please look at the [release section](https://github.com/bitrise-io/trace-cocoa-sdk/releases) for the latest stable version of the SDK.
 
-**Using Xcode Swift package manager integration**
+**Using Xcode Swift package manager integration**  
+
 To add a package dependency to your Xcode project/workspace, select `File > Swift Packages > Add Package Dependency` and enter the repository URL `https://github.com/bitrise-io/trace-cocoa-sdk.git`. 
 
 Also, you can also navigate to your target’s General pane, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button, select Add Other, and choose Add Package Dependency.
 
+**Optional: Only required if the project does not build**
 **Adding `Other Linker Flags to application target**
 * Select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-ObjC -l z -l c++`
+
+**Calling Trace initializer**
 
 In your project add `import Trace` and call `let trace = Trace.shared` to start the SDK.
 
