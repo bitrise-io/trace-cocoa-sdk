@@ -4004,6 +4004,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1017970425251248005F27B9 /* BRObjectiveCOnlyLoad.m in Sources */,
+				101796FB25251248005F27B9 /* BRLogger.m in Sources */,
+				101796FF25251248005F27B9 /* KSCrashInstallation.m in Sources */,
+				100994962500EBF0006C7FB4 /* KSCrash.m in Sources */,
 				1009949E2500EBF0006C7FB4 /* KSCrashMonitor_Zombie.c in Sources */,
 				100994D92500EBF0006C7FB4 /* KSMemory.c in Sources */,
 				100994CD2500EBF0006C7FB4 /* KSStackCursor_MachineContext.c in Sources */,
@@ -4011,7 +4015,6 @@
 				1009949C2500EBF0006C7FB4 /* KSCrashMonitor_AppState.c in Sources */,
 				1009948F2500EBF0006C7FB4 /* Container+DeepSearch.m in Sources */,
 				100994CC2500EBF0006C7FB4 /* KSStackCursor.c in Sources */,
-				101796FF25251248005F27B9 /* KSCrashInstallation.m in Sources */,
 				100994F22500EBF0006C7FB4 /* KSCrashDoctor.m in Sources */,
 				100994E12500EBF0006C7FB4 /* KSJSONCodec.c in Sources */,
 				100994E42500EBF0006C7FB4 /* KSThread.c in Sources */,
@@ -4028,7 +4031,6 @@
 				100994AB2500EBF0006C7FB4 /* KSCrashMonitor_CPPException.cpp in Sources */,
 				100994E62500EBF0006C7FB4 /* KSStackCursor_Backtrace.c in Sources */,
 				100994A42500EBF0006C7FB4 /* KSCrashMonitor_Signal.c in Sources */,
-				101796FB25251248005F27B9 /* BRLogger.m in Sources */,
 				100994D32500EBF0006C7FB4 /* KSSymbolicator.c in Sources */,
 				100994E72500EBF0006C7FB4 /* KSMach.c in Sources */,
 				100994A92500EBF0006C7FB4 /* KSCrashMonitor.c in Sources */,
@@ -4059,10 +4061,8 @@
 				100994C22500EBF0006C7FB4 /* KSMachineContext.c in Sources */,
 				100994BC2500EBF0006C7FB4 /* KSCPU_arm.c in Sources */,
 				100994D02500EBF0006C7FB4 /* KSDemangle_CPP.cpp in Sources */,
-				100994962500EBF0006C7FB4 /* KSCrash.m in Sources */,
 				1009949A2500EBF0006C7FB4 /* KSCrashMonitor_System.m in Sources */,
 				100994932500EBF0006C7FB4 /* KSCrashReportFilterAppleFmt.m in Sources */,
-				1017970425251248005F27B9 /* BRObjectiveCOnlyLoad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
