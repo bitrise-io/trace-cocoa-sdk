@@ -8,6 +8,13 @@
 
 import Foundation
 
+internal protocol Traceable {
+    
+    // MARK: - Property
+    
+    var trace: TraceModel { get }
+}
+
 /// TraceModel
 @objc(BRTraceModel)
 @objcMembers
@@ -59,15 +66,14 @@ public final class TraceModel: NSObject, Codable {
     
     // MARK: - Static - Start
     
-    internal static func start(with name: String) -> TraceModel {
-        let start = Time.timestamp
+    internal static func start(with name: String, time: Time.Timestamp = Time.timestamp) -> TraceModel {
         let traceId = UUID.random(16)
         let spanId = UUID.random(8)
         let root = Span(
             traceId: traceId,
             spanId: spanId,
             name: Span.Name(value: name, truncatedByteCount: 0),
-            start: TraceModel.Span.Timestamp(seconds: start.seconds, nanos: start.nanos)
+            start: TraceModel.Span.Timestamp(seconds: time.seconds, nanos: time.nanos)
         )
         let trace = TraceModel(id: traceId, spans: [root])
         

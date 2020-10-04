@@ -25,15 +25,26 @@ internal struct StartupFormatter: JSONEncodable {
     
     // MARK: - Property
     
+    /// Not used when class is created via timestamp
     private let time: Double
+    
     private let status: Status
-    private let timestamp = Time.timestamp
+    private var timestamp = Time.timestamp
     
     // MARK: - Init
     
     internal init(_ time: Double, status: Status) {
         self.time = time
         self.status = status
+        
+        setup()
+    }
+
+    /// Note: time not required
+    internal init(_ timestamp: Time.Timestamp, status: Status) {
+        self.time = -1
+        self.status = status
+        self.timestamp = timestamp
         
         setup()
     }
@@ -73,5 +84,17 @@ extension StartupFormatter: Metricable {
         let metric = Metric(descriptor: descriptor, timeseries: [timeseries])
         
         return Metrics([metric])
+    }
+}
+
+extension StartupFormatter: Traceable {
+    
+    // MARK: - Trace
+    
+    internal var trace: TraceModel {
+        let name = "Startup (\(status.rawValue.uppercased()))"
+        let trace = TraceModel.start(with: name, time: timestamp)
+    
+        return trace
     }
 }
