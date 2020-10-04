@@ -68,15 +68,9 @@ final public class Trace: NSObject {
     // MARK: - Init
     
     private override init() {
-        if Trace.currentSession == 0 {
-            Logger.print(.internalError, "SDK launched without a valid startup session")
-            
-            Trace.reset()
-        }
+        let initializationTime = Time.timestamp
         
-        if !Trace.configuration.enabled {
-            Logger.print(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
-        }
+        Trace.preSetup()
         
         session = Session()
         network = Network()
@@ -90,12 +84,24 @@ final public class Trace: NSObject {
         
         super.init()
         
-        setup()
+        setup(with: initializationTime)
     }
     
     // MARK: - Setup
     
-    private func setup() {
+    private static func preSetup() {
+        if Trace.currentSession == 0 {
+            Logger.print(.internalError, "SDK launched without a valid startup session")
+            
+            Trace.reset()
+        }
+        
+        if !Trace.configuration.enabled {
+            Logger.print(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
+        }
+    }
+    
+    private func setup(with initializationTime: Time.Timestamp) {
         Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue)")
         
         setupConfiguration()
@@ -107,6 +113,7 @@ final public class Trace: NSObject {
         #endif
         
         setupSwizzle()
+        setupStartupTrace(with: initializationTime)
     }
     
     private func setupConfiguration() {
@@ -121,6 +128,12 @@ final public class Trace: NSObject {
     
     private func setupSwizzle() {
         TraceSwizzleInteractor.setup()
+    }
+    
+    private func setupStartupTrace(with initializationTime: Time.Timestamp) {
+        let trace = StartupFormatter(initializationTime, status: .cold).trace
+        
+        tracer.add(trace)
     }
     
     // MARK: - Lifecycle
