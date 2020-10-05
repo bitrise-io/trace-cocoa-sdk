@@ -57,13 +57,15 @@ final internal class Lifecycle {
     // MARK: - Observer
     
     private func startObserver() {
-        didFinishLaunchingNotification = NotificationCenter.default.addObserver(
+        let notificationCenter = NotificationCenter.default
+        
+        didFinishLaunchingNotification = notificationCenter.addObserver(
             forName: UIApplication.didFinishLaunchingNotification,
             object: nil,
             queue: queue,
             using: { _ in }
         )
-        willEnterForegroundNotification = NotificationCenter.default.addObserver(
+        willEnterForegroundNotification = notificationCenter.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: queue,
@@ -78,7 +80,7 @@ final internal class Lifecycle {
                 }
             }
         )
-        didEnterBackgroundNotification = NotificationCenter.default.addObserver(
+        didEnterBackgroundNotification = notificationCenter.addObserver(
             forName: UIApplication.didEnterBackgroundNotification,
             object: nil,
             queue: queue,
@@ -88,7 +90,7 @@ final internal class Lifecycle {
                 self?.didEnterBackgroundOnce = true
             }
         )
-        willTerminateNotification = NotificationCenter.default.addObserver(
+        willTerminateNotification = notificationCenter.addObserver(
             forName: UIApplication.willTerminateNotification,
             object: nil,
             queue: queue,
@@ -98,7 +100,7 @@ final internal class Lifecycle {
                 Trace.shared.database.saveAll()
             }
         )
-        didReceiveMemoryWarningNotification = NotificationCenter.default.addObserver(
+        didReceiveMemoryWarningNotification = notificationCenter.addObserver(
             forName: UIApplication.didReceiveMemoryWarningNotification,
             object: nil,
             queue: queue,
@@ -108,11 +110,13 @@ final internal class Lifecycle {
     
     // pecker:ignore
     private func stopObserver() {
-        NotificationCenter.default.removeObserver(didFinishLaunchingNotification as Any)
-        NotificationCenter.default.removeObserver(willEnterForegroundNotification as Any)
-        NotificationCenter.default.removeObserver(didEnterBackgroundNotification as Any)
-        NotificationCenter.default.removeObserver(willTerminateNotification as Any)
-        NotificationCenter.default.removeObserver(didReceiveMemoryWarningNotification as Any)
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.removeObserver(didFinishLaunchingNotification as Any)
+        notificationCenter.removeObserver(willEnterForegroundNotification as Any)
+        notificationCenter.removeObserver(didEnterBackgroundNotification as Any)
+        notificationCenter.removeObserver(willTerminateNotification as Any)
+        notificationCenter.removeObserver(didReceiveMemoryWarningNotification as Any)
     }
     
     // MARK: - Process

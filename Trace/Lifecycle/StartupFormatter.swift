@@ -93,7 +93,7 @@ extension StartupFormatter: Traceable {
     
     internal var trace: TraceModel {
         let name = "Startup (\(status.rawValue.uppercased()))"
-        let trace = TraceModel.start(with: name, time: timestamp)
+        let trace = TraceModel.start(with: name, time: timestamp, type: .startup)
     
         return trace
     }
