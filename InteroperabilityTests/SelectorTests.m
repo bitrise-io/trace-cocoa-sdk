@@ -35,14 +35,16 @@
 - (void)testReset {
     // check if method exist.
     // also test should not crash
-    BOOL result1 = [BRTrace respondsToSelector:@selector(reset)];
-    id result2 = [BRTrace performSelector:@selector(reset)];
+    Class Trace = NSClassFromString(@"BRTrace");
     
-    IMP signature = [BRTrace methodForSelector:@selector(reset)];
-    NSMethodSignature *methodSignature = [BRTrace methodSignatureForSelector:@selector(reset)];
+    BOOL result1 = [Trace respondsToSelector:@selector(reset)];
+    id result2 = [Trace performSelector:@selector(reset)];
     
-    [BRTrace performSelectorInBackground:@selector(reset) withObject:nil];
-    [BRTrace performSelectorOnMainThread:@selector(reset) withObject:nil waitUntilDone:true];
+    IMP signature = [Trace methodForSelector:@selector(reset)];
+    NSMethodSignature *methodSignature = [Trace methodSignatureForSelector:@selector(reset)];
+    
+    [Trace performSelectorInBackground:@selector(reset) withObject:nil];
+    [Trace performSelectorOnMainThread:@selector(reset) withObject:nil waitUntilDone:true];
     
     BOOL result3 = signature != NULL;
     
