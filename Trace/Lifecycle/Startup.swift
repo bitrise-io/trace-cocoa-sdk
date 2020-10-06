@@ -51,16 +51,10 @@ internal final class Startup {
         )
     }
     
-    private func stopObserver() {
-        NotificationCenter.default.removeObserver(didBecomeActiveNotification as Any)
-    }
-    
     // MARK: - Notification
     
     private func didBecomeActive(_ notification: Notification) {
         process()
-        
-        stopObserver()
     }
     
     // MARK: - Process

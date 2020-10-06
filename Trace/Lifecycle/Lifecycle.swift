@@ -74,7 +74,7 @@ final internal class Lifecycle {
                 // While on a new project it gets called.
                 // Safe guard is place to avoid false metric for warm startup
                 if self?.didEnterBackgroundOnce == true {
-                    self?.process()
+                    self?.processWillEnterForeground()
                     
                     Trace.shared.didComeBackToForeground()
                 }
@@ -85,7 +85,7 @@ final internal class Lifecycle {
             object: nil,
             queue: queue,
             using: { [weak self] _ in
-                self?.process(.background)
+                self?.processLifecycle(.background)
                 
                 self?.didEnterBackgroundOnce = true
             }
@@ -95,7 +95,7 @@ final internal class Lifecycle {
             object: nil,
             queue: queue,
             using: { [weak self] _ in
-                self?.process(.terminated)
+                self?.processLifecycle(.terminated)
                 
                 Trace.shared.database.saveAll()
             }
@@ -121,20 +121,17 @@ final internal class Lifecycle {
     
     // MARK: - Process
     
-    private func process(_ reason: SessionFormatter.Reason) {
+    private func processLifecycle(_ reason: SessionFormatter.Reason) {
         // trace
         Trace.shared.tracer.finishAll()
-        
-        // metrics
-        // SKIPPED till post MVP
-//        let time = Time.current
-//        let session = time - Trace.currentSession
-//        let formatter = SessionFormatter(reason, time: session)
-//
-//        Trace.shared.queue.add(formatter.metrics)
     }
     
-    private func process() {
+    private func processWillEnterForeground() {
+        processMetric()
+        processTrace()
+    }
+    
+    private func processMetric() {
         let currentSession = Trace.currentSession
         
         guard currentSession != 0 else {
@@ -148,5 +145,12 @@ final internal class Lifecycle {
         let formatter = StartupFormatter(session, status: .warm)
         
         Trace.shared.queue.add(formatter.metrics)
+    }
+    
+    private func processTrace() {
+        let initializationTime = Time.timestamp
+        let trace = StartupFormatter(initializationTime, status: .warm).trace
+        
+        Trace.shared.tracer.add(trace)
     }
 }
