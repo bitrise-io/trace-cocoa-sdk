@@ -180,4 +180,51 @@ final class SpanTests: XCTestCase {
         XCTAssertNotEqual(convertedTimestamp.nanos, 0)
         XCTAssertNotEqual(convertedTimestamp.seconds, convertedTimestamp.nanos)
     }
+    
+    func testEqual_true() {
+        let lhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        let rhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        
+        let result1 = lhs == rhs
+        let result2 = lhs != rhs
+        
+        XCTAssertTrue(result1)
+        XCTAssertFalse(result2)
+    }
+    
+    func testEqual_moreThan_false() {
+        let lhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        let rhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        
+        let result = lhs > rhs
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testEqual_lessThan_false() {
+        let lhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        let rhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        
+        let result = lhs < rhs
+        
+        XCTAssertFalse(result)
+    }
+    
+    func testEqual_moreThan_true() {
+        let lhs = TraceModel.Span.Timestamp(seconds: 200, nanos: 100)
+        let rhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        
+        let result = lhs > rhs
+        
+        XCTAssertTrue(result)
+    }
+    
+    func testEqual_lessThan_true() {
+        let lhs = TraceModel.Span.Timestamp(seconds: 20, nanos: 100)
+        let rhs = TraceModel.Span.Timestamp(seconds: 100, nanos: 100)
+        
+        let result = lhs < rhs
+        
+        XCTAssertTrue(result)
+    }
 }
