@@ -43,7 +43,7 @@ final class SchedulerTests: XCTestCase {
     func testTraceRequest() {
         let network = Network()
         let scheduler = Scheduler(with: network)
-        let trace = TraceModel(id: "12345678", spans: [], resource: nil)
+        let trace = TraceModel(id: "12345678", spans: [], resource: nil, type: .view)
         let test2 = expectation(description: "test2")
         
         scheduler.schedule(trace) { result in
