@@ -38,7 +38,7 @@
     Class Trace = NSClassFromString(@"BRTrace");
     
     BOOL result1 = [Trace respondsToSelector:@selector(reset)];
-    id result2 = [Trace performSelector:@selector(reset)];
+    (void)[Trace performSelector:@selector(reset)];
     
     IMP signature = [Trace methodForSelector:@selector(reset)];
     NSMethodSignature *methodSignature = [Trace methodSignatureForSelector:@selector(reset)];
@@ -52,7 +52,6 @@
     int test = 1 + 1;
     
     XCTAssertTrue(result1);
-    XCTAssertNil(result2);
     XCTAssertTrue(result3);
     
     XCTAssertNotNil(methodSignature);
