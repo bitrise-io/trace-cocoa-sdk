@@ -74,6 +74,15 @@ final class Tracer {
             trace = lastKnownTrace
         }
         
+        if let trace = trace {
+            let traceStartTime = trace.root.start
+            let isGreaterThanStartTime = startTimes.contains { $0 >= traceStartTime }
+            
+            if !isGreaterThanStartTime {
+                Logger.print(.traceModel, "Warning new child span started before current Trace")
+            }
+        }
+        
         return trace
     }
     
