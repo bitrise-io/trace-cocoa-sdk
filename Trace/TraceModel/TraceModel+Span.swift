@@ -388,9 +388,11 @@ extension TraceModel.Span.Timestamp: Comparable {
     // MARK: - Comparable
     
     static func < (lhs: Self, rhs: Self) -> Bool {
-        let isSecondLessThan = lhs.seconds < rhs.seconds
-        let isNanosLessThan = lhs.nanos < rhs.nanos
+        let lhsNanos = lhs.nanos < 99999 ? lhs.nanos : lhs.nanos / 10
+        let rhsNanos = rhs.nanos < 99999 ? rhs.nanos : rhs.nanos / 10
         
+        let isSecondLessThan = lhs.seconds < rhs.seconds
+        let isNanosLessThan = lhsNanos < rhsNanos
         let isSecondEqual = lhs.seconds == rhs.seconds
         
         var result = false
@@ -409,8 +411,11 @@ extension TraceModel.Span.Timestamp: Comparable {
     // MARK: - Equatable
     
     static func == (lhs: Self, rhs: Self) -> Bool {
+        let lhsNanos = lhs.nanos < 99999 ? lhs.nanos : lhs.nanos / 10
+        let rhsNanos = rhs.nanos < 99999 ? rhs.nanos : rhs.nanos / 10
+        
         let isSecondEqual = lhs.seconds == rhs.seconds
-        let isNanosEqual = lhs.nanos == rhs.nanos
+        let isNanosEqual = lhsNanos == rhsNanos
         let result = isSecondEqual && isNanosEqual
         
         return result
