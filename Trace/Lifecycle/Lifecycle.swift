@@ -57,13 +57,15 @@ final internal class Lifecycle {
     // MARK: - Observer
     
     private func startObserver() {
-        didFinishLaunchingNotification = NotificationCenter.default.addObserver(
+        let notificationCenter = NotificationCenter.default
+        
+        didFinishLaunchingNotification = notificationCenter.addObserver(
             forName: UIApplication.didFinishLaunchingNotification,
             object: nil,
             queue: queue,
             using: { _ in }
         )
-        willEnterForegroundNotification = NotificationCenter.default.addObserver(
+        willEnterForegroundNotification = notificationCenter.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: queue,
@@ -72,33 +74,33 @@ final internal class Lifecycle {
                 // While on a new project it gets called.
                 // Safe guard is place to avoid false metric for warm startup
                 if self?.didEnterBackgroundOnce == true {
-                    self?.process()
+                    self?.processWillEnterForeground()
                     
                     Trace.shared.didComeBackToForeground()
                 }
             }
         )
-        didEnterBackgroundNotification = NotificationCenter.default.addObserver(
+        didEnterBackgroundNotification = notificationCenter.addObserver(
             forName: UIApplication.didEnterBackgroundNotification,
             object: nil,
             queue: queue,
             using: { [weak self] _ in
-                self?.process(.background)
+                self?.processLifecycle(.background)
                 
                 self?.didEnterBackgroundOnce = true
             }
         )
-        willTerminateNotification = NotificationCenter.default.addObserver(
+        willTerminateNotification = notificationCenter.addObserver(
             forName: UIApplication.willTerminateNotification,
             object: nil,
             queue: queue,
             using: { [weak self] _ in
-                self?.process(.terminated)
+                self?.processLifecycle(.terminated)
                 
                 Trace.shared.database.saveAll()
             }
         )
-        didReceiveMemoryWarningNotification = NotificationCenter.default.addObserver(
+        didReceiveMemoryWarningNotification = notificationCenter.addObserver(
             forName: UIApplication.didReceiveMemoryWarningNotification,
             object: nil,
             queue: queue,
@@ -108,29 +110,28 @@ final internal class Lifecycle {
     
     // pecker:ignore
     private func stopObserver() {
-        NotificationCenter.default.removeObserver(didFinishLaunchingNotification as Any)
-        NotificationCenter.default.removeObserver(willEnterForegroundNotification as Any)
-        NotificationCenter.default.removeObserver(didEnterBackgroundNotification as Any)
-        NotificationCenter.default.removeObserver(willTerminateNotification as Any)
-        NotificationCenter.default.removeObserver(didReceiveMemoryWarningNotification as Any)
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.removeObserver(didFinishLaunchingNotification as Any)
+        notificationCenter.removeObserver(willEnterForegroundNotification as Any)
+        notificationCenter.removeObserver(didEnterBackgroundNotification as Any)
+        notificationCenter.removeObserver(willTerminateNotification as Any)
+        notificationCenter.removeObserver(didReceiveMemoryWarningNotification as Any)
     }
     
     // MARK: - Process
     
-    private func process(_ reason: SessionFormatter.Reason) {
+    private func processLifecycle(_ reason: SessionFormatter.Reason) {
         // trace
         Trace.shared.tracer.finishAll()
-        
-        // metrics
-        // SKIPPED till post MVP
-//        let time = Time.current
-//        let session = time - Trace.currentSession
-//        let formatter = SessionFormatter(reason, time: session)
-//
-//        Trace.shared.queue.add(formatter.metrics)
     }
     
-    private func process() {
+    private func processWillEnterForeground() {
+        processMetric()
+        processTrace()
+    }
+    
+    private func processMetric() {
         let currentSession = Trace.currentSession
         
         guard currentSession != 0 else {
@@ -144,5 +145,12 @@ final internal class Lifecycle {
         let formatter = StartupFormatter(session, status: .warm)
         
         Trace.shared.queue.add(formatter.metrics)
+    }
+    
+    private func processTrace() {
+        let initializationTime = Time.timestamp
+        let trace = StartupFormatter(initializationTime, status: .warm).trace
+        
+        Trace.shared.tracer.add(trace)
     }
 }

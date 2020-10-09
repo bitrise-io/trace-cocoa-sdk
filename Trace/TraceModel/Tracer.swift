@@ -59,6 +59,33 @@ final class Tracer {
         return true
     }
     
+    private func locateTrace(from startTimes: [TraceModel.Span.Timestamp]) -> TraceModel? {
+        var trace: TraceModel?
+        
+        if Thread.isMainThread {
+            trace = UIApplication.shared.currentViewController()?.trace
+        } else if let model = DispatchQueue.main.sync(execute: { UIApplication.shared.currentViewController()?.trace }) {
+            trace = model
+        }
+                 
+        if trace == nil, let lastKnownTrace = traces.last {
+            Logger.print(.traceModel, "Using last trace as current active view controller was not found")
+            
+            trace = lastKnownTrace
+        }
+        
+        if let trace = trace {
+            let traceStartTime = trace.root.start
+            let isGreaterThanStartTime = startTimes.contains { $0 >= traceStartTime }
+            
+            if !isGreaterThanStartTime {
+                Logger.print(.traceModel, "Warning new child span started before current Trace")
+            }
+        }
+        
+        return trace
+    }
+    
     // MARK: - Child
     
     func addChild(_ spans: [TraceModel.Span]) {
@@ -71,33 +98,16 @@ final class Tracer {
         }
         #endif
         
-        guard let trace: TraceModel = {
-            if Thread.isMainThread {
-                if let model = UIApplication.shared.currentViewController()?.trace {
-                    return model
-                }
-            } else if let model = DispatchQueue.main.sync(execute: { UIApplication.shared.currentViewController()?.trace }) {
-                return model
-            }
-                     
-            if let lastKnownTrace = traces.last {
-                Logger.print(.traceModel, "Using last trace as current active view controller was not found")
-                
-                return lastKnownTrace
-            }
-            
-            Logger.print(.traceModel, "No active trace found")
-            
-            return nil
-        }() else {
+        let startTimes = spans.map { $0.start }
+        
+        guard let trace = locateTrace(from: startTimes) else {
             Logger.print(.internalError, "Failed to find active trace")
                         
             return
         }
         
         dispatchQueue.sync { [trace] in
-            // validation
-            if trace.isComplete {
+            if trace.isComplete { // validation
                 Logger.print(.traceModel, "Trace is appending child while marked as complete")
                 // V2: find the last incomplete trace model or return error
             }

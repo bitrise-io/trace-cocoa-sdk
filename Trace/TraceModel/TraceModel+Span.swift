@@ -382,3 +382,42 @@ extension TraceModel.Span {
         return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), isComplete: \(end != nil), startTime: \(time)"
     }
 }
+
+extension TraceModel.Span.Timestamp: Comparable {
+    
+    // MARK: - Comparable
+    
+    static func < (lhs: Self, rhs: Self) -> Bool {
+        let lhsNanos = lhs.nanos < 99999 ? lhs.nanos : lhs.nanos / 10
+        let rhsNanos = rhs.nanos < 99999 ? rhs.nanos : rhs.nanos / 10
+        
+        let isSecondLessThan = lhs.seconds < rhs.seconds
+        let isNanosLessThan = lhsNanos < rhsNanos
+        let isSecondEqual = lhs.seconds == rhs.seconds
+        
+        var result = false
+        
+        if isSecondLessThan {
+            result = true
+        } else if isSecondEqual && isNanosLessThan {
+            result = true
+        } else {
+            result = false
+        }
+        
+        return result
+    }
+    
+    // MARK: - Equatable
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        let lhsNanos = lhs.nanos < 99999 ? lhs.nanos : lhs.nanos / 10
+        let rhsNanos = rhs.nanos < 99999 ? rhs.nanos : rhs.nanos / 10
+        
+        let isSecondEqual = lhs.seconds == rhs.seconds
+        let isNanosEqual = lhsNanos == rhsNanos
+        let result = isSecondEqual && isNanosEqual
+        
+        return result
+    }
+}

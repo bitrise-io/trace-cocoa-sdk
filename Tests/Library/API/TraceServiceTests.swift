@@ -78,7 +78,7 @@ final class TraceServiceTests: XCTestCase {
     func testMock_success() {
         let network = MockNetwork()
         let service = TraceService(network: network)
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         network.status = .success
         
@@ -98,7 +98,7 @@ final class TraceServiceTests: XCTestCase {
     func testMock_fails() {
         let network = MockNetwork()
         let service = TraceService(network: network)
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         network.status = .failure
         

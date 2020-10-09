@@ -77,7 +77,7 @@ internal enum Time {
     
     // MARK: - Timer
     
-    // Calculate time based on a block
+    /// Calculate time based on a block
     internal static func time(_ block: () -> Void) -> Double {
         var info = mach_timebase_info()
         

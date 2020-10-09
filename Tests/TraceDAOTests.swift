@@ -39,14 +39,14 @@ final class TraceDAOTests: XCTestCase {
     
     func testDAO_save() {
         let dao = database.dao.trace
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         dao.create(with: model, save: true)
     }
     
     func testDAO() {
         let dao = database.dao.trace
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         dao.create(with: model, save: false)
     }
@@ -93,7 +93,7 @@ final class TraceDAOTests: XCTestCase {
     }
     
     func testCount_one() {
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
         dao.create(with: [model], save: true, synchronous: true)
@@ -104,7 +104,7 @@ final class TraceDAOTests: XCTestCase {
     }
     
     func testFetch_one() {
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
         dao.create(with: [model], save: true, synchronous: true)
@@ -140,7 +140,7 @@ final class TraceDAOTests: XCTestCase {
     
     func testUpdate() {
         let expect = expectation(description: "update check")
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
         dao.create(with: [model], save: true, synchronous: true)
@@ -180,7 +180,7 @@ final class TraceDAOTests: XCTestCase {
     
     func testUpdates() {
         let expect = expectation(description: "update check")
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
         dao.create(with: [model], save: true, synchronous: true)
@@ -205,7 +205,7 @@ final class TraceDAOTests: XCTestCase {
     }
     
     func testZ_delete() {
-        let model = TraceModel(spans: [])
+        let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
         let count = dao.count(in: .view)

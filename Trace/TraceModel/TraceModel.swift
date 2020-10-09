@@ -8,6 +8,13 @@
 
 import Foundation
 
+internal protocol Traceable {
+    
+    // MARK: - Property
+    
+    var trace: TraceModel { get }
+}
+
 /// TraceModel
 @objc(BRTraceModel)
 @objcMembers
@@ -19,13 +26,25 @@ public final class TraceModel: NSObject, Codable {
         case spans
         case resource
         case attributes
+        case type
     }
     
     enum Error: Swift.Error {
         case incomplete
     }
     
+    enum `Type`: String, Codable, CaseIterable {
+        /// lifecycle i.e Background/Foreground
+        case lifecycle
+        /// Startup i.e cold or warm
+        case startup
+        /// view i.e UIViewController
+        case view
+    }
+    
     // MARK: - Property
+    
+    internal let `type`: `Type`
     
     /// Must be 16 characters
     public let traceId: String
@@ -59,28 +78,28 @@ public final class TraceModel: NSObject, Codable {
     
     // MARK: - Static - Start
     
-    internal static func start(with name: String) -> TraceModel {
-        let start = Time.timestamp
+    internal static func start(with name: String, time: Time.Timestamp = Time.timestamp, type: `Type`) -> TraceModel {
         let traceId = UUID.random(16)
         let spanId = UUID.random(8)
         let root = Span(
             traceId: traceId,
             spanId: spanId,
             name: Span.Name(value: name, truncatedByteCount: 0),
-            start: TraceModel.Span.Timestamp(seconds: start.seconds, nanos: start.nanos)
+            start: TraceModel.Span.Timestamp(seconds: time.seconds, nanos: time.nanos)
         )
-        let trace = TraceModel(id: traceId, spans: [root])
+        let trace = TraceModel(id: traceId, spans: [root], type: type)
         
         return trace
     }
     
     // MARK: - Init
     
-    internal init(id traceId: String = UUID.random(16), spans: [Span], resource: Resource? = nil, attributes: [String: String]? = nil) {
+    internal init(id traceId: String = UUID.random(16), spans: [Span], resource: Resource? = nil, attributes: [String: String]? = nil, type: `Type`) {
         self.traceId = traceId
         self.spans = spans
         self.resource = resource
         self.attributes = attributes
+        self.type = type
         
         super.init()
         
@@ -103,6 +122,12 @@ public final class TraceModel: NSObject, Codable {
         }
         
         attributes = try container.decodeIfPresent([String: String].self, forKey: .attributes)
+        
+        if let typeOfModel = try container.decodeIfPresent(`Type`.self, forKey: .type) {
+            type = typeOfModel
+        } else {
+            type = .view // fallback value
+        }
         
         super.init()
         
@@ -132,6 +157,7 @@ public final class TraceModel: NSObject, Codable {
         }
         
         try container.encode(spans, forKey: .spans)
+        try container.encode(type, forKey: .type)
     }
     
     // MARK: - End

@@ -77,4 +77,29 @@ final class LifecycleTests: XCTestCase {
         
         Trace.shared.queue.observation = nil
     }
+    
+    func testStartupTrace_cold() {
+        sleep(1)
+        
+        let before = Trace.shared.tracer.traces.count
+        
+        NotificationCenter.default.post(
+            Notification(name: UIApplication.willEnterForegroundNotification)
+        )
+        
+        sleep(1)
+        
+        let willEnter = Trace.shared.tracer.traces.count
+        
+        NotificationCenter.default.post(
+            Notification(name: UIApplication.didBecomeActiveNotification)
+        )
+        
+        sleep(2)
+        
+        let becomeActive = Trace.shared.tracer.traces.count
+        
+        XCTAssertGreaterThan(willEnter, before)
+        XCTAssertLessThanOrEqual(becomeActive, willEnter)
+    }
 }

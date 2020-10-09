@@ -38,7 +38,7 @@ final class TraceModelTests: XCTestCase {
             end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
             attribute: attribute
         )
-        let trace = TraceModel(id: traceId, spans: [span])
+        let trace = TraceModel(id: traceId, spans: [span], type: .view)
         
         XCTAssertNotNil(trace)
         XCTAssertEqual(trace.spans.count, 1)
@@ -63,7 +63,7 @@ final class TraceModelTests: XCTestCase {
             end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
             attribute: attribute
         )
-        let data = try? TraceModel(id: traceId, spans: [span]).json()
+        let data = try? TraceModel(id: traceId, spans: [span], type: .view).json()
         
         XCTAssertNotNil(data)
         
@@ -88,7 +88,7 @@ final class TraceModelTests: XCTestCase {
             end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
             attribute: attribute
         )
-        let trace = TraceModel(id: traceId, spans: [span])
+        let trace = TraceModel(id: traceId, spans: [span], type: .view)
         
         assertSnapshot(matching: trace, as: .json)
     }
@@ -108,7 +108,7 @@ final class TraceModelTests: XCTestCase {
             end: TraceModel.Span.Timestamp(seconds: 200, nanos: 002),
             attribute: attributes
         )
-        let trace = TraceModel(id: traceId, spans: [span])
+        let trace = TraceModel(id: traceId, spans: [span], type: .view)
         
         assertSnapshot(matching: trace, as: .json)
     }
@@ -127,7 +127,7 @@ final class TraceModelTests: XCTestCase {
             attribute: attribute
         )
         let attributes = ["test1": "test2"]
-        let trace = TraceModel(id: traceId, spans: [span], attributes: attributes)
+        let trace = TraceModel(id: traceId, spans: [span], attributes: attributes, type: .view)
         
         assertSnapshot(matching: trace, as: .json)
     }
@@ -139,7 +139,7 @@ final class TraceModelTests: XCTestCase {
             name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
             start: TraceModel.Span.Timestamp(seconds: 100, nanos: 001)
         )
-        let model = TraceModel(spans: [span])
+        let model = TraceModel(spans: [span], type: .view)
         
         XCTAssertNotNil(model.traceId)
         XCTAssertFalse(model.spans.isEmpty)
@@ -155,7 +155,7 @@ final class TraceModelTests: XCTestCase {
             name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
             start: TraceModel.Span.Timestamp(seconds: 100, nanos: 001)
         )
-        let model = TraceModel(id: "id", spans: [span], resource: nil, attributes: nil)
+        let model = TraceModel(id: "id", spans: [span], resource: nil, attributes: nil, type: .view)
         let root = model.root
         
         XCTAssertNotNil(model.traceId)
@@ -167,7 +167,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testContainsPropertyWithStart() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         
         XCTAssertNotNil(model.traceId)
         XCTAssertFalse(model.spans.isEmpty)
@@ -182,7 +182,7 @@ final class TraceModelTests: XCTestCase {
             name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
             start: TraceModel.Span.Timestamp(seconds: 100, nanos: 001)
         )
-        let model = TraceModel(spans: [span])
+        let model = TraceModel(spans: [span], type: .view)
         model.finish()
         
         XCTAssertNotNil(model.traceId)
@@ -199,7 +199,7 @@ final class TraceModelTests: XCTestCase {
             name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
             start: TraceModel.Span.Timestamp(seconds: 100, nanos: 001)
         )
-        let model = TraceModel(id: "id", spans: [span], resource: nil, attributes: nil)
+        let model = TraceModel(id: "id", spans: [span], resource: nil, attributes: nil, type: .view)
         model.finish()
         
         XCTAssertNotNil(model.traceId)
@@ -210,7 +210,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testContainsPropertyWithStart_finish() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         model.finish()
         
         XCTAssertNotNil(model.traceId)
@@ -220,7 +220,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testContainsPropertyWithStart_finishFewTimes() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         model.finish()
         model.finish()
         model.finish()
@@ -236,7 +236,7 @@ final class TraceModelTests: XCTestCase {
     
     func testCreatingLoadsOfModels_100() {
         for i in 0...100 {
-            let model = TraceModel.start(with: "start \(i)")
+            let model = TraceModel.start(with: "start \(i)", type: .view)
             let root = model.root
             model.finish()
             
@@ -250,7 +250,7 @@ final class TraceModelTests: XCTestCase {
     
     func testCreatingLoadsOfModels_1000() {
         for i in 0...1000 {
-            let model = TraceModel.start(with: "start \(i)")
+            let model = TraceModel.start(with: "start \(i)", type: .view)
             model.finish()
             
             XCTAssertNotNil(model.traceId)
@@ -261,7 +261,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testCreatingLoadsOfSpanModels_100() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         let root1 = model.root
         
         for i in 0...100 {
@@ -293,7 +293,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testCreatingLoadsOfSpanModels_1000() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         
         for i in 0...1000 {
             let span = TraceModel.Span(
@@ -316,7 +316,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testCreatingLoadsOfSpanModels_5000() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         
         for i in 0...5000 {
             let span = TraceModel.Span(
@@ -427,7 +427,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testIsEqual_true() {
-        let model = TraceModel.start(with: "1")
+        let model = TraceModel.start(with: "1", type: .view)
         let result = model == model
         
         XCTAssertEqual(model, model)
@@ -435,8 +435,8 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testIsEqual_false() {
-        let model1 = TraceModel.start(with: "1")
-        let model2 = TraceModel.start(with: "2")
+        let model1 = TraceModel.start(with: "1", type: .view)
+        let model2 = TraceModel.start(with: "2", type: .view)
         let result = model1 == model2
         
         XCTAssertNotEqual(model1, model2)
@@ -444,7 +444,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testIsEqual_contains_true() {
-        let model = TraceModel.start(with: "1")
+        let model = TraceModel.start(with: "1", type: .view)
         let models = [model]
         
         let result1 = models.contains(model)
@@ -455,12 +455,12 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testIsEqual_contains_false() {
-        let model1 = TraceModel.start(with: "1")
-        let model2 = TraceModel.start(with: "2")
-        let model3 = TraceModel.start(with: "3")
+        let model1 = TraceModel.start(with: "1", type: .view)
+        let model2 = TraceModel.start(with: "2", type: .view)
+        let model3 = TraceModel.start(with: "3", type: .view)
         let models = [model1, model2, model3]
         
-        let newModel = TraceModel.start(with: "4")
+        let newModel = TraceModel.start(with: "4", type: .view)
         
         let result1 = models.contains(newModel)
         let result2 = models.contains { $0 == newModel }
@@ -470,7 +470,7 @@ final class TraceModelTests: XCTestCase {
     }
     
     func testTraceModel_finish_positive_timestamp() {
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         model.finish()
         
         XCTAssertEqual(model.spans.count, 1)
@@ -480,7 +480,7 @@ final class TraceModelTests: XCTestCase {
     func testTraceModel_finish_negative_timestamp() {
         let pastTime = Time.from(Date(timeIntervalSince1970: 1))
         
-        let model = TraceModel.start(with: "start")
+        let model = TraceModel.start(with: "start", type: .view)
         model.finish(with: pastTime)
         
         XCTAssertEqual(model.spans.count, 1)

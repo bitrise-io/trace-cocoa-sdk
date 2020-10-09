@@ -35,6 +35,23 @@ final class StartupFormatterTests: XCTestCase {
         XCTAssertNotNil(startup.jsonString)
     }
     
+    func testReadTrace_cold() {
+        let trace = startup.trace
+        
+        XCTAssertNotNil(trace)
+        XCTAssertNotNil(trace.description)
+        XCTAssertNotNil(trace.root)
+    }
+    
+    func testReadTrace_warm() {
+        let startup = StartupFormatter.init(Time.timestamp, status: .warm)
+        let trace = startup.trace
+        
+        XCTAssertNotNil(trace)
+        XCTAssertNotNil(trace.description)
+        XCTAssertNotNil(trace.root)
+    }
+    
     func testReadMetrics() {
         let metrics = startup.metrics
         

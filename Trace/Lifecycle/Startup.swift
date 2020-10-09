@@ -51,21 +51,20 @@ internal final class Startup {
         )
     }
     
-    private func stopObserver() {
-        NotificationCenter.default.removeObserver(didBecomeActiveNotification as Any)
-    }
-    
     // MARK: - Notification
     
     private func didBecomeActive(_ notification: Notification) {
         process()
-        
-        stopObserver()
     }
     
     // MARK: - Process
     
     private func process() {
+        processMetric()
+        processTrace()
+    }
+    
+    private func processMetric() {
         let currentSession = Trace.currentSession
         
         guard currentSession != 0 else {
@@ -81,5 +80,18 @@ internal final class Startup {
         let formatter = StartupFormatter(result, status: .cold)
         
         Trace.shared.queue.add(formatter.metrics)
+    }
+    
+    private func processTrace() {
+        let tracer = Trace.shared.tracer
+        
+        // Trace will always be in active traces as startup is short lived
+        guard let model = tracer.traces.first(where: { $0.type == .startup }) else {
+            Logger.print(.traceModel, "Failed to locate Startup trace model")
+            
+            return
+        }
+        
+        tracer.finish(model)
     }
 }

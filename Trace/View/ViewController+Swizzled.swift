@@ -25,7 +25,7 @@ fileprivate extension UIViewController {
             name = "\(title) (\(name))"
         }
         
-        let trace = TraceModel.start(with: name)
+        let trace = TraceModel.start(with: name, type: .view)
         
         return trace
     }
