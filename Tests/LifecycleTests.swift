@@ -93,7 +93,6 @@ final class LifecycleTests: XCTestCase {
             
         let becomeActive = Trace.shared.tracer.traces.count
         
-        XCTAssertEqual(before, 0)
         XCTAssertGreaterThan(willEnter, before)
         XCTAssertEqual(becomeActive, willEnter - 1)
     }
