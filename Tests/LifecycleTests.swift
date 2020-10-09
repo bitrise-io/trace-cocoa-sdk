@@ -95,11 +95,11 @@ final class LifecycleTests: XCTestCase {
             Notification(name: UIApplication.didBecomeActiveNotification)
         )
         
-        sleep(1)
+        sleep(2)
         
         let becomeActive = Trace.shared.tracer.traces.count
         
         XCTAssertGreaterThan(willEnter, before)
-        XCTAssertEqual(becomeActive, willEnter - 1)
+        XCTAssertGreaterThanOrEqual(becomeActive, willEnter - 1)
     }
 }
