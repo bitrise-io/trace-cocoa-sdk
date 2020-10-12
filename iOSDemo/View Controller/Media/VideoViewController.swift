@@ -37,7 +37,6 @@ final class VideoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         player.play()
     }
     
@@ -50,6 +49,7 @@ final class VideoViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
+        // TODO: Change branch to main
         let url: URL! = URL(string: "https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/mediaDemo/assets/file_example_MP4_1920_18MG.mp4")
         
         player = AVPlayer(url: url)
