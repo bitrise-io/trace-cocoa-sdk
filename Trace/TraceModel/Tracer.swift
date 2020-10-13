@@ -64,10 +64,12 @@ final class Tracer {
         
         if Thread.isMainThread {
             trace = UIApplication.shared.currentViewController()?.trace
-        } else if let model = DispatchQueue.main.sync(execute: { UIApplication.shared.currentViewController()?.trace }) {
-            trace = model
+        } else if DispatchQueue.isMainQueue {
+            trace = UIApplication.shared.currentViewController()?.trace
+        } else {
+            trace = DispatchQueue.main.sync { UIApplication.shared.currentViewController()?.trace }
         }
-                 
+        
         if trace == nil, let lastKnownTrace = traces.last {
             Logger.print(.traceModel, "Using last trace as current active view controller was not found")
             
