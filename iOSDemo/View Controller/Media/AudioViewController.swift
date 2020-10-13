@@ -38,6 +38,7 @@ final class Box: UIView {
         let red = CGFloat.random(in: 0 ..< 1)
         
         addGestureRecognizer(gesture)
+        
         backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.8)
     }
     
