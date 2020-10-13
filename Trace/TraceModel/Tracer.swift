@@ -62,11 +62,14 @@ final class Tracer {
     private func locateTrace(from startTimes: [TraceModel.Span.Timestamp]) -> TraceModel? {
         var trace: TraceModel?
         
-        if Thread.isMainThread {
+        if traces.count == 1 {
+            trace = traces.first
+        } else if Thread.isMainThread {
             trace = UIApplication.shared.currentViewController()?.trace
         } else if DispatchQueue.isMainQueue {
             trace = UIApplication.shared.currentViewController()?.trace
         } else {
+            // Note: this can be a expensive call to run.
             trace = DispatchQueue.main.sync { UIApplication.shared.currentViewController()?.trace }
         }
         
