@@ -431,6 +431,7 @@
 		10B606512530754400DC1DB1 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606502530754400DC1DB1 /* AudioViewController.swift */; };
 		10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606722530759500DC1DB1 /* VideoViewController.swift */; };
 		10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B60684253075CA00DC1DB1 /* Media.storyboard */; };
+		10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */; };
 		10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1A242A6BC00055D41E /* ULID.swift */; };
 		10B8DF1D242A72EE0055D41E /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1C242A72EE0055D41E /* DoubleTests.swift */; };
 		10B8DF20242A7DDB0055D41E /* ULIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */; };
@@ -1212,6 +1213,7 @@
 		10B606502530754400DC1DB1 /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		10B606722530759500DC1DB1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		10B60684253075CA00DC1DB1 /* Media.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Media.storyboard; sourceTree = "<group>"; };
+		10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		10B8DF1A242A6BC00055D41E /* ULID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULID.swift; sourceTree = "<group>"; };
 		10B8DF1C242A72EE0055D41E /* DoubleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoubleTests.swift; path = Tests/DoubleTests.swift; sourceTree = SOURCE_ROOT; };
 		10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ULIDTests.swift; path = Tests/ULIDTests.swift; sourceTree = SOURCE_ROOT; };
@@ -2824,6 +2826,7 @@
 				101055DA241BACAB0088BD24 /* Data+Helper.swift */,
 				10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */,
 				10574D0724D85F2600391D6C /* Date+Helper.swift */,
+				10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -4111,6 +4114,7 @@
 				1047952D22C67B4C00E6B8A2 /* Startup.swift in Sources */,
 				101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */,
 				100993F92500EA9C006C7FB4 /* CrashController.swift in Sources */,
+				10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */,
 				1047952A22C5118D00E6B8A2 /* FPSFormatter.swift in Sources */,
 				10F2BC8522AFAD590074EE5D /* DataTaskFormatter.swift in Sources */,
 				100575A8229D8994000343EE /* Network+HTTP.swift in Sources */,
