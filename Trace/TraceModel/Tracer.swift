@@ -17,7 +17,7 @@ final class Tracer {
     private let queue: Queue
     private let session: Session
     private let crash: CrashController
-    private let dispatchQueue = DispatchQueue(
+    private let dispatchQueue = DispatchQueueSynchronized(
         label: Constants.SDK.name.rawValue + ".Tracer",
         qos: .background
     )

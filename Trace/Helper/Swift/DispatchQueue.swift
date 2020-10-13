@@ -13,7 +13,7 @@ extension DispatchQueue {
     // MARK: - Property
             
     static var isMainQueue: Bool {
-        enum Static {
+        enum StaticMainQueue {
             static let key: DispatchSpecificKey<Void> = {
                 let key = DispatchSpecificKey<Void>()
                
@@ -23,6 +23,6 @@ extension DispatchQueue {
             }()
         }
         
-        return getSpecific(key: Static.key) != nil
+        return getSpecific(key: StaticMainQueue.key) != nil
     }
 }

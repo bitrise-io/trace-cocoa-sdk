@@ -432,6 +432,8 @@
 		10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606722530759500DC1DB1 /* VideoViewController.swift */; };
 		10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B60684253075CA00DC1DB1 /* Media.storyboard */; };
 		10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */; };
+		10B6085D2535D47F00DC1DB1 /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */; };
+		10B6086F25360E2700DC1DB1 /* DispatchQueueSynchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */; };
 		10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1A242A6BC00055D41E /* ULID.swift */; };
 		10B8DF1D242A72EE0055D41E /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1C242A72EE0055D41E /* DoubleTests.swift */; };
 		10B8DF20242A7DDB0055D41E /* ULIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */; };
@@ -1214,6 +1216,8 @@
 		10B606722530759500DC1DB1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		10B60684253075CA00DC1DB1 /* Media.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Media.storyboard; sourceTree = "<group>"; };
 		10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DispatchQueueTests.swift; path = Tests/DispatchQueueTests.swift; sourceTree = SOURCE_ROOT; };
+		10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueSynchronized.swift; sourceTree = "<group>"; };
 		10B8DF1A242A6BC00055D41E /* ULID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULID.swift; sourceTree = "<group>"; };
 		10B8DF1C242A72EE0055D41E /* DoubleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoubleTests.swift; path = Tests/DoubleTests.swift; sourceTree = SOURCE_ROOT; };
 		10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ULIDTests.swift; path = Tests/ULIDTests.swift; sourceTree = SOURCE_ROOT; };
@@ -2766,6 +2770,7 @@
 				101055E2241BEE1D0088BD24 /* DataTests.swift */,
 				102070BB24604DF400A75C45 /* DecodableTests.swift */,
 				1091373624AF8E7700476EF6 /* URLStructureTests.swift */,
+				10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2827,6 +2832,7 @@
 				10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */,
 				10574D0724D85F2600391D6C /* Date+Helper.swift */,
 				10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */,
+				10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -4144,6 +4150,7 @@
 				108D30932327A80A002757CC /* TraceModel+Span.swift in Sources */,
 				10F2BC9A22B296530074EE5D /* Metric.swift in Sources */,
 				10F2BC8322AEBBAD0074EE5D /* RequestFormatter.swift in Sources */,
+				10B6086F25360E2700DC1DB1 /* DispatchQueueSynchronized.swift in Sources */,
 				100575A7229D8994000343EE /* Network.swift in Sources */,
 				1006100D23576729004EFC2C /* String+Hex.swift in Sources */,
 				10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */,
@@ -4213,6 +4220,7 @@
 				1028C8C22302C15000E07839 /* PersistentTests.swift in Sources */,
 				104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */,
 				105962E3243F87BD00047D29 /* SelectorTests.m in Sources */,
+				10B6085D2535D47F00DC1DB1 /* DispatchQueueTests.swift in Sources */,
 				10AC27E723440FE300780890 /* TracerTest.swift in Sources */,
 				804832F024CAF7AC005970CF /* DeviceModelTests.swift in Sources */,
 				101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */,
