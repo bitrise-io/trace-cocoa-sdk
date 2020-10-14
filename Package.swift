@@ -1,7 +1,7 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let version = "1.7.5"
+let version = "1.7.6"
 let name = "BitriseTrace"
 let trace = "Trace"
 let traceInternal = "TraceInternal"
