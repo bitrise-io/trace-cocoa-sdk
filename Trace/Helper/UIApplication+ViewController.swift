@@ -14,7 +14,7 @@ internal extension UIApplication {
     
     // MARK: - View Controller
     
-    func currentViewController(_ viewController: UIViewController? = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController) -> UIViewController? {
+    func currentViewController(_ viewController: UIViewController? = shared.windows.first(where: { $0.isKeyWindow })?.rootViewController) -> UIViewController? {
         guard let viewController = viewController else { return nil }
         
         if let viewController = viewController as? UINavigationController {

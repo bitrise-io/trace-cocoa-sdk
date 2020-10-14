@@ -428,6 +428,12 @@
 		10B1BB6D22F9AAB900DEA77B /* Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1BB6C22F9AAB900DEA77B /* Lifecycle.swift */; };
 		10B1BB6F22F9B35600DEA77B /* SessionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1BB6E22F9B35600DEA77B /* SessionFormatter.swift */; };
 		10B1BB7122FAFBF200DEA77B /* bitrise_configuration_noURL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10B1BB7022FAFBF200DEA77B /* bitrise_configuration_noURL.plist */; platformFilter = ios; };
+		10B606512530754400DC1DB1 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606502530754400DC1DB1 /* AudioViewController.swift */; };
+		10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606722530759500DC1DB1 /* VideoViewController.swift */; };
+		10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B60684253075CA00DC1DB1 /* Media.storyboard */; };
+		10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */; };
+		10B6085D2535D47F00DC1DB1 /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */; };
+		10B6086F25360E2700DC1DB1 /* DispatchQueueSynchronized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */; };
 		10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1A242A6BC00055D41E /* ULID.swift */; };
 		10B8DF1D242A72EE0055D41E /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1C242A72EE0055D41E /* DoubleTests.swift */; };
 		10B8DF20242A7DDB0055D41E /* ULIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */; };
@@ -1206,6 +1212,12 @@
 		10B1BB6C22F9AAB900DEA77B /* Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lifecycle.swift; sourceTree = "<group>"; };
 		10B1BB6E22F9B35600DEA77B /* SessionFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormatter.swift; sourceTree = "<group>"; };
 		10B1BB7022FAFBF200DEA77B /* bitrise_configuration_noURL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bitrise_configuration_noURL.plist; sourceTree = "<group>"; };
+		10B606502530754400DC1DB1 /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		10B606722530759500DC1DB1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		10B60684253075CA00DC1DB1 /* Media.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Media.storyboard; sourceTree = "<group>"; };
+		10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DispatchQueueTests.swift; path = Tests/DispatchQueueTests.swift; sourceTree = SOURCE_ROOT; };
+		10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueSynchronized.swift; sourceTree = "<group>"; };
 		10B8DF1A242A6BC00055D41E /* ULID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULID.swift; sourceTree = "<group>"; };
 		10B8DF1C242A72EE0055D41E /* DoubleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoubleTests.swift; path = Tests/DoubleTests.swift; sourceTree = SOURCE_ROOT; };
 		10B8DF1F242A7DDB0055D41E /* ULIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ULIDTests.swift; path = Tests/ULIDTests.swift; sourceTree = SOURCE_ROOT; };
@@ -2191,6 +2203,7 @@
 				109B39EC24EFC3F300E44676 /* NIB */,
 				104EA0BE238293EF004C07CE /* Control */,
 				107B2C5923560466002E7A3D /* Tabs */,
+				10B6064F2530752300DC1DB1 /* Media */,
 				10FC45D1230EE65D0077BF2C /* Network */,
 				1087A00122DE06AF005F8F83 /* WebView */,
 				1053593324C989800007F2E0 /* Collection */,
@@ -2624,6 +2637,16 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
+		10B6064F2530752300DC1DB1 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				10B60684253075CA00DC1DB1 /* Media.storyboard */,
+				10B606502530754400DC1DB1 /* AudioViewController.swift */,
+				10B606722530759500DC1DB1 /* VideoViewController.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		10B8DF19242A6B970055D41E /* ULID */ = {
 			isa = PBXGroup;
 			children = (
@@ -2747,6 +2770,7 @@
 				101055E2241BEE1D0088BD24 /* DataTests.swift */,
 				102070BB24604DF400A75C45 /* DecodableTests.swift */,
 				1091373624AF8E7700476EF6 /* URLStructureTests.swift */,
+				10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2807,6 +2831,8 @@
 				101055DA241BACAB0088BD24 /* Data+Helper.swift */,
 				10350D9624C1FFC50004F6D7 /* TimestampValidator.swift */,
 				10574D0724D85F2600391D6C /* Date+Helper.swift */,
+				10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */,
+				10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -3560,6 +3586,7 @@
 				104A6980229401280065F218 /* LaunchScreen.storyboard in Resources */,
 				104A697D229401280065F218 /* Assets.xcassets in Resources */,
 				104EA0C2238294FA004C07CE /* Control.storyboard in Resources */,
+				10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */,
 				107B2C5B23560474002E7A3D /* Tabs.storyboard in Resources */,
 				1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */,
 				1087A00022DE06A7005F8F83 /* WebView.storyboard in Resources */,
@@ -4093,6 +4120,7 @@
 				1047952D22C67B4C00E6B8A2 /* Startup.swift in Sources */,
 				101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */,
 				100993F92500EA9C006C7FB4 /* CrashController.swift in Sources */,
+				10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */,
 				1047952A22C5118D00E6B8A2 /* FPSFormatter.swift in Sources */,
 				10F2BC8522AFAD590074EE5D /* DataTaskFormatter.swift in Sources */,
 				100575A8229D8994000343EE /* Network+HTTP.swift in Sources */,
@@ -4122,6 +4150,7 @@
 				108D30932327A80A002757CC /* TraceModel+Span.swift in Sources */,
 				10F2BC9A22B296530074EE5D /* Metric.swift in Sources */,
 				10F2BC8322AEBBAD0074EE5D /* RequestFormatter.swift in Sources */,
+				10B6086F25360E2700DC1DB1 /* DispatchQueueSynchronized.swift in Sources */,
 				100575A7229D8994000343EE /* Network.swift in Sources */,
 				1006100D23576729004EFC2C /* String+Hex.swift in Sources */,
 				10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */,
@@ -4191,6 +4220,7 @@
 				1028C8C22302C15000E07839 /* PersistentTests.swift in Sources */,
 				104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */,
 				105962E3243F87BD00047D29 /* SelectorTests.m in Sources */,
+				10B6085D2535D47F00DC1DB1 /* DispatchQueueTests.swift in Sources */,
 				10AC27E723440FE300780890 /* TracerTest.swift in Sources */,
 				804832F024CAF7AC005970CF /* DeviceModelTests.swift in Sources */,
 				101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */,
@@ -4287,8 +4317,10 @@
 				10FC45D7230F3C9D0077BF2C /* CrashViewController.swift in Sources */,
 				109B39F024EFC51400E44676 /* NibViewController.swift in Sources */,
 				104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */,
+				10B606512530754400DC1DB1 /* AudioViewController.swift in Sources */,
 				107B2C5F235604C3002E7A3D /* SecondTabViewController.swift in Sources */,
 				1087A00322DE06BC005F8F83 /* WebViewController.swift in Sources */,
+				10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */,
 				10FC45D3230EE6730077BF2C /* NetworkViewController.swift in Sources */,
 				1046CC3D22BB882200A8762F /* View.swift in Sources */,
 				104A6978229401260065F218 /* ViewController.swift in Sources */,

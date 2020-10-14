@@ -17,7 +17,7 @@ final class Tracer {
     private let queue: Queue
     private let session: Session
     private let crash: CrashController
-    private let dispatchQueue = DispatchQueue(
+    private let dispatchQueue = DispatchQueueSynchronized(
         label: Constants.SDK.name.rawValue + ".Tracer",
         qos: .background
     )
@@ -62,12 +62,17 @@ final class Tracer {
     private func locateTrace(from startTimes: [TraceModel.Span.Timestamp]) -> TraceModel? {
         var trace: TraceModel?
         
-        if Thread.isMainThread {
+        if traces.count == 1 {
+            trace = traces.first
+        } else if Thread.isMainThread {
             trace = UIApplication.shared.currentViewController()?.trace
-        } else if let model = DispatchQueue.main.sync(execute: { UIApplication.shared.currentViewController()?.trace }) {
-            trace = model
+        } else if DispatchQueue.isMainQueue {
+            trace = UIApplication.shared.currentViewController()?.trace
+        } else {
+            // Note: this can be a expensive call to run.
+            trace = DispatchQueue.main.sync { UIApplication.shared.currentViewController()?.trace }
         }
-                 
+        
         if trace == nil, let lastKnownTrace = traces.last {
             Logger.print(.traceModel, "Using last trace as current active view controller was not found")
             
