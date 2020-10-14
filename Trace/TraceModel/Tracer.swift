@@ -69,48 +69,31 @@ final class Tracer {
         } else if DispatchQueue.isMainQueue {
             trace = UIApplication.shared.currentViewController()?.trace
         } else {
-            // Note: this can be a expensive call to run.
-            trace = DispatchQueue.main.sync { UIApplication.shared.currentViewController()?.trace }
+             return nil // try using inside a async main thread instead!
         }
         
+        // Check if it's nil while in the main thread then fallback to the last trace on record
         if trace == nil, let lastKnownTrace = traces.last {
             Logger.print(.traceModel, "Using last trace as current active view controller was not found")
             
             trace = lastKnownTrace
         }
         
+        // validation
         if let trace = trace {
             let traceStartTime = trace.root.start
             let isGreaterThanStartTime = startTimes.contains { $0 >= traceStartTime }
             
             if !isGreaterThanStartTime {
-                Logger.print(.traceModel, "Warning new child span started before current Trace")
+                // TODO: Too much noise
+                // Logger.print(.traceModel, "Warning new child span started before current Trace")
             }
         }
         
         return trace
     }
     
-    // MARK: - Child
-    
-    func addChild(_ spans: [TraceModel.Span]) {
-        #if DEBUG || Debug || debug
-        // TODO: only for private beta testing. remove before GA
-        spans.forEach {
-            if !$0.validate() {
-                Logger.print(.internalError, "Child span has invalid timestamp")
-            }
-        }
-        #endif
-        
-        let startTimes = spans.map { $0.start }
-        
-        guard let trace = locateTrace(from: startTimes) else {
-            Logger.print(.internalError, "Failed to find active trace")
-                        
-            return
-        }
-        
+    private func update(trace: TraceModel, with spans: [TraceModel.Span]) {
         dispatchQueue.sync { [trace] in
             if trace.isComplete { // validation
                 Logger.print(.traceModel, "Trace is appending child while marked as complete")
@@ -132,6 +115,35 @@ final class Tracer {
             
             trace.spans.append(contentsOf: spans)
         }
+    }
+    
+    // MARK: - Child
+    
+    func addChild(_ spans: [TraceModel.Span]) {
+        #if DEBUG || Debug || debug
+        // TODO: only for private beta testing. remove before GA
+        spans.forEach {
+            if !$0.validate() {
+                Logger.print(.internalError, "Child span has invalid timestamp")
+            }
+        }
+        #endif
+        
+        let startTimes = spans.map { $0.start }
+        
+        guard let trace = locateTrace(from: startTimes) else { // regardless of the thread
+            DispatchQueue.main.async(qos: .utility) { [weak self] in
+                if let trace = self?.locateTrace(from: startTimes) { // second try on main thread
+                    self?.update(trace: trace, with: spans)
+                } else {
+                    Logger.print(.internalError, "Failed to find active trace in async main thread")
+                }
+            }
+                        
+            return
+        }
+        
+        update(trace: trace, with: spans)
     }
     
     // MARK: - Finish
