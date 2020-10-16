@@ -19,7 +19,7 @@ final class LifecycleTests: XCTestCase {
     // MARK: - Setup
     
     override func setUp() {
-        
+        Trace.shared.queue.observation = nil
     }
     
     override func tearDown() {
@@ -29,10 +29,15 @@ final class LifecycleTests: XCTestCase {
     // MARK: - Tests
     
     func testSendNotification_passes() {
-        var result = false
+        let async = expectation(description: "test")
+        async.assertForOverFulfill = false
         
-        Trace.shared.queue.observation = nil
-        Trace.shared.queue.observation = { _ in result = true }
+        let queue = Trace.shared.queue
+        
+        queue.observation = nil
+        queue.observation = { _ in async.fulfill() }
+        
+        sleep(1)
         
         [
             UIApplication.didFinishLaunchingNotification,
@@ -42,9 +47,9 @@ final class LifecycleTests: XCTestCase {
             UIApplication.didReceiveMemoryWarningNotification
         ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
         
-        XCTAssertTrue(result)
+        wait(for: [async], timeout: 2.5)
         
-        Trace.shared.queue.observation = nil
+        queue.observation = nil
     }
     
     func testSendNotification_foreground_observationDoesNotGetTriggered() {
