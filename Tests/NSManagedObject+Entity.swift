@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// Unit test
 public extension NSManagedObject {
 
     // MARK: - Init
