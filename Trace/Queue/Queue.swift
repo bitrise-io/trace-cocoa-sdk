@@ -213,27 +213,18 @@ internal final class Queue {
     // MARK: - Add
     
     internal func add(_ metrics: Metrics, force: Bool = false, delay: Bool = false) {
-        let lastSaved = lastSavedForMetric
-        
-        let operation = { [weak self, lastSaved] in
+        let operation = { [weak self] in
             var save = true
             let dao = self?.database.dao.metric
             
-            let calendar = Calendar.current
-            let date = Date()
-            let components = calendar.dateComponents([.second], from: lastSaved, to: date)
-            
-            if let second = components.second, second >= Queue.timeout {
+            if self?.isMetricRequiredToBeSaved == true {
                 save = true
                 self?.lastSavedForMetric = Date()
             } else {
                 save = false
             }
             
-            dao?.create(
-                with: metrics,
-                save: save
-            )
+            dao?.create(with: metrics, save: save)
             
             if force {
                 self?.schedule()
@@ -250,17 +241,11 @@ internal final class Queue {
     }
     
     internal func add(_ traces: [TraceModel], force: Bool = false, delay: Bool = false) {
-        let lastSaved = lastSavedForTrace
-        
-        let operation = { [weak self, lastSaved] in
+        let operation = { [weak self] in
             var save = true
             let dao = self?.database.dao.trace
             
-            let calendar = Calendar.current
-            let date = Date()
-            let components = calendar.dateComponents([.second], from: lastSaved, to: date)
-            
-            if let second = components.second, second >= Queue.timeout {
+            if self?.isTraceRequiredToBeSaved == true {
                 save = true
                 self?.lastSavedForTrace = Date()
             } else {
