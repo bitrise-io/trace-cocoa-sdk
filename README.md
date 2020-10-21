@@ -19,6 +19,11 @@ Use Trace to:
 - [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12.0+
 - Swift 5.3
 
+## Xcode 11 support: 
+- Use version `Trace SDK 1.6.1`
+- iOS 10.0+ 
+- Swift 5.0
+
 ## Installation
 
 `Trace` SDK doesn't contain any external dependencies but does depend on a few system frameworks such as:      
@@ -33,6 +38,8 @@ Each framework can be easier found in Xcode's framework list. These are currentl
 ### Install from Bitrise workflow step site
 
 Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step **must** come before the Xcode Archive & Export step.
+
+Note: If you are still using Xcode 11, use `Trace SDK` version `1.6.1`.
 
 ### Install directly from the source code
 
