@@ -49,9 +49,9 @@ extension FileManager {
         if #available(iOS 11.0, *) {
             // Since iOS 11 this information is provided high level
             let fileURL = URL(fileURLWithPath: directory)
-            let url = try? fileURL.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage
-            
-            if let space = url {
+            let url: Int64?? = try? fileURL.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage
+        
+            if let unwrappedSpace = url, let space = unwrappedSpace {
                 totalSpace = space
             }
         }
