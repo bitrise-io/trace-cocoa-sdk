@@ -3189,6 +3189,7 @@
 				104A695A2293FC340065F218 /* Run SwiftLint linter tool */,
 				1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */,
 				2B822A28715DC06882073709 /* Frameworks */,
+				100092752542EA4D00C1C3D4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3674,6 +3675,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		100092752542EA4D00C1C3D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\n\nif [ \"$XCODE_VERSION\" == \"Xcode 11.7\" ]; then\necho \"Xcode 11\"\nelse \necho \"Xcode X\"\nfi\n";
+		};
 		104A695A2293FC340065F218 /* Run SwiftLint linter tool */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3838,7 +3856,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/latest/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\nln -f -n \"${PROJECT_DIR}/SDK/latest/libTrace.a\" \"${PROJECT_DIR}\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
+			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\necho \"Creating new folder with new version: ${SDKVERSION}\"\n\ncp -r \"${PROJECT_DIR}/SDK/${LATEST}/.\" \"${PROJECT_DIR}/SDK/${SDKVERSION}/\"\n\nln -f -n \"${PROJECT_DIR}/SDK/${LATEST}/libTrace.a\" \"${PROJECT_DIR}\"\n\necho \"Created new folder with new version: ${SDKVERSION}\"\n";
 		};
 		10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3856,7 +3874,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying library to SDK latest folder\"\n\n# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 4. Copy library to project root\ncp \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${PROJECT_DIR}/SDK/latest/lib${PROJECT_NAME}.a\"\n\necho \"${PROJECT_DIR}/SDK/latest/lib${PROJECT_NAME}.a\"\necho \"Copied library to SDK latest folder\"\n";
+			shellScript = "echo \"Copying library to SDK latest folder\"\n\n# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\n# Step 4. Copy library to project root\ncp \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${PROJECT_DIR}/SDK/${LATEST}/lib${PROJECT_NAME}.a\"\n\necho \"${PROJECT_DIR}/SDK/${LATEST}/lib${PROJECT_NAME}.a\"\necho \"Copied library to SDK latest folder\"\n";
 		};
 		10A9C80C23E8822500DCBF4F /* 1. Build Device, Simulator and Mac catalyst library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3892,7 +3910,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating universal static library zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr -u -X \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
+			shellScript = "echo \"Creating universal static library zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr -u -X \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
 		};
 		10BB4EB0250BA5600044AB9E /* 7. Create Trace.xcframework from Device and Simulator library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3964,7 +3982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\necho \"Copying ${PROJECT_NAME}.xcframework to SDK latest folder\"\n\nrm -r \"${PROJECT_DIR}/SDK/latest/${PROJECT_NAME}.xcframework\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.xcframework\" \"${PROJECT_DIR}/SDK/latest/${PROJECT_NAME}.xcframework\"\n\necho \"Copied ${PROJECT_NAME}.xcframework to SDK latest folder\"\n";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\necho \"Copying ${PROJECT_NAME}.xcframework to SDK latest folder\"\n\nrm -r \"${PROJECT_DIR}/SDK/${LATEST}/${PROJECT_NAME}.xcframework\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.xcframework\" \"${PROJECT_DIR}/SDK/${LATEST}/${PROJECT_NAME}.xcframework\"\n\necho \"Copied ${PROJECT_NAME}.xcframework to SDK latest folder\"\n";
 		};
 		10BB4EB4250E85020044AB9E /* 9. Zip Trace.xcframework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3982,7 +4000,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\ncd \"${PROJECT_DIR}/SDK/latest/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
+			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
