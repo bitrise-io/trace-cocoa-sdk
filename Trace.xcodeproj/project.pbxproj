@@ -3692,6 +3692,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nSWIFT_VERSION=$(swift --version | grep \"Swift.version.[0-9.]*\")\n\necho \"Xcode version ${XCODE_VERSION} using Swift ${SWIFT_VERSION}\"\necho \"Trace SDK version ${SDKVERSION}\"\n\n";
+			showEnvVarsInLog = 0;
 		};
 		104A695A2293FC340065F218 /* Run SwiftLint linter tool */ = {
 			isa = PBXShellScriptBuildPhase;
