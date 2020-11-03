@@ -33,11 +33,11 @@
     "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
     "tag": "1.7.8"
   },
+  "module_name": "Trace",
   "default_subspecs": "Trace",
   "subspecs": [
     {
       "name": "Trace",
-      "module_name": "Trace",
       "source_files": "Trace/**/*.{h,m,swift}",
       "dependencies": {
         "BitriseTrace/TraceInternal": []
@@ -54,8 +54,5 @@
         "TraceInternal/**/*.{h,m,mm,c,cpp}"
       ]
     }
-  ],
-  "user_target_xcconfig": {
-    "OTHER_LDFLAGS": "-force_load $(PODS_ROOT)/BitriseTrace/libTrace.a"
-  }
+  ]
 }
