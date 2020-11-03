@@ -1,6 +1,5 @@
 {
   "name": "BitriseTrace",
-  "module_name": "Trace",
   "summary": "Bitrise Trace SDK",
   "description": "Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.",
   "social_media_url": "https://twitter.com/bitrise",
@@ -34,10 +33,11 @@
     "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
     "tag": "1.7.8"
   },
-  "default_subspecs": "Default",
+  "default_subspecs": "Trace",
   "subspecs": [
     {
-      "name": "Default",
+      "name": "Trace",
+      "module_name": "Trace",
       "source_files": "Trace/**/*.{h,m,swift}",
       "dependencies": {
         "BitriseTrace/TraceInternal": []
