@@ -33,11 +33,11 @@
     "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
     "tag": "1.7.81"
   },
-  "module_name": "Trace",
-  "default_subspecs": "Trace",
+  "module_name": "BitriseTrace",
+  "default_subspecs": "BitriseTrace",
   "subspecs": [
     {
-      "name": "Trace",
+      "name": "BitriseTrace",
       "source_files": "Trace/**/*.{h,m,swift}",
       "dependencies": {
         "BitriseTrace/TraceInternal": []
