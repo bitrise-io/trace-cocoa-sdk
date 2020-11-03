@@ -7,7 +7,10 @@
 //
 
 import Foundation
+
+#if canImport(TraceInternal)
 import TraceInternal
+#endif
 
 /// CrashController
 @objcMembers
@@ -19,7 +22,11 @@ public final class CrashController: NSObject {
     private let scheduler: Scheduler
     
     /// Internal use only
-    internal lazy var installation: TraceInternal.KSCrashInstallation = KSCrashInstallation()
+    #if canImport(TraceInternal)
+    internal lazy var installation: TraceInternal.KSCrashInstallation = TraceInternal.KSCrashInstallation()
+    #else
+    internal lazy var installation: KSCrashInstallation = KSCrashInstallation()
+    #endif
     
     internal var userInfo: [AnyHashable: Any] {
         get {
