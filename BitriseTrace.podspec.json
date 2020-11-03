@@ -33,7 +33,6 @@
     "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
     "tag": "1.7.8"
   },
-  "module_name": "Trace",
   "default_subspecs": "Trace",
   "subspecs": [
     {
