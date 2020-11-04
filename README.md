@@ -1,5 +1,5 @@
 # [<img src="assets/logo.jpeg"  width="80" height="80">](https://www.bitrise.io/add-ons/trace-mobile-monitoring)  Trace SDK
-[![Bitrise status](https://app.bitrise.io/app/fa31931683b0dd17.svg?token=MpCmFyjh7KE7W785Tb3Keg)](https://app.bitrise.io/app/fa31931683b0dd17#/builds)[![Cocoapods](https://img.shields.io/cocoapods/v/BitriseTrace)](https://cocoapods.org/pods/BitriseTrace)![Cocoapods platforms](https://img.shields.io/cocoapods/p/BitriseTrace)![Mac Catalyst](https://img.shields.io/badge/Platform-Mac%20Catalyst-brightgreen)[![Cocoapods](https://img.shields.io/cocoapods/l/BitriseTrace)](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE)![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen)![Swift version](https://img.shields.io/badge/Swift-5.3-red)![SPM](https://img.shields.io/badge/SPM-compatible-red)[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fbitrise)](https://twitter.com/bitrise)[![Join Slack group](https://img.shields.io/badge/Chat-Slack-blue?link=https://chat.bitrise.io/)](https://chat.bitrise.io/)[![BCH compliance](https://bettercodehub.com/edge/badge/bitrise-io/trace-cocoa-sdk?branch=main)](https://bettercodehub.com/results/bitrise-io/trace-cocoa-sdk)
+[![Bitrise status](https://app.bitrise.io/app/fa31931683b0dd17.svg?token=MpCmFyjh7KE7W785Tb3Keg)](https://app.bitrise.io/app/fa31931683b0dd17#/builds)[![Cocoapods](https://img.shields.io/cocoapods/v/BitriseTrace)](https://cocoapods.org/pods/BitriseTrace)![Cocoapods platforms](https://img.shields.io/cocoapods/p/BitriseTrace)![Mac Catalyst](https://img.shields.io/badge/Platform-Mac%20Catalyst-brightgreen)[![Cocoapods](https://img.shields.io/cocoapods/l/BitriseTrace)](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE)![Carthage](https://img.shields.io/badge/Carthage-compatible-brightgreen)![Swift version](https://img.shields.io/badge/Swift-5-red)![SPM](https://img.shields.io/badge/SPM-compatible-red)[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fbitrise)](https://twitter.com/bitrise)[![Join Slack group](https://img.shields.io/badge/Chat-Slack-blue?link=https://chat.bitrise.io/)](https://chat.bitrise.io/)[![BCH compliance](https://bettercodehub.com/edge/badge/bitrise-io/trace-cocoa-sdk?branch=main)](https://bettercodehub.com/results/bitrise-io/trace-cocoa-sdk)
 
 Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.
 Use Trace to:
@@ -16,13 +16,8 @@ Use Trace to:
 ## Requirements
 
 - iOS 10.0+ 
-- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 12.0+
-- Swift 5.3
-
-## Xcode 11 support: 
-- Use version `Trace SDK 1.6.1`
-- iOS 10.0+ 
-- Swift 5.0
+- [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 11.0+
+- Swift 5
 
 ## Installation
 
@@ -38,8 +33,6 @@ Each framework can be easier found in Xcode's framework list. These are currentl
 ### Install from Bitrise workflow step site
 
 Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step **must** come before the Xcode Archive & Export step.
-
-Note: If you are still using Xcode 11, use `Trace SDK` version `1.6.1`.
 
 ### Install directly from the source code
 
@@ -99,6 +92,9 @@ Optional: Add `-force_load` to the SDK, if your project does not use `-ObjC` in 
 Now that the SDK is set up in your workspace, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
+
+Note: Cartage is not currently supported out of the box, please follow [integration steps](https://github.com/Carthage/Carthage/issues/2534).
+Wait for [].xcframework support](https://github.com/Carthage/Carthage/pull/2881)
 
 Add this to your `Cartfile`
 
