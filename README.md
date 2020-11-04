@@ -81,6 +81,21 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 $ pod install
 ```
 
+Optional: Add `-force_load` to the SDK, if your project does not use `-ObjC` in `other linker flags`. This is used to make sure the SDK is launched at the start of the app.
+
+* Select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
+* In the tab bar at the top of that window, open the "Build Settings" panel.
+* Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter:
+
+```bash
+# When not using `use_frameworks!` i.e Static library approach 
+-force_load $(TARGET_BUILD_DIR)/BitriseTrace/libBitriseTrace.a
+
+# When using `use_frameworks!` i.e Framework approach
+-force_load $(TARGET_BUILD_DIR)/BitriseTrace/Trace.framework/Trace
+
+```
+
 Now that the SDK is set up in your workspace, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
