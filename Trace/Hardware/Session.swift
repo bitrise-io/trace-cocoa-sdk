@@ -24,8 +24,8 @@ final class Session {
                 if !oldValue.network.isEmpty && resource?.network.isEmpty == true {
                     resource?.network = oldValue.network
                 }
-            } else {
-                Logger.print(.application, "Resource created for this session")
+                
+                Logger.print(.application, "Resource created for this new session")
             }
             
             if let resources = try? resource?.dictionary() {

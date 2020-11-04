@@ -37,8 +37,6 @@ internal struct TimestampValidator {
             return true
         }
         
-        Logger.print(.internalError, "Invalid timestamp \(components)")
-        
         return false
     }
 }

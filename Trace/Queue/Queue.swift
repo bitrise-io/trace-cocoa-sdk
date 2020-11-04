@@ -127,11 +127,6 @@ internal final class Queue {
                 let names = Set(combined.map { $0.descriptor.name.rawValue })
                 let attributes = Trace.shared.attributes
                 let resource = self?.session.resource
-                
-                if resource == nil {
-                    Logger.print(.internalError, "Resource missing from new metric model")
-                }
-                
                 let model = Metrics(combined, resource: resource, attributes: attributes)
                 let dbModelObjectIds = dbModels.map { $0.objectID }
                 
@@ -176,12 +171,10 @@ internal final class Queue {
                 combined.forEach { trace in
                     // fallback
                     if trace.resource == nil {
-                        Logger.print(.internalError, "Resource missing from new trace model")
-                        
                         if let newResource = self?.session.resource {
-                            Logger.print(.internalError, "Injecting last known Resource into trace model")
-                            
                             trace.resource = newResource
+                        } else {
+                            Logger.print(.internalError, "Resource missing from new trace model")
                         }
                     }
                     
@@ -189,9 +182,6 @@ internal final class Queue {
                     let toBeDeleted = dbModels.filter { ids.contains($0.traceId) }
                     let toBeDeletedObjectIds = toBeDeleted.map { $0.objectID }
                 
-                    let howManyRootSpans = trace.spans.filter { $0.parentSpanId == nil }.count
-                    let howManyChildSpans = trace.spans.filter { $0.parentSpanId != nil }.count
-                    
                     self?.scheduler.schedule(trace, {
                         switch $0 {
                         case .success:
@@ -201,8 +191,6 @@ internal final class Queue {
                             Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
-                    
-                    Logger.print(.queue, "Scheduled Trace root spans: \(howManyRootSpans), child spans: \(howManyChildSpans)")
                 }
             } catch {
                 Logger.print(.queue, "Failed to create Trace class from json: \(error)")
@@ -254,10 +242,6 @@ internal final class Queue {
             
             let attributes = Trace.shared.attributes
             let resource = self?.session.resource
-            
-            if resource == nil {
-                Logger.print(.internalError, "Resource missing from new trace model")
-            }
             
             traces.forEach {
                 $0.resource = resource

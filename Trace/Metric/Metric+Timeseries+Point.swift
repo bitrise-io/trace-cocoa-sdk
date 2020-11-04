@@ -93,7 +93,7 @@ internal extension Metric.Timeseries {
             #if DEBUG || Debug || debug
                 // TODO: only for private beta testing. remove before GA
                 if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                    Logger.print(.internalError, "Metric timestamp \(seconds).\(nanos) is invalid")
                 }
             #endif
         }

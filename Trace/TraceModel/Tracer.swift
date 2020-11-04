@@ -95,11 +95,6 @@ final class Tracer {
     
     private func update(trace: TraceModel, with spans: [TraceModel.Span]) {
         dispatchQueue.sync { [trace] in
-            if trace.isComplete { // validation
-                Logger.print(.traceModel, "Trace is appending child while marked as complete")
-                // V2: find the last incomplete trace model or return error
-            }
-            
             let traceId = trace.traceId
             let parentSpanId = trace.root.spanId // expensive
             
@@ -122,11 +117,7 @@ final class Tracer {
     func addChild(_ spans: [TraceModel.Span]) {
         #if DEBUG || Debug || debug
         // TODO: only for private beta testing. remove before GA
-        spans.forEach {
-            if !$0.validate() {
-                Logger.print(.internalError, "Child span has invalid timestamp")
-            }
-        }
+        spans.forEach { $0.validate() }
         #endif
         
         let startTimes = spans.map { $0.start }
@@ -192,8 +183,7 @@ final class Tracer {
             if root.validate() {
                 toBeSavedTraces.append(trace)
             } else {
-                Logger.print(.internalError, "Disregarding invalid trace \(trace)")
-                // also removes from trace list since it's complete
+                Logger.print(.internalError, "Invalid Trace: \(trace)")
             }
             
             return true

@@ -57,7 +57,7 @@ internal extension UIView {
                 Logger.print(.internalError, "Failed to find view end time")
             }
             
-            // since the many ways to create a view it's best to check all and in the correct lifecycle order
+            // since the are many ways to create a view it's best to check all and in the correct lifecycle order
             if let value = initWithCoder {
                 start = value.timeInterval
             } else if let value = initWithFrame {
