@@ -5,7 +5,12 @@
   "social_media_url": "https://twitter.com/bitrise",
   "homepage": "https://www.bitrise.io/add-ons/trace-mobile-monitoring",
   "version": "1.7.8",
-  "swift_version": "5.3",
+  "swift_versions": [
+    "5.0",
+    "5.1",
+    "5.2",
+    "5.3"
+  ],
   "authors": {
     "Shams Ahmed": "shams.ahmed@bitrise.io",
     "Colin Hemmings": "colin.hemmings@bitrise.io"
@@ -13,7 +18,6 @@
   "license": {
     "type": "MIT",
     "file": "LICENSE"
-    
   },
   "platforms": {
     "ios": "10.0"
@@ -25,11 +29,31 @@
     "c++",
     "z"
   ],
-  "preserve_paths": "libTrace.a",
   "source": {
-    "http": "https://monitoring-sdk.firebaseapp.com/1.7.8/libTrace.a.zip"
+    "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
+    "tag": "1.7.8"
   },
-  "user_target_xcconfig": {
-    "OTHER_LDFLAGS": "-force_load $(PODS_ROOT)/BitriseTrace/libTrace.a"
-  }
+  "module_name": "Trace",
+  "static_framework": true,
+  "default_subspecs": "Trace",
+  "subspecs": [
+    {
+      "name": "Trace",
+      "source_files": "Trace/**/*.{swift}",
+      "dependencies": {
+        "BitriseTrace/TraceInternal": []
+      }
+    },
+    {
+      "name": "TraceInternal",
+      "public_header_files": [
+        "TraceInternal/Installations/KSCrashInstallation.h",
+        "TraceInternal/Installations/KSCrashReportFilter.h",
+        "TraceInternal/Installations/KSCrashReportWriter.h"
+      ],
+      "source_files": [
+        "TraceInternal/**/*.{h,m,mm,c,cpp}"
+      ]
+    }
+  ]
 }
