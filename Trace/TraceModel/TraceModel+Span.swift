@@ -72,7 +72,7 @@ extension TraceModel {
                 #if DEBUG || Debug || debug
                 // TODO: only for private beta testing. remove before GA
                 if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is invalid")
+                    Logger.print(.internalError, "Trace model timestamp \(seconds).\(nanos) is invalid")
                 }
                 #endif
             }
@@ -314,11 +314,6 @@ extension TraceModel {
             try container.encode(start, forKey: .start)
             try container.encode(end, forKey: .end)
             try container.encode(attribute, forKey: .attributes)
-            
-            #if DEBUG || Debug || debug
-            // TODO: only for private beta testing. remove before GA
-            validate()
-            #endif
         }
         
         // MARK: - Copy
@@ -345,7 +340,7 @@ extension TraceModel {
         @discardableResult
         internal func validate() -> Bool {
             guard let strongEnd = end else {
-                Logger.print(.traceModel, "Trace end timestamp is not set")
+                Logger.print(.traceModel, "Span(\(name)) end timestamp is not set")
                 
                 return false
             }
@@ -361,7 +356,7 @@ extension TraceModel {
             }
             
             if !valid {
-                Logger.print(.internalError, "Span end timestamp is before it's start timestamp!")
+                Logger.print(.internalError, "Span(\(name)) end timestamp is before it's start timestamp!")
             }
             
             return valid

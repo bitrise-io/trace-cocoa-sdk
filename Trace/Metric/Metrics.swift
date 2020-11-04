@@ -50,8 +50,6 @@ internal struct Metrics: Codable {
         
         if let resource = resource {
             try container.encode(resource, forKey: .resource)
-        } else {
-            Logger.print(.internalError, "Resource missing from metrics")
         }
             
         if let attributes = attributes {

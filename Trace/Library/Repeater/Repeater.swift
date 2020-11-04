@@ -44,7 +44,7 @@ internal final class Repeater {
             switch state {
             case .resume where oldValue != .resume: timer.resume()
             case .suspend where oldValue != .suspend: timer.suspend()
-            default: Logger.print(.internalError, "Repeater state already in same state: \(state), No action taken")
+            default: break
             }
         }
     }

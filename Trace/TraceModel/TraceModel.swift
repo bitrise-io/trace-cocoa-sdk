@@ -117,10 +117,6 @@ public final class TraceModel: NSObject, Codable {
         traceId = id
         resource = try container.decodeIfPresent(Resource.self, forKey: .resource)
         
-        if resource == nil {
-            Logger.print(.internalError, "Resource was not found in the existing trace model")
-        }
-        
         attributes = try container.decodeIfPresent([String: String].self, forKey: .attributes)
         
         if let typeOfModel = try container.decodeIfPresent(`Type`.self, forKey: .type) {
@@ -148,8 +144,6 @@ public final class TraceModel: NSObject, Codable {
         
         if let resource = resource {
             try container.encode(resource, forKey: .resource)
-        } else {
-            Logger.print(.internalError, "Resource missing from trace model")
         }
         
         if let attributes = attributes {
@@ -177,20 +171,11 @@ public final class TraceModel: NSObject, Codable {
                 if isGreaterThanOrEqualTo {
                     $0.end = end
                 } else {
-                    Logger.print(.internalError, "Span end timestamp rounded up by 0.1 milliseconds")
-                    
                     let roundedUp = end + result
                     let roundedUpTimeStamp = Span.Timestamp(from: roundedUp)
                     
                     $0.end = roundedUpTimeStamp
                 }
-                
-                #if DEBUG || Debug || debug
-                // TODO: only for private beta testing. remove before GA
-                if !$0.validate() {
-                    Logger.print(.internalError, "Span has invalid timestamp")
-                }
-                #endif
             }
     }
 }
