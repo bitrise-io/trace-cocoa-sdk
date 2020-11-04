@@ -34,14 +34,12 @@
     "tag": "1.7.12"
   },
   "module_name": "Trace",
+  "static_framework": true,
   "default_subspecs": "Trace",
   "subspecs": [
     {
       "name": "Trace",
       "source_files": "Trace/**/*.{swift}",
-      "user_target_xcconfig": {
-        "OTHER_LDFLAGS": "$(TARGET_BUILD_DIR)/BitriseTrace/libBitriseTrace.a"
-      },
       "dependencies": {
         "BitriseTrace/TraceInternal": []
       }
