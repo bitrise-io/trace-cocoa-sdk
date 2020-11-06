@@ -40,6 +40,23 @@ extension CrashController {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc(BRLoggerLevel) public enum LoggerLevel : Swift.Int, Swift.Comparable {
+  case debug = 0
+  case `default` = 1
+  case warning = 2
+  case error = 3
+  public static func < (lhs: LoggerLevel, rhs: LoggerLevel) -> Swift.Bool
+  public static func <= (lhs: LoggerLevel, rhs: LoggerLevel) -> Swift.Bool
+  public static func >= (lhs: LoggerLevel, rhs: LoggerLevel) -> Swift.Bool
+  public static func > (lhs: LoggerLevel, rhs: LoggerLevel) -> Swift.Bool
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum Logger {
+}
 extension TraceModel {
   @_hasMissingDesignatedInitializers @objc(BRSpan) @objcMembers final public class Span : ObjectiveC.NSObject, Foundation.NSCopying, Swift.Codable {
     public init(from decoder: Swift.Decoder) throws
@@ -77,6 +94,8 @@ extension TraceModel {
     @objc get
     @objc set
   }
-  @objc final public var logs: Swift.Bool
+  @objc final public var log: LoggerLevel
   @objc deinit
 }
+extension LoggerLevel : Swift.Hashable {}
+extension LoggerLevel : Swift.RawRepresentable {}
