@@ -70,7 +70,7 @@ internal extension UIControl {
     func beginTracking(bitrise_touch touch: UITouch, with event: UIEvent?) -> Bool {
         let result = self.beginTracking(bitrise_touch: touch, with: event)
         
-        Logger.print(.prototype, "Begin \(event?.description ?? "unknown")")
+        Logger.debug(.prototype, "Begin \(event?.description ?? "unknown")")
         
         return result
     }
@@ -79,14 +79,14 @@ internal extension UIControl {
     func endTracking(bitrise_touch touch: UITouch?, with event: UIEvent?) {
         self.endTracking(bitrise_touch: touch, with: event)
         
-        Logger.print(.prototype, "End \(event?.description ?? "unknown")")
+        Logger.debug(.prototype, "End \(event?.description ?? "unknown")")
     }
     
     // MARK: - Process
 
     private func process() {
         guard actions(forTarget: self, forControlEvent: .touchUpInside) == nil else {
-            Logger.print(.prototype, "Control action for \(type(of: self)) already assigned for .touchUpInside event")
+            Logger.debug(.prototype, "Control action for \(type(of: self)) already assigned for .touchUpInside event")
             
             return
         }
@@ -102,7 +102,7 @@ internal extension UIControl {
             for: .primaryActionTriggered
         )
         
-        Logger.print(.prototype, "Control action for \(type(of: self))")
+        Logger.debug(.prototype, "Control action for \(type(of: self))")
     }
     
     // MARK: - Target
@@ -111,12 +111,12 @@ internal extension UIControl {
     private func bitrise_touchUpInside(sender: UIControl, forEvent event: UIEvent) {
         // Output the view, frame and where inside the frame a touch occured
         // Know issues UISlider and UISegmented control need different control type
-        Logger.print(.prototype, "Control touchUpInside \(event.allTouches?.first?.description ?? "unknown")")
+        Logger.debug(.prototype, "Control touchUpInside \(event.allTouches?.first?.description ?? "unknown")")
     }
     
     @objc
     private func bitrise_primaryActionTriggered(sender: UIControl, forEvent event: UIEvent) {
         // Output the view, frame and where inside the frame a touch occured
-        Logger.print(.prototype, "Control primaryActionTriggered \(event.allTouches?.first?.description ?? "unknown")")
+        Logger.debug(.prototype, "Control primaryActionTriggered \(event.allTouches?.first?.description ?? "unknown")")
     }
 }

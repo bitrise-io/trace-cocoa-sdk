@@ -19,32 +19,58 @@ final class LoggerTests: XCTestCase {
     }
     
     override func tearDown() {
-        Trace.configuration.logs = true
+        
     }
     
     // MARK: - Tests
     
-    func testCanPrint_string() {
-        Trace.configuration.logs = true
+    func testDebug() {
+        Trace.configuration.log = .debug
         
-        XCTAssertTrue(Logger.print(.application, "test"))
+        XCTAssertEqual(Trace.configuration.log, .debug)
+    }
+    
+    func testDefault() {
+        Trace.configuration.log = .default
+        
+        XCTAssertEqual(Trace.configuration.log, .default)
+    }
+    
+    func testWarning() {
+        Trace.configuration.log = .warning
+        
+        XCTAssertEqual(Trace.configuration.log, .warning)
+    }
+    
+    func testError() {
+        Trace.configuration.log = .error
+        
+        XCTAssertEqual(Trace.configuration.log, .error)
+    }
+    
+    func testCanPrint_string() {
+        Trace.configuration.log = .default
+        
+        XCTAssertTrue(Logger.default(.application, "test"))
     }
     
     func testCanPrint_object() {
-        Trace.configuration.logs = true
+        Trace.configuration.log = .default
         
-        XCTAssertTrue(Logger.print(.application, ["1", "2", "3"]))
+        XCTAssertTrue(Logger.default(.application, ["1", "2", "3"]))
     }
     
-    func testCanotPrint_string() {
-        Trace.configuration.logs = false
+    func testCannotPrint_string() {
+        Trace.configuration.log = .warning
         
-        XCTAssertFalse(Logger.print(.application, "test"))
+        XCTAssertEqual(Trace.configuration.log, .warning)
+        XCTAssertFalse(Logger.debug(.application, "test"))
     }
     
     func testCannotPrint_object() {
-        Trace.configuration.logs = false
+        Trace.configuration.log = .error
         
-        XCTAssertFalse(Logger.print(.application, ["1", "2", "3"]))
+        XCTAssertEqual(Trace.configuration.log, .error)
+        XCTAssertFalse(Logger.debug(.application, ["1", "2", "3"]))
     }
 }

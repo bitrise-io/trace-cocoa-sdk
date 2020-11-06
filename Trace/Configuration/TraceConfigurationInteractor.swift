@@ -34,15 +34,11 @@ internal struct TraceConfigurationInteractor {
                 network.configuration.additionalHeaders[.installationSource] = source
             }
             
-            Logger.print(.launch, "Bitrise Trace setup complete")
-            
-            if Trace.configuration.logs {
-                Logger.print(.launch, "Verbose logging has been enabled while in Beta, use `Trace.configuration.logs` to configure")
-            }
+            Logger.default(.launch, "Bitrise Trace setup complete")
             
             result = true
         } catch {
-            Logger.print(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
+            Logger.error(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
             
             result = false
         }
@@ -52,7 +48,7 @@ internal struct TraceConfigurationInteractor {
         let environment = ProcessInfo.processInfo.environment
         
         if let configuration = try? BitriseConfiguration(dictionary: environment) {
-            Logger.print(.application, "Overriding configuration from Xcode environment variables")
+            Logger.warning(.application, "Overriding configuration from Xcode environment variables")
                 
             network.authorization = configuration.token
             

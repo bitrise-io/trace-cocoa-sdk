@@ -35,7 +35,7 @@ final class TraceTests: XCTestCase {
     
     func testCreateSDK_customConfiguration() {
         let configuration = Configuration.default
-        configuration.logs = false
+        configuration.log = .default
         
         let trace = Trace.shared
         Trace.configuration = configuration

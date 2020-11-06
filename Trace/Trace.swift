@@ -91,26 +91,30 @@ final public class Trace: NSObject {
     
     private static func preSetup() {
         if Trace.currentSession == 0 {
-            Logger.print(.internalError, "SDK launched without a valid startup session")
+            Logger.warning(.internalError, "SDK launched without a valid startup session")
             
             Trace.reset()
         }
         
         if !Trace.configuration.enabled {
-            Logger.print(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
+            Logger.error(.internalError, "SDK started up manually while Trace.configuration.enabled is set to false")
         }
     }
     
     private func setup(with initializationTime: Time.Timestamp) {
-        Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
+        Logger.default(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
         
         setupConfiguration()
         
         #if DEBUG || Debug || debug
-        Logger.print(.crash, "Disabled since app is running in Debug mode")
+        Logger.debug(.crash, "Disabled since app is running in Debug mode")
         #else
         setupCrashReporting()
         #endif
+        
+        if Trace.configuration.log == .debug {
+            Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure using swift: `Trace.configuration.log` or ObjC `BRTrace.configuration.log`")
+        }
         
         setupSwizzle()
         setupStartupTrace(with: initializationTime)

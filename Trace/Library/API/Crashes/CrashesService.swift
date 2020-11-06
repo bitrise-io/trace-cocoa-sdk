@@ -38,7 +38,7 @@ internal struct CrashesService {
         let file = model.report
         
         if parameters == nil {
-            Logger.print(.crash, "Could not create crash report model")
+            Logger.error(.crash, "Could not create crash report model")
         }
         
         return network.upload(router, name: name, file: file, parameters: parameters) {

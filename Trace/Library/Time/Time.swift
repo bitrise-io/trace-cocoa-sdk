@@ -45,7 +45,7 @@ internal enum Time {
             #if DEBUG || Debug || debug
                 // TODO: only for private beta testing. remove before GA
                 if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                    Logger.print(.internalError, "Timestamp \(seconds).\(nanos) is greater than the  current time")
+                    Logger.debug(.internalError, "Timestamp \(seconds).\(nanos) is greater than the  current time")
                 }
             #endif
         }

@@ -91,7 +91,7 @@ internal final class TraceDAO: CRUD {
                 let key = NSAffectedObjectsErrorKey
                 
                 if let affectedObjects = cocoaError.userInfo[key] as? [T] {
-                    Logger.print(.database, "Writting trace failed. Removing affected objects \(affectedObjects.count)")
+                    Logger.warning(.database, "Writting trace failed. Removing affected objects \(affectedObjects.count)")
                     
                     let affectedObjectIds = affectedObjects.map { $0.objectID }
                     

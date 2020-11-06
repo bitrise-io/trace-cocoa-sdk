@@ -27,7 +27,7 @@ final internal class Persistent: NSPersistentContainer {
             switch $0 {
             case .success: break
             case .failure:
-                Logger.print(.database, "Persistent store failed, fallback set to in-memory store")
+                Logger.warning(.database, "Persistent store failed, fallback set to in-memory store")
                 
                 self?.setupPersistentStore(inMemory: true)
             }
@@ -38,12 +38,12 @@ final internal class Persistent: NSPersistentContainer {
         #if DEBUG || Debug || debug
             addInMemoryStore()
         
-            Logger.print(.database, "Using in-memory store while in debug mode")
+            Logger.debug(.database, "Using in-memory store while in debug mode")
         #else
             if inMemory {
                 addInMemoryStore()
                 
-                Logger.print(.database, "Using in-memory store")
+                Logger.warning(.database, "Using in-memory store")
             }
         #endif
         
@@ -51,7 +51,7 @@ final internal class Persistent: NSPersistentContainer {
             if let error = error {
                 let message = "loading persistent store error: \(error.localizedDescription)"
                 
-                Logger.print(.database, message)
+                Logger.warning(.database, message)
                 
                 completion?(.failure(error))
             } else {
@@ -90,7 +90,7 @@ final internal class Persistent: NSPersistentContainer {
             do {
                 try fileManager.createDirectory(at: url, withIntermediateDirectories: true)
             } catch {
-                Logger.print(.database, "Failed to create directory with error: \(error.localizedDescription)")
+                Logger.error(.database, "Failed to create directory with error: \(error.localizedDescription)")
             }
         }
             

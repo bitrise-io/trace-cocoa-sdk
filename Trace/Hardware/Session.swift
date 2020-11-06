@@ -25,7 +25,7 @@ final class Session {
                     resource?.network = oldValue.network
                 }
             } else {
-                Logger.print(.application, "Resource created for this new session")
+                Logger.debug(.application, "Resource created for this new session")
             }
             
             if let resources = try? resource?.dictionary() {

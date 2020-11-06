@@ -46,7 +46,7 @@ final class Tracer {
     @discardableResult
     func add(_ trace: TraceModel) -> Bool {
         guard !traces.contains(trace) else {
-            Logger.print(.internalError, "Trying to add duplicate trace with traceId: \(trace.traceId)")
+            Logger.warning(.internalError, "Trying to add duplicate trace with traceId: \(trace.traceId)")
             
             return false
         }
@@ -54,7 +54,7 @@ final class Tracer {
         traces.append(trace)
         crash.userInfo["Trace Id"] = trace.traceId
         
-        Logger.print(.traceModel, trace)
+        Logger.debug(.traceModel, trace)
         
         return true
     }
@@ -74,7 +74,7 @@ final class Tracer {
         
         // Check if it's nil while in the main thread then fallback to the last trace on record
         if trace == nil, let lastKnownTrace = traces.last {
-            Logger.print(.traceModel, "Using last trace as current active view controller was not found")
+            Logger.debug(.traceModel, "Using last trace as current active view controller was not found")
             
             trace = lastKnownTrace
         }
@@ -86,7 +86,7 @@ final class Tracer {
             
             if !isGreaterThanStartTime {
                 // TODO: Too much noise
-                // Logger.print(.traceModel, "Warning new child span started before current Trace")
+                // Logger.warning(.traceModel, "Warning new child span started before current Trace")
             }
         }
         
@@ -104,7 +104,7 @@ final class Tracer {
                 if $0.parentSpanId == nil { // exclude root span i.e parentSpanId is nil
                     $0.parentSpanId = parentSpanId
                 } else {
-                    Logger.print(.traceModel, "Property parentSpanId not set as it may be a root span")
+                    Logger.warning(.traceModel, "Property parentSpanId not set as it may be a root span")
                 }
             }
             
@@ -127,7 +127,7 @@ final class Tracer {
                 if let trace = self?.locateTrace(from: startTimes) { // second try on main thread
                     self?.update(trace: trace, with: spans)
                 } else {
-                    Logger.print(.internalError, "Failed to find active trace in async main thread")
+                    Logger.debug(.internalError, "Failed to find active trace in async main thread")
                 }
             }
                         
@@ -142,14 +142,14 @@ final class Tracer {
     @discardableResult
     func finish(_ trace: TraceModel) -> Bool {
         guard traces.contains(trace) else {
-            Logger.print(.traceModel, "Failed to find trace model: \(trace.traceId)")
+            Logger.warning(.traceModel, "Failed to find trace model: \(trace.traceId)")
             
             return false
         }
         
         let root: TraceModel.Span! = trace.root
         
-        Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(root.name.value)")
+        Logger.debug(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(root.name.value)")
 
         dispatchQueue.sync {
             trace.finish()
@@ -161,7 +161,7 @@ final class Tracer {
     }
     
     func finishAll() {
-        Logger.print(.traceModel, "Tracing finished for \(traces.count) traces")
+        Logger.debug(.traceModel, "Tracing finished for \(traces.count) traces")
 
         dispatchQueue.sync {
             traces.forEach { $0.finish() }
@@ -185,7 +185,7 @@ final class Tracer {
             if root.validate() {
                 toBeSavedTraces.append(trace)
             } else {
-                Logger.print(.internalError, "Invalid Trace: \(trace)")
+                Logger.warning(.internalError, "Invalid Trace: \(trace)")
             }
             
             return true

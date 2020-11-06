@@ -59,7 +59,7 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
     init<S: Sequence>(uniqueKeysWithValues keysAndValues: S) where S.Element == Element {
         for (key, value) in keysAndValues {
             if containsKey(key) {
-                Logger.print(.internalError, "Sequence of key-value pairs contains duplicate keys")
+                Logger.error(.internalError, "Sequence of key-value pairs contains duplicate keys")
             }
             
             self[key] = value
@@ -146,7 +146,7 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
         guard let value = _keysToValues[key] else {
             let message = "Value not found"
             
-            Logger.print(.crash, message)
+            Logger.error(.crash, message)
             fatalError(message)
         }
     
@@ -180,11 +180,11 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
     
     mutating func insert(_ newElement: Element, at index: Index) {
         if !canInsert(key: newElement.key) {
-            Logger.print(.internalError, "Cannot insert duplicate key")
+            Logger.error(.internalError, "Cannot insert duplicate key")
         }
         
         if !canInsert(at: index) {
-            Logger.print(.internalError, "Cannot insert at invalid index")
+            Logger.error(.internalError, "Cannot insert at invalid index")
         }
         
         let (key, value) = newElement
@@ -229,7 +229,7 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
         guard let element = remove(at: startIndex) else {
             let message = "Value not found"
             
-            Logger.print(.crash, message)
+            Logger.error(.crash, message)
             fatalError(message)
         }
         
@@ -240,7 +240,7 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
         guard let element = remove(at: index(before: endIndex)) else {
             let message = "Value not found"
             
-            Logger.print(.crash, message)
+            Logger.error(.crash, message)
             fatalError(message)
         }
         

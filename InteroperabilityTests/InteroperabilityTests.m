@@ -49,7 +49,9 @@
     
     XCTAssertNotNil(configuration);
     XCTAssertNotNil(configuration2);
-    XCTAssertEqual(configuration.logs, configuration2.logs);
+    XCTAssertEqual(configuration.log, configuration2.log);
+    XCTAssertEqual(configuration.log, BRLoggerLevelDebug);
+    
     XCTAssertEqual(configuration.enabled, configuration2.enabled);
 }
 

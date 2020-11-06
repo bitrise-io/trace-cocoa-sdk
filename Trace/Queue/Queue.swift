@@ -130,7 +130,7 @@ internal final class Queue {
                 let model = Metrics(combined, resource: resource, attributes: attributes)
                 let dbModelObjectIds = dbModels.map { $0.objectID }
                 
-                Logger.print(.queue, "Scheduling \(names.joined(separator: ", ")) from \(dbModels.count) processed metrics")
+                Logger.debug(.queue, "Scheduling \(names.joined(separator: ", ")) from \(dbModels.count) processed metrics")
                 
                 self?.scheduler.schedule(model, {
                     switch $0 {
@@ -138,11 +138,11 @@ internal final class Queue {
                         let dao = self?.database.dao.metric
                         dao?.delete(dbModelObjectIds)
                     case .failure:
-                        Logger.print(.queue, "Failed to submit metric, will try again in 1 minute")
+                        Logger.warning(.queue, "Failed to submit metric, will try again in 1 minute")
                     }
                 })
             } catch {
-                Logger.print(.queue, "Failed to create Metric class from json: \(error)")
+                Logger.warning(.queue, "Failed to create Metric class from json: \(error)")
             }
         }
     }
@@ -166,7 +166,7 @@ internal final class Queue {
                         return combined
                     }
                 
-                Logger.print(.queue, "Scheduling \(combined.count) traces")
+                Logger.debug(.queue, "Scheduling \(combined.count) traces")
                 
                 combined.forEach { trace in
                     // fallback
@@ -174,7 +174,7 @@ internal final class Queue {
                         if let newResource = self?.session.resource {
                             trace.resource = newResource
                         } else {
-                            Logger.print(.internalError, "Resource missing from new trace model")
+                            Logger.debug(.internalError, "Resource missing from new trace model")
                         }
                     }
                     
@@ -188,12 +188,12 @@ internal final class Queue {
                             let dao = self?.database.dao.trace
                             dao?.delete(toBeDeletedObjectIds)
                         case .failure:
-                            Logger.print(.queue, "Failed to submit trace, will try again in 1 minute")
+                            Logger.warning(.queue, "Failed to submit trace, will try again in 1 minute")
                         }
                     })
                 }
             } catch {
-                Logger.print(.queue, "Failed to create Trace class from json: \(error)")
+                Logger.warning(.queue, "Failed to create Trace class from json: \(error)")
             }
         }
     }

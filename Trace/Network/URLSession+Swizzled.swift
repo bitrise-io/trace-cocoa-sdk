@@ -366,7 +366,7 @@ extension URLSession: Swizzled {
                 completion: completion
             )
         } else {
-            Logger.print(.network, "class (\(String(describing: type(of: self)))) cannot receive metrics as delegate method hasn't been set")
+            Logger.warning(.network, "class (\(String(describing: type(of: self)))) cannot receive metrics as delegate method hasn't been set")
         }
         
         process(metrics)

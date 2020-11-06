@@ -17,8 +17,8 @@ public extension CrashController {
     var allReports: [Any] {
         let reports: [Any] = installation.allReport()
         
-        Logger.print(.internalError, "Warning: Do not use in production app, method only intended for testing")
-        Logger.print(.crash, "Report count: \(reports.count)")
+        Logger.error(.internalError, "Warning: Do not use in production app, method only intended for testing")
+        Logger.error(.crash, "Report count: \(reports.count)")
         
         return reports
     }
@@ -28,11 +28,11 @@ public extension CrashController {
     /// Testing only unformatted in Apple format
     func allReports(_ completion: @escaping ([Any]) -> Void) {
         installation.allReports { [weak self] reports, result, error in
-            Logger.print(.internalError, "Warning: Do not use in production app, method only intended for testing")
-            Logger.print(.crash, "Report count: \(result)")
+            Logger.error(.internalError, "Warning: Do not use in production app, method only intended for testing")
+            Logger.error(.crash, "Report count: \(result)")
 
             if let error = error {
-                Logger.print(.internalError, error.localizedDescription)
+                Logger.error(.internalError, error.localizedDescription)
             }
 
             completion(reports ?? [])

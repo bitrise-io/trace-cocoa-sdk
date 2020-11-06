@@ -79,7 +79,7 @@ final internal class Database {
             do {
                 try context.save()
             } catch {
-                Logger.print(.database, "Failed to save database after a delete operation")
+                Logger.warning(.database, "Failed to save database after a delete operation")
             }
             
             completion?()
@@ -88,7 +88,7 @@ final internal class Database {
     
     /// Reset database
     internal func reset() {
-        Logger.print(.database, "Resetting database")
+        Logger.debug(.database, "Resetting database")
         
         let hasMemoryPersistent = persistent.persistentStoreDescriptions
             .contains { $0.type == NSInMemoryStoreType }
@@ -121,7 +121,7 @@ final internal class Database {
             do {
                 try context.save()
             } catch {
-                Logger.print(.database, "Failed to reset database")
+                Logger.warning(.database, "Failed to reset database")
             }
         }
     }
