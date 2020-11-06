@@ -31,7 +31,7 @@ extension JSONEncodable {
         
             return data
         } catch {
-            Logger.print(.serialization, "Failed to encode \(type(of: self))")
+            Logger.error(.serialization, "Failed to encode \(type(of: self))")
             
             return nil
         }

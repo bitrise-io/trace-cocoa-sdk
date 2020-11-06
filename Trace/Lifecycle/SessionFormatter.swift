@@ -40,7 +40,7 @@ internal struct SessionFormatter: JSONEncodable {
     // MARK: - Setup
     
     private func setup() {
-        Logger.print(.application, "Current session duration: \(time.rounded(to: 2))")
+        Logger.debug(.application, "Current session duration: \(time.rounded(to: 2))")
     }
     
     // MARK: - Details

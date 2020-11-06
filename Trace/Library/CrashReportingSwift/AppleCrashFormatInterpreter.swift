@@ -83,7 +83,7 @@ internal struct AppleCrashFormatInterpreter {
             
             return .success(model)
         } catch {
-            Logger.print(.crash, "Failed to create model from Apple format crash")
+            Logger.error(.crash, "Failed to create model from Apple format crash")
             
             return .failure(error)
         }

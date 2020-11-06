@@ -22,7 +22,7 @@ internal extension UIDevice {
             if let strongModelIdentifier = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
                 deviceIdentifier = strongModelIdentifier
             } else {
-                Logger.print(.internalError, "Simulator device type not returned")
+                Logger.warning(.internalError, "Simulator device type not returned")
             }
             #elseif targetEnvironment(macCatalyst)
                 deviceIdentifier = "Mac Catalyst"
@@ -93,7 +93,7 @@ internal extension UIDevice {
         case "AudioAccessory1,1":                       return "HomePod"
         case "Mac Catalyst":                            return "Mac Catalyst"
         default:
-            Logger.print(.internalError, "Unknown device type \(deviceIdentifier)")
+            Logger.warning(.internalError, "Unknown device type \(deviceIdentifier)")
             
             return deviceIdentifier
         }

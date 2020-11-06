@@ -104,7 +104,7 @@ final internal class Lifecycle {
             forName: UIApplication.didReceiveMemoryWarningNotification,
             object: nil,
             queue: queue,
-            using: { _ in Logger.print(.application, "Received memory warning") }
+            using: { _ in Logger.error(.application, "Received memory warning") }
         )
     }
     
@@ -135,7 +135,7 @@ final internal class Lifecycle {
         let currentSession = Trace.currentSession
         
         guard currentSession != 0 else {
-            Logger.print(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
+            Logger.warning(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
             
             return
         }

@@ -75,34 +75,34 @@ internal extension UIGestureRecognizer {
     func touchesBegan(bitrise_touch touches: Set<UITouch>, with event: UIEvent) {
         self.touchesBegan(bitrise_touch: touches, with: event)
         
-        Logger.print(.prototype, "Touch begin for type \(type(of: self))")
+        Logger.debug(.prototype, "Touch begin for type \(type(of: self))")
     }
 
     @objc
     func touchesEnded(bitrise_touch touches: Set<UITouch>, with event: UIEvent) {
         self.touchesEnded(bitrise_touch: touches, with: event)
         
-        Logger.print(.prototype, "Touch ended for type \(type(of: self))")
+        Logger.debug(.prototype, "Touch ended for type \(type(of: self))")
     }
     
     @objc
     func pressesBegan(bitrise_presses presses: Set<UIPress>, with event: UIPressesEvent) {
         self.pressesBegan(bitrise_presses: presses, with: event)
         
-        Logger.print(.prototype, "Presses begin for type \(type(of: self))")
+        Logger.debug(.prototype, "Presses begin for type \(type(of: self))")
     }
 
     @objc
     func pressesEnded(bitrise_presses presses: Set<UIPress>, with event: UIPressesEvent) {
         self.pressesEnded(bitrise_presses: presses, with: event)
         
-        Logger.print(.prototype, "Presses ended for type \(type(of: self))")
+        Logger.debug(.prototype, "Presses ended for type \(type(of: self))")
     }
 
     // MARK: - Process
 
     private func process() {
-        Logger.print(.prototype, "Gesture created for \(type(of: self))")
+        Logger.debug(.prototype, "Gesture created for \(type(of: self))")
         
         addTarget(self, action: #selector(bitrise_all(_:)))
     }
@@ -111,6 +111,6 @@ internal extension UIGestureRecognizer {
     
     @objc
     private func bitrise_all(_ sender: UIGestureRecognizer) {
-        Logger.print(.prototype, "\(sender)")
+        Logger.debug(.prototype, "\(sender)")
     }
 }

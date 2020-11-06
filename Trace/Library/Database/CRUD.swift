@@ -66,7 +66,7 @@ internal extension CRUD where T: NSManagedObject {
                 do {
                     try context.save()
                 } catch {
-                    Logger.print(.database, "Failed to save database after a update operation")
+                    Logger.error(.database, "Failed to save database after a update operation")
                 }
             }
             
@@ -88,7 +88,7 @@ internal extension CRUD where T: NSManagedObject {
                 do {
                     try context.save()
                 } catch {
-                    Logger.print(.database, "Failed to save database after a update operation")
+                    Logger.error(.database, "Failed to save database after a update operation")
                 }
             }
             
@@ -117,7 +117,7 @@ internal extension CRUD where T: NSManagedObject {
             do {
                 try context.save()
             } catch {
-                Logger.print(.database, "Failed to save database after a delete operation")
+                Logger.error(.database, "Failed to save database after a delete operation")
             }
             
             if self.test_completion != nil {
@@ -167,7 +167,7 @@ internal extension CRUD where T: NSManagedObject {
             do {
                 count = try managedObjectContext.count(for: request)
             } catch {
-                Logger.print(.database, "Cannot count DB record: \(error.localizedDescription)")
+                Logger.error(.database, "Cannot count DB record: \(error.localizedDescription)")
             }
         }
         
@@ -189,7 +189,7 @@ internal extension CRUD where T: NSManagedObject {
             do {
                 model = try managedObjectContext.fetch(request).first
             } catch {
-                Logger.print(.database, "Cannot fetch single request: \(error.localizedDescription)")
+                Logger.error(.database, "Cannot fetch single request: \(error.localizedDescription)")
             }
         }
         
@@ -215,7 +215,7 @@ internal extension CRUD where T: NSManagedObject {
                 
                 all.append(contentsOf: records)
             } catch {
-                Logger.print(.database, "Cannot fetch request: \(error.localizedDescription)")
+                Logger.error(.database, "Cannot fetch request: \(error.localizedDescription)")
             }
         }
         
@@ -240,7 +240,7 @@ internal extension CRUD where T: NSManagedObject {
                 
                 models.append(contentsOf: records)
             } catch {
-                Logger.print(.database, "Cannot fetch all in background: \(error.localizedDescription)")
+                Logger.error(.database, "Cannot fetch all in background: \(error.localizedDescription)")
             }
             
             completion(models)

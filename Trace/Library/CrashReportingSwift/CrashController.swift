@@ -65,7 +65,7 @@ public final class CrashController: NSObject {
                 count = processedCount
 
                 if processedCount != 0 {
-                    Logger.print(.crash, "Report count: \(count)")
+                    Logger.debug(.crash, "Report count: \(count)")
                 }
             }
 
@@ -95,13 +95,13 @@ public final class CrashController: NSObject {
             scheduler.schedule(crash) { [weak self] in
                 switch $0 {
                 case .success: self?.cleanUp()
-                case .failure: Logger.print(.crash, "Failed to submit report")
+                case .failure: break
                 }
             }
             
             return true
         } catch {
-            Logger.print(.crash, "Failed to create crash report")
+            Logger.error(.crash, "Failed to create crash report")
             
             return false
         }

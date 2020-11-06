@@ -22,14 +22,14 @@ internal extension Network {
     func request(_ request: Routable, _ completion: @escaping (Completion) -> Void) -> URLSessionDataTask? {
         // validate url request
         guard var url = try? request.asURLRequest() else {
-            Logger.print(.network, "Invalid url request with: \(request.path)")
+            Logger.error(.network, "Invalid url request with: \(request.path)")
             
             completion(.failure(.invalidURL))
             
             return nil
         }
         guard !configuration.additionalHeaders.isEmpty else {
-            Logger.print(.network, "Request cached as bitrise_configuration.plist file has not been set. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
+            Logger.error(.network, "Request cached as bitrise_configuration.plist file has not been set. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
             
             completion(.failure(.noAuthentication))
             

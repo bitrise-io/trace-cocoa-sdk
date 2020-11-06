@@ -68,7 +68,7 @@ internal final class Startup {
         let currentSession = Trace.currentSession
         
         guard currentSession != 0 else {
-            Logger.print(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
+            Logger.warning(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
             
             return
         }
@@ -87,7 +87,7 @@ internal final class Startup {
         
         // Trace will always be in active traces as startup is short lived
         guard let model = tracer.traces.first(where: { $0.type == .startup }) else {
-            Logger.print(.traceModel, "Failed to locate Startup trace model")
+            Logger.warning(.traceModel, "Failed to locate Startup trace model")
             
             return
         }

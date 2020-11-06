@@ -37,7 +37,7 @@ internal final class BitriseConfigurationInteractor {
             let company = Constants.SDK.company.rawValue
             let message = company + " " + "configuration file is missing from Bundle.main"
             
-            Logger.print(.internalError, message)
+            Logger.error(.internalError, message)
             
             throw Error.configurationFileMissingFromMainBundle
         }

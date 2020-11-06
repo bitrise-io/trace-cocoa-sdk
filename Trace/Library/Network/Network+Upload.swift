@@ -17,14 +17,14 @@ internal extension Network {
     func upload(_ request: Routable, name: String, file: Data, parameters: [String: Any]? = nil, _ completion: @escaping (Completion) -> Void) -> URLSessionDataTask? {
         // validate url request
         guard var url = try? request.asURLRequest() else {
-            Logger.print(.network, "Invalid url request with: \(request.path)")
+            Logger.error(.network, "Invalid url request with: \(request.path)")
             
             completion(.failure(.invalidURL))
             
             return nil
         }
         guard !configuration.additionalHeaders.isEmpty else {
-            Logger.print(.network, "Request cached as bitrise_configuration.plist file has not been set. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
+            Logger.error(.network, "Request cached as bitrise_configuration.plist file has not been set. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
             
             completion(.failure(.noAuthentication))
             
@@ -87,7 +87,7 @@ internal extension Network {
             } else if let double = value as? Double {
                 data.appendString(String(double) + separator)
             } else {
-                Logger.print(.network, "Failed to decode parameter \(key)")
+                Logger.error(.network, "Failed to decode parameter \(key)")
             }
         }
         
