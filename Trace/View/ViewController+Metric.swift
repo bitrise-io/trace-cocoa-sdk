@@ -48,7 +48,7 @@ extension UIViewController {
             } else if let value = awakeFromNib {
                 start = value.timeInterval
             } else {
-                Logger.print(.internalError, "Failed to find view controller start time")
+                Logger.print(.internalError, "Failed to find viewController(\(name)) start time")
             }
             
             return start
@@ -60,7 +60,7 @@ extension UIViewController {
             let end = viewDidAppear?.timeInterval ?? 0.0
             
             if end == 0.0 {
-                Logger.print(.internalError, "Failed to find view controller end time")
+                Logger.print(.internalError, "Failed to find viewController(\(name)) end time")
             }
             
             let result = end - start

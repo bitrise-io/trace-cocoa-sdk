@@ -36,6 +36,10 @@ internal struct TraceConfigurationInteractor {
             
             Logger.print(.launch, "Bitrise Trace setup complete")
             
+            if Trace.configuration.logs {
+                Logger.print(.launch, "Verbose logging has been enabled while in Beta, use `Trace.configuration.logs` to configure")
+            }
+            
             result = true
         } catch {
             Logger.print(.internalError, "Application failed to read the configuration file, all data will be cached until it's resolved. Please review getting started guide on https://trace.bitrise.io/o/getting-started")
