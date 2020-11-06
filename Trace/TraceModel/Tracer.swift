@@ -147,7 +147,9 @@ final class Tracer {
             return false
         }
         
-        Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(trace.root.name.value)")
+        let root: TraceModel.Span! = trace.root
+        
+        Logger.print(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(root.name.value)")
 
         dispatchQueue.sync {
             trace.finish()

@@ -72,7 +72,7 @@ extension TraceModel {
                 #if DEBUG || Debug || debug
                 // TODO: only for private beta testing. remove before GA
                 if !TimestampValidator(toDate: Date()).isValid(seconds: seconds, nanos: nanos) {
-                    Logger.print(.internalError, "Trace model timestamp \(seconds).\(nanos) is invalid")
+                    Logger.print(.internalError, "Trace model timestamp \(seconds).\(nanos) is greater than the current time")
                 }
                 #endif
             }
@@ -356,7 +356,7 @@ extension TraceModel {
             }
             
             if !valid {
-                Logger.print(.internalError, "Span(\(name)) end timestamp is before it's start timestamp!")
+                Logger.print(.internalError, "Span(\(name.value)) end timestamp (\(String(describing: end))) is before it's start timestamp (\(start))")
             }
             
             return valid

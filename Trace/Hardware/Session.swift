@@ -24,7 +24,7 @@ final class Session {
                 if !oldValue.network.isEmpty && resource?.network.isEmpty == true {
                     resource?.network = oldValue.network
                 }
-                
+            } else {
                 Logger.print(.application, "Resource created for this new session")
             }
             

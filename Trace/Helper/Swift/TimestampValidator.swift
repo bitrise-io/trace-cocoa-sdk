@@ -71,7 +71,7 @@ internal struct NanosecondValidator {
         }
         
         if !result {
-            Logger.print(.application, "Nanosecond validator found invalid timestamp")
+            Logger.print(.application, "Nanosecond validator found invalid start time \(start) is greather than end time \(end)")
         }
         
         return result

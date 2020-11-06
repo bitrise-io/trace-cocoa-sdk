@@ -130,7 +130,7 @@ internal final class Queue {
                 let model = Metrics(combined, resource: resource, attributes: attributes)
                 let dbModelObjectIds = dbModels.map { $0.objectID }
                 
-                Logger.print(.queue, "Scheduling \(combined.count) metrics from \(dbModels.count). Type: \(names.joined(separator: ", "))")
+                Logger.print(.queue, "Scheduling \(names.joined(separator: ", ")) from \(dbModels.count) processed metrics")
                 
                 self?.scheduler.schedule(model, {
                     switch $0 {
