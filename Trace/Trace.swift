@@ -102,7 +102,7 @@ final public class Trace: NSObject {
     }
     
     private func setup(with initializationTime: Time.Timestamp) {
-        Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue)")
+        Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
         
         setupConfiguration()
         
