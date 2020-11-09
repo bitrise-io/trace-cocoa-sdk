@@ -16,6 +16,7 @@ final class Session {
     private let repeater: Repeater
     private let delay: Double
     
+    /// Setter: use method self.updateResource()
     var resource: Resource? {
         didSet {
             resource?.session = uuid.string
@@ -44,7 +45,7 @@ final class Session {
     // MARK: - Init
     
     // Update the session every 15 seconds
-    internal init(timeout: Double = 15.0, delay: Double = 0.25) {
+    internal init(timeout: Double = 15.0, delay: Double = 0.10) {
         self.repeater = Repeater(timeout)
         self.delay = delay
         self.uuid = ULID()
