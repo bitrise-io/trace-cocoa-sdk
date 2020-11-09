@@ -43,12 +43,18 @@ final class ResourceTests: XCTestCase {
             Keys.network.rawValue: "apple"
         ]
         let resource1 = Resource(from: details)
-        let json = try! resource1.json()
-        let resource2 = try! JSONDecoder().decode(Resource.self, from: json)
+        
+        do {
+            let json = try resource1.json()
+            let resource2 = try JSONDecoder().decode(Resource.self, from: json)
+            
+            XCTAssertNotNil(json)
+            XCTAssertNotNil(resource2)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
         
         XCTAssertNotNil(resource1)
-        XCTAssertNotNil(json)
-        XCTAssertNotNil(resource2)
     }
     
     func testCompare() {
@@ -70,10 +76,15 @@ final class ResourceTests: XCTestCase {
             Keys.network.rawValue: "apple",
         ]
         let resource1 = Resource(from: details)
-        let json = try! resource1.json()
-        let resource2 = try! JSONDecoder().decode(Resource.self, from: json)
         
-        XCTAssertEqual(resource1, resource2)
+        do {
+            let json = try resource1.json()
+            let resource2 = try JSONDecoder().decode(Resource.self, from: json)
+            
+            XCTAssertEqual(resource1, resource2)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
     
     func testCompare_fails() {

@@ -39,11 +39,11 @@ struct Resource: Codable {
     let uuid: String
     let osVersion: String
     let deviceType: String
-    let carrier: String
-    let jailbroken: String
-    let sdkVersion: String
+    let carrier: String?
+    let jailbroken: String?
+    let sdkVersion: String?
     
-    var network: String
+    var network: String?
     var session: String
     
     // MARK: - Init
@@ -53,29 +53,31 @@ struct Resource: Codable {
         uuid = details[DeviceFormatter.Keys.uuid.rawValue] ?? ""
         osVersion = details[DeviceFormatter.Keys.systemVersion.rawValue] ?? ""
         deviceType = details[DeviceFormatter.Keys.model.rawValue] ?? ""
-        carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue] ?? ""
-        jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue] ?? ""
-        sdkVersion = details[DeviceFormatter.Keys.SDK.version.rawValue] ?? ""
-        network = ""
+        carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue]
+        jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue]
+        sdkVersion = details[DeviceFormatter.Keys.SDK.version.rawValue]
+        network = nil
         session = ""
     }
     
     init(from decoder: Decoder) throws {
+        let decodeType = String.self
+        let decodeOptionalType = String?.self
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let nestedContainer = try container.nestedContainer(
             keyedBy: CodingKeys.Labels.self,
             forKey: .labels
         )
         
-        appVersion = try nestedContainer.decode(String.self, forKey: .appVersion)
-        uuid = try nestedContainer.decode(String.self, forKey: .uuid)
-        osVersion = try nestedContainer.decode(String.self, forKey: .osVersion)
-        deviceType = try nestedContainer.decode(String.self, forKey: .deviceType)
-        carrier = try nestedContainer.decode(String.self, forKey: .carrier)
-        network = try nestedContainer.decode(String.self, forKey: .network)
-        session = try nestedContainer.decode(String.self, forKey: .sessionId)
-        jailbroken = try nestedContainer.decode(String.self, forKey: .jailbroken)
-        sdkVersion = try nestedContainer.decode(String.self, forKey: .sdkVersion)
+        appVersion = try nestedContainer.decode(decodeType, forKey: .appVersion)
+        uuid = try nestedContainer.decode(decodeType, forKey: .uuid)
+        osVersion = try nestedContainer.decode(decodeType, forKey: .osVersion)
+        deviceType = try nestedContainer.decode(decodeType, forKey: .deviceType)
+        carrier = try nestedContainer.decode(decodeOptionalType, forKey: .carrier)
+        network = try nestedContainer.decode(decodeOptionalType, forKey: .network)
+        session = try nestedContainer.decode(decodeType, forKey: .sessionId)
+        jailbroken = try nestedContainer.decode(decodeOptionalType, forKey: .jailbroken)
+        sdkVersion = try nestedContainer.decode(decodeOptionalType, forKey: .sdkVersion)
     }
     
     // MARK: - Encode

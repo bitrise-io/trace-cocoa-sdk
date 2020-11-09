@@ -22,7 +22,7 @@ final class Session {
             resource?.session = uuid.string
             
             if let oldValue = oldValue {
-                if !oldValue.network.isEmpty && resource?.network.isEmpty == true {
+                if oldValue.network?.isEmpty == false && resource?.network?.isEmpty == true {
                     resource?.network = oldValue.network
                 }
             } else {
