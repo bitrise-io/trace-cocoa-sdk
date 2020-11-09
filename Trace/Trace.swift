@@ -113,7 +113,7 @@ final public class Trace: NSObject {
         #endif
         
         if Trace.configuration.log == .debug {
-            Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure using swift: `Trace.configuration.log` or ObjC `BRTrace.configuration.log`")
+            Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure using swift: `Trace.configuration.log` or ObjC: `BRTrace.configuration.log`")
         }
         
         setupSwizzle()
