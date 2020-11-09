@@ -66,9 +66,10 @@ internal extension UIDevice {
         case "iPhone12,3":                              return "iPhone 11 Pro"
         case "iPhone12,5":                              return "iPhone 11 Pro Max"
         case "iPhone12,8":                              return "iPhone SE (2nd generation)"
-        case "iPhone13,4":                              return "iPhone 12 Pro Max"
         case "iPhone13,1":                              return "iPhone 12 Mini"
-        case "iPhone13,3":                              return "iPhone 12"
+        case "iPhone13,2":                              return "iPhone 12"
+        case "iPhone13,3":                              return "iPhone 12 Pro"
+        case "iPhone13,4":                              return "iPhone 12 Pro Max"
         case "iPhone13,5":                              return "iPhone 12 Pro"
         case "iPhone13,7":                              return "iPhone 12 Pro Max"
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return "iPad 2"
@@ -93,7 +94,7 @@ internal extension UIDevice {
         case "AudioAccessory1,1":                       return "HomePod"
         case "Mac Catalyst":                            return "Mac Catalyst"
         default:
-            Logger.warning(.internalError, "Unknown device type \(deviceIdentifier)")
+            Logger.warning(.internalError, "Unknown device type: \(deviceIdentifier)")
             
             return deviceIdentifier
         }
