@@ -51,6 +51,8 @@ enum Shell {
         task.arguments = arguments
         task.qualityOfService = .userInitiated
         
+        print("[Bitrise:Trace/dSYM] Running shell command: \(arguments.joined()).")
+        
         // Run a shell command
         try task.run()
         
@@ -90,7 +92,7 @@ final class DSYMLocator {
     /// List of dSYM's. Only the name and not the full path
     var dSYMs = [String]() {
         didSet {
-            print("[Bitrise:Trace/dSYM] Found \(dSYMs.count) dSYM files \(dSYMs)")
+            print("[Bitrise:Trace/dSYM] Found \(dSYMs.count) dSYM files \(dSYMs).")
         }
     }
     
@@ -110,7 +112,7 @@ final class DSYMLocator {
     // MARK: - Setup
     
     private func setup() throws {
-        print("[Bitrise:Trace/dSYM] Looking for dSYM files in \(Paths.dSYM.rawValue)")
+        print("[Bitrise:Trace/dSYM] Looking for dSYM files in \(Paths.dSYM.rawValue): \(path).")
         
         do {
             let fileManager = FileManager.default
@@ -120,7 +122,7 @@ final class DSYMLocator {
                 .subpathsOfDirectory(atPath: path)
                 .filter { $0.hasSuffix(".dSYM") } // Remove extra files and folders
         } catch {
-            print("[Bitrise:Trace/dSYM] Failed to read dSYM files in \(Paths.dSYM.rawValue)")
+            print("[Bitrise:Trace/dSYM] Failed to read dSYM files in \(Paths.dSYM.rawValue).")
             
             throw error
         }
@@ -131,9 +133,9 @@ final class DSYMLocator {
     static var customDSYMPath: String? {
         let arguments = CommandLine.arguments
         
-        print("[Bitrise:Trace/dSYM] Additional launch arguments found. Checking for custom dSYM path.")
-        
         guard let index = arguments.firstIndex(of: Keys.customDSYMPath.rawValue) else { return nil }
+        
+        print("[Bitrise:Trace/dSYM] Additional launch arguments found. Checking for custom dSYM path.")
         
         let path = arguments[index+1]
         
@@ -182,20 +184,20 @@ struct Zip {
     
     @discardableResult
     func zip() throws -> Process.TerminationReason {
-        print("[Bitrise:Trace/dSYM] Starting zipping \(name) \(Date())")
+        print("[Bitrise:Trace/dSYM] Starting zipping \(name) \(Date()).")
         
         // i.e $ zip output.zip inputPaths
         var zipDSYMs = command // Command
+        zipDSYMs.append(contentsOf: macFilters) // Extra settings
         zipDSYMs.append(name) // Output
         zipDSYMs.append(contentsOf: paths) // Input
-        zipDSYMs.append(contentsOf: macFilters) // Extra settings
         
         let result = try Shell.command(zipDSYMs)
         
         switch result {
-        case .exit: print("[Bitrise:Trace/dSYM] Finished zipping \(name) \(Date())")
-        case .uncaughtSignal: print("[Bitrise:Trace/dSYM] Failed to zip \(name) \(Date())")
-        @unknown default: print("[Bitrise:Trace/dSYM] Failed to zip \(name) \(Date())")
+        case .exit: print("[Bitrise:Trace/dSYM] Finished zipping \(name) \(Date()).")
+        case .uncaughtSignal: print("[Bitrise:Trace/dSYM] Failed to zip \(name) \(Date()).")
+        @unknown default: print("[Bitrise:Trace/dSYM] Failed to zip \(name) \(Date()).")
         }
         
         return result
@@ -206,7 +208,7 @@ struct Zip {
         
         guard FileManager.default.fileExists(atPath: path) else { throw NSError(domain: "FileManager.fileDoesNotExist", code: 1) }
      
-        print("[Bitrise:Trace/dSYM] Zipped path \(path)")
+        print("[Bitrise:Trace/dSYM] Zipped path \(path).")
         
         return path
     }
@@ -279,19 +281,19 @@ enum TokenLocator {
         let fileManager = FileManager.default
         var currentDirectoryPath = fileManager.currentDirectoryPath
         
-        print("[Bitrise:Trace/dSYM] Product name: \(name)")
-        print("[Bitrise:Trace/dSYM] Current path: \(currentDirectoryPath)")
+        print("[Bitrise:Trace/dSYM] Product name: \(name).")
+        print("[Bitrise:Trace/dSYM] Current path: \(currentDirectoryPath).")
         
         do {
             var subpaths = try fileManager.subpathsOfDirectory(atPath: currentDirectoryPath) // all
             var configurationFilter = subpaths.filter { $0.contains(configurationKey) } // filter for
             
             if configurationFilter.isEmpty {
-                print("[Bitrise:Trace/dSYM] Failed to locate \(configurationKey) at current directory. Checking one directory back for \(configurationKey)")
+                print("[Bitrise:Trace/dSYM] Failed to locate \(configurationKey) at current directory. Checking one directory back for \(configurationKey).")
                 
                 currentDirectoryPath = (currentDirectoryPath as NSString).deletingLastPathComponent
                 
-                print("[Bitrise:Trace/dSYM] Current path: \(currentDirectoryPath)")
+                print("[Bitrise:Trace/dSYM] Current path: \(currentDirectoryPath).")
                 
                 subpaths = try fileManager.subpathsOfDirectory(atPath: currentDirectoryPath)
                 configurationFilter = subpaths.filter { $0.contains(configurationKey) }
@@ -316,13 +318,13 @@ enum TokenLocator {
                 
                 return configuration.token
             } else {
-                print("[Bitrise:Trace/dSYM] Failed to find file at path \(configuration ?? "Unknown")")
+                print("[Bitrise:Trace/dSYM] Failed to find file at path \(configuration ?? "Unknown").")
             }
         } catch {
-            print("[Bitrise:Trace/dSYM] Failed to find \(configurationKey) with error: \(error.localizedDescription)")
+            print("[Bitrise:Trace/dSYM] Failed to find \(configurationKey) with error: \(error.localizedDescription).")
         }
         
-        print("[Bitrise:Trace/dSYM] Failed to find \(configurationKey) in the Xcode project directory")
+        print("[Bitrise:Trace/dSYM] Failed to find \(configurationKey) in the Xcode project directory.")
         
         return nil
     }
@@ -347,15 +349,26 @@ struct Uploader {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("UploadDSYM 1.0.0", forHTTPHeaderField: "User-Agent")
 
-        print("[Bitrise:Trace/dSYM] Uploading dSYM's \(Date())")
+        print("[Bitrise:Trace/dSYM] Uploading to: \(request).")
+        
+        print("[Bitrise:Trace/dSYM] Uploading dSYM's \(Date()).")
         
         session.uploadTask(with: request, fromFile: file) { data, response, error in
             let httpResponse = response as? HTTPURLResponse
             
-            print("[Bitrise:Trace/dSYM] Upload complete with status code: \(httpResponse?.statusCode ?? 0). \(Date())")
+            print("[Bitrise:Trace/dSYM] Upload complete with status code: (\(httpResponse?.statusCode ?? 0)) - \(Date()).")
             
             if let error = error {
-                print("[Bitrise:Trace/dSYM] Upload error: \(error.localizedDescription)")
+                print("[Bitrise:Trace/dSYM] Warning!")
+                print("[Bitrise:Trace/dSYM] Upload error: \(error.localizedDescription).")
+                print("[Bitrise:Trace/dSYM] Upload response: \(String(describing: httpResponse)).")
+                
+                if let data = data, let rawString = String(data: data, encoding: .utf8) {
+                    print("[Bitrise:Trace/dSYM] Upload data: \(rawString).")
+                }
+                
+                print("[Bitrise:Trace/dSYM] Warning!")
+                print(" ")
                 
                 completion(.failure(error))
             } else {
@@ -374,7 +387,7 @@ let arguments = CommandLine.arguments
 var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 
 if let path = DSYMLocator.customDSYMPath {
-    print("[Bitrise:Trace/dSYM] Custom dSYM launch arguments found, overriding default path for: \(path)")
+    print("[Bitrise:Trace/dSYM] Custom dSYM launch arguments found, overriding default path for: \(path).")
     
     dSYMFolderPath = path
 }
@@ -383,16 +396,18 @@ if environment[Keys.platform.rawValue] == Keys.iPhoneSimulator.rawValue {
     print("[Bitrise:Trace/dSYM] Warning!")
     print("[Bitrise:Trace/dSYM] Environment set to iPhone simulator, future versions will skip build for releases build only!")
     print("[Bitrise:Trace/dSYM] Warning!")
+    print(" ")
 }
 
 if let debugInformationFormat = environment[Keys.debugInformationFormat.rawValue], debugInformationFormat != Keys.dwarfWithDSYM.rawValue {
     print("[Bitrise:Trace/dSYM] Warning!")
     print("[Bitrise:Trace/dSYM] \(Keys.debugInformationFormat.rawValue) set to \(debugInformationFormat). Set it to \(Keys.debugInformationFormat.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
     print("[Bitrise:Trace/dSYM] Warning!")
+    print(" ")
 }
 
 if environment[Keys.bitcode.rawValue] == "YES" {
-    print("[Bitrise:Trace/dSYM] Enable Bitrise set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM")
+    print("[Bitrise:Trace/dSYM] Enable Bitrise set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
 }
 
 do {
@@ -420,6 +435,8 @@ do {
     exit(EXIT_SUCCESS)
 }
 
-print("[Bitrise:Trace/dSYM] Running RunLoop for during of the upload.")
+print("[Bitrise:Trace/dSYM] Running RunLoop for duration of the upload task.")
 
 RunLoop.main.run()
+
+print("[Bitrise:Trace/dSYM] RunLoop stopped running.")

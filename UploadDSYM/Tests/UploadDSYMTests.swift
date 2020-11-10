@@ -9,6 +9,7 @@
 import XCTest
 import Foundation
 
+/// All test are held in Build phases
 final class UploadDSYMTests: XCTestCase {
 
     // MARK: - Setup
@@ -22,8 +23,11 @@ final class UploadDSYMTests: XCTestCase {
     }
     
     // MARK: - Tests
-
+  
+    // All test are held in Build phases
     func test() throws {
-        // All test are held in Build phases
+        print("All test are held in Build phases.")
+        
+        sleep(5)
     }
 }

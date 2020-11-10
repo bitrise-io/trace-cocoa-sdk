@@ -1438,13 +1438,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76B2D9423FB864CA6BA3DE54 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		800DC5F3247D6D6C00FC8C73 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1459,13 +1452,6 @@
 				800DC605247D6E3F00FC8C73 /* libTrace.a in Frameworks */,
 				800DC604247D6E3900FC8C73 /* libz.tbd in Frameworks */,
 				800DC603247D6E3200FC8C73 /* libc++.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9209038956C2C9AC6F6A8301 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3300,7 +3286,6 @@
 			buildPhases = (
 				1070AB8C24748AAE00F15090 /* Sources */,
 				1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */,
-				76B2D9423FB864CA6BA3DE54 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3319,7 +3304,6 @@
 				10512F4624806D9900A3B180 /* Tests - Run Swift via shell */,
 				10512F4724806DC000A3B180 /* Tests - Run Swift via code */,
 				10512F482480734400A3B180 /* Tests - Run Swift project via Shell */,
-				9209038956C2C9AC6F6A8301 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3843,6 +3827,7 @@
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
 			shellScript = "
 ";
+			showEnvVarsInLog = 0;
 		};
 		10A9C80A23E8809B00DCBF4F /* 10. Create folder in SDK using the new SDK version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5008,6 +4993,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5274,7 +5260,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.UploadDSYM.UploadDSYMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -5297,7 +5283,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.UploadDSYM.UploadDSYMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
