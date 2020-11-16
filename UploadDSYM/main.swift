@@ -100,9 +100,13 @@ final class DSYMLocator {
     // MARK: - Init
     
     init(_ path: String?) throws {
-        guard let path = path else { throw NSError(domain: "DSYMLocator.badFolderPath", code: 1) }
+        guard let unwrappedPath = path else { throw NSError(
+            domain: "DSYMLocator.badFolderPath",
+            code: 1,
+            userInfo: ["path": path ?? "Unknown"])
+        }
         
-        self.path = path
+        self.path = unwrappedPath
         
         try setup()
     }
@@ -135,7 +139,7 @@ final class DSYMLocator {
         
         print("[Bitrise:Trace/dSYM] Additional launch arguments found. Checking for custom dSYM path.")
         
-        let path = arguments[index+1]
+        let path = arguments[index + 1]
         
         guard URL(fileURLWithPath: path).isFileURL else { return nil }
         
@@ -162,7 +166,7 @@ struct Zip {
     // MARK: - Static
     
     static func paths(_ paths: [String], name: String) throws -> String {
-        let zip = Self(paths: paths, name: name)
+        let zip = try Self(paths: paths, name: name)
         
         try zip.zip()
         
@@ -173,9 +177,21 @@ struct Zip {
     
     // MARK: - Init
     
-    init(paths: [String], name: String) {
+    init(paths: [String], name: String) throws {
         self.name = name
         self.paths = paths
+        
+        try setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() throws {
+        guard !paths.isEmpty else {
+            print("[Bitrise:Trace/dSYM] Paths to be zipped is empty")
+            
+            throw NSError(domain: "Zip.pathsToZipFilesIsEmpty", code: 1, userInfo: ["Paths to zip": paths])
+        }
     }
     
     // MARK: - Zip
@@ -253,7 +269,7 @@ enum TokenLocator {
         
         guard let index = arguments.firstIndex(of: Keys.token.rawValue) else { return nil }
         
-        let token = arguments[index+1]
+        let token = arguments[index + 1]
         
         print("[Bitrise:Trace/dSYM] Using token \(token) at position 1 from launch arguments.")
         
@@ -370,13 +386,16 @@ struct Uploader {
                 
                 completion(.failure(error))
             } else {
+                print("[Bitrise:Trace/dSYM] Upload complete.")
+                
                 completion(.success(()))
             }
         }.resume()
     }
 }
 
-print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started \(Date()).")
+print(" ")
+print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started at \(Date()).")
 print("----------------------------------------------------------\n\n")
 
 // swiftlint:disable all
@@ -430,7 +449,9 @@ do {
     }
 } catch {
     print("\n\n----------------------------------------------------------")
-    print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's failed with error \(error.localizedDescription) \(Date()).")
+    
+    print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's failed: \((error as NSError).description) \(Date()).")
+    print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's unsuccessful.")
     
     exit(EXIT_SUCCESS)
 }
@@ -440,3 +461,4 @@ print("[Bitrise:Trace/dSYM] Running RunLoop for duration of the upload task.")
 RunLoop.main.run()
 
 print("[Bitrise:Trace/dSYM] RunLoop stopped running.")
+print(" ")
