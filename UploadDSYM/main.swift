@@ -49,7 +49,7 @@ enum Shell {
         task.arguments = arguments
         task.qualityOfService = .userInitiated
         
-        print("[Bitrise:Trace/dSYM] Running shell command: \(arguments.joined(separator: " ")).")
+        print("[Bitrise:Trace/dSYM] Running shell command: \(arguments.joined(separator: " "))")
         
         // Run a shell command
         try task.run()
@@ -354,6 +354,29 @@ struct Uploader {
     }()
     
     let token: String
+    
+    // MARK: - Init
+    
+    init(token: String) throws {
+        self.token = token
+        
+        try setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() throws {
+        guard token.isEmpty || token != " " else { throw NSError(
+            domain: "Uploader.tokenIsEmpty",
+            code: 1,
+            userInfo: ["token": token])
+        }
+        guard token.count > 2 else { throw NSError(
+            domain: "Uploader.tokenIsMalformed",
+            code: 1,
+            userInfo: ["token": token])
+        }
+    }
 
     // MARK: - Upload
     
@@ -369,7 +392,7 @@ struct Uploader {
         request.httpShouldUsePipelining = true
         request.networkServiceType = .responsiveData
 
-        print("[Bitrise:Trace/dSYM] Uploading to: \(request).")
+        print("[Bitrise:Trace/dSYM] Uploading to: \(request)")
         print("[Bitrise:Trace/dSYM] Uploading dSYM's \(Date()).")
         
         session.uploadTask(with: request, fromFile: file) { data, response, error in
@@ -440,7 +463,7 @@ do {
     let zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
     let token = try TokenLocator.token()
     let file = URL(fileURLWithPath: zippedDSYMs)
-    let uploader = Uploader(token: token)
+    let uploader = try Uploader(token: token)
     
     try uploader.upload(fileAtPath: file) {
         switch $0 {
