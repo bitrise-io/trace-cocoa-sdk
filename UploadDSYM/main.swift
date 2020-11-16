@@ -346,7 +346,13 @@ struct Uploader {
     
     // MARK: - Property
     
-    private let session = URLSession.shared
+    private let session: URLSession = {
+        let session = URLSession.shared
+        session.configuration.timeoutIntervalForRequest = 20.0
+        
+        return session
+    }()
+    
     let token: String
 
     // MARK: - Upload
@@ -356,13 +362,14 @@ struct Uploader {
             throw NSError(domain: "Uploader.failedToCreateURL", code: 1)
         }
         
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20.0)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("UploadDSYM 1.0.0", forHTTPHeaderField: "User-Agent")
+        request.httpShouldUsePipelining = true
+        request.networkServiceType = .responsiveData
 
         print("[Bitrise:Trace/dSYM] Uploading to: \(request).")
-        
         print("[Bitrise:Trace/dSYM] Uploading dSYM's \(Date()).")
         
         session.uploadTask(with: request, fromFile: file) { data, response, error in
