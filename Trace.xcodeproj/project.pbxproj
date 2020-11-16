@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -3286,6 +3286,8 @@
 			buildPhases = (
 				1070AB8C24748AAE00F15090 /* Sources */,
 				1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */,
+				10D5BA92256289F300D52B6A /* Lint main.swift file */,
+				10D5BB1325628B4400D52B6A /* Compile main.swift file */,
 			);
 			buildRules = (
 			);
@@ -3999,6 +4001,44 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
 			showEnvVarsInLog = 0;
+		};
+		10D5BA92256289F300D52B6A /* Lint main.swift file */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint main.swift file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Lint main.swift upload file\"\n\nswiftlint lint ${SRCROOT}/UploadDSYM/main.swift\n";
+			showEnvVarsInLog = 0;
+		};
+		10D5BB1325628B4400D52B6A /* Compile main.swift file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compile main.swift file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Compile main.swift upload file\"\n\n/usr/bin/xcrun --sdk macosx swift ${SRCROOT}/UploadDSYM/main.swift -o Main-executable\n";
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;

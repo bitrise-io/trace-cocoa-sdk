@@ -1,0 +1,6 @@
+# WARNING
+
+File: This is used in the post-script to upload dSYM's
+
+- Do not delete `main.swift` file.
+- Do not rename `main.swift` file.
