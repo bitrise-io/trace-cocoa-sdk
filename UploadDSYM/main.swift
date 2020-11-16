@@ -1,15 +1,13 @@
 // #!/usr/bin/env xcrun swift
-// swiftlint:disable all
 
-/**
- This script uploads all dSYM files.
- 
- By default the script check for APM collector token in the following order:
-    - Check Launch arguments.
-    - Check environment variable for `APM_COLLECTOR_TOKEN`.
-    - Check for `bitrise_configuration.plist` in the root of the project.
-    - If none of the above work, script fails.
- */
+// This script uploads all dSYM files.
+//
+// By default the script check for APM collector token in the following order:
+//  - Check Launch arguments.
+//  - Check environment variable for `APM_COLLECTOR_TOKEN`.
+//  - Check for `bitrise_configuration.plist` in the root of the project.
+//  - If none of the above work, script fails.
+//
 import Foundation
 
 /// Keys
@@ -381,10 +379,12 @@ struct Uploader {
 print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started \(Date()).")
 print("----------------------------------------------------------\n\n")
 
+// swiftlint:disable all
 let process = ProcessInfo.processInfo
 let environment = process.environment
 let arguments = CommandLine.arguments
 var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
+// swiftlint:enable all
 
 if let path = DSYMLocator.customDSYMPath {
     print("[Bitrise:Trace/dSYM] Custom dSYM launch arguments found, overriding default path for: \(path).")
