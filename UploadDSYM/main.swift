@@ -49,7 +49,7 @@ enum Shell {
         task.arguments = arguments
         task.qualityOfService = .userInitiated
         
-        print("[Bitrise:Trace/dSYM] Running shell command: \(arguments.joined()).")
+        print("[Bitrise:Trace/dSYM] Running shell command: \(arguments.joined(separator: " ")).")
         
         // Run a shell command
         try task.run()
@@ -155,7 +155,6 @@ struct Zip {
     // MARK: - Property
     
     private let command = ["zip", "-r", "-D", "-q"] // Run zip command, see man zip for more details
-    private let macFilters = ["-x", "*.DS_Store", "-x", "__MACOSX"] // Remove unwanted macOS files when zipping
     
     /// Name of zip file
     private let name: String
@@ -202,7 +201,6 @@ struct Zip {
         
         // i.e $ zip output.zip inputPaths
         var zipDSYMs = command // Command
-        zipDSYMs.append(contentsOf: macFilters) // Extra settings
         zipDSYMs.append(name) // Output
         zipDSYMs.append(contentsOf: paths) // Input
         
@@ -434,8 +432,9 @@ do {
     let path = dSYMLocator.paths
     let zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
     let token = try TokenLocator.token()
-    let uploader = Uploader(token: token)
     let file = URL(fileURLWithPath: zippedDSYMs)
+    let uploader = Uploader(token: token)
+    
     try uploader.upload(fileAtPath: file) {
         switch $0 {
         case .success: break
