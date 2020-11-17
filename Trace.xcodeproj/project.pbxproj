@@ -4019,7 +4019,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Lint main.swift upload file\"\n\nswiftlint lint ${SRCROOT}/UploadDSYM/main.swift\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    echo \"Lint main.swift upload file\"\n    \n    swiftlint lint ${SRCROOT}/UploadDSYM/main.swift\nelse\n    echo \"warning: SwiftLint not installed, use brew install swiftlint\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		10D5BB1325628B4400D52B6A /* Compile main.swift file */ = {
