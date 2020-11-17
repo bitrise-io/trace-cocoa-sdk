@@ -15,13 +15,14 @@
 				10A9C80C23E8822500DCBF4F /* 1. Build Device, Simulator and Mac catalyst library */,
 				10F7031322A6A7F100618F27 /* 2. Create universal static library */,
 				10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */,
-				10B1BAFC22F336D500DEA77B /* 4. Zip universal static library */,
-				10BB4EB1250BC7F40044AB9E /* 5. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */,
-				10BB4EB2250BDCCE0044AB9E /* 6. Remove `import TraceInternal` from all Trace .swiftinterface files */,
-				10BB4EB0250BA5600044AB9E /* 7. Create Trace.xcframework from Device and Simulator library */,
-				10BB4EB3250BF03A0044AB9E /* 8. Copy Trace.xcframework SDK latest folder */,
-				10BB4EB4250E85020044AB9E /* 9. Zip Trace.xcframework */,
-				10A9C80A23E8809B00DCBF4F /* 10. Create folder in SDK using the new SDK version */,
+				1086A8B225641036007612D0 /* 4. Create VERSION file */,
+				10B1BAFC22F336D500DEA77B /* 5. Zip universal static library */,
+				10BB4EB1250BC7F40044AB9E /* 6. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */,
+				10BB4EB2250BDCCE0044AB9E /* 7. Remove `import TraceInternal` from all Trace .swiftinterface files */,
+				10BB4EB0250BA5600044AB9E /* 8. Create Trace.xcframework from Device and Simulator library */,
+				10BB4EB3250BF03A0044AB9E /* 9. Copy Trace.xcframework SDK latest folder */,
+				10BB4EB4250E85020044AB9E /* 10. Zip Trace.xcframework */,
+				10A9C80A23E8809B00DCBF4F /* 11. Create folder in SDK using the new SDK version */,
 			);
 			dependencies = (
 			);
@@ -3663,6 +3664,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		1000927625430AB400C1C3D4 /* 0. Print ENV details */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3720,6 +3722,7 @@
 		};
 		10512F4624806D9900A3B180 /* Tests - Run Swift via shell */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3736,9 +3739,11 @@
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
 			shellScript = "
 ";
+			showEnvVarsInLog = 0;
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3754,9 +3759,11 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "xcrun --sdk macosx swift\n";
+			showEnvVarsInLog = 0;
 		};
 		10512F482480734400A3B180 /* Tests - Run Swift project via Shell */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3773,6 +3780,7 @@
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
 			shellScript = "
 ";
+			showEnvVarsInLog = 0;
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3795,6 +3803,7 @@
 		};
 		1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3810,6 +3819,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
 			shellScript = "// Type a script or drag a script file from your workspace to insert its path.\n\nimport Foundation\n";
+			showEnvVarsInLog = 0;
 		};
 		1070ABAF2476F67500F15090 /* Tests - Run dSYM uploader script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3831,8 +3841,9 @@
 ";
 			showEnvVarsInLog = 0;
 		};
-		10A9C80A23E8809B00DCBF4F /* 10. Create folder in SDK using the new SDK version */ = {
+		1086A8B225641036007612D0 /* 4. Create VERSION file */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3840,7 +3851,27 @@
 			);
 			inputPaths = (
 			);
-			name = "10. Create folder in SDK using the new SDK version";
+			name = "4. Create VERSION file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			showEnvVarsInLog = 0;
+		};
+		10A9C80A23E8809B00DCBF4F /* 11. Create folder in SDK using the new SDK version */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "11. Create folder in SDK using the new SDK version";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3852,6 +3883,7 @@
 		};
 		10A9C80B23E881BA00DCBF4F /* 3. Copy universal static library to SDK folder */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3871,6 +3903,7 @@
 		};
 		10A9C80C23E8822500DCBF4F /* 1. Build Device, Simulator and Mac catalyst library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3888,8 +3921,9 @@
 			shellScript = "echo \"Building device, simulator and Mac catalyst static library\"\n\n# Define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device, Simulator and MacOS versions\n\necho \"Building device static library\"\n# Device\nxcodebuild -target Trace ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -quiet BITCODE_GENERATION_MODE=bitcode BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES\n\necho \"Building simulator static library\"\n# iPhone Simulator\nxcodebuild -target Trace -configuration ${CONFIGURATION} -sdk iphonesimulator -arch x86_64 -arch i386 -quiet BITCODE_GENERATION_MODE=bitcode BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES\n\necho \"Building Mac catalyst static library inside xcarchive\"\n# Mac catalyst\n# Note: Without archivePath this command doesn't work for mac catalyst\nxcodebuild archive -scheme \"Trace\" -destination='platform=macOS,arch=x86_64,variant=Mac Catalyst' -CFLAGS=\"-target x86_64-apple-ios13.0-macabi\" -archivePath \"${BUILD_DIR}/Release-macCatalyst.xcarchive\" -quiet BITCODE_GENERATION_MODE=bitcode SKIP_INSTALL=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" BUILD_LIBRARIES_FOR_DISTRIBUTION=YES SUPPORTS_MACCATALYST=YES\n\n# Fix paths and copy files\nln -f -n \"${BUILD_ROOT}/Release-macCatalyst.xcarchive/Products/usr/local/lib/libTrace.a\" \"${BUILD_ROOT}/Release-maccatalyst/libTrace.a\"\nln -f -n \"${BUILD_ROOT}/Release-macCatalyst.xcarchive/Products/usr/local/lib/libTraceInternal.a\" \"${BUILD_ROOT}/Release-maccatalyst/libTraceInternal.a\"\n\necho \"BUILD_ROOT: ${BUILD_ROOT}\"\necho \"BUILD_DIR: ${BUILD_DIR}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\necho \"UNIVERSAL_OUTPUTFOLDER: ${UNIVERSAL_OUTPUTFOLDER}\"\necho \"Built device, simulator and Mac catalyst static library\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10B1BAFC22F336D500DEA77B /* 4. Zip universal static library */ = {
+		10B1BAFC22F336D500DEA77B /* 5. Zip universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3897,7 +3931,7 @@
 			);
 			inputPaths = (
 			);
-			name = "4. Zip universal static library";
+			name = "5. Zip universal static library";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3907,8 +3941,9 @@
 			shellScript = "echo \"Creating universal static library zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr -u -X \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10BB4EB0250BA5600044AB9E /* 7. Create Trace.xcframework from Device and Simulator library */ = {
+		10BB4EB0250BA5600044AB9E /* 8. Create Trace.xcframework from Device and Simulator library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3916,7 +3951,7 @@
 			);
 			inputPaths = (
 			);
-			name = "7. Create Trace.xcframework from Device and Simulator library";
+			name = "8. Create Trace.xcframework from Device and Simulator library";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3926,8 +3961,9 @@
 			shellScript = "echo \"Creating .xcframework file from device, simulator and macCatalyst static library\"\n\nrm -r \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\nxcodebuild -create-xcframework -library \"${BUILD_DIR}/Release-iphoneos/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphoneos/include/\" -library \"${BUILD_DIR}/Release-iphonesimulator/libTrace.a\" -headers \"${BUILD_DIR}/Release-iphonesimulator/include/\" -library \"${BUILD_DIR}/Release-maccatalyst/libTrace.a\" -headers \"${BUILD_DIR}/Release-maccatalyst/include/\" -output \"${BUILD_DIR}/Release-universal/Trace.xcframework\"\n\necho \"Created Trace.xcframework file:  ${BUILD_DIR}/Release-universal/Trace.xcframework\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10BB4EB1250BC7F40044AB9E /* 5. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */ = {
+		10BB4EB1250BC7F40044AB9E /* 6. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3935,7 +3971,7 @@
 			);
 			inputPaths = (
 			);
-			name = "5. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues";
+			name = "6. Remove Trace.X namespace in all .swiftinterface files to fix known Swift build issues";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3945,8 +3981,9 @@
 			shellScript = "# https://developer.apple.com/forums/thread/123253\n\necho \"Removing all instances of Trace. in all .swiftinterface files\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\ncd \"${BUILD_DIR}/Release-maccatalyst/\"\n\n# Find and remove all Trace. names\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e 's/Trace\\.//g' {} \\;\n\necho \"Removed all instances of Trace. in all .swiftinterface files\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10BB4EB2250BDCCE0044AB9E /* 6. Remove `import TraceInternal` from all Trace .swiftinterface files */ = {
+		10BB4EB2250BDCCE0044AB9E /* 7. Remove `import TraceInternal` from all Trace .swiftinterface files */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3954,7 +3991,7 @@
 			);
 			inputPaths = (
 			);
-			name = "6. Remove `import TraceInternal` from all Trace .swiftinterface files";
+			name = "7. Remove `import TraceInternal` from all Trace .swiftinterface files";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3964,8 +4001,9 @@
 			shellScript = "echo \"Removing import TraceInternal from all .swiftinterface to make the SDK build\"\n\ncd \"${BUILD_DIR}/Release-iphoneos/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n\ncd \"${BUILD_DIR}/Release-iphonesimulator/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n\ncd \"${BUILD_DIR}/Release-maccatalyst/Trace.swiftmodule/\"\n\nfind . -name \"*.swiftinterface\" -exec sed -i '' -e '/import TraceInternal/d' {} \\;\n";
 			showEnvVarsInLog = 0;
 		};
-		10BB4EB3250BF03A0044AB9E /* 8. Copy Trace.xcframework SDK latest folder */ = {
+		10BB4EB3250BF03A0044AB9E /* 9. Copy Trace.xcframework SDK latest folder */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3973,7 +4011,7 @@
 			);
 			inputPaths = (
 			);
-			name = "8. Copy Trace.xcframework SDK latest folder";
+			name = "9. Copy Trace.xcframework SDK latest folder";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -3983,8 +4021,9 @@
 			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\necho \"Copying ${PROJECT_NAME}.xcframework to SDK latest folder\"\n\nrm -r \"${PROJECT_DIR}/SDK/${LATEST}/${PROJECT_NAME}.xcframework\"\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.xcframework\" \"${PROJECT_DIR}/SDK/${LATEST}/${PROJECT_NAME}.xcframework\"\n\necho \"Copied ${PROJECT_NAME}.xcframework to SDK latest folder\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10BB4EB4250E85020044AB9E /* 9. Zip Trace.xcframework */ = {
+		10BB4EB4250E85020044AB9E /* 10. Zip Trace.xcframework */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -3992,7 +4031,7 @@
 			);
 			inputPaths = (
 			);
-			name = "9. Zip Trace.xcframework";
+			name = "10. Zip Trace.xcframework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -4024,6 +4063,7 @@
 		};
 		10D5BB1325628B4400D52B6A /* Compile main.swift file */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -4039,9 +4079,11 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Compile main.swift upload file\"\n\n/usr/bin/xcrun --sdk macosx swift ${SRCROOT}/UploadDSYM/main.swift -o Main-executable\n";
+			showEnvVarsInLog = 0;
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
