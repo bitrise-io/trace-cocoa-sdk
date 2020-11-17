@@ -3858,7 +3858,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "SDKVERSION=$(xcodebuild -showBuildSettings | grep \"CURRENT_PROJECT_VERSION\" | sed 's/[ ]*CURRENT_PROJECT_VERSION = //')\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nSDKVERSION=\"${SDKVERSION} (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\necho \"${SDKVERSION}\" > \"${PROJECT_DIR}/SDK/${LATEST}/VERSION\"\n";
 			showEnvVarsInLog = 0;
 		};
 		10A9C80A23E8809B00DCBF4F /* 11. Create folder in SDK using the new SDK version */ = {
@@ -3938,7 +3938,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating universal static library zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json\"\n\nzip -jr -u -X \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
+			shellScript = "echo \"Creating universal static library zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\necho \"Creating zip with the following files: lib${PROJECT_NAME}.a, Trace-Swift.h, License, BitriseTrace.podspec.json and VERSION\"\n\nzip -jr -u -X \"lib${PROJECT_NAME}.a.zip\" \"lib${PROJECT_NAME}.a\" \"VERSION\" \"Trace-Swift.h\" \"../../License\" \"../../BitriseTrace.podspec.json\"\n\necho \"Created universal static library zip\"\n";
 			showEnvVarsInLog = 0;
 		};
 		10BB4EB0250BA5600044AB9E /* 8. Create Trace.xcframework from Device and Simulator library */ = {
@@ -4038,7 +4038,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
+			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\ncp \"VERSION\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
 			showEnvVarsInLog = 0;
 		};
 		10D5BA92256289F300D52B6A /* Lint main.swift file */ = {
