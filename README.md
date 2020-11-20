@@ -48,9 +48,11 @@ Add the following step inside your `bitrise.yml` file if the step project is in 
 If your using GIT use the following:
 ```yml
 - git::https://github.com/bitrise-steplib/bitrise-step-add-trace-sdk.git@master:
-    title: Add Trace SDK to Xcode project
+    title: Add Trace SDK to the Xcode project
     inputs:
-    - lib_version: "latest"
+    - project_path: "$BITRISE_PROJECT_PATH"
+    - scheme: "$BITRISE_SCHEME"
+    - lib_version: latest
 ```
 
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
@@ -123,7 +125,7 @@ sed -i -e 's/MACH_O_TYPE = mh_dylib/MACH_O_TYPE = staticlib/g' Carthage/Checkout
 trace build Trace --platform iOS
 ```
 
-### [Swift Package Manager](https://swift.org/package-manager) (iOS and Mac Catalyst compatible)
+### [Swift Package Manager (SPM)](https://swift.org/package-manager) (iOS and Mac Catalyst compatible)
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
 **Add the library to your project using one of the following methods:**
