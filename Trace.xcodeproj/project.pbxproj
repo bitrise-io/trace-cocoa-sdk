@@ -3215,6 +3215,7 @@
 				104A6970229401260065F218 /* Frameworks */,
 				104A6971229401260065F218 /* Resources */,
 				1070ABAF2476F67500F15090 /* Tests - Run dSYM uploader script */,
+				10CDD14F2568274100332C58 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4040,6 +4041,23 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Creating ${PROJECT_NAME}.xcframework zip\"\n\nXCODE_VERSION=$(xcodebuild -version | grep 'Xcode\\s[0-9.]*')\nLATEST=\"\"\n\n# Check if it the last Xcode version\nif [ \"${XCODE_VERSION}\" == \"Xcode 11.7\" ]; then\nLATEST=\"latest (${XCODE_VERSION})\"\nelse \nLATEST=\"latest\"\nfi\n\ncd \"${PROJECT_DIR}/SDK/${LATEST}/\"\n\ncp \"../../License\" \"${PROJECT_NAME}.xcframework/\"\ncp \"VERSION\" \"${PROJECT_NAME}.xcframework/\"\n\nrm -r \"${PROJECT_NAME}.xcframework.zip\"\n\nzip -r -X \"${PROJECT_NAME}.xcframework.zip\" \"${PROJECT_NAME}.xcframework\" \n\necho \"Created ${PROJECT_NAME}.xcframework.zip file\"\n";
 			showEnvVarsInLog = 0;
+		};
+		10CDD14F2568274100332C58 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		10D5BA92256289F300D52B6A /* Lint main.swift file */ = {
 			isa = PBXShellScriptBuildPhase;
