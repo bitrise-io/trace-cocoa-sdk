@@ -425,7 +425,7 @@ struct Uploader {
             
             if let error = error {
                 print("[Bitrise:Trace/dSYM] Warning!")
-                print("[Bitrise:Trace/dSYM] Upload error: \(error.localizedDescription).")
+                print("[Bitrise:Trace/dSYM] Upload error: \(error).")
                 print("[Bitrise:Trace/dSYM] Upload response: \(String(describing: httpResponse)).")
                 
                 if let data = data, let rawString = String(data: data, encoding: .utf8) {
