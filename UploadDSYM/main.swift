@@ -486,7 +486,7 @@ do {
     let path = dSYMLocator.paths
     let zippedDSYMs: String
     
-    if let zippedDSYMPath = dSYMFolderPath, zippedDSYMPath.hasSuffix(Extension.zip.rawValue) == true {
+    if let zippedDSYMPath = dSYMFolderPath, zippedDSYMPath.hasSuffix(Extension.zip.rawValue) {
         print("[Bitrise:Trace/zip] Custom path is a zip file, will not rezip file")
         
         // File is already zipped
