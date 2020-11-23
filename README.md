@@ -205,6 +205,52 @@ Note: don't worry about other attributes on the list.
 
 * And that's it!
 
+## Uploading dSYM's
+
+### Bitrise workflow step
+This step automatically uploads all dSYM's files created from Xcode archive. It uses the default Xcode path to find all dSYM files and upload all of them automatically.
+
+Note: An app that submits a build to iTunes Connect whiles making use of bitcode feature will have to manually download all dSYM's files and upload using the upload dSYM script found on Github. Only once it has been processed by Apple which can take up to an hour. See instructions below
+
+### All other dependency managers
+
+After following the Trace SDK installation steps on the Xcode project/workspace select your `application target` and go to the `build phases` tab.
+
+Select the plus button and add `New Run Script Phase`. Name it `Bitrise Trace SDK - Upload dSYM's`
+
+Copy and paste the following code in the script section:
+```
+#!/bin/sh
+set +o posix
+
+echo "Bitrise Trace SDK - starting Upload dSYM's"
+
+# See script header for more information - https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/UploadDSYM/main.swift#L4
+
+# Run script
+/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
+
+echo "Bitrise Trace SDK - finished Upload dSYM's"
+```
+
+### iTunes Connect (Apps with Bitcode support)
+
+You must first download the zipped dSYM's files from iTunes Connect under Activity->Build->Download dSYM.
+
+Open Terminal app and run the following command:
+Remote script
+```
+/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) APM_DSYM_PATH appDsyms.zip
+```
+Local script 
+```
+/usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms.zip
+```
+Note: The script assumes the current shell working directory has the bitrise_configuration.plist file. If otherwise use `APM_COLLECTOR_TOKEN TOKEN`
+
+And that's it!
+When running a build if you go to the build log section you will see the results when it has finished. Look at for `Bitrise Trace SDK - Upload dSYM's`.
+
 # [Storage](https://monitoring-sdk.firebaseapp.com/)
 
 SDk binaries is hosted on Firebase, download the latest version [here](https://monitoring-sdk.firebaseapp.com/latest/libTrace.a) or download a specific version by adding the version details inside the [url](https://monitoring-sdk.firebaseapp.com/latest/libTrace.a) i.e https://monitoring-sdk.firebaseapp.com/{MAJOR.MINOR.PITCH}/libTrace.a

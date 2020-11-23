@@ -1,5 +1,10 @@
 // #!/usr/bin/env xcrun swift
 
+//
+// Bitrise Trace SDK - Upload dSYM's
+// https://www.bitrise.io/add-ons/trace-mobile-monitoring
+// https://github.com/bitrise-io/trace-cocoa-sdk/
+//
 // This script uploads all dSYM files.
 //
 // By default the script check for APM collector token in the following order:
@@ -7,6 +12,24 @@
 //  - Check environment variable for `APM_COLLECTOR_TOKEN`.
 //  - Check for `bitrise_configuration.plist` in the root of the project.
 //  - If none of the above work, script fails.
+//
+// Call script directly using the following command on Terminal:
+// Remote script
+// /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
+// Local script
+// /usr/bin/xcrun --sdk macosx swift main.swift
+//
+// Features
+//
+// Using a folder path or zip file:
+// Folder path
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms/
+//
+// Zip file i.e iTunes connect dSYM file
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms.zip
+//
+// Using a custom APM collector token:
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN TOKEN
 //
 import Foundation
 
@@ -402,7 +425,7 @@ struct Uploader {
             
             if let error = error {
                 print("[Bitrise:Trace/dSYM] Warning!")
-                print("[Bitrise:Trace/dSYM] Upload error: \(error.localizedDescription).")
+                print("[Bitrise:Trace/dSYM] Upload error: \(error).")
                 print("[Bitrise:Trace/dSYM] Upload response: \(String(describing: httpResponse)).")
                 
                 if let data = data, let rawString = String(data: data, encoding: .utf8) {
@@ -454,13 +477,24 @@ if let debugInformationFormat = environment[Keys.debugInformationFormat.rawValue
 }
 
 if environment[Keys.bitcode.rawValue] == "YES" {
-    print("[Bitrise:Trace/dSYM] Enable Bitrise set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
+    print("[Bitrise:Trace/dSYM] Enable Bitcode set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
+    print("[Bitrise:Trace/dSYM] See script guide on top for upload dSYM's examples")
 }
 
 do {
     let dSYMLocator = try DSYMLocator(dSYMFolderPath)
     let path = dSYMLocator.paths
-    let zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
+    let zippedDSYMs: String
+    
+    if let zippedDSYMPath = dSYMFolderPath, zippedDSYMPath.hasSuffix(Extension.zip.rawValue) {
+        print("[Bitrise:Trace/zip] Custom path is a zip file, will not rezip file")
+        
+        // File is already zipped
+        zippedDSYMs = zippedDSYMPath
+    } else {
+        zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
+    }
+    
     let token = try TokenLocator.token()
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
@@ -490,4 +524,5 @@ print("[Bitrise:Trace/dSYM] Running RunLoop for duration of the upload task.")
 RunLoop.main.run()
 
 print("[Bitrise:Trace/dSYM] RunLoop stopped running.")
+// swiftlint:disable file_length
 print(" ")
