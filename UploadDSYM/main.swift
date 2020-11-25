@@ -23,18 +23,20 @@
 //
 // Using a folder path or zip file:
 // Folder path
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms/
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version APM_DSYM_PATH ~/Downloads/appDsyms/
 //
 // Zip file i.e iTunes connect dSYM file
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms.zip
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version APM_DSYM_PATH ~/Downloads/appDsyms.zip
 //
 // Using a custom APM collector token:
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN TOKEN
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN TOKEN APM_APP_VERSION version
 //
 import Foundation
 
 /// Keys
 enum Keys: String, CodingKey {
+    case appVersion = "APM_APP_VERSION"
+    case buildVersion = "APM_BUILD_VERSION"
     case token = "APM_COLLECTOR_TOKEN"
     case customDSYMPath = "APM_DSYM_PATH"
     case configuration = "bitrise_configuration"
@@ -44,6 +46,8 @@ enum Keys: String, CodingKey {
     case bitcode = "ENABLE_BITCODE"
     case debugInformationFormat = "DEBUG_INFORMATION_FORMAT"
     case dwarfWithDSYM = "dwarf-with-dsym"
+    case version // app version
+    case build = "build-id" // build version
 }
 
 enum Extension: String, CodingKey {
@@ -403,7 +407,7 @@ struct Uploader {
 
     // MARK: - Upload
     
-    func upload(fileAtPath file: URL, _ completion: @escaping (Result<Void, Error>) -> Void) throws {
+    func upload(fileAtPath file: URL, withParameters parameters: [String: String], _ completion: @escaping (Result<Void, Error>) -> Void) throws {
         guard let url = URL(string: "https://collector.apm.bitrise.io/api/v1/symbols") else {
             throw NSError(domain: "Uploader.failedToCreateURL", code: 1)
         }
@@ -415,6 +419,8 @@ struct Uploader {
         request.httpShouldUsePipelining = true
         request.networkServiceType = .responsiveData
 
+        parameters.forEach { request.setValue($0.value, forHTTPHeaderField: $0.key) }
+        
         print("[Bitrise:Trace/dSYM] Uploading to: \(request)")
         print("[Bitrise:Trace/dSYM] Uploading dSYM's \(Date()).")
         
@@ -456,32 +462,44 @@ let arguments = CommandLine.arguments
 var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 // swiftlint:enable all
 
-if let path = DSYMLocator.customDSYMPath {
-    print("[Bitrise:Trace/dSYM] Custom dSYM launch arguments found, overriding default path for: \(path).")
-    
-    dSYMFolderPath = path
-}
-
-if environment[Keys.platform.rawValue] == Keys.iPhoneSimulator.rawValue {
-    print("[Bitrise:Trace/dSYM] Warning!")
-    print("[Bitrise:Trace/dSYM] Environment set to iPhone simulator, future versions will skip build for releases build only!")
-    print("[Bitrise:Trace/dSYM] Warning!")
-    print(" ")
-}
-
-if let debugInformationFormat = environment[Keys.debugInformationFormat.rawValue], debugInformationFormat != Keys.dwarfWithDSYM.rawValue {
-    print("[Bitrise:Trace/dSYM] Warning!")
-    print("[Bitrise:Trace/dSYM] \(Keys.debugInformationFormat.rawValue) set to \(debugInformationFormat). Set it to \(Keys.debugInformationFormat.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
-    print("[Bitrise:Trace/dSYM] Warning!")
-    print(" ")
-}
-
-if environment[Keys.bitcode.rawValue] == "YES" {
-    print("[Bitrise:Trace/dSYM] Enable Bitcode set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
-    print("[Bitrise:Trace/dSYM] See script guide on top for upload dSYM's examples")
-}
-
 do {
+    let appkey = Keys.appVersion.rawValue
+    let buildkey = Keys.buildVersion.rawValue
+    
+    guard let appIndex = arguments.firstIndex(of: appkey) else {
+        print("[Bitrise:Trace/dSYM] Failed to find app version with key \(appkey)")
+        
+        throw NSError(domain: "dSYM.appVersionNotFound", code: 1, userInfo: ["Missing key": appkey])
+    }
+    
+    guard let buildIndex = arguments.firstIndex(of: buildkey) else {
+        print("[Bitrise:Trace/dSYM] Failed to find build version with key \(buildkey)")
+        
+        throw NSError(domain: "dSYM.buildVersionNotFound", code: 1, userInfo: ["Missing key": buildkey])
+    }
+
+    let appVersion = arguments[appIndex + 1]
+    let buildVersion = arguments[buildIndex + 1]
+
+    if environment[Keys.platform.rawValue] == Keys.iPhoneSimulator.rawValue {
+        print("[Bitrise:Trace/dSYM] Warning!")
+        print("[Bitrise:Trace/dSYM] Environment set to iPhone simulator, future versions will skip build for releases build only!")
+        print("[Bitrise:Trace/dSYM] Warning!")
+        print(" ")
+    }
+
+    if let debugInformationFormat = environment[Keys.debugInformationFormat.rawValue], debugInformationFormat != Keys.dwarfWithDSYM.rawValue {
+        print("[Bitrise:Trace/dSYM] Warning!")
+        print("[Bitrise:Trace/dSYM] \(Keys.debugInformationFormat.rawValue) set to \(debugInformationFormat). Set it to \(Keys.debugInformationFormat.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
+        print("[Bitrise:Trace/dSYM] Warning!")
+        print(" ")
+    }
+
+    if environment[Keys.bitcode.rawValue] == "YES" {
+        print("[Bitrise:Trace/dSYM] Enable Bitcode set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
+        print("[Bitrise:Trace/dSYM] See script guide on top for upload dSYM's examples")
+    }
+
     let dSYMLocator = try DSYMLocator(dSYMFolderPath)
     let path = dSYMLocator.paths
     let zippedDSYMs: String
@@ -498,8 +516,12 @@ do {
     let token = try TokenLocator.token()
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
+    let parameters: [String: String] = [
+        Keys.appVersion.rawValue: appVersion,
+        Keys.buildVersion.rawValue: buildVersion
+    ]
     
-    try uploader.upload(fileAtPath: file) {
+    try uploader.upload(fileAtPath: file, withParameters: parameters) {
         switch $0 {
         case .success: break
         case .failure: break

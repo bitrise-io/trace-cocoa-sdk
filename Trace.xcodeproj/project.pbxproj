@@ -3286,8 +3286,8 @@
 			buildConfigurationList = 1070AB9624748AAE00F15090 /* Build configuration list for PBXNativeTarget "UploadDSYM" */;
 			buildPhases = (
 				1070AB8C24748AAE00F15090 /* Sources */,
-				1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */,
 				10D5BA92256289F300D52B6A /* Lint main.swift file */,
+				1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */,
 				10D5BB1325628B4400D52B6A /* Compile main.swift file */,
 			);
 			buildRules = (
@@ -3307,6 +3307,7 @@
 				10512F4624806D9900A3B180 /* Tests - Run Swift via shell */,
 				10512F4724806DC000A3B180 /* Tests - Run Swift via code */,
 				10512F482480734400A3B180 /* Tests - Run Swift project via Shell */,
+				10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */,
 			);
 			buildRules = (
 			);
@@ -3777,7 +3778,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
+			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
 			shellScript = "
 ";
 			showEnvVarsInLog = 0;
@@ -3818,7 +3819,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "// Type a script or drag a script file from your workspace to insert its path.\n\nimport Foundation\n";
+			shellScript = "import Foundation\n";
 			showEnvVarsInLog = 0;
 		};
 		1070ABAF2476F67500F15090 /* Tests - Run dSYM uploader script */ = {
@@ -4078,6 +4079,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"Compile main.swift upload file\"\n\n/usr/bin/xcrun --sdk macosx swift ${SRCROOT}/UploadDSYM/main.swift -o Main-executable\n";
+			showEnvVarsInLog = 0;
+		};
+		10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Tests - Run Swift project without version details via Shell";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
