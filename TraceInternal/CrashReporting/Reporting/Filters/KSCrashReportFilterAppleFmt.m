@@ -115,8 +115,10 @@ static NSDictionary* g_registerOrders;
 + (void) initialize
 {
     g_dateFormatter = [[NSDateFormatter alloc] init];
+    [g_dateFormatter setCalendar: [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierISO8601]];
     [g_dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
-    [g_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssXXX"];
+    [g_dateFormatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
+    [g_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssxxx"];
 
     g_rfc3339DateFormatter = [[NSDateFormatter alloc] init];
     [g_rfc3339DateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
@@ -334,6 +336,7 @@ static NSDictionary* g_registerOrders;
     {
         return nil;
     }
+    
     return [g_dateFormatter stringFromDate:date];
 }
 
