@@ -93,6 +93,8 @@ final internal class Persistent: NSPersistentContainer {
                 Logger.error(.database, "Failed to create directory with error: \(error.localizedDescription)")
             }
         }
+        
+        Logger.debug(.database, url.absoluteString)
             
         return url
     }
