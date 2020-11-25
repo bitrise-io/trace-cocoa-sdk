@@ -16,6 +16,7 @@ struct Resource: Codable {
     private enum CodingKeys: CodingKey {
         enum Labels: String, CodingKey {
             case appVersion = "app.version"
+            case buildVersion = "app.build"
             case uuid = "device.id"
             case osVersion = "os.version"
             case deviceType = "device.type"
@@ -34,8 +35,9 @@ struct Resource: Codable {
     // MARK: - Property
     
     let type: String = "mobile"
-    let platform: String = "iOS"
+    let platform: String
     let appVersion: String
+    let buildVersion: String
     let uuid: String
     let osVersion: String
     let deviceType: String
@@ -50,12 +52,15 @@ struct Resource: Codable {
     
     init(from details: OrderedDictionary<String, String>) {
         appVersion = details[DeviceFormatter.Keys.Application.version.rawValue] ?? ""
+        buildVersion = details[DeviceFormatter.Keys.Application.build.rawValue] ?? ""
         uuid = details[DeviceFormatter.Keys.uuid.rawValue] ?? ""
         osVersion = details[DeviceFormatter.Keys.systemVersion.rawValue] ?? ""
         deviceType = details[DeviceFormatter.Keys.model.rawValue] ?? ""
         carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue] ?? ""
         jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue] ?? ""
         sdkVersion = details[DeviceFormatter.Keys.SDK.version.rawValue] ?? ""
+        platform = details[DeviceFormatter.Keys.platform.rawValue] ?? ""
+        
         network = ""
         session = ""
     }
@@ -68,6 +73,7 @@ struct Resource: Codable {
         )
         
         appVersion = try nestedContainer.decode(String.self, forKey: .appVersion)
+        buildVersion = try nestedContainer.decode(String.self, forKey: .buildVersion)
         uuid = try nestedContainer.decode(String.self, forKey: .uuid)
         osVersion = try nestedContainer.decode(String.self, forKey: .osVersion)
         deviceType = try nestedContainer.decode(String.self, forKey: .deviceType)
@@ -76,6 +82,7 @@ struct Resource: Codable {
         session = try nestedContainer.decode(String.self, forKey: .sessionId)
         jailbroken = try nestedContainer.decode(String.self, forKey: .jailbroken)
         sdkVersion = try nestedContainer.decode(String.self, forKey: .sdkVersion)
+        platform = try nestedContainer.decode(String.self, forKey: .platform)
     }
     
     // MARK: - Encode
@@ -86,6 +93,7 @@ struct Resource: Codable {
         
         try container.encode(type, forKey: .type)
         try nestedContainer.encode(appVersion, forKey: .appVersion)
+        try nestedContainer.encode(buildVersion, forKey: .buildVersion)
         try nestedContainer.encode(uuid, forKey: .uuid)
         try nestedContainer.encode(osVersion, forKey: .osVersion)
         try nestedContainer.encode(deviceType, forKey: .deviceType)
@@ -105,6 +113,7 @@ extension Resource: Hashable {
     static func == (lhs: Resource, rhs: Resource) -> Bool {
         return
             lhs.appVersion == rhs.appVersion &&
+            lhs.buildVersion == rhs.buildVersion &&
             lhs.osVersion == rhs.osVersion &&
             lhs.uuid == rhs.uuid &&
             lhs.session == rhs.session
