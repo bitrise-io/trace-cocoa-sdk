@@ -7,9 +7,6 @@
 //
 
 import UIKit
-
-// See more here: https://bugs.swift.org/browse/SR-3801
-// and here: https://github.com/apple/swift/commit/08af6f0c0933dc70cb868633e2e017b63c12eba1
 import Trace
 
 @UIApplicationMain
