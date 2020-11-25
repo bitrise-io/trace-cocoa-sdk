@@ -86,7 +86,31 @@ internal struct DeviceFormatter: JSONEncodable {
         
         details[Keys.model.rawValue] = device.getModelName()
         details[Keys.systemVersion.rawValue] = device.systemVersion
-        details[Keys.platform.rawValue] = "iOS"
+        
+        var platform: String
+        
+        #if os(OSX)
+            platform = "macOS"
+        #elseif os(watchOS)
+            platform = "watchOS"
+        #elseif os(tvOS)
+            platform = "tvOS"
+        #elseif os(iOS)
+            #if targetEnvironment(macCatalyst)
+                platform = "macCatalyst"
+            #else
+                platform = "iOS"
+            #endif
+        #else
+        Logger.debug(.application, "Unknown")
+            platform = "Unknown"
+        #endif
+        
+        if device.userInterfaceIdiom == .pad {
+            platform = "iPadOS"
+        }
+        
+        details[Keys.platform.rawValue] = platform
         
         let locale = Locale.current
         

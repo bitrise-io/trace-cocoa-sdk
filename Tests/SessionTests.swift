@@ -71,7 +71,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
@@ -79,7 +79,8 @@ final class SessionTests: XCTestCase {
         XCTAssertEqual(current.resource!.carrier, "")
         XCTAssertEqual(current.resource!.jailbroken, "")
         XCTAssertEqual(current.resource!.sdkVersion, "")
-        XCTAssertEqual(current.resource!.network, "")
+        
+        XCTAssertNotNil(current.resource!.network)
         XCTAssertFalse(current.resource!.session.isEmpty)
     }
     
@@ -93,7 +94,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
@@ -115,7 +116,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
@@ -137,7 +138,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
@@ -163,7 +164,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
@@ -193,7 +194,7 @@ final class SessionTests: XCTestCase {
         
         XCTAssertNotNil(current.resource)
         XCTAssertEqual(current.resource!.type, "mobile")
-        XCTAssertEqual(current.resource!.platform, "iOS")
+        XCTAssertEqual(current.resource!.platform, "")
         XCTAssertEqual(current.resource!.appVersion, "")
         XCTAssertEqual(current.resource!.uuid, "")
         XCTAssertEqual(current.resource!.osVersion, "")
