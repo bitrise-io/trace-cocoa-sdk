@@ -52,7 +52,7 @@ final class Tracer {
         }
         
         traces.append(trace)
-        crash.userInfo["Trace Id"] = trace.traceId
+        crash.userInfo[CrashController.Keys.traceId.rawValue] = trace.traceId
         
         Logger.debug(.traceModel, trace)
         
