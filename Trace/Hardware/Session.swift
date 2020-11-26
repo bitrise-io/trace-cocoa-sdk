@@ -31,7 +31,7 @@ final class Session {
             
             if let resources = try? resource?.dictionary() {
                 // TODO: use enum instead of string
-                Trace.shared.crash.userInfo["Resource"] = resources
+                Trace.shared.crash.userInfo[CrashController.Keys.resource.rawValue] = resources
             }
         }
     }

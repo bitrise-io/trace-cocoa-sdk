@@ -17,6 +17,13 @@ import TraceInternal
 @objc(BRCrashController)
 public final class CrashController: NSObject {
     
+    // MARK: - Enum
+    
+    enum Keys: String {
+        case traceId = "Trace Id"
+        case resource = "Resource"
+    }
+    
     // MARK: - Property
     
     private let scheduler: Scheduler
