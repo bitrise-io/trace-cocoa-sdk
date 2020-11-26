@@ -417,7 +417,7 @@ static NSDictionary* g_registerOrders;
     NSString* cpuArch = [system objectForKey:@KSCrashField_CPUArch];
     NSString* cpuArchType = [self CPUType:cpuArch];
 
-    [str appendFormat:@"Incident Identifier: %@\n", reportID];
+    [str appendFormat:@"SDK Event Identifier: %@\n", reportID];
     [str appendFormat:@"CrashReporter Key:   %@\n", [system objectForKey:@KSCrashField_DeviceAppHash]];
     [str appendFormat:@"Hardware Model:      %@\n", [system objectForKey:@KSCrashField_Machine]];
     [str appendFormat:@"Process:         %@ [%@]\n",
@@ -428,6 +428,10 @@ static NSDictionary* g_registerOrders;
     [str appendFormat:@"Version:         %@ (%@)\n",
      [system objectForKey:@KSCrashField_BundleVersion],
      [system objectForKey:@KSCrashField_BundleShortVersion]];
+    [str appendFormat:@"App Version:         %@\n",
+     [system objectForKey:@KSCrashField_BundleShortVersion]];
+    [str appendFormat:@"Build Version:         %@\n",
+     [system objectForKey:@KSCrashField_BundleVersion]];
     [str appendFormat:@"Code Type:       %@\n", cpuArchType];
     [str appendFormat:@"Parent Process:  ? [%@]\n",
      [system objectForKey:@KSCrashField_ParentProcessID]];
