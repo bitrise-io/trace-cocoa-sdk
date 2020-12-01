@@ -5,6 +5,8 @@ Process:         iOSDemo [1348]
 Path:            /Users/shamsahmed/Library/Developer/CoreSimulator/Devices/DA781C5B-C3EA-4A4F-A55E-8030DFC8A2D3/data/Containers/Bundle/Application/CA25249D-5A1D-41AC-AB43-99A739789E0E/iOSDemo.app/iOSDemo
 Identifier:      io.bitrise.iOSDemo
 Version:         1 (1.0.0)
+App Version:         1.0.0
+Build Version:         1
 Code Type:       X86
 Parent Process:  ? [90972]
 

@@ -81,7 +81,22 @@ final class CrashesServiceTests: XCTestCase {
         let network = MockNetwork()
         let service = CrashesService(network: network)
         let report = "Crash report here...".data(using: .utf8)!
-        let model = Crash(id: "123", timestamp: "2020-03-11 16:35:29.357 +0000", title: "test", report: report)
+        let model = Crash(
+            id: "123",
+            timestamp: "2020-03-11 16:35:29.357 +0000",
+            title: "test",
+            appVersion: "1.0.0",
+            buildVersion: "1",
+            osVersion: "iOS 13",
+            deviceType: "iPhone",
+            sessionId: "12345-12345",
+            network: "wifi",
+            carrier: "",
+            deviceId: "12345-12345",
+            eventIdentifier:"12345-12345",
+            crashedWithoutSession: false,
+            report: report
+        )
         
         network.status = .success
         
@@ -102,7 +117,22 @@ final class CrashesServiceTests: XCTestCase {
         let network = MockNetwork()
         let service = CrashesService(network: network)
         let report = "Crash report here...".data(using: .utf8)!
-        let model = Crash(id: "123", timestamp: "2020-03-11 16:35:29.357 +0000", title: "test", report: report)
+        let model = Crash(
+            id: "123",
+            timestamp: "2020-03-11 16:35:29.357 +0000",
+            title: "test",
+            appVersion: "1.0.0",
+            buildVersion: "1",
+            osVersion: "iOS 13",
+            deviceType: "iPhone",
+            sessionId: "12345-12345",
+            network: "wifi",
+            carrier: "",
+            deviceId: "12345-12345",
+            eventIdentifier:"12345-12345",
+            crashedWithoutSession: false,
+            report: report
+        )
         
         network.status = .failure
         
