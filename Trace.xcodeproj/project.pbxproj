@@ -3839,7 +3839,6 @@
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
 			shellScript = "
 ";
-			showEnvVarsInLog = 0;
 		};
 		1086A8B225641036007612D0 /* 4. Create VERSION file */ = {
 			isa = PBXShellScriptBuildPhase;
