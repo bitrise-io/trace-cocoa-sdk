@@ -2,8 +2,9 @@
 
 //
 // Bitrise Trace SDK - Upload dSYM's
-// https://www.bitrise.io/add-ons/trace-mobile-monitoring
-// https://github.com/bitrise-io/trace-cocoa-sdk/
+// Trace - https://www.bitrise.io/add-ons/trace-mobile-monitoring
+// Github - https://github.com/bitrise-io/trace-cocoa-sdk/
+// Script - https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/UploadDSYM/main.swift
 //
 // This script uploads all dSYM files.
 //
@@ -15,21 +16,22 @@
 //
 // Call script directly using the following command on Terminal:
 // Remote script
-// /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
+// /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
 // Local script
 // /usr/bin/xcrun --sdk macosx swift main.swift
 //
 // Features
+// --------
 //
 // Using a folder path or zip file:
 // Folder path
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version APM_DSYM_PATH ~/Downloads/appDsyms/
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version_here APM_BUILD_VERSION build_version APM_DSYM_PATH path_here
 //
 // Zip file i.e iTunes connect dSYM file
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version APM_DSYM_PATH ~/Downloads/appDsyms.zip
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version_here APM_BUILD_VERSION build_version APM_DSYM_PATH path_here
 //
 // Using a custom APM collector token:
-// /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN TOKEN APM_APP_VERSION version
+// /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN token_here APM_APP_VERSION version_here APM_BUILD_VERSION build_version
 //
 import Foundation
 
@@ -46,8 +48,8 @@ enum Keys: String, CodingKey {
     case bitcode = "ENABLE_BITCODE"
     case debugInformationFormat = "DEBUG_INFORMATION_FORMAT"
     case dwarfWithDSYM = "dwarf-with-dsym"
-    case version // app version
-    case build = "build-id" // build version
+    case version = "app_version" // app version
+    case build = " build_version" // build version
 }
 
 enum Extension: String, CodingKey {
@@ -466,12 +468,14 @@ do {
     let appkey = Keys.appVersion.rawValue
     let buildkey = Keys.buildVersion.rawValue
     
+    // App version check
     guard let appIndex = arguments.firstIndex(of: appkey) else {
         print("[Bitrise:Trace/dSYM] Failed to find app version with key \(appkey)")
         
         throw NSError(domain: "dSYM.appVersionNotFound", code: 1, userInfo: ["Missing key": appkey])
     }
     
+    // Build version check
     guard let buildIndex = arguments.firstIndex(of: buildkey) else {
         print("[Bitrise:Trace/dSYM] Failed to find build version with key \(buildkey)")
         
@@ -517,8 +521,8 @@ do {
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
     let parameters: [String: String] = [
-        Keys.appVersion.rawValue: appVersion,
-        Keys.buildVersion.rawValue: buildVersion
+        Keys.version.rawValue: appVersion,
+        Keys.build.rawValue: buildVersion
     ]
     
     try uploader.upload(fileAtPath: file, withParameters: parameters) {
