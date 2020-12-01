@@ -71,6 +71,10 @@ final class ViewController: UITableViewController {
     
     private func setup() {
         view.addSubview(customView)
+        
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
+        
+        print("DEMO - Document directory: \(path)")
     }
     
     // MARK: - Navigation

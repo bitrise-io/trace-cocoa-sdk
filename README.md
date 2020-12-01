@@ -228,7 +228,7 @@ echo "Bitrise Trace SDK - starting Upload dSYM's"
 # See script header for more information - https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/UploadDSYM/main.swift#L4
 
 # Run script
-/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
+/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
 
 echo "Bitrise Trace SDK - finished Upload dSYM's"
 ```
@@ -240,7 +240,7 @@ You must first download the zipped dSYM's files from iTunes Connect under Activi
 Open Terminal app and run the following command:
 Remote script
 ```
-/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) APM_DSYM_PATH appDsyms.zip
+/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) APM_DSYM_PATH appDsyms.zip
 ```
 Local script 
 ```
