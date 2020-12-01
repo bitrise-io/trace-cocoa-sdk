@@ -92,10 +92,23 @@ public final class CrashController: NSObject {
             // Create model out of the raw Apple format.
             // Since it all string based it isn't easy to handle like JSON and plist
             let model = try interpreter.toModel().get()
-            let crash = Crash(id: model.id,
-                              timestamp: model.timestamp,
-                              title: "Crash_report",
-                              report: report
+            let title = "Crash_report"
+            let crashedWithoutSession: Bool = model.sessionId.isEmpty || model.sessionId == " "
+            let crash = Crash(
+                id: model.id,
+                timestamp: model.timestamp,
+                title: title,
+                appVersion: model.appVersion,
+                buildVersion: model.buildVersion,
+                osVersion: model.osVersion,
+                deviceType: model.deviceType,
+                sessionId: model.sessionId,
+                network: model.network,
+                carrier: model.carrier,
+                deviceId: model.deviceId,
+                eventIdentifier: model.eventIdentifier,
+                crashedWithoutSession: crashedWithoutSession,
+                report: report
             )
             
             // Send report to backend

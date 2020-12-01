@@ -23,6 +23,15 @@ internal struct AppleCrashFormatInterpreter {
         
         var id = ""
         var timestamp = ""
+        var appVersion = ""
+        var buildVersion = ""
+        var osVersion = ""
+        var deviceType = ""
+        var sessionId = ""
+        var eventIdentifier = ""
+        var network = ""
+        var carrier = ""
+        var deviceId = ""
     }
     
     // MARK: - Enum
@@ -35,6 +44,15 @@ internal struct AppleCrashFormatInterpreter {
     private enum Patten: String, CaseIterable {
         case id = "\\w*Trace Id: \\w*"
         case timestamp = "\\w*Date\\/Time:.*[0.9]"
+        case appVersion = "\\w*App Version:.*"
+        case buildVersion = "\\w*Build Version:.*"
+        case osVersion = "\\w*\"os.version\": \".*\""
+        case deviceType = "\\w*\"device.type\": .*\""
+        case sessionId = "\\w*\"app.session.id\": .*\""
+        case eventIdentifier = "\\w*SDK Event Identifier: .*"
+        case network = "\\w*\"device.network\": \".*\""
+        case carrier = "\\w*\"device.carrier\": \".*\""
+        case deviceId = "\\w*\"device.id\": \".*\""
     }
     
     // MARK: - Property
@@ -77,6 +95,36 @@ internal struct AppleCrashFormatInterpreter {
                         model.id = value.replacingOccurrences(of: "Trace Id: ", with: "")
                     case .timestamp:
                         model.timestamp = value.replacingOccurrences(of: "Date/Time:       ", with: "")
+                    case .appVersion:
+                        model.appVersion = value.replacingOccurrences(of: "App Version:         ", with: "")
+                    case .buildVersion:
+                        model.buildVersion = value.replacingOccurrences(of: "Build Version:         ", with: "")
+                    case .osVersion:
+                        model.osVersion = value
+                            .replacingOccurrences(of: "\"os.version\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
+                    case .deviceType:
+                        model.deviceType = value
+                            .replacingOccurrences(of: "\"device.type\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
+                    case .sessionId:
+                        model.sessionId = value
+                            .replacingOccurrences(of: "\"app.session.id\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
+                    case .eventIdentifier:
+                        model.eventIdentifier = value.replacingOccurrences(of: "SDK Event Identifier: ", with: "")
+                    case .network:
+                        model.network = value
+                            .replacingOccurrences(of: "\"device.network\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
+                    case .carrier:
+                        model.carrier = value
+                            .replacingOccurrences(of: "\"device.carrier\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
+                    case .deviceId:
+                        model.deviceId = value
+                            .replacingOccurrences(of: "\"device.id\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
                     }
                 }
             }
