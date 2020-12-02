@@ -179,6 +179,23 @@ final class DSYMLocator {
         
         return path
     }
+    
+    // MARK: - Helper - Size
+    
+    func size(for path: String) -> String {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: path), let size = attributes[.size] as? Int64 else {
+            return "Unknown"
+        }
+        
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .file
+        formatter.includesUnit = true
+        formatter.allowedUnits = [.useKB, .useMB]
+        
+        let sizeInFormat = formatter.string(fromByteCount: size)
+        
+        return sizeInFormat
+    }
 }
 
 /// Zip files/folder
@@ -597,6 +614,8 @@ do {
         zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
     }
     
+    print("[Bitrise:Trace/zip] File size: \(dSYMLocator.size(for: zippedDSYMs))")
+    
     let token = try TokenLocator.token()
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
@@ -618,7 +637,6 @@ do {
     }
 } catch {
     print("\n\n----------------------------------------------------------")
-    
     print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's failed: \((error as NSError).description) \(Date()).")
     print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's unsuccessful.")
     
