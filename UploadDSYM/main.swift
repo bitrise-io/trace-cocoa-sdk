@@ -37,19 +37,22 @@ import Foundation
 
 /// Keys
 enum Keys: String, CodingKey {
-    case appVersion = "APM_APP_VERSION"
-    case buildVersion = "APM_BUILD_VERSION"
-    case token = "APM_COLLECTOR_TOKEN"
-    case customDSYMPath = "APM_DSYM_PATH"
-    case configuration = "bitrise_configuration"
+    case bitriseConfiguration = "bitrise_configuration"
+    case iPhoneSimulator = "-iphonesimulator"
+    case dwarfWithDSYM = "dwarf-with-dsym"
+    case stabs
+    case dwarf
+    case yes = "YES"
+    case no = "NO"
+    case debug = "Debug"
+}
+
+enum EnvironmentVariable: String, CodingKey {
     case product = "PRODUCT_NAME"
     case platform = "EFFECTIVE_PLATFORM_NAME"
-    case iPhoneSimulator = "-iphonesimulator"
     case bitcode = "ENABLE_BITCODE"
     case debugInformationFormat = "DEBUG_INFORMATION_FORMAT"
-    case dwarfWithDSYM = "dwarf-with-dsym"
-    case version = "app_version" // app version
-    case build = " build_version" // build version
+    case configuration = "CONFIGURATION"
 }
 
 enum Extension: String, CodingKey {
@@ -164,7 +167,7 @@ final class DSYMLocator {
     static var customDSYMPath: String? {
         let arguments = CommandLine.arguments
         
-        guard let index = arguments.firstIndex(of: Keys.customDSYMPath.rawValue) else { return nil }
+        guard let index = arguments.firstIndex(of: Argument.Keys.customDSYMPath.rawValue) else { return nil }
         
         print("[Bitrise:Trace/dSYM] Additional launch arguments found. Checking for custom dSYM path.")
         
@@ -264,7 +267,7 @@ struct BitriseConfiguration: Decodable {
     // MARK: - Init
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Keys.self)
+        let container = try decoder.container(keyedBy: Argument.Keys.self)
         
         token = try container.decode(String.self, forKey: .token)
     }
@@ -294,7 +297,7 @@ enum TokenLocator {
         // 2+: Ignore...
         let arguments = CommandLine.arguments
         
-        guard let index = arguments.firstIndex(of: Keys.token.rawValue) else { return nil }
+        guard let index = arguments.firstIndex(of: Argument.Keys.token.rawValue) else { return nil }
         
         let token = arguments[index + 1]
         
@@ -307,18 +310,18 @@ enum TokenLocator {
         let process = ProcessInfo.processInfo
         let environment = process.environment
         
-        guard let token = environment[Keys.token.rawValue] else { return nil }
+        guard let token = environment[Argument.Keys.token.rawValue] else { return nil }
         
-        print("[Bitrise:Trace/dSYM] Using token \(Keys.token.rawValue) from environment variable.")
+        print("[Bitrise:Trace/dSYM] Using token \(Argument.Keys.token.rawValue) from environment variable.")
         
         return token
     }
     
     private static var configurationPlist: String? {
-        let configurationKey = Keys.configuration.rawValue + Extension.plist.rawValue
+        let configurationKey = Keys.bitriseConfiguration.rawValue + Extension.plist.rawValue
         let process = ProcessInfo.processInfo
         let environment = process.environment
-        let name = environment[Keys.product.rawValue] ?? ""
+        let name = environment[EnvironmentVariable.product.rawValue] ?? ""
         let fileManager = FileManager.default
         var currentDirectoryPath = fileManager.currentDirectoryPath
         
@@ -372,6 +375,13 @@ enum TokenLocator {
 }
 
 struct Uploader {
+    
+    // MARK: - Enum
+    
+    enum Keys: String, CodingKey {
+        case version = "app_version" // app version
+        case build = "build_version" // build version
+    }
     
     // MARK: - Property
     
@@ -453,6 +463,111 @@ struct Uploader {
     }
 }
 
+struct Argument {
+    
+    // MARK: - Enum
+    
+    enum Keys: String, CodingKey {
+        case appVersion = "APM_APP_VERSION"
+        case buildVersion = "APM_BUILD_VERSION"
+        case token = "APM_COLLECTOR_TOKEN"
+        case customDSYMPath = "APM_DSYM_PATH"
+    }
+    
+    // MARK: - Property
+    
+    private let appkey = Keys.appVersion.rawValue
+    private let buildkey = Keys.buildVersion.rawValue
+    
+    let appVersion: String
+    let buildVersion: String
+    
+    // MARK: - Init
+    
+    init(with arguments: [String]) throws {
+        // App version check
+        guard let appIndex = arguments.firstIndex(of: appkey) else {
+            print("[Bitrise:Trace/dSYM] Failed to find app version with key \(appkey)")
+            
+            throw NSError(domain: "Argument.appVersionNotFound", code: 1, userInfo: ["Missing key": appkey])
+        }
+        
+        // Build version check
+        guard let buildIndex = arguments.firstIndex(of: buildkey) else {
+            print("[Bitrise:Trace/dSYM] Failed to find build version with key \(buildkey)")
+            
+            throw NSError(domain: "Argument.buildVersionNotFound", code: 1, userInfo: ["Missing key": buildkey])
+        }
+        
+        appVersion = arguments[appIndex + 1]
+        buildVersion = arguments[buildIndex + 1]
+        
+        guard !appVersion.isEmpty || !buildVersion.isEmpty else {
+            print("[Bitrise:Trace/dSYM] App and Build version must not be empty")
+            
+            let userInfo = [
+                Uploader.Keys.version.rawValue: appVersion,
+                Uploader.Keys.build.rawValue: buildVersion
+            ]
+            
+            throw NSError(domain: "Argument.AppandBuildIsEmpty", code: 1, userInfo: userInfo)
+        }
+    }
+}
+
+struct Validation {
+    
+    // MARK: - Property
+    
+    private let environment: [String: String]
+    
+    // MARK: - Init
+    
+    init(with environment: [String: String]) {
+        self.environment = environment
+    }
+    
+    // MARK: - Validate
+    
+    func validate() throws {
+        let debugInformationFormat = environment[EnvironmentVariable.debugInformationFormat.rawValue]
+        
+        guard environment[EnvironmentVariable.platform.rawValue] != Keys.iPhoneSimulator.rawValue else {
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print("[Bitrise:Trace/dSYM] Environment set to iPhone simulator, skipping build!")
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print(" ")
+            
+            throw NSError(domain: "Validation.SkippingPlatoformIsiPhoneSimulator", code: 1)
+        }
+        
+        guard let debugInformation = debugInformationFormat, debugInformation != Keys.dwarf.rawValue || debugInformation != Keys.stabs.rawValue else {
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print("[Bitrise:Trace/dSYM] \(EnvironmentVariable.debugInformationFormat.rawValue) set to \(debugInformationFormat ?? "Unknown"). Set it to \(Keys.dwarfWithDSYM.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print(" ")
+            
+            throw NSError(domain: "Validation.SkippingDwarfOrStabsHasBeenSet", code: 1)
+        }
+        
+        guard environment[EnvironmentVariable.configuration.rawValue] != Keys.debug.rawValue else {
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print("[Bitrise:Trace/dSYM] Skipping Debug build")
+            print("[Bitrise:Trace/dSYM] Warning!")
+            print(" ")
+            
+            throw NSError(domain: "Validation.SkippingDebugBuild", code: 1)
+        }
+        
+        if environment[EnvironmentVariable.bitcode.rawValue] == Keys.yes.rawValue {
+            print("[Bitrise:Trace/dSYM] Enable Bitcode set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
+            print("[Bitrise:Trace/dSYM] See script guide on top for uploading dSYM's examples")
+            
+            // no throw required - soft warning
+        }
+    }
+}
+
 print(" ")
 print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started at \(Date()).")
 print("----------------------------------------------------------\n\n")
@@ -465,45 +580,10 @@ var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 // swiftlint:enable all
 
 do {
-    let appkey = Keys.appVersion.rawValue
-    let buildkey = Keys.buildVersion.rawValue
+    let argument = try Argument(with: arguments)
     
-    // App version check
-    guard let appIndex = arguments.firstIndex(of: appkey) else {
-        print("[Bitrise:Trace/dSYM] Failed to find app version with key \(appkey)")
-        
-        throw NSError(domain: "dSYM.appVersionNotFound", code: 1, userInfo: ["Missing key": appkey])
-    }
+    try Validation(with: environment).validate()
     
-    // Build version check
-    guard let buildIndex = arguments.firstIndex(of: buildkey) else {
-        print("[Bitrise:Trace/dSYM] Failed to find build version with key \(buildkey)")
-        
-        throw NSError(domain: "dSYM.buildVersionNotFound", code: 1, userInfo: ["Missing key": buildkey])
-    }
-
-    let appVersion = arguments[appIndex + 1]
-    let buildVersion = arguments[buildIndex + 1]
-
-    if environment[Keys.platform.rawValue] == Keys.iPhoneSimulator.rawValue {
-        print("[Bitrise:Trace/dSYM] Warning!")
-        print("[Bitrise:Trace/dSYM] Environment set to iPhone simulator, future versions will skip build for releases build only!")
-        print("[Bitrise:Trace/dSYM] Warning!")
-        print(" ")
-    }
-
-    if let debugInformationFormat = environment[Keys.debugInformationFormat.rawValue], debugInformationFormat != Keys.dwarfWithDSYM.rawValue {
-        print("[Bitrise:Trace/dSYM] Warning!")
-        print("[Bitrise:Trace/dSYM] \(Keys.debugInformationFormat.rawValue) set to \(debugInformationFormat). Set it to \(Keys.debugInformationFormat.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
-        print("[Bitrise:Trace/dSYM] Warning!")
-        print(" ")
-    }
-
-    if environment[Keys.bitcode.rawValue] == "YES" {
-        print("[Bitrise:Trace/dSYM] Enable Bitcode set to true. Please upload dSYM's files from iTunes Connect under Activity->Build->Download dSYM.")
-        print("[Bitrise:Trace/dSYM] See script guide on top for upload dSYM's examples")
-    }
-
     let dSYMLocator = try DSYMLocator(dSYMFolderPath)
     let path = dSYMLocator.paths
     let zippedDSYMs: String
@@ -521,8 +601,8 @@ do {
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
     let parameters: [String: String] = [
-        Keys.version.rawValue: appVersion,
-        Keys.build.rawValue: buildVersion
+        Uploader.Keys.version.rawValue: argument.appVersion,
+        Uploader.Keys.build.rawValue: argument.buildVersion
     ]
     
     try uploader.upload(fileAtPath: file, withParameters: parameters) {
@@ -547,6 +627,7 @@ do {
 
 print("[Bitrise:Trace/dSYM] Running RunLoop for duration of the upload task.")
 
+// Keep the script running while async code is executing. Use EXIT_SUCCESS to exit
 RunLoop.main.run()
 
 print("[Bitrise:Trace/dSYM] RunLoop stopped running.")
