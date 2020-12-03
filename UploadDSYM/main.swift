@@ -593,7 +593,7 @@ print("----------------------------------------------------------\n\n")
 let process = ProcessInfo.processInfo
 let environment = process.environment
 let arguments = CommandLine.arguments
-var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
+let dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 // swiftlint:enable all
 
 do {
@@ -603,23 +603,25 @@ do {
     
     let dSYMLocator = try DSYMLocator(dSYMFolderPath)
     let path = dSYMLocator.paths
-    let zippedDSYMs: String
-    
-    if let zippedDSYMPath = dSYMFolderPath, zippedDSYMPath.hasSuffix(Extension.zip.rawValue) {
-        print("[Bitrise:Trace/zip] Custom path is a zip file, will not rezip file")
+    let zippedDSYMs: String = try {
+        let zippedDSYMs: String
         
-        // File is already zipped
-        zippedDSYMs = zippedDSYMPath
-    } else {
-        zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
-    }
-    
-    print("[Bitrise:Trace/zip] File size: \(dSYMLocator.size(for: zippedDSYMs))")
-    
+        if let zippedDSYMPath = dSYMFolderPath, zippedDSYMPath.hasSuffix(Extension.zip.rawValue) {
+            print("[Bitrise:Trace/zip] Custom path is a zip file, will not rezip file")
+            
+            zippedDSYMs = zippedDSYMPath // File is already zipped
+        } else {
+            zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
+        }
+        
+        print("[Bitrise:Trace/zip] File size: \(dSYMLocator.size(for: zippedDSYMs))")
+        
+        return zippedDSYMs
+    }()
     let token = try TokenLocator.token()
     let file = URL(fileURLWithPath: zippedDSYMs)
     let uploader = try Uploader(token: token)
-    let parameters: [String: String] = [
+    let parameters = [
         Uploader.Keys.version.rawValue: argument.appVersion,
         Uploader.Keys.build.rawValue: argument.buildVersion
     ]
