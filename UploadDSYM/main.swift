@@ -445,7 +445,8 @@ struct Uploader {
     // MARK: - Upload
     
     func upload(fileAtPath file: URL, withParameters parameters: [String: String], _ completion: @escaping (Result<Void, Error>) -> Void) throws {
-        guard let url = URL(string: "https://collector.apm.bitrise.io/api/v1/symbols") else {
+        
+        guard let url = URL(string: "https://stagcollector.apm.bitrise.io:9090/api/v1/symbols") else {
             throw NSError(domain: "Uploader.failedToCreateURL", code: 1)
         }
         
@@ -654,7 +655,7 @@ struct InfoPlistLocator {
             throw NSError(domain: "Infoplist.failedToFind\(kInfoPlistPath)", code: 1)
         }
         
-        let path = productDir + "/" + infoPlistPath
+        let path = (productDir as NSString).appendingPathComponent(infoPlistPath)
         let url = URL(fileURLWithPath: path)
         let data = try Data(contentsOf: url)
         
