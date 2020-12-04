@@ -124,7 +124,11 @@ final class DSYMLocator {
     /// List of dSYM's. Only the name and not the full path
     var dSYMs = [String]() {
         didSet {
-            print("[Bitrise:Trace/dSYM] Found \(dSYMs.count) dSYM files \(dSYMs).")
+            if !dSYMs.isEmpty {
+                print("[Bitrise:Trace/dSYM] Found \(dSYMs.count) dSYM files \(dSYMs).")
+            } else {
+                print("[Bitrise:Trace/dSYM] Couldn't find any dSYM files for one of the following reasons: custom DSYM path used, zip file specified or no dSYM's exist in the path")
+            }
         }
     }
     
@@ -137,7 +141,9 @@ final class DSYMLocator {
         guard let unwrappedPath = path else { throw NSError(
             domain: "DSYMLocator.badFolderPath",
             code: 1,
-            userInfo: ["path": path ?? "Unknown"])
+            userInfo: ["path": path ?? "Unknown",
+                       "Set path using": " dwarf-with-dsym in Xcode setting or APM_DSYM_PATH in shell"]
+            )
         }
         
         self.path = unwrappedPath
@@ -340,7 +346,7 @@ enum TokenLocator {
         let configurationKey = Keys.bitriseConfiguration.rawValue + Extension.plist.rawValue
         let process = ProcessInfo.processInfo
         let environment = process.environment
-        let name = environment[EnvironmentVariable.product.rawValue] ?? ""
+        let name = environment[EnvironmentVariable.product.rawValue] ?? "Unknown"
         let fileManager = FileManager.default
         var currentDirectoryPath = fileManager.currentDirectoryPath
         
@@ -575,7 +581,7 @@ struct Validation {
             throw NSError(domain: "Validation.SkippingPlatoformIsiPhoneSimulator", code: 1)
         }
         
-        guard let debugInformation = debugInformationFormat, debugInformation != Keys.dwarf.rawValue || debugInformation != Keys.stabs.rawValue else {
+        guard debugInformationFormat != Keys.dwarf.rawValue || debugInformationFormat != Keys.stabs.rawValue else {
             print("[Bitrise:Trace/dSYM] Warning!")
             print("[Bitrise:Trace/dSYM] \(EnvironmentVariable.debugInformationFormat.rawValue) set to \(debugInformationFormat ?? "Unknown"). Set it to \(Keys.dwarfWithDSYM.rawValue) under Xcode->Build Settings to generate a dSYM for your application.")
             print("[Bitrise:Trace/dSYM] Warning!")
@@ -670,7 +676,7 @@ print("----------------------------------------------------------\n\n")
 let process = ProcessInfo.processInfo
 let environment = process.environment
 let arguments = CommandLine.arguments
-let dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
+var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 let argument: Argument
 // swiftlint:enable all
 
@@ -688,6 +694,12 @@ do {
     }
     
     try Validation(with: environment).validate()
+    
+    if let path = DSYMLocator.customDSYMPath {
+        print("[Bitrise:Trace/dSYM] Custom dSYM path launch arguments found, overriding default path to: \(path).")
+
+        dSYMFolderPath = path
+    }
     
     let dSYMLocator = try DSYMLocator(dSYMFolderPath)
     let path = dSYMLocator.paths
