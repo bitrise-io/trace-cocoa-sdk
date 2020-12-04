@@ -230,6 +230,8 @@ echo "Bitrise Trace SDK - starting Upload dSYM's"
 # Run script
 /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
 
+# Script logs can be viewed in Xcode report navigator or Bitrise app build logs
+
 echo "Bitrise Trace SDK - finished Upload dSYM's"
 ```
 
@@ -237,16 +239,27 @@ echo "Bitrise Trace SDK - finished Upload dSYM's"
 
 You must first download the zipped dSYM's files from iTunes Connect under Activity->Build->Download dSYM.
 
-Open Terminal app and run the following command:
-Remote script
+Open Terminal app and run the following shell command:
+*Remote script:*
 ```
-/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) APM_DSYM_PATH appDsyms.zip
+/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) APM_APP_VERSION version_here APM_BUILD_VERSION build_version_here APM_DSYM_PATH path_to_folder_or_zip_file
 ```
-Local script 
+
+*Local script:* 
 ```
-/usr/bin/xcrun --sdk macosx swift main.swift APM_DSYM_PATH ~/Downloads/appDsyms.zip
+/usr/bin/xcrun --sdk macosx swift main.swift APM_APP_VERSION version_here APM_BUILD_VERSION build_version_here APM_DSYM_PATH path_to_folder_or_zip_file
 ```
-Note: The script assumes the current shell working directory has the bitrise_configuration.plist file. If otherwise use `APM_COLLECTOR_TOKEN TOKEN`
+
+The API requires the following parameters:
+
+`APM_APP_VERSION`: The app's version number found on iTunes Connect site or the `Info.plist` file. i.e 1.0.0
+`APM_BUILD_VERSION`: The app's version number found on iTunes Connect site or the `Info.plist` file. i.e 123
+`APM_DSYM_PATH`: Path to the DSYM folder or zip file.
+
+Note: The script assumes the current shell working directory has the bitrise_configuration.plist file. Otherwise use 
+`APM_COLLECTOR_TOKEN token_here`
+
+`APM_COLLECTOR_TOKEN`: Trace token found in `bitrise_configuration.plist` or Trace->Settings.
 
 And that's it!
 When running a build if you go to the build log section you will see the results when it has finished. Look at for `Bitrise Trace SDK - Upload dSYM's`.
