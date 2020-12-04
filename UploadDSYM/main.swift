@@ -35,6 +35,11 @@
 //
 import Foundation
 
+// swiftlint:disable prefixed_toplevel_constant
+
+// Upload dSYM script version
+let version = "1.0.0"
+
 /// Keys
 enum Keys: String, CodingKey {
     case bitriseConfiguration = "bitrise_configuration"
@@ -453,7 +458,7 @@ struct Uploader {
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20.0)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.setValue("UploadDSYM 1.0.0", forHTTPHeaderField: "User-Agent")
+        request.setValue("UploadDSYM \(version)", forHTTPHeaderField: "User-Agent")
         request.httpShouldUsePipelining = true
         request.networkServiceType = .responsiveData
 
@@ -672,14 +677,13 @@ struct InfoPlistLocator {
 print(" ")
 print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started at \(Date()).")
 print("----------------------------------------------------------\n\n")
+print("[Bitrise:Trace/dSYM] version \(version)")
 
-// swiftlint:disable all
 let process = ProcessInfo.processInfo
 let environment = process.environment
 let arguments = CommandLine.arguments
 var dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
 let argument: Argument
-// swiftlint:enable all
 
 do {
     do {
