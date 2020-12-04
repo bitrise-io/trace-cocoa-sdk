@@ -53,6 +53,8 @@ enum EnvironmentVariable: String, CodingKey {
     case bitcode = "ENABLE_BITCODE"
     case debugInformationFormat = "DEBUG_INFORMATION_FORMAT"
     case configuration = "CONFIGURATION"
+    case productDir = "BUILT_PRODUCTS_DIR"
+    case infoPlistPath = "INFOPLIST_PATH"
 }
 
 enum Extension: String, CodingKey {
@@ -501,7 +503,16 @@ struct Argument {
     
     // MARK: - Init
     
+    init(appVersion: String, buildVersion: String) throws {
+        self.appVersion = appVersion
+        self.buildVersion = buildVersion
+        
+        try setup()
+    }
+    
     init(with arguments: [String]) throws {
+        print("[Bitrise:Trace/argument] Looking for arguments in Script argument list")
+        
         // App version check
         guard let appIndex = arguments.firstIndex(of: appkey) else {
             print("[Bitrise:Trace/dSYM] Failed to find app version with key \(appkey)")
@@ -519,6 +530,12 @@ struct Argument {
         appVersion = arguments[appIndex + 1]
         buildVersion = arguments[buildIndex + 1]
         
+        try setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() throws {
         guard !appVersion.isEmpty || !buildVersion.isEmpty else {
             print("[Bitrise:Trace/dSYM] App and Build version must not be empty")
             
@@ -527,7 +544,7 @@ struct Argument {
                 Uploader.Keys.build.rawValue: buildVersion
             ]
             
-            throw NSError(domain: "Argument.AppandBuildIsEmpty", code: 1, userInfo: userInfo)
+            throw NSError(domain: "Argument.AppOrBuildVersionIsEmpty", code: 1, userInfo: userInfo)
         }
     }
 }
@@ -585,6 +602,66 @@ struct Validation {
     }
 }
 
+struct InfoPlistLocator {
+    
+    // MARK: - Model
+    
+    struct Model: Decodable {
+        
+        // MARK: - Enum
+        
+        private enum CodingKeys: String, CodingKey {
+            case app = "CFBundleShortVersionString"
+            case build = "CFBundleVersion"
+        }
+        
+        // MARK: - Property
+        
+        let app: String
+        let build: String
+    }
+    
+    // MARK: - Property
+    
+    private let environment: [String: String]
+    
+    // MARK: - Init
+    
+    init(with environment: [String: String]) {
+        self.environment = environment
+    }
+    
+    // MARK: - setup
+    
+    func infoPlist() throws -> Model {
+        let kProductDir = EnvironmentVariable.productDir.rawValue
+        let kInfoPlistPath = EnvironmentVariable.infoPlistPath.rawValue
+        
+        guard let productDir = environment[kProductDir] else {
+            print("[Bitrise:Trace/infoplist] Failed to find path: \(kProductDir) in environment")
+            
+            throw NSError(domain: "Infoplist.failedToFind\(kProductDir)", code: 1)
+        }
+        guard let infoPlistPath = environment[kInfoPlistPath] else {
+            print("[Bitrise:Trace/infoplist] Failed to find path: \(kInfoPlistPath) in environment")
+            
+            throw NSError(domain: "Infoplist.failedToFind\(kInfoPlistPath)", code: 1)
+        }
+        
+        let path = productDir + "/" + infoPlistPath
+        let url = URL(fileURLWithPath: path)
+        let data = try Data(contentsOf: url)
+        
+        print("[Bitrise:Trace/infoplist] Found InfoPlist")
+        
+        let model = try PropertyListDecoder().decode(Model.self, from: data)
+        
+        print("[Bitrise:Trace/infoplist] InfoPlist model created")
+        
+        return model
+    }
+}
+
 print(" ")
 print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started at \(Date()).")
 print("----------------------------------------------------------\n\n")
@@ -594,10 +671,21 @@ let process = ProcessInfo.processInfo
 let environment = process.environment
 let arguments = CommandLine.arguments
 let dSYMFolderPath = environment[DSYMLocator.Paths.dSYM.rawValue]
+let argument: Argument
 // swiftlint:enable all
 
 do {
-    let argument = try Argument(with: arguments)
+    do {
+        argument = try Argument(with: arguments) // Check arguments first
+        
+        print("[Bitrise:Trace/argument] Found arguments in Script argument list")
+    } catch {
+        print("[Bitrise:Trace/argument] Looking for arguments in Info.plist since nothing could be located in arguments list")
+        
+        guard let infoPlist = try? InfoPlistLocator(with: environment).infoPlist() else { throw error }
+        
+        argument = try Argument(appVersion: infoPlist.app, buildVersion: infoPlist.build)
+    }
     
     try Validation(with: environment).validate()
     
@@ -614,7 +702,7 @@ do {
             zippedDSYMs = try Zip.paths(path, name: "dSYMs\(Extension.zip.rawValue)")
         }
         
-        print("[Bitrise:Trace/zip] File size: \(dSYMLocator.size(for: zippedDSYMs))")
+        print("[Bitrise:Trace/zip] dSYM file size: \(dSYMLocator.size(for: zippedDSYMs)) to be uploaded")
         
         return zippedDSYMs
     }()
