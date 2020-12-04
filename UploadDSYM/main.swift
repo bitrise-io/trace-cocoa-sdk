@@ -463,8 +463,9 @@ struct Uploader {
     // MARK: - Upload
     
     func upload(fileAtPath file: URL, withParameters parameters: [String: String], _ completion: @escaping (Result<Void, Error>) -> Void) throws {
+        let api = "https://collector.apm.bitrise.io/api/v1/symbols"
         
-        guard let url = URL(string: "https://stagcollector.apm.bitrise.io:9090/api/v1/symbols") else {
+        guard let url = URL(string: api) else {
             throw NSError(domain: "Uploader.failedToCreateURL", code: 1)
         }
         
