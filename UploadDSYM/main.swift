@@ -9,16 +9,29 @@
 // This script uploads all dSYM files.
 //
 // By default the script check for APM collector token in the following order:
-//  - Check Launch arguments.
+//  - Check launch arguments.
 //  - Check environment variable for `APM_COLLECTOR_TOKEN`.
 //  - Check for `bitrise_configuration.plist` in the root of the project.
 //  - If none of the above work, script fails.
 //
 // Call script directly using the following command on Terminal:
-// Remote script
+// Remote script:
 // /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift)
-// Local script
+// Local script:
 // /usr/bin/xcrun --sdk macosx swift main.swift
+//
+// The API requires the following parameters if using directly:
+//
+// `APM_APP_VERSION`: The app's version number found on iTunes Connect site or the `Info.plist` file. i.e 1.0.0
+// `APM_BUILD_VERSION`: The app's version number found on iTunes Connect site or the `Info.plist` file. i.e 123
+// `APM_DSYM_PATH`: Path to the DSYM folder or zip file.
+//
+// Note: The script assumes the current shell working directory has the bitrise_configuration.plist file. Otherwise use
+// `APM_COLLECTOR_TOKEN token_here`
+//
+// `APM_COLLECTOR_TOKEN`: Trace token found in `bitrise_configuration.plist` or Trace->Settings.
+//
+
 //
 // Features
 // --------
