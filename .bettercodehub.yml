@@ -1,4 +1,4 @@
-component_depth: 1
+component_depth: 3
 languages:
 - objectivec
 - swift
@@ -21,3 +21,11 @@ exclude:
 - /assets/.*
 - /prod/.*
 - /staging/.*
+- /UploadDSYM/.*
+- /TraceInternal/CrashReporting/.*
+- /SwiftUIDemoUITests/.*
+- /SwiftUIDemo/.*
+- /PerformanceTests/.*
+- /PerformanceUITests/.*
+- /ObjCDemo/.*
+- /InteroperabilityTests/.*
