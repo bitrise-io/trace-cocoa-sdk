@@ -312,7 +312,8 @@ Mac catalyst support is only available in SPM and Manual installations as we sho
 # Miscellaneous
 
 ### Special thanks to
-Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `d8845bd622f4cf469ba65e9be42de116e1548478`, branch: master, date: (18th August)
+- Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `d8845bd622f4cf469ba65e9be42de116e1548478`, branch: master, date: (18th August)
+- Zuikyo [iOS-System-Symbols](https://github.com/Zuikyo/iOS-System-Symbols) for providing a resources on OS symbols 
 
 # License
 Trace is released under the MIT license. See [LICENSE](https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/LICENSE) for details.
