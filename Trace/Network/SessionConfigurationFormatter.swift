@@ -15,8 +15,8 @@ internal struct SessionConfigurationFormatter: JSONEncodable {
     private enum Keys: String {
         enum Cache: String {
             case currentDiskUsage = "http.session.urlCache.current.disk.usage"
-            case diskCapacity =  "http.session.urlCache.disk.capacity"
-            case currentMemoryUsage =  "http.session.urlCache.current.memory.usage"
+            case diskCapacity = "http.session.urlCache.disk.capacity"
+            case currentMemoryUsage = "http.session.urlCache.current.memory.usage"
             case memoryCapacity = "http.session.urlCache.memory.capacity"
         }
         

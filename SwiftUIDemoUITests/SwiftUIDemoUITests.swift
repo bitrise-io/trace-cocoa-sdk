@@ -13,11 +13,13 @@ class SwiftUIDemoUITests: XCTestCase {
     // MARK: - Setup
 
     override func setUpWithError() throws {
+        super.setUpWithError()
+        
         continueAfterFailure = false
     }
 
     override func tearDownWithError() throws {
-        
+        super.tearDownWithError()
     }
     
     // MARK: - Tests
