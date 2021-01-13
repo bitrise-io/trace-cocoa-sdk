@@ -688,6 +688,8 @@ struct InfoPlistLocator {
     }
 }
 
+// MARK: - Run Script
+
 print(" ")
 print("[Bitrise:Trace/dSYM] Bitrise Trace upload dSYM's started at \(Date()).")
 print("----------------------------------------------------------\n\n")
