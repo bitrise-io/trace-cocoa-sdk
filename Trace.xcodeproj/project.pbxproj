@@ -214,7 +214,6 @@
 		10350D9924C203B70004F6D7 /* TimestampValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10350D9824C203B70004F6D7 /* TimestampValidatorTests.swift */; };
 		103643702357D2E200B084E2 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1036436F2357D2E200B084E2 /* StringTests.swift */; };
 		103701F422ABD1130069C771 /* URLSession+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103701F322ABD1130069C771 /* URLSession+Swizzled.swift */; };
-		103ABC822445FED6001BC364 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 103ABC812445FED6001BC364 /* bitrise_configuration.plist */; };
 		103B163A2524BB0E00FC4ED2 /* type_traits.h in Headers */ = {isa = PBXBuildFile; fileRef = 103B16392524BB0E00FC4ED2 /* type_traits.h */; };
 		103B169E2524BB4F00FC4ED2 /* KSCrashReportFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 103B169D2524BB4F00FC4ED2 /* KSCrashReportFilter.h */; };
 		103B16C02524BB7600FC4ED2 /* KSCrashReportWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 103B16BF2524BB7600FC4ED2 /* KSCrashReportWriter.h */; };
@@ -254,6 +253,7 @@
 		104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555E2322563C006247C4 /* ViewFilterTests.swift */; };
 		104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556023225845006247C4 /* ViewControllerFilterTests.swift */; };
 		104F556323225AFC006247C4 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556223225AFC006247C4 /* SessionTests.swift */; };
+		1050F48E2593A01A00237D2D /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 103ABC832445FF07001BC364 /* bitrise_configuration.plist */; };
 		1053593524C9899F0007F2E0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053593424C9899F0007F2E0 /* CollectionViewController.swift */; };
 		1053593724C989C90007F2E0 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1053593624C989C90007F2E0 /* Collection.storyboard */; };
 		1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1053593824C991FF0007F2E0 /* CollectionViewCell.xib */; };
@@ -3483,7 +3483,7 @@
 			attributes = {
 				CLASSPREFIX = BR;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
 					100993D925003BB1006C7FB4 = {
@@ -3626,6 +3626,7 @@
 				104A6980229401280065F218 /* LaunchScreen.storyboard in Resources */,
 				104A697D229401280065F218 /* Assets.xcassets in Resources */,
 				104EA0C2238294FA004C07CE /* Control.storyboard in Resources */,
+				1050F48E2593A01A00237D2D /* bitrise_configuration.plist in Resources */,
 				10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */,
 				107B2C5B23560474002E7A3D /* Tabs.storyboard in Resources */,
 				1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */,
@@ -3633,7 +3634,6 @@
 				10FC45D5230EE94D0077BF2C /* Network.storyboard in Resources */,
 				109B39F224EFC9CB00E44676 /* NibView.xib in Resources */,
 				1053593724C989C90007F2E0 /* Collection.storyboard in Resources */,
-				103ABC822445FED6001BC364 /* bitrise_configuration.plist in Resources */,
 				104A697B229401260065F218 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5176,6 +5176,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -5189,6 +5190,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-force_load",
@@ -5215,6 +5217,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5227,6 +5230,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-force_load",
@@ -5639,6 +5643,7 @@
 		10EF71FB2587865E0048789A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -5651,6 +5656,7 @@
 		10EF71FC2587865E0048789A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
