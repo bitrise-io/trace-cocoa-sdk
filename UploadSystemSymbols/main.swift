@@ -4,6 +4,8 @@
 //
 import Foundation
 
+// swiftlint:disable prefixed_toplevel_constant
+
 // MARK: - Enum
 
 enum Parameter: String {
