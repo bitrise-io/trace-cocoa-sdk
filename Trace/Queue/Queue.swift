@@ -104,7 +104,7 @@ internal final class Queue {
     }
     
     func scheduleMetrics() {
-        database.dao.metric.allInBackground(limit: 300) { [weak self] dbModels in
+        database.dao.metric.allInBackground(limit: 200) { [weak self] dbModels in
             guard !dbModels.isEmpty else { return }
             
             do {
@@ -148,13 +148,20 @@ internal final class Queue {
     }
     
     func scheduleTraces() {
-        database.dao.trace.allInBackground(limit: 100) { [weak self] dbModels in
+        database.dao.trace.allInBackground(limit: 50) { [weak self] dbModels in
             guard !dbModels.isEmpty else { return }
             
             do {
                 // DBTrace to Trace model
                 let decoder = JSONDecoder()
                 let traces = try dbModels.map { try decoder.decode(TraceModel.self, from: $0.json as Data) }
+                
+                guard !traces.isEmpty else { return }
+                
+                if dbModels.count != traces.count {
+                    Logger.warning(.queue, "Converted Trace models(\(traces.count)) are not equal to the DB Models(\(dbModels.count)) counterpart.")
+                }
+                
                 let combined = Dictionary(grouping: traces, by: { $0.resource })
                     .map { _, values -> TraceModel in
                         let combined = values[0]
