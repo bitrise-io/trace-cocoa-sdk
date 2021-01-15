@@ -13,7 +13,7 @@ struct Resource: Codable {
     
     // MARK: - Enum
     
-    private enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         enum Labels: String, CodingKey {
             case appVersion = "app.version"
             case buildVersion = "app.build"
@@ -107,6 +107,16 @@ struct Resource: Codable {
 }
 
 extension Resource: Hashable {
+    
+    // MARK: - Hashable
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(appVersion)
+        hasher.combine(buildVersion)
+        hasher.combine(osVersion)
+        hasher.combine(uuid)
+        hasher.combine(session)
+    }
     
     // MARK: - Equatable
     

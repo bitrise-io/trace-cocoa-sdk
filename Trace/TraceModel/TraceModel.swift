@@ -183,6 +183,12 @@ public final class TraceModel: NSObject, Codable {
 /// Exclude class
 extension TraceModel {
     
+    // MARK: - Static - Equatable
+    
+    static func == (lhs: TraceModel, rhs: TraceModel) -> Bool {
+        return lhs.traceId == rhs.traceId
+    }
+    
     // MARK: - Equatable
     
     /// :nodoc:
@@ -193,7 +199,7 @@ extension TraceModel {
         
         return lhs.traceId == rhs.traceId
     }
-    
+
     // MARK: - Description
     
     /// :nodoc:
