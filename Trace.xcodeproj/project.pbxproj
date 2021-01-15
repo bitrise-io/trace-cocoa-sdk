@@ -586,6 +586,7 @@
 		10FB1D3525057E2E00850A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FB1D3425057E2E00850A58 /* main.m */; };
 		10FB1D3925057E4400850A58 /* libTraceInternal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 100993DA25003BB1006C7FB4 /* libTraceInternal.a */; };
 		10FB1D402506325600850A58 /* BRKSCrashInstallationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FB1D3F2506325600850A58 /* BRKSCrashInstallationTests.m */; };
+		10FBC20425AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBC20325AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift */; };
 		10FC45D0230EB2550077BF2C /* URLStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FC45CF230EB2550077BF2C /* URLStructure.swift */; };
 		10FC45D3230EE6730077BF2C /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FC45D2230EE6730077BF2C /* NetworkViewController.swift */; };
 		10FC45D5230EE94D0077BF2C /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FC45D4230EE94D0077BF2C /* Network.storyboard */; };
@@ -1312,6 +1313,7 @@
 		10FB1D3425057E2E00850A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		10FB1D3C25062C3600850A58 /* ObjCDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ObjCDemo.entitlements; sourceTree = "<group>"; };
 		10FB1D3F2506325600850A58 /* BRKSCrashInstallationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRKSCrashInstallationTests.m; sourceTree = "<group>"; };
+		10FBC20325AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DuplicateKeysOfTypeTests.swift; path = Tests/DuplicateKeysOfTypeTests.swift; sourceTree = SOURCE_ROOT; };
 		10FC45CF230EB2550077BF2C /* URLStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStructure.swift; sourceTree = "<group>"; };
 		10FC45D2230EE6730077BF2C /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		10FC45D4230EE94D0077BF2C /* Network.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
@@ -2780,6 +2782,7 @@
 				102070BB24604DF400A75C45 /* DecodableTests.swift */,
 				1091373624AF8E7700476EF6 /* URLStructureTests.swift */,
 				10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */,
+				10FBC20325AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -4492,6 +4495,7 @@
 				109136D424ACE3CF00476EF6 /* CollaterTests+AppResponseSizeBytes.swift in Sources */,
 				109136C924ACCAAB00476EF6 /* CollaterTests.swift in Sources */,
 				1028C8C02302BEBC00E07839 /* DBMetricTests.swift in Sources */,
+				10FBC20425AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift in Sources */,
 				108EF3C7231FBCA90029FD65 /* SessionConfigurationFormatterTests.swift in Sources */,
 				10F4648823227E7F0071FD5C /* LifecycleTests.swift in Sources */,
 				10CA877E22A4574A003702B1 /* DeviceTests.swift in Sources */,
