@@ -1460,6 +1460,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34B848E134FDCD563E224CFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		800DC5F3247D6D6C00FC8C73 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1474,6 +1481,13 @@
 				800DC605247D6E3F00FC8C73 /* libTrace.a in Frameworks */,
 				800DC604247D6E3900FC8C73 /* libz.tbd in Frameworks */,
 				800DC603247D6E3200FC8C73 /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA15F5B7636BB345104C366 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3321,6 +3335,7 @@
 				10D5BA92256289F300D52B6A /* Lint main.swift file */,
 				1070ABAE2476F5E700F15090 /* Run Swift Command - Tests */,
 				10D5BB1325628B4400D52B6A /* Compile main.swift file */,
+				9FA15F5B7636BB345104C366 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3341,6 +3356,7 @@
 				10512F482480734400A3B180 /* Tests - Run Swift project via Shell */,
 				10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */,
 				10D6D41B2577CB2E00EBF1A9 /* Tests - Run Swift project with app and build version details via Shell */,
+				34B848E134FDCD563E224CFF /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3792,8 +3808,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
@@ -3833,8 +3848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
@@ -3892,8 +3906,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		1086A8B225641036007612D0 /* 4. Create VERSION file */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4152,8 +4165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */ = {
@@ -4173,8 +4185,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
