@@ -51,7 +51,7 @@ import Foundation
 // swiftlint:disable prefixed_toplevel_constant
 
 // Upload dSYM script version
-let version = "1.0.0"
+let version = "1.0.1"
 
 /// Keys
 enum Keys: String, CodingKey {
@@ -517,6 +517,7 @@ struct Argument {
         case buildVersion = "APM_BUILD_VERSION"
         case token = "APM_COLLECTOR_TOKEN"
         case customDSYMPath = "APM_DSYM_PATH"
+        case debug = "Debug"
     }
     
     // MARK: - Property
@@ -526,12 +527,14 @@ struct Argument {
     
     let appVersion: String
     let buildVersion: String
+    let debugMode: Bool
     
     // MARK: - Init
     
-    init(appVersion: String, buildVersion: String) throws {
+    init(appVersion: String, buildVersion: String, debugMode: Bool = false) throws {
         self.appVersion = appVersion
         self.buildVersion = buildVersion
+        self.debugMode = debugMode
         
         try setup()
     }
@@ -555,6 +558,7 @@ struct Argument {
         
         appVersion = arguments[appIndex + 1]
         buildVersion = arguments[buildIndex + 1]
+        debugMode = arguments.contains(Keys.debug.rawValue)
         
         try setup()
     }
@@ -714,7 +718,9 @@ do {
         argument = try Argument(appVersion: infoPlist.app, buildVersion: infoPlist.build)
     }
     
-    try Validation(with: environment).validate()
+    if !argument.debugMode {
+        try Validation(with: environment).validate()
+    }
     
     if let path = DSYMLocator.customDSYMPath {
         print("[Bitrise:Trace/dSYM] Custom dSYM path launch arguments found, overriding default path to: \(path).")
