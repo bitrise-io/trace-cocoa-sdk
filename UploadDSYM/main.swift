@@ -531,10 +531,15 @@ struct Argument {
     
     // MARK: - Init
     
-    init(appVersion: String, buildVersion: String, debugMode: Bool = false) throws {
+    init(with arguments: [String], appVersion: String, buildVersion: String, debugMode: Bool = false) throws {
+        let argumentsHasDebugMode = arguments.contains(Keys.debug.rawValue)
+        
         self.appVersion = appVersion
         self.buildVersion = buildVersion
-        self.debugMode = debugMode
+        self.debugMode = argumentsHasDebugMode ? argumentsHasDebugMode : debugMode
+        
+        print("my arguments list:arguments")
+        print(arguments)
         
         try setup()
     }
@@ -577,6 +582,8 @@ struct Argument {
             throw NSError(domain: "Argument.AppOrBuildVersionIsEmpty", code: 1, userInfo: userInfo)
         }
     }
+    
+    // MARK: - Helper
 }
 
 struct Validation {
@@ -715,7 +722,7 @@ do {
         
         guard let infoPlist = try? InfoPlistLocator(with: environment).infoPlist() else { throw error }
         
-        argument = try Argument(appVersion: infoPlist.app, buildVersion: infoPlist.build)
+        argument = try Argument(with: arguments, appVersion: infoPlist.app, buildVersion: infoPlist.build)
     }
     
     if !argument.debugMode {
