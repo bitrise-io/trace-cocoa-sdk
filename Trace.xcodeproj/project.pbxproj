@@ -4008,7 +4008,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nset +o posix\n\necho \"Bitrise Trace SDK - starting Upload dSYM's\"\n\n# See script header for more information - https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/UploadDSYM/main.swift#L4\n\n# Run script\n/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H \"Cache-Control: max-age=604800\" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/argumentDebugMode/UploadDSYM/main.swift) Debug\n\n# Script logs can be viewed in Xcode report navigator or Bitrise app build logs\n\necho \"Bitrise Trace SDK - finished Upload dSYM's\"\n";
+			shellScript = "#!/bin/sh\nset +o posix\n\necho \"Bitrise Trace SDK - starting Upload dSYM's\"\n\n# See script header for more information - https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/UploadDSYM/main.swift#L4\n\n# Run script\n/usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H \"Cache-Control: max-age=604800\" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) Debug \n\n# Script logs can be viewed in Xcode report navigator or Bitrise app build logs\n\necho \"Bitrise Trace SDK - finished Upload dSYM's\"\n";
 		};
 		10B1BAFC22F336D500DEA77B /* 5. Zip universal static library */ = {
 			isa = PBXShellScriptBuildPhase;
