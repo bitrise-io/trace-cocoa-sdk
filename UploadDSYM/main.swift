@@ -540,6 +540,7 @@ struct Argument {
         
         print("my arguments list:arguments")
         print(arguments)
+        print(environment)
         
         try setup()
     }
