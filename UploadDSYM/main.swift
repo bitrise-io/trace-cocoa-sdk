@@ -583,8 +583,6 @@ struct Argument {
             print("[Bitrise:Trace/dSYM] Debug mode has been enabled")
         }
     }
-    
-    // MARK: - Helper
 }
 
 struct Validation {
