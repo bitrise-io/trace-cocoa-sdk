@@ -717,7 +717,7 @@ do {
         
         print("[Bitrise:Trace/argument] Found arguments in Script argument list")
     } catch {
-        print("[Bitrise:Trace/argument] Looking for arguments in   Info.plist since nothing could be located in arguments list")
+        print("[Bitrise:Trace/argument] Looking for arguments in Info.plist since nothing could be located in arguments list")
         
         guard let infoPlist = try? InfoPlistLocator(with: environment).infoPlist() else { throw error }
         
@@ -727,7 +727,7 @@ do {
     if !argument.debugMode {
         try Validation(with: environment).validate()
     } else {
-        print("[Bitrise:Trace/argument]   ")
+        print("[Bitrise:Trace/argument] Skipping validation while in Debug mode")
     }
     
     if let path = DSYMLocator.customDSYMPath {
