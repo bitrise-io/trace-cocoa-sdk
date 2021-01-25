@@ -118,7 +118,7 @@ static NSDictionary* g_registerOrders;
     [g_dateFormatter setCalendar: [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierISO8601]];
     [g_dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
     [g_dateFormatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
-    [g_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssxxx"];
+    [g_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ssxxx"];
 
     g_rfc3339DateFormatter = [[NSDateFormatter alloc] init];
     [g_rfc3339DateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];

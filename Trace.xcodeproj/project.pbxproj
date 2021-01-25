@@ -548,6 +548,7 @@
 		10D1E47922E8A96F007BD5E1 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47822E8A96F007BD5E1 /* Entities.swift */; };
 		10D1E47C22E9AA83007BD5E1 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */; };
 		10D1E48022EB0088007BD5E1 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47F22EB0088007BD5E1 /* Repeater.swift */; };
+		10D4C91625BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */; };
 		10D7E8FA2344FE580032FBA3 /* FPSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D7E8F92344FE580032FBA3 /* FPSTests.swift */; };
 		10D7E8FC23450E730032FBA3 /* JSONEncodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */; };
 		10DCA093230420C800F0281E /* Encodable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DCA092230420C800F0281E /* Encodable+Helper.swift */; };
@@ -1270,6 +1271,7 @@
 		10D1E47822E8A96F007BD5E1 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		10D1E47F22EB0088007BD5E1 /* Repeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
+		10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRKSCrashReportFilterAppleFmtTests.m; sourceTree = "<group>"; };
 		10D7E8F92344FE580032FBA3 /* FPSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FPSTests.swift; path = Tests/FPSTests.swift; sourceTree = SOURCE_ROOT; };
 		10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONEncodableTests.swift; path = Tests/JSONEncodableTests.swift; sourceTree = SOURCE_ROOT; };
 		10DCA092230420C800F0281E /* Encodable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Helper.swift"; sourceTree = "<group>"; };
@@ -2494,6 +2496,7 @@
 				108CDEF723FC55DE00153BEB /* TestThread.m */,
 				108CDF0023FC55DE00153BEB /* XCTestCase+KSCrash.h */,
 				108CDEF823FC55DE00153BEB /* XCTestCase+KSCrash.m */,
+				10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */,
 				1053AAB223FCB8A900F90393 /* Mocks */,
 				108CDEDF23FC547700153BEB /* Supporting files */,
 			);
@@ -4632,6 +4635,7 @@
 				108CDF2223FC55E000153BEB /* KSMemory_Tests.m in Sources */,
 				108CDF1523FC55DF00153BEB /* KSDynamicLinker_Tests.m in Sources */,
 				108CDF1F23FC55E000153BEB /* RFC3339UTFString_Tests.m in Sources */,
+				10D4C91625BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m in Sources */,
 				108CDF2D23FC55E000153BEB /* KSFileUtils_Tests.m in Sources */,
 				108CDF3123FC55E000153BEB /* KSCrashMonitor_NSException_Tests.m in Sources */,
 				108CDF2023FC55E000153BEB /* TestThread.m in Sources */,
