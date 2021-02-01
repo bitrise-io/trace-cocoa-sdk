@@ -106,15 +106,15 @@ final public class Trace: NSObject {
         
         setupConfiguration()
         
+        if Trace.configuration.log == .debug {
+            Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure using swift: `Trace.configuration.log` or ObjC: `BRTrace.configuration.log`")
+        }
+        
         #if DEBUG || Debug || debug
         Logger.debug(.crash, "Disabled since app is running in Debug mode")
         #else
         setupCrashReporting()
         #endif
-        
-        if Trace.configuration.log == .debug {
-            Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure using swift: `Trace.configuration.log` or ObjC: `BRTrace.configuration.log`")
-        }
         
         setupSwizzle()
         setupStartupTrace(with: initializationTime)
