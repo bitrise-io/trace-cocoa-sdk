@@ -21,7 +21,7 @@ extension Network {
             let company = Constants.SDK.company.rawValue
             let sdk = Constants.SDK.name.rawValue
             let version = Constants.SDK.version.rawValue
-            let userAgent: String = "\(company)/\(sdk):" + " \(version)"
+            let userAgent: String = "\(company)/\(sdk) Cocoa:" + " \(version)"
             let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
             let acceptLanguage: String = Locale.preferredLanguages.prefix(6).enumerated().map {
                 let quality = 1.0 - (Double($0.offset) * 0.1)

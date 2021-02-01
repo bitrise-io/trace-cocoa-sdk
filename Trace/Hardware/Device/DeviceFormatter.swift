@@ -63,6 +63,7 @@ internal struct DeviceFormatter: JSONEncodable {
         case model = "device.type"
         case platform = "app.platform"
         case systemVersion = "os.version"
+        case systemBuild = "os.build"
         case jailbroken = "device.jailbroken"
     }
 
@@ -86,6 +87,7 @@ internal struct DeviceFormatter: JSONEncodable {
         
         details[Keys.model.rawValue] = device.getModelName()
         details[Keys.systemVersion.rawValue] = device.systemVersion
+        details[Keys.systemBuild.rawValue] = device.systemBuild
         
         var platform: String
         
