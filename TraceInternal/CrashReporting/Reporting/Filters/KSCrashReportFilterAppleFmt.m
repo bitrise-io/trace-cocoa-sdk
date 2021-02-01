@@ -441,7 +441,7 @@ static NSDictionary* g_registerOrders;
      [system objectForKey:@KSCrashField_SystemName],
      [system objectForKey:@KSCrashField_SystemVersion],
      [system objectForKey:@KSCrashField_OSVersion]];
-    [str appendFormat:@"Report Version:  104\n"];
+    [str appendFormat:@"Report Version:  105\n"];
 
     return str;
 }

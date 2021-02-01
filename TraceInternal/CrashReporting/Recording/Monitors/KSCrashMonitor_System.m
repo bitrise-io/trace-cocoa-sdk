@@ -137,6 +137,16 @@ static const char* stringSysctl(const char* name)
     return value;
 }
 
+static NSString* osBuild()
+{
+    NSString *rawVersion = [NSProcessInfo processInfo].operatingSystemVersionString;
+    NSRange range = [rawVersion rangeOfString:@"Build "];
+    NSString *buildUnformatted = [rawVersion substringFromIndex:range.location+range.length];
+    NSString *build = [buildUnformatted stringByReplacingOccurrencesOfString:@")" withString:@""];
+
+    return build;
+}
+
 static const char* dateString(time_t date)
 {
     char* buffer = malloc(21);
@@ -536,7 +546,7 @@ static void initialize()
         }
         
         g_systemData.kernelVersion = stringSysctl("kern.version");
-        g_systemData.osVersion = stringSysctl("kern.osversion");
+        g_systemData.osVersion = cString(osBuild());
         g_systemData.isJailbroken = isJailbroken();
         g_systemData.bootTime = dateSysctl("kern.boottime");
         g_systemData.appStartTime = dateString(time(NULL));
