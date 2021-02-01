@@ -32,6 +32,7 @@ internal struct AppleCrashFormatInterpreter {
         var network = ""
         var carrier = ""
         var deviceId = ""
+        var title = ""
     }
     
     // MARK: - Enum
@@ -53,6 +54,7 @@ internal struct AppleCrashFormatInterpreter {
         case network = "\\w*\"device.network\": \".*\""
         case carrier = "\\w*\"device.carrier\": \".*\""
         case deviceId = "\\w*\"device.id\": \".*\""
+        case exceptionType = "\\w*Exception Type:.*"
     }
     
     // MARK: - Property
@@ -125,6 +127,8 @@ internal struct AppleCrashFormatInterpreter {
                         model.deviceId = value
                             .replacingOccurrences(of: "\"device.id\": \"", with: "")
                             .replacingOccurrences(of: "\"", with: "")
+                    case .exceptionType:
+                        model.title = value.replacingOccurrences(of: "Exception Type:  ", with: "")
                     }
                 }
             }
