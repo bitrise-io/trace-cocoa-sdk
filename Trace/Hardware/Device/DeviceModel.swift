@@ -99,4 +99,17 @@ internal extension UIDevice {
             return deviceIdentifier
         }
     }
+    
+    // MARK: - System Build
+    
+    var systemBuild: String {
+        let rawBuild = ProcessInfo.processInfo.operatingSystemVersionString
+        
+        guard let range = rawBuild.range(of: "Build ") else { return rawBuild }
+            
+        let buildUnformatted = rawBuild[range.upperBound...]
+        let build = String(buildUnformatted.replacingOccurrences(of: ")", with: ""))
+        
+        return build
+    }
 }

@@ -19,6 +19,7 @@ struct Resource: Codable {
             case buildVersion = "app.build"
             case uuid = "device.id"
             case osVersion = "os.version"
+            case osBuild = "os.build"
             case deviceType = "device.type"
             case platform = "app.platform"
             case carrier = "device.carrier"
@@ -40,6 +41,7 @@ struct Resource: Codable {
     let buildVersion: String
     let uuid: String
     let osVersion: String
+    let osBuild: String
     let deviceType: String
     let carrier: String
     let jailbroken: String
@@ -55,6 +57,7 @@ struct Resource: Codable {
         buildVersion = details[DeviceFormatter.Keys.Application.build.rawValue] ?? ""
         uuid = details[DeviceFormatter.Keys.uuid.rawValue] ?? ""
         osVersion = details[DeviceFormatter.Keys.systemVersion.rawValue] ?? ""
+        osBuild = details[DeviceFormatter.Keys.systemBuild.rawValue] ?? ""
         deviceType = details[DeviceFormatter.Keys.model.rawValue] ?? ""
         carrier = details[DeviceFormatter.Keys.Carrier.name.rawValue] ?? ""
         jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue] ?? ""
@@ -76,6 +79,7 @@ struct Resource: Codable {
         buildVersion = try nestedContainer.decode(String.self, forKey: .buildVersion)
         uuid = try nestedContainer.decode(String.self, forKey: .uuid)
         osVersion = try nestedContainer.decode(String.self, forKey: .osVersion)
+        osBuild = try nestedContainer.decode(String.self, forKey: .osBuild)
         deviceType = try nestedContainer.decode(String.self, forKey: .deviceType)
         carrier = try nestedContainer.decode(String.self, forKey: .carrier)
         network = try nestedContainer.decode(String.self, forKey: .network)
@@ -96,6 +100,7 @@ struct Resource: Codable {
         try nestedContainer.encode(buildVersion, forKey: .buildVersion)
         try nestedContainer.encode(uuid, forKey: .uuid)
         try nestedContainer.encode(osVersion, forKey: .osVersion)
+        try nestedContainer.encode(osBuild, forKey: .osBuild)
         try nestedContainer.encode(deviceType, forKey: .deviceType)
         try nestedContainer.encode(carrier, forKey: .carrier)
         try nestedContainer.encode(network, forKey: .network)
