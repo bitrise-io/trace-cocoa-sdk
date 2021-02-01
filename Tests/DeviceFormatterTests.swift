@@ -42,6 +42,6 @@ final class DeviceFormatterTests: XCTestCase {
         XCTAssertNotNil(device.details)
         XCTAssertNotNil(device.timestamp)
         
-        XCTAssertEqual(metrics.count, 16)
+        XCTAssertEqual(metrics.count, 17)
     }
 }
