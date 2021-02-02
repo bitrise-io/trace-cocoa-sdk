@@ -48,6 +48,7 @@ internal struct AppleCrashFormatInterpreter {
         case appVersion = "\\w*App Version:.*"
         case buildVersion = "\\w*Build Version:.*"
         case osVersion = "\\w*\"os.version\": \".*\""
+        case osBuild = "\\w*\"os.build\": \".*\""
         case deviceType = "\\w*\"device.type\": .*\""
         case sessionId = "\\w*\"app.session.id\": .*\""
         case eventIdentifier = "\\w*SDK Event Identifier: .*"
@@ -75,8 +76,10 @@ internal struct AppleCrashFormatInterpreter {
             return .failure(Error.couldNotParseData)
         }
         
+        var osBuild = ""
+        
         do {
-            let model = try Patten.allCases.reduce(into: Model()) { model, patten in
+            var model = try Patten.allCases.reduce(into: Model()) { model, patten in
                 // Use RegX to try find the data in the field
                 let regx = try NSRegularExpression(pattern: patten.rawValue)
                 let result = regx.firstMatch(
@@ -105,6 +108,10 @@ internal struct AppleCrashFormatInterpreter {
                         model.osVersion = value
                             .replacingOccurrences(of: "\"os.version\": \"", with: "")
                             .replacingOccurrences(of: "\"", with: "")
+                    case .osBuild:
+                        osBuild = value
+                            .replacingOccurrences(of: "\"os.build\": \"", with: "")
+                            .replacingOccurrences(of: "\"", with: "")
                     case .deviceType:
                         model.deviceType = value
                             .replacingOccurrences(of: "\"device.type\": \"", with: "")
@@ -132,6 +139,8 @@ internal struct AppleCrashFormatInterpreter {
                     }
                 }
             }
+            
+            model.osVersion += " (\(osBuild))"
             
             return .success(model)
         } catch {
