@@ -79,7 +79,7 @@ struct Resource: Codable {
         buildVersion = try nestedContainer.decode(String.self, forKey: .buildVersion)
         uuid = try nestedContainer.decode(String.self, forKey: .uuid)
         osVersion = try nestedContainer.decode(String.self, forKey: .osVersion)
-        osBuild = try nestedContainer.decode(String.self, forKey: .osBuild)
+        osBuild = try nestedContainer.decodeIfPresent(String.self, forKey: .osBuild) ?? ""
         deviceType = try nestedContainer.decode(String.self, forKey: .deviceType)
         carrier = try nestedContainer.decode(String.self, forKey: .carrier)
         network = try nestedContainer.decode(String.self, forKey: .network)
