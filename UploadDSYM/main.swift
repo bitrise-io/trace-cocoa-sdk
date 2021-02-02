@@ -31,6 +31,11 @@
 //
 // `APM_COLLECTOR_TOKEN`: Trace token found in `bitrise_configuration.plist` or Trace->Settings.
 //
+// Use Debug flag to bypass validation checks i.e
+// local script /usr/bin/xcrun --sdk macosx swift main.swift Debug
+// Remote script:
+// /usr/bin/xcrun --sdk macosx swift <(curl -Ls --retry 3 --connect-timeout 20 -H "Cache-Control: max-age=604800" https://raw.githubusercontent.com/bitrise-io/trace-cocoa-sdk/main/UploadDSYM/main.swift) Debug
+//
 
 //
 // Features
@@ -430,7 +435,7 @@ struct Uploader {
     
     private let session: URLSession = {
         let session = URLSession.shared
-        session.configuration.timeoutIntervalForRequest = 20.0
+        session.configuration.timeoutIntervalForRequest = 30.0
         
         return session
     }()
@@ -469,7 +474,7 @@ struct Uploader {
             throw NSError(domain: "Uploader.failedToCreateURL", code: 1)
         }
         
-        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20.0)
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("UploadDSYM \(version)", forHTTPHeaderField: "User-Agent")

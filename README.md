@@ -26,17 +26,17 @@ Use Trace to:
 * `libc++.tbd`
 * `libz.tbd`
 
-Each framework can be easier found in Xcode's framework list. These are currently the supported integration options:
+Each framework can be found in Xcode's framework list. Current supported integration options are the following:
 
 ### Bitrise Workflow
 
 ### Install using [Bitrise workflow step: Add Trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)
 
-Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step **must** come before the Xcode Archive & Export step.
+Use *[Add trace SDK](https://www.bitrise.io/integrations/steps/add-trace-sdk)* step to add the SDK to your project automatically. All the downloads, linking SDK and supporting system framework and libraries are done for you. The step **must** come before the `Xcode Archive & Export step` as it has to be linked beforehand.
 
 ### Install directly from the source code
 
-Add the following step inside your `bitrise.yml` file if the step project is in your repo folder
+Add the following step inside your `bitrise.yml` file if the step project is in the repo folder
 
 ```yml
 - path::./step/:
@@ -45,7 +45,7 @@ Add the following step inside your `bitrise.yml` file if the step project is in 
     - lib_version: "latest"
 ```
 
-If your using GIT use the following:
+If you are using GIT use the following:
 ```yml
 - git::https://github.com/bitrise-steplib/bitrise-step-add-trace-sdk.git@master:
     title: Add Trace SDK to the Xcode project
@@ -54,6 +54,8 @@ If your using GIT use the following:
     - scheme: "$BITRISE_SCHEME"
     - lib_version: latest
 ```
+
+Note: the parameter `latest` will always use the most recent stable version of the SDK.
 
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 Optional: Setup pod
@@ -95,7 +97,7 @@ Now that the SDK is set up in your workspace, add the collector token (`bitrise_
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
-Note: Cartage is not currently supported out of the box, please follow [integration steps](https://github.com/Carthage/Carthage/issues/2534).
+Note: Cartage is not currently supported out of the box and requires a few steps to make it run. Please follow [integration steps](https://github.com/Carthage/Carthage/issues/2534).
 Wait for [].xcframework support](https://github.com/Carthage/Carthage/pull/2881)
 
 Add this to your `Cartfile`
@@ -150,6 +152,8 @@ Also, you can also navigate to your target’s General pane, and in the “Frame
 * Select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 * In the tab bar at the top of that window, open the "Build Settings" panel.
 * Search for `Other Linker Flags` or `OTHER_LDFLAGS` and enter `-ObjC -l z -l c++`
+
+Note: These flag make sure your project includes the required system frameworks to help with building the project.
 
 **Calling Trace initializer**
 
