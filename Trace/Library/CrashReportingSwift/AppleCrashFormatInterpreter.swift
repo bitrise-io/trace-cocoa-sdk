@@ -47,8 +47,7 @@ internal struct AppleCrashFormatInterpreter {
         case timestamp = "\\w*Date\\/Time:.*[0.9]"
         case appVersion = "\\w*App Version:.*"
         case buildVersion = "\\w*Build Version:.*"
-        case osVersion = "\\w*\"os.version\": \".*\""
-        case osBuild = "\\w*\"os.build\": \".*\""
+        case osVersion = "\\w*OS Version:.* "
         case deviceType = "\\w*\"device.type\": .*\""
         case sessionId = "\\w*\"app.session.id\": .*\""
         case eventIdentifier = "\\w*SDK Event Identifier: .*"
@@ -76,10 +75,8 @@ internal struct AppleCrashFormatInterpreter {
             return .failure(Error.couldNotParseData)
         }
         
-        var osBuild = ""
-        
         do {
-            var model = try Patten.allCases.reduce(into: Model()) { model, patten in
+            let model = try Patten.allCases.reduce(into: Model()) { model, patten in
                 // Use RegX to try find the data in the field
                 let regx = try NSRegularExpression(pattern: patten.rawValue)
                 let result = regx.firstMatch(
@@ -106,12 +103,7 @@ internal struct AppleCrashFormatInterpreter {
                         model.buildVersion = value.replacingOccurrences(of: "Build Version:         ", with: "")
                     case .osVersion:
                         model.osVersion = value
-                            .replacingOccurrences(of: "\"os.version\": \"", with: "")
-                            .replacingOccurrences(of: "\"", with: "")
-                    case .osBuild:
-                        osBuild = value
-                            .replacingOccurrences(of: "\"os.build\": \"", with: "")
-                            .replacingOccurrences(of: "\"", with: "")
+                            .trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
                     case .deviceType:
                         model.deviceType = value
                             .replacingOccurrences(of: "\"device.type\": \"", with: "")
@@ -139,8 +131,6 @@ internal struct AppleCrashFormatInterpreter {
                     }
                 }
             }
-            
-            model.osVersion += " (\(osBuild))"
             
             return .success(model)
         } catch {
