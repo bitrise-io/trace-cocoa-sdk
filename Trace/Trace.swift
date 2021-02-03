@@ -76,9 +76,9 @@ final public class Trace: NSObject {
         network = Network()
         database = Database()
         scheduler = Scheduler(with: network)
+        crash = CrashController(with: scheduler, resource: session.resource)
         queue = Queue(with: scheduler, database, session) // make sure queue startup first
         lifecycle = Lifecycle()
-        crash = CrashController(with: scheduler)
         tracer = Tracer(with: queue, session, crash)
         fps = FPS()
         
@@ -127,7 +127,7 @@ final public class Trace: NSObject {
     
     private func setupCrashReporting() {
         CrashReporting.observe()
-        crash.setup()
+        crash.postSetup()
     }
     
     private func setupSwizzle() {
@@ -144,6 +144,8 @@ final public class Trace: NSObject {
     
     /// Internal use only
     internal func didComeBackToForeground() {
+        Logger.debug(.application, "did come back to foreground")
+        
         Trace.reset()
         queue.restart()
         session.restart()
