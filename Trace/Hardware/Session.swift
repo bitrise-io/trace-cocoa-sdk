@@ -96,7 +96,9 @@ final class Session {
             connectivity: connectivity
         )
         
-        if let interface = connectivity.interface.interface {
+        if let interface = connectivity.interface.interface,
+           !interface.isEmpty,
+           resource.network != interface {
             resource.network = interface
         }
         
