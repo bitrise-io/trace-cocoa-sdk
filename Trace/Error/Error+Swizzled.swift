@@ -47,7 +47,7 @@ extension NSError: Swizzled {
         let failingURLStringKey = (userInfo?["NSErrorFailingURLStringKey"] as? String) ?? ""
         
         guard !domain.contains("bitrise") else { return }
-        guard failingURLKey.contains(key) == false || failingURLStringKey.contains(key) == false else {
+        guard !failingURLKey.contains(key) || !failingURLStringKey.contains(key) else {
             return
         }
         

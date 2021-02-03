@@ -16,17 +16,17 @@ internal extension Network {
         let statusCode = (response as? HTTPURLResponse)?.statusCode
         
         if let statusCode = statusCode,
-            successStatusCodes.contains(statusCode) == true {
+            successStatusCodes.contains(statusCode) {
             completion(.success(data))
         } else if let statusCode = statusCode,
-            clientStatusCodes.contains(statusCode) == true {
+            clientStatusCodes.contains(statusCode) {
             if statusCode == StatusCode.unauthorized.rawValue {
                 Logger.error(.application, "Authentication token is unauthorized, please validate on Trace setting page: https://trace.bitrise.io/settings")
             }
             
             completion(.failure(.client))
         } else if let statusCode = statusCode,
-            serverStatusCodes.contains(statusCode) == true {
+            serverStatusCodes.contains(statusCode) {
             completion(.failure(.server))
         } else {
             completion(.failure(.unknown(error: error)))

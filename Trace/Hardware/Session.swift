@@ -21,7 +21,7 @@ final class Session {
         didSet {
             resource.session = uuid.string
             
-            if !oldValue.network.isEmpty && resource.network.isEmpty == true {
+            if !oldValue.network.isEmpty && resource.network.isEmpty {
                 resource.network = oldValue.network
             }
             
