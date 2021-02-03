@@ -27,7 +27,7 @@ internal extension CrashesService {
         
         var path: String {
             switch self {
-            case .crash: return "api/v1/crashes/ios"
+            case .crash: return "api/v1.0.1/crashes/ios"
             }
         }
         
