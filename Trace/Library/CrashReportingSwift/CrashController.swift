@@ -46,17 +46,25 @@ public final class CrashController: NSObject {
     
     // MARK: - Init
     
-    internal init(with scheduler: Scheduler) {
+    internal init(with scheduler: Scheduler, resource: Resource) {
         self.scheduler = scheduler
         
         super.init()
+        
+        setup(with: resource)
     }
     
     // MARK: - Setup
     
-    /// Call setup before acessing crash installation
-    /// Called afterward SDK has started
-    internal func setup() {
+    private func setup(with resource: Resource) {
+        if let dictionary = try? resource.dictionary() {
+            userInfo[Keys.resource.rawValue] = dictionary
+        }
+    }
+    
+    /// Call setup before accessing crash installation
+    /// Called afterward SDK has finished starting up
+    internal func postSetup() {
         installation.install()
         
         scheduleNewReports()
