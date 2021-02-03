@@ -16,21 +16,16 @@ final class Session {
     private let repeater: Repeater
     private let delay: Double
     
-    /// Setter: use method self.updateResource()
-    var resource: Resource? {
+    /// Setter: use method self.updateResource() or init
+    var resource: Resource {
         didSet {
-            resource?.session = uuid.string
+            resource.session = uuid.string
             
-            if let oldValue = oldValue {
-                if !oldValue.network.isEmpty && resource?.network.isEmpty == true {
-                    resource?.network = oldValue.network
-                }
-            } else {
-                Logger.debug(.application, "Resource created for this new session")
+            if !oldValue.network.isEmpty && resource.network.isEmpty == true {
+                resource.network = oldValue.network
             }
             
-            if let resources = try? resource?.dictionary() {
-                // TODO: use enum instead of string
+            if let resources = try? resource.dictionary() {
                 Trace.shared.crash.userInfo[CrashController.Keys.resource.rawValue] = resources
             }
         }
@@ -38,7 +33,7 @@ final class Session {
     
     var uuid: ULID {
         didSet {
-            resource?.session = uuid.string
+            resource.session = uuid.string
         }
     }
     
@@ -46,10 +41,17 @@ final class Session {
     
     // Update the session every 15 seconds
     internal init(timeout: Double = 15.0, delay: Double = 0.10) {
+        let deviceFormatter = DeviceFormatter()
+        let details = deviceFormatter.details
+        
         self.repeater = Repeater(timeout)
         self.delay = delay
         self.uuid = ULID()
-
+        self.resource = Resource(
+            from: details,
+            sessionId: uuid.string
+        )
+        
         setup()
     }
     
@@ -76,9 +78,12 @@ final class Session {
     // MARK: - Device
     
     private func updateResource() {
-        let deviceFormatter = DeviceFormatter()
+        Logger.debug(.application, "Resource updated for current session")
         
-        resource = Resource(from: deviceFormatter.details)
+        let deviceFormatter = DeviceFormatter()
+        let details = deviceFormatter.details
+        
+        resource = Resource(from: details)
     }
     
     private func sendHardwareDetails() {
@@ -92,7 +97,7 @@ final class Session {
         )
         
         if let interface = connectivity.interface.interface {
-            resource?.network = interface
+            resource.network = interface
         }
         
         Trace.shared.queue.add(hardwareFormatter.metrics)
