@@ -57,16 +57,15 @@ public final class CrashController: NSObject {
     // MARK: - Setup
     
     private func setup(with resource: Resource) {
+        installation.install()
+        
         if let dictionary = try? resource.dictionary() {
             userInfo[Keys.resource.rawValue] = dictionary
         }
     }
     
-    /// Call setup before accessing crash installation
-    /// Called afterward SDK has finished starting up
+    /// Called after SDK has finished starting up
     internal func postSetup() {
-        installation.install()
-        
         scheduleNewReports()
     }
     
