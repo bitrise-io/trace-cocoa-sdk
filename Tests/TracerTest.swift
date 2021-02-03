@@ -16,12 +16,13 @@ final class TracerTests: XCTestCase {
     // MARK: - Property
     
     let tracer: Tracer = {
+        let resource = Resource(from: [:]) 
         let network = Network()
         let database = Database()
         let session = Session()
         let scheduler = Scheduler(with: network)
         let queue = Queue(with: scheduler, database, session)
-        let crash = CrashController(with: scheduler)
+        let crash = CrashController(with: scheduler, resource: resource)
         let tracer = Tracer(with: queue, session, crash)
         
         return tracer

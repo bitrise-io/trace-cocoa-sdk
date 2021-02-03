@@ -52,7 +52,7 @@ struct Resource: Codable {
     
     // MARK: - Init
     
-    init(from details: OrderedDictionary<String, String>) {
+    init(from details: OrderedDictionary<String, String>, sessionId: String = "") {
         appVersion = details[DeviceFormatter.Keys.Application.version.rawValue] ?? ""
         buildVersion = details[DeviceFormatter.Keys.Application.build.rawValue] ?? ""
         uuid = details[DeviceFormatter.Keys.uuid.rawValue] ?? ""
@@ -65,7 +65,7 @@ struct Resource: Codable {
         platform = details[DeviceFormatter.Keys.platform.rawValue] ?? ""
         
         network = ""
-        session = ""
+        session = sessionId
     }
     
     init(from decoder: Decoder) throws {

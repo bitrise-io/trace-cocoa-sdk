@@ -15,11 +15,12 @@ final class CrashControllerTests: XCTestCase {
     // MARK: - Property
     
     var newCrash: CrashController {
+        let resource = Resource(from: [:])
         let network = Network()
         let scheduler = Scheduler(with: network)
         
-        let crash = CrashController(with: scheduler)
-        crash.setup()
+        let crash = CrashController(with: scheduler, resource: resource)
+        crash.postSetup()
         
         return crash
     }
