@@ -126,6 +126,7 @@ static NSString* getBasePath()
     dispatch_once(&onceToken, ^{
         sharedInstance = [[KSCrash alloc] init];
     });
+    
     return sharedInstance;
 }
 
@@ -138,6 +139,7 @@ static NSString* getBasePath()
 {
     if((self = [super init]))
     {
+        
         self.bundleName = getBundleName();
         self.basePath = basePath;
         if(self.basePath == nil)
@@ -145,12 +147,15 @@ static NSString* getBasePath()
             KSLOG_ERROR(@"Failed to initialize crash handler. Crash reporting disabled.");
             return nil;
         }
+        
         self.deleteBehaviorAfterSendAll = KSCDeleteNever;
         self.introspectMemory = YES;
         self.catchZombies = NO;
         self.maxReportCount = 10;
         self.searchQueueNames = NO;
         self.monitoring = KSCrashMonitorTypeProductionSafeMinimal;
+        
+        _userInfo = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -169,22 +174,24 @@ static NSString* getBasePath()
 {
     @synchronized (self)
     {
-        NSError* error = nil;
-        NSData* userInfoJSON = nil;
-        if(userInfo != nil)
+        if (userInfo != nil && userInfo.count != 0)
         {
-            userInfoJSON = [self nullTerminated:[KSJSONCodec encode:userInfo
-                                                            options:KSJSONEncodeOptionSorted
-                                                              error:&error]];
+            NSError* error = nil;
+            NSData* userInfoJSON = [self nullTerminated:[KSJSONCodec
+                                                         encode:userInfo
+                                                         options:KSJSONEncodeOptionSorted
+                                                         error:&error]
+                                    ];
             if(error != NULL)
             {
                 KSLOG_ERROR(@"Could not serialize user info: %@", error);
                 return;
             }
+            
+            kscrash_setUserInfoJSON([userInfoJSON bytes]);
         }
         
         _userInfo = userInfo;
-        kscrash_setUserInfoJSON([userInfoJSON bytes]);
     }
 }
 

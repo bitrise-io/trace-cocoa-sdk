@@ -321,10 +321,13 @@ static void crashCallback(const KSCrashReportWriter* writer)
     
     @synchronized(handler)
     {
+        if (handler.userInfo == nil) {
+            handler.userInfo = [NSMutableDictionary dictionary];
+        }
+        
         g_crashHandlerData = self.crashHandlerData;
         
         handler.onCrash = crashCallback;
-        handler.userInfo = [NSMutableDictionary dictionary];
         
         return [handler install];
     }

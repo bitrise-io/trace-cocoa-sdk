@@ -30,7 +30,7 @@ final class CrashControllerTests: XCTestCase {
     func testAddingUserInfo() {
         let crash = newCrash
         
-        XCTAssertEqual(crash.userInfo.count, 1)
+        XCTAssertEqual(crash.userInfo.count, 2)
         
         crash.userInfo = ["test": "one"]
         
@@ -41,7 +41,7 @@ final class CrashControllerTests: XCTestCase {
     func testRemovingUserInfo() {
         let crash = newCrash
         
-        XCTAssertEqual(crash.userInfo.count, 1)
+        XCTAssertEqual(crash.userInfo.count, 2)
         
         crash.userInfo = ["test": "two"]
         crash.userInfo.removeAll()

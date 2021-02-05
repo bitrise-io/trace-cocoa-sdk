@@ -102,6 +102,12 @@ final public class Trace: NSObject {
     }
     
     private func setup(with initializationTime: Time.Timestamp) {
+        #if DEBUG || Debug || debug
+        Logger.debug(.crash, "Disabled since app is running in Debug mode")
+        #else
+        setupCrashReporting()
+        #endif
+        
         Logger.default(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
         
         setupConfiguration()
@@ -111,13 +117,6 @@ final public class Trace: NSObject {
         }
         
         setupSwizzle()
-        
-        #if DEBUG || Debug || debug
-        Logger.debug(.crash, "Disabled since app is running in Debug mode")
-        #else
-        setupCrashReporting()
-        #endif
-        
         setupStartupTrace(with: initializationTime)
     }
     
