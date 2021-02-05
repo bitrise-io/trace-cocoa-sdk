@@ -111,13 +111,14 @@ final public class Trace: NSObject {
         }
         
         setupSwizzle()
-        setupStartupTrace(with: initializationTime)
         
         #if DEBUG || Debug || debug
         Logger.debug(.crash, "Disabled since app is running in Debug mode")
         #else
         setupCrashReporting()
         #endif
+        
+        setupStartupTrace(with: initializationTime)
     }
     
     private func setupConfiguration() {
@@ -127,7 +128,7 @@ final public class Trace: NSObject {
     
     private func setupCrashReporting() {
         CrashReporting.observe()
-        crash.postSetup()
+        crash.postSetup(with: session.resource)
     }
     
     private func setupSwizzle() {

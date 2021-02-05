@@ -59,9 +59,12 @@ public final class CrashController: NSObject {
     // MARK: - Setup
     
     private func setup(with resource: Resource) {
-        let result = installation.install()
         
-        if !result {
+    }
+    
+    /// Called after SDK has finished starting up
+    internal func postSetup(with resource: Resource) {
+        if !installation.install() {
             Logger.error(.crash, "Failed to install handler")
             
             // Fallback if crash handler isn't ready to be set
@@ -74,10 +77,7 @@ public final class CrashController: NSObject {
         }
         
         updateUserInfo(with: resource)
-    }
-    
-    /// Called after SDK has finished starting up
-    internal func postSetup() {
+        
         DispatchQueue.global().asyncAfter(deadline: .now() + asyncDelay, execute: { [weak self] in
             self?.scheduleNewReports()
         })

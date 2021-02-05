@@ -20,7 +20,7 @@ final class CrashControllerTests: XCTestCase {
         let scheduler = Scheduler(with: network)
         
         let crash = CrashController(with: scheduler, resource: resource)
-        crash.postSetup()
+        crash.postSetup(with: resource)
         
         return crash
     }
