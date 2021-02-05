@@ -44,6 +44,8 @@ public final class CrashController: NSObject {
         }
     }
     
+    private let asyncDelay = 1.5
+    
     // MARK: - Init
     
     internal init(with scheduler: Scheduler, resource: Resource) {
@@ -57,16 +59,36 @@ public final class CrashController: NSObject {
     // MARK: - Setup
     
     private func setup(with resource: Resource) {
-        installation.install()
+        let result = installation.install()
         
-        if let dictionary = try? resource.dictionary() {
-            userInfo[Keys.resource.rawValue] = dictionary
+        if !result {
+            Logger.error(.crash, "Failed to install handler")
+            
+            // Fallback if crash handler isn't ready to be set
+            // When is is called the App hasn't loaded all library in it's memory,
+            // which could explain why it fails i.e Objective-C runtime, c++ library etc..
+            DispatchQueue.global().asyncAfter(deadline: .now() + asyncDelay, execute: { [weak self] in
+                self?.installation.install()
+                self?.updateUserInfo(with: resource)
+            })
         }
+        
+        updateUserInfo(with: resource)
     }
     
     /// Called after SDK has finished starting up
     internal func postSetup() {
-        scheduleNewReports()
+        DispatchQueue.global().asyncAfter(deadline: .now() + asyncDelay, execute: { [weak self] in
+            self?.scheduleNewReports()
+        })
+    }
+    
+    // MARK: - UserInfo
+    
+    private func updateUserInfo(with resource: Resource) {
+        if let dictionary = try? resource.dictionary() {
+            userInfo[Keys.resource.rawValue] = dictionary
+        }
     }
     
     // MARK: - Schedule
