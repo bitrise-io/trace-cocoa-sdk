@@ -315,15 +315,18 @@ static void crashCallback(const KSCrashReportWriter* writer)
     }
 }
 
-- (void) install
+- (BOOL) install
 {
     KSCrash* handler = [KSCrash sharedInstance];
+    
     @synchronized(handler)
     {
         g_crashHandlerData = self.crashHandlerData;
+        
         handler.onCrash = crashCallback;
         handler.userInfo = [NSMutableDictionary dictionary];
-        [handler install];
+        
+        return [handler install];
     }
 }
 

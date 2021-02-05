@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN;
 /** Install this installation. Call this instead of -[KSCrash install] to install
  * with everything needed for your particular backend.
  */
-- (void) install;
+- (BOOL) install;
 
 /**
 * Report count
