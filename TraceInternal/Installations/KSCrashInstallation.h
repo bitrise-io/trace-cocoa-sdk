@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN;
  */
 @interface KSCrashInstallation : NSObject
 
+@property (nonatomic, readonly) BOOL isEnabled;
+
 @property(atomic,readwrite,retain) NSDictionary* userInfo;
 
 /** C Function to call during a crash report to give the callee an opportunity to
