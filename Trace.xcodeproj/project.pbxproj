@@ -3143,8 +3143,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				101796FE25251248005F27B9 /* BRReportingSink.h in Headers */,
 				100994902500EBF0006C7FB4 /* Container+DeepSearch.h in Headers */,
+				101796FE25251248005F27B9 /* BRReportingSink.h in Headers */,
 				103B163A2524BB0E00FC4ED2 /* type_traits.h in Headers */,
 				1009950A2500EBF0006C7FB4 /* Punycode.h in Headers */,
 				100994D42500EBF0006C7FB4 /* KSCxaThrowSwapper.h in Headers */,
@@ -3811,7 +3811,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config .swiftlint.yml\nelse\n    echo \"warning: SwiftLint not installed, use brew install swiftlint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    if [ -f \".swiftlint.yml\" ]; then\n        swiftlint --config .swiftlint.yml\n    fi\nelse\n    echo \"warning: SwiftLint not installed, use $'brew install swiftlint'\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		104A69C5229407BE0065F218 /* Create Swift header and copy to build path */ = {
@@ -4904,7 +4904,7 @@
 					z,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -4937,7 +4937,7 @@
 					z,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -5115,6 +5115,7 @@
 					Foundation,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Trace/**";
@@ -5178,6 +5179,7 @@
 					Foundation,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Trace/**";
