@@ -62,7 +62,6 @@ typedef enum
  * contain only JSON-safe data: NSString for keys, and NSDictionary, NSArray,
  * NSString, NSDate, and NSNumber for values.
  *
- * Default: nil
  */
 @property(atomic,readwrite,retain) NSDictionary* userInfo;
 
