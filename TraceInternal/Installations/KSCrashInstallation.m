@@ -319,18 +319,15 @@ static void crashCallback(const KSCrashReportWriter* writer)
 {
     KSCrash* handler = [KSCrash sharedInstance];
     
-    @synchronized(handler)
-    {
-        if (handler.userInfo == nil) {
-            handler.userInfo = [NSMutableDictionary dictionary];
-        }
-        
-        g_crashHandlerData = self.crashHandlerData;
-        
-        handler.onCrash = crashCallback;
-        
-        return [handler install];
+    if (handler.userInfo == nil) {
+        handler.userInfo = [[NSMutableDictionary alloc] initWithCapacity:2];
     }
+    
+    g_crashHandlerData = self.crashHandlerData;
+    handler.onCrash = crashCallback;
+    _isEnabled = [handler install];
+
+    return _isEnabled;
 }
 
 - (int) reportCount {
