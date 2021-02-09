@@ -316,7 +316,7 @@ Mac catalyst support is only available in SPM and Manual installations as we sho
 # Miscellaneous
 
 ### Special thanks to
-- Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `d8845bd622f4cf469ba65e9be42de116e1548478`, branch: master, date: (18th August)
+- Karl Stenerud [KSCrash](https://github.com/kstenerud/KSCrash/) crash reporting dependency, last commit: `498aa21d23541b0bb4990f8d3d20bea2c280a18b`, branch: master, date: (18th Dec 2020)
 - Zuikyo [iOS-System-Symbols](https://github.com/Zuikyo/iOS-System-Symbols) for providing a resources on OS symbols 
 
 # License

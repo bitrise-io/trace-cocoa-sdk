@@ -486,7 +486,10 @@ typedef enum
 {
     if(callName != nil && ![callName isEqualToString:@"main"])
     {
-        return [string stringByAppendingFormat:@"\nOriginated at or in a subcall of %@", callName];
+        // Bitrise
+        // Added extra space
+        // https://github.com/kstenerud/KSCrash/pull/333/files
+        return [string stringByAppendingFormat:@"\n Originated at or in a subcall of %@", callName];
     }
     return string;
 }

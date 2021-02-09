@@ -406,7 +406,6 @@
 		1091772523313545007CE2F0 /* TraceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091772423313545007CE2F0 /* TraceDAO.swift */; };
 		10940A8A25D1B29E0044A702 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = 10940A8925D1B29E0044A702 /* Config.h */; };
 		10940AAE25D1B2D50044A702 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10940AAD25D1B2D50044A702 /* Context.cpp */; };
-		10940AC125D1B3C60044A702 /* DemangleNodes.def in Sources */ = {isa = PBXBuildFile; fileRef = 10940AC025D1B3C60044A702 /* DemangleNodes.def */; };
 		10940AE525D1B6F20044A702 /* Demangler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10940AE425D1B6F20044A702 /* Demangler.cpp */; };
 		10940AF825D1B74F0044A702 /* Demangler.h in Headers */ = {isa = PBXBuildFile; fileRef = 10940AF725D1B74F0044A702 /* Demangler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		10940B0C25D1B7B20044A702 /* ManglingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10940B0A25D1B7B20044A702 /* ManglingUtils.cpp */; };
@@ -1214,7 +1213,6 @@
 		1091772423313545007CE2F0 /* TraceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceDAO.swift; sourceTree = "<group>"; };
 		10940A8925D1B29E0044A702 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		10940AAD25D1B2D50044A702 /* Context.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = "<group>"; };
-		10940AC025D1B3C60044A702 /* DemangleNodes.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = DemangleNodes.def; sourceTree = "<group>"; };
 		10940AE425D1B6F20044A702 /* Demangler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Demangler.cpp; sourceTree = "<group>"; };
 		10940AF725D1B74F0044A702 /* Demangler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Demangler.h; sourceTree = "<group>"; };
 		10940B0A25D1B7B20044A702 /* ManglingUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ManglingUtils.cpp; sourceTree = "<group>"; };
@@ -1223,11 +1221,8 @@
 		10940B5425D1B8760044A702 /* NodePrinter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NodePrinter.cpp; sourceTree = "<group>"; };
 		10940B6725D1B89E0044A702 /* OldDemangler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OldDemangler.cpp; sourceTree = "<group>"; };
 		10940B7A25D1B8D00044A702 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
-		10940B8D25D1B9770044A702 /* ReferenceStorage.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReferenceStorage.def; sourceTree = "<group>"; };
 		10940B8E25D1B9AF0044A702 /* STLExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLExtras.h; sourceTree = "<group>"; };
-		10940BB225D1BA120044A702 /* StandardTypesMangling.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = StandardTypesMangling.def; sourceTree = "<group>"; };
 		10940BB325D1BA430044A702 /* SwiftDemangle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDemangle.h; sourceTree = "<group>"; };
-		10940BD725D1BA750044A702 /* ValueWitnessMangling.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = ValueWitnessMangling.def; sourceTree = "<group>"; };
 		10940BD825D1BA8D0044A702 /* Visibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visibility.h; sourceTree = "<group>"; };
 		10962097229D59EF00E16003 /* LoggerObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoggerObjcTests.m; path = Tests/Library/Log/LoggerObjcTests.m; sourceTree = SOURCE_ROOT; };
 		109B39ED24EFC42C00E44676 /* NibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibViewController.xib; sourceTree = "<group>"; };
@@ -1793,7 +1788,6 @@
 				1009948C2500EBF0006C7FB4 /* LLVM.h */,
 				10940A8925D1B29E0044A702 /* Config.h */,
 				10940AAD25D1B2D50044A702 /* Context.cpp */,
-				10940AC025D1B3C60044A702 /* DemangleNodes.def */,
 				10940AF725D1B74F0044A702 /* Demangler.h */,
 				10940AE425D1B6F20044A702 /* Demangler.cpp */,
 				10940B0B25D1B7B20044A702 /* ManglingMacros.h */,
@@ -1802,10 +1796,7 @@
 				10940B5425D1B8760044A702 /* NodePrinter.cpp */,
 				10940B7A25D1B8D00044A702 /* Platform.h */,
 				10940B6725D1B89E0044A702 /* OldDemangler.cpp */,
-				10940B8D25D1B9770044A702 /* ReferenceStorage.def */,
 				10940B8E25D1B9AF0044A702 /* STLExtras.h */,
-				10940BB225D1BA120044A702 /* StandardTypesMangling.def */,
-				10940BD725D1BA750044A702 /* ValueWitnessMangling.def */,
 				10940BB325D1BA430044A702 /* SwiftDemangle.h */,
 				10940BD825D1BA8D0044A702 /* Visibility.h */,
 			);
@@ -4335,7 +4326,6 @@
 				10940B0C25D1B7B20044A702 /* ManglingUtils.cpp in Sources */,
 				100994CA2500EBF0006C7FB4 /* KSJSONCodecObjC.m in Sources */,
 				100994B72500EBF0006C7FB4 /* KSCPU_x86_32.c in Sources */,
-				10940AC125D1B3C60044A702 /* DemangleNodes.def in Sources */,
 				100994A32500EBF0006C7FB4 /* KSCrashMonitorType.c in Sources */,
 				100994A82500EBF0006C7FB4 /* KSCrashMonitor_User.c in Sources */,
 				100994B32500EBF0006C7FB4 /* NSError+SimpleConstructor.m in Sources */,
