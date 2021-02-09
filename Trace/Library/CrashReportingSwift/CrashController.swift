@@ -44,8 +44,6 @@ public final class CrashController: NSObject {
         }
     }
     
-    private let asyncDelay = 1.5
-    
     // MARK: - Init
     
     internal init(with scheduler: Scheduler, resource: Resource) {
@@ -64,6 +62,8 @@ public final class CrashController: NSObject {
     
     /// Called after SDK has finished starting up
     internal func postSetup(with resource: Resource) {
+        let asyncDelay = 1.5
+        
         if !installation.install() {
             Logger.error(.crash, "Failed to install handler")
             
@@ -78,7 +78,7 @@ public final class CrashController: NSObject {
         
         updateUserInfo(with: resource)
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + asyncDelay, execute: { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + (asyncDelay * 2), execute: { [weak self] in
             self?.scheduleNewReports()
         })
     }
