@@ -195,6 +195,9 @@ static const struct class_t* decodeIsaPointer(const void* const isaPointer)
     if(isa & ISA_TAG_MASK)
     {
 #if defined(__arm64__)
+// Bitrise
+// Look at this patch
+// https://github.com/kstenerud/KSCrash/issues/388#issuecomment-769568737
         if (floor(kCFCoreFoundationVersionNumber) <= kCFCoreFoundationVersionNumber_iOS_8_x_Max) {
             return (const struct class_t*)(isa & ISA_MASK_OLD);
         }
