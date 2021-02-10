@@ -72,7 +72,7 @@ if (TypeName == #TYPENAME) {                       \
 return #MANGLING[0];                             \
 }
     
-#include "StandardTypesMangling.def"
+#include "StandardTypesMangling.h"
     
     return 0;
 }

@@ -52,7 +52,7 @@ namespace {
 #define NODE(ID)
 #define CONTEXT_NODE(ID)                                                \
 case Node::Kind::ID:
-#include "DemangleNodes.def"
+#include "DemangleNodes.h"
                 return true;
             default:
                 return false;
@@ -808,7 +808,7 @@ if (Subst == #MANGLING[0]) {                                    \
 return createSwiftType(Node::Kind::KIND, #TYPENAME);      \
 }
     
-#include "StandardTypesMangling.def"
+#include "StandardTypesMangling.h"
     return nullptr;
 }
 

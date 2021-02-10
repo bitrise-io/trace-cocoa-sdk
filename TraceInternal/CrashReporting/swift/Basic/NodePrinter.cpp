@@ -465,7 +465,7 @@ namespace {
                 case Node::Kind::UncurriedFunctionType:
 #define REF_STORAGE(Name, ...) \
 case Node::Kind::Name:
-#include "ReferenceStorage.def"
+#include "ReferenceStorage.h"
                 case Node::Kind::UnsafeAddressor:
                 case Node::Kind::UnsafeMutableAddressor:
                 case Node::Kind::ValueWitness:
@@ -1211,7 +1211,7 @@ case Node::Kind::Name: \
 Printer << keywordOf(ReferenceOwnership::Name) << " "; \
 print(Node->getChild(0)); \
 return nullptr;
-#include "ReferenceStorage.def"
+#include "ReferenceStorage.h"
         case Node::Kind::InOut:
             Printer << "inout ";
             print(Node->getChild(0));
