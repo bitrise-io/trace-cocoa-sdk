@@ -121,7 +121,7 @@ namespace swift {
             enum class ValueWitnessKind {
 #define VALUE_WITNESS(MANGLING, NAME) \
 NAME,
-#include "ValueWitnessMangling.def"
+#include "ValueWitnessMangling.h"
             };
             
             enum class Directness {
@@ -135,7 +135,7 @@ NAME,
             public:
                 enum class Kind : uint16_t {
 #define NODE(ID) ID,
-#include "DemangleNodes.def"
+#include "DemangleNodes.h"
                 };
                 
                 using IndexType = uint64_t;
