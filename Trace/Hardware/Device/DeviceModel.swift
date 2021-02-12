@@ -77,24 +77,29 @@ internal extension UIDevice {
         case "iPad3,4", "iPad3,5", "iPad3,6":           return "iPad 4"
         case "iPad4,1", "iPad4,2", "iPad4,3":           return "iPad Air"
         case "iPad5,3", "iPad5,4":                      return "iPad Air 2"
+        case "iPad11,3", "iPad11,4":                    return "iPad Air 3"
         case "iPad6,11", "iPad6,12":                    return "iPad 5"
         case "iPad7,5", "iPad7,6":                      return "iPad 6"
         case "iPad2,5", "iPad2,6", "iPad2,7":           return "iPad Mini"
         case "iPad4,4", "iPad4,5", "iPad4,6":           return "iPad Mini 2"
         case "iPad4,7", "iPad4,8", "iPad4,9":           return "iPad Mini 3"
         case "iPad5,1", "iPad5,2":                      return "iPad Mini 4"
+        case "iPad11,1", "iPad11,2":                    return "iPad Mini 5"
         case "iPad6,3", "iPad6,4":                      return "iPad Pro 9.7 Inch"
         case "iPad6,7", "iPad6,8":                      return "iPad Pro 12.9 Inch"
-        case "iPad7,1", "iPad7,2":                      return "iPad Pro (12.9-inch) (2nd generation)"
-        case "iPad7,3", "iPad7,4":                      return "iPad Pro (10.5-inch)"
-        case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return "iPad Pro (11-inch)"
-        case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return "iPad Pro (12.9-inch) (3rd generation)"
+        case "iPad7,1", "iPad7,2":                      return "iPad Pro 12.9-inch (2nd generation)"
+        case "iPad7,3", "iPad7,4":                      return "iPad Pro 10.5-inch"
+        case "iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4":return "iPad Pro 11-inch"
+        case "iPad8,9", "iPad8,10":                     return "iPad Pro 11 Inch (2nd Generation)"
+        case "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8":return "iPad Pro 12.9-inch (3rd generation)"
+        case "iPad8,11", "iPad8,12":                    return "iPad Pro 12.9 Inch (4th Generation)"
         case "AppleTV5,3":                              return "Apple TV"
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"
         case "Mac Catalyst":                            return "Mac Catalyst"
         default:
             Logger.warning(.internalError, "Unknown device type: \(deviceIdentifier)")
+            Logger.warning(.internalError, "Add device model here: https://github.com/bitrise-io/trace-cocoa-sdk/blob/main/Trace/Hardware/Device/DeviceModel.swift#L95")
             
             return deviceIdentifier
         }
