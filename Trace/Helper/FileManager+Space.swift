@@ -32,10 +32,19 @@ extension FileManager {
     private var totalDiskSpaceInBytes: Int64 {
         let directory = NSHomeDirectory() as String
         var totalSpace: Int64 = 0
-        let attributes = try? attributesOfFileSystem(forPath: directory)
-    
+        
+        if #available(iOS 11.0, *) {
+            // Since iOS 11 this information is provided high level
+            let fileURL = URL(fileURLWithPath: directory)
+            let url: Int?? = try? fileURL.resourceValues(forKeys: [.volumeTotalCapacityKey]).volumeTotalCapacity
+        
+            if let unwrappedSpace = url, let space = unwrappedSpace {
+                totalSpace = Int64(space)
+            }
+        }
+        
         // Finds the details by using OS file system metadata
-        if let space = (attributes?[.systemSize] as? NSNumber)?.int64Value {
+        if totalSpace == 0, let attributes = try? attributesOfFileSystem(forPath: directory), let space = (attributes[.systemSize] as? NSNumber)?.int64Value {
             totalSpace = space
         }
         
