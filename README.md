@@ -11,7 +11,7 @@ Use Trace to:
 
 *Note: Following links requires the user to be signed-in and have the Trace addon*  
   
-[* Trace](https://trace.bitrise.io) [* Getting started guide](https://trace.bitrise.io/o/getting-started) [* Trace configuration settings](https://trace.bitrise.io/settings)
+[* Trace](https://trace.bitrise.io) [* Trace configuration settings](https://trace.bitrise.io/settings)
 
 ## Requirements
 
@@ -93,7 +93,7 @@ Optional: Add `-force_load` to the SDK, if your project does not use `-ObjC` in 
 
 ```
 
-Now that the SDK is set up in your workspace, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
+Now that the SDK is set up in your workspace, add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings). Make sure this file is added to your application target.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
@@ -301,7 +301,7 @@ Make sure `bitrise_configuration.plist` is included in your project and the targ
 `[Bitrise:Trace/internalError] Bitrise configuration file is missing from Bundle.main`
 `[Bitrise:Trace/internalError] Application failed to read the configuration file, all data will be cached until it's resolved`
 
-Add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings) or [getting started](https://trace.bitrise.io/o/getting-started) page. Make sure this file is added to your application target.
+Add the collector token (`bitrise_configuration.plist`) found in the [setting page](https://trace.bitrise.io/settings). Make sure this file is added to your application target.
 
 # Limitations
 
