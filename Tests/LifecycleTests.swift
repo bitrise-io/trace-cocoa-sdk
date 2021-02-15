@@ -78,6 +78,8 @@ final class LifecycleTests: XCTestCase {
             UIApplication.willEnterForegroundNotification
         ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
         
+        sleep(1)
+        
         XCTAssertTrue(result)
         
         Trace.shared.queue.observation = nil

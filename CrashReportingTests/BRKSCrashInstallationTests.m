@@ -31,14 +31,14 @@
     KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
     
     XCTAssertNotNil(installation);
-    XCTAssertNil(installation.userInfo);
+    XCTAssertNotNil(installation.userInfo);
     XCTAssertNotNil(installation.description);
 }
 
 - (void)testInstallation_userInfo {
     KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
     
-    XCTAssertNil(installation.userInfo);
+    XCTAssertNotNil(installation.userInfo);
     XCTAssertTrue(installation.userInfo.count == 0);
     
     installation.userInfo = @{@"test1" : @"test1", @"test2" : @"test2"};

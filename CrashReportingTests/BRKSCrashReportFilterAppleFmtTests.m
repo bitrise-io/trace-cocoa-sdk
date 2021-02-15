@@ -46,7 +46,7 @@
     
     XCTAssertNotNil(string);
     XCTAssertFalse([string containsString:@"T"]);
-    XCTAssertFalse([string containsString:@" "]);
+    XCTAssertTrue([string containsString:@" "]);
 }
 
 @end
