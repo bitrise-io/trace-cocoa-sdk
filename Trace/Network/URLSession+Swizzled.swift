@@ -466,8 +466,8 @@ extension URLSession: Swizzled {
    
     // Disabled
     private func process(_ configuration: URLSessionConfiguration) {
-        //let configurationFormatter = SessionConfigurationFormatter(configuration)
+        // let configurationFormatter = SessionConfigurationFormatter(configuration)
         
-        //Trace.shared.queue.add(configurationFormatter.metrics)
+        // Trace.shared.queue.add(configurationFormatter.metrics)
     }
 }
