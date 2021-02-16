@@ -4035,6 +4035,7 @@
 		};
 		10AE501625B891E900EACFD6 /* Bitrise Trace SDK - Upload dSYM's */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
