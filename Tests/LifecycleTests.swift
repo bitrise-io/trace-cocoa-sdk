@@ -16,9 +16,12 @@ final class LifecycleTests: XCTestCase {
     
     let lifecycle = Lifecycle()
     
+    private var observation: ((Metrics) -> Void)?
+    
     // MARK: - Setup
     
     override func setUp() {
+        observation = nil
         Trace.shared.queue.observation = nil
     }
     
@@ -35,7 +38,11 @@ final class LifecycleTests: XCTestCase {
         let queue = Trace.shared.queue
         
         queue.observation = nil
-        queue.observation = { _ in async.fulfill() }
+        observation = nil
+        
+        observation = { _ in async.fulfill() }
+        
+        queue.observation = observation
         
         sleep(1)
         
@@ -56,7 +63,11 @@ final class LifecycleTests: XCTestCase {
         var result = false
         
         Trace.shared.queue.observation = nil
-        Trace.shared.queue.observation = { _ in result = true }
+        observation = nil
+        
+        observation = { _ in result = true }
+        
+        Trace.shared.queue.observation = observation
         
         [UIApplication.didFinishLaunchingNotification].forEach {
             NotificationCenter.default.post(Notification(name: $0))
@@ -71,7 +82,11 @@ final class LifecycleTests: XCTestCase {
         var result = false
         
         Trace.shared.queue.observation = nil
-        Trace.shared.queue.observation = { _ in result = true }
+        observation = nil
+        
+        observation = { _ in result = true }
+        
+        Trace.shared.queue.observation = observation
         
         [
             UIApplication.didEnterBackgroundNotification,
@@ -88,23 +103,26 @@ final class LifecycleTests: XCTestCase {
     func testStartupTrace_cold() {
         sleep(1)
         
-        let before = Trace.shared.tracer.traces.count
+        let notificationCenter = NotificationCenter.default
+        let tracer = Trace.shared.tracer
         
-        NotificationCenter.default.post(
+        let before = tracer.traces.count
+        
+        notificationCenter.post(
             Notification(name: UIApplication.willEnterForegroundNotification)
         )
         
         sleep(1)
         
-        let willEnter = Trace.shared.tracer.traces.count
+        let willEnter = tracer.traces.count
         
-        NotificationCenter.default.post(
+        notificationCenter.post(
             Notification(name: UIApplication.didBecomeActiveNotification)
         )
         
         sleep(2)
         
-        let becomeActive = Trace.shared.tracer.traces.count
+        let becomeActive = tracer.traces.count
         
         XCTAssertGreaterThan(willEnter, before)
         XCTAssertLessThanOrEqual(becomeActive, willEnter)
