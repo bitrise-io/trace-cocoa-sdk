@@ -39,4 +39,20 @@ final class EntitiesTests: XCTestCase {
         XCTAssertTrue(hasTrace)
         XCTAssertTrue(hasMetric)
     }
+    
+    func testNameSpace_usingEntity() {
+        let traceNamespace = entities.trace.managedObjectClassName
+        let metricNamespace = entities.metric.managedObjectClassName
+        
+        XCTAssertEqual(traceNamespace, "Trace.DBTrace")
+        XCTAssertEqual(metricNamespace, "Trace.DBMetric")
+    }
+    
+    func testNameSpace_usingString() {
+        let traceNamespace = String(reflecting: DBTrace.self)
+        let metricNamespace = String(reflecting: DBMetric.self)
+        
+        XCTAssertEqual(traceNamespace, "Trace.DBTrace")
+        XCTAssertEqual(metricNamespace, "Trace.DBMetric")
+    }
 }
