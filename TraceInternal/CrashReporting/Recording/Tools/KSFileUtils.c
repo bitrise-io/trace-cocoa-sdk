@@ -76,6 +76,10 @@ static bool canDeletePath(const char* path)
 
 static int dirContentsCount(const char* path)
 {
+    if (path == NULL) {
+        return 0;
+    }
+    
     int count = 0;
     DIR* dir = opendir(path);
     if(dir == NULL)
@@ -98,7 +102,15 @@ static void dirContents(const char* path, char*** entries, int* count)
 {
     DIR* dir = NULL;
     char** entryList = NULL;
-    int entryCount = dirContentsCount(path);
+    int entryCount = 0;
+    
+    if (path == NULL) {
+        goto done;
+    }
+    
+    entryCount = dirContentsCount(path);
+    
+    
     if(entryCount <= 0)
     {
         goto done;

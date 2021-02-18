@@ -86,7 +86,13 @@ static int64_t getReportIDFromFilename(const char* filename)
 static int getReportCount()
 {
     int count = 0;
-    DIR* dir = opendir(g_reportsPath);
+    DIR* dir = NULL;
+    
+    if (g_reportsPath == NULL) {
+        goto done;
+    }
+    
+    dir = opendir(g_reportsPath);
     if(dir == NULL)
     {
         KSLOG_ERROR("Could not open directory %s", g_reportsPath);
@@ -112,7 +118,14 @@ done:
 static int getReportIDs(int64_t* reportIDs, int count)
 {
     int index = 0;
-    DIR* dir = opendir(g_reportsPath);
+    DIR* dir = NULL;
+    
+    if (g_reportsPath == NULL) {
+        goto done;
+    }
+    
+    dir = opendir(g_reportsPath);
+    
     if(dir == NULL)
     {
         KSLOG_ERROR("Could not open directory %s", g_reportsPath);
