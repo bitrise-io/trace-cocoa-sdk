@@ -36,6 +36,7 @@ final class LifecycleTests: XCTestCase {
         async.assertForOverFulfill = false
         
         let queue = Trace.shared.queue
+        let notificationCenter = NotificationCenter.default
         
         queue.observation = nil
         observation = nil
@@ -52,15 +53,18 @@ final class LifecycleTests: XCTestCase {
             UIApplication.willEnterForegroundNotification,
             UIApplication.willTerminateNotification,
             UIApplication.didReceiveMemoryWarningNotification
-        ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
+        ].forEach { notificationCenter.post(Notification(name: $0)) }
         
         wait(for: [async], timeout: 2.5)
         
         queue.observation = nil
+        
+        XCTAssertNotNil(notificationCenter)
     }
     
     func testSendNotification_foreground_observationDoesNotGetTriggered() {
         var result = false
+        let notificationCenter = NotificationCenter.default
         
         Trace.shared.queue.observation = nil
         observation = nil
@@ -70,16 +74,18 @@ final class LifecycleTests: XCTestCase {
         Trace.shared.queue.observation = observation
         
         [UIApplication.didFinishLaunchingNotification].forEach {
-            NotificationCenter.default.post(Notification(name: $0))
+            notificationCenter.post(Notification(name: $0))
         }
         
         XCTAssertFalse(result)
+        XCTAssertNotNil(notificationCenter)
         
         Trace.shared.queue.observation = nil
     }
     
     func testSendNotification_foreground_observationDoesGetTriggered() {
         var result = false
+        let notificationCenter = NotificationCenter.default
         
         Trace.shared.queue.observation = nil
         observation = nil
@@ -91,11 +97,12 @@ final class LifecycleTests: XCTestCase {
         [
             UIApplication.didEnterBackgroundNotification,
             UIApplication.willEnterForegroundNotification
-        ].forEach { NotificationCenter.default.post(Notification(name: $0)) }
+        ].forEach { notificationCenter.post(Notification(name: $0)) }
         
         sleep(1)
         
         XCTAssertTrue(result)
+        XCTAssertNotNil(notificationCenter)
         
         Trace.shared.queue.observation = nil
     }
@@ -126,5 +133,6 @@ final class LifecycleTests: XCTestCase {
         
         XCTAssertGreaterThan(willEnter, before)
         XCTAssertLessThanOrEqual(becomeActive, willEnter)
+        XCTAssertNotNil(notificationCenter)
     }
 }
