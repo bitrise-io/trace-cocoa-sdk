@@ -31,8 +31,8 @@ public final class Configuration: NSObject {
         }
     }
     
-    /// Log level, by default set to .debug / BRLoggerLevelDebug while in beta
-    public var log: LoggerLevel = .debug
+    /// Log level, by default set to .warning / BRLoggerLevelWarning while in beta
+    public var log: LoggerLevel = .warning
     
     // MARK: - Init
     
