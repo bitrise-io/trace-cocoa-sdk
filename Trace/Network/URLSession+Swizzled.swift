@@ -134,7 +134,6 @@ extension URLSession: Swizzled {
     
     private struct AssociatedKey {
         static var metrics = "br_can_receive_metrics"
-        static var kvo = "br_kvo_objects"
     }
     
     // MARK: - Property
@@ -146,23 +145,6 @@ extension URLSession: Swizzled {
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKey.metrics, newValue, .OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    private var kvo_objects: [Int: NSKeyValueObservation?] {
-        get {
-            if let objects = (objc_getAssociatedObject(self, &AssociatedKey.kvo) as? [Int: NSKeyValueObservation?]) {
-                return objects
-            } else {
-                let objects: [Int: NSKeyValueObservation?] = [:]
-                
-                self.kvo_objects = objects
-                
-                return objects
-            }
-        }
-        set {
-            objc_setAssociatedObject(self, &AssociatedKey.kvo, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
     
@@ -184,7 +166,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_dataTaskWithRequest(request)
         
         process(request)
-        process(task)
         
         return task
     }
@@ -194,7 +175,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_dataTaskWithRequest(request, completionHandler: completionHandler)
         
         process(request)
-        process(task)
 
         return task
     }
@@ -206,8 +186,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_streamTaskWithHostName(hostname, port: port)
         
-        process(task)
-        
         return task
     }
     
@@ -215,9 +193,7 @@ extension URLSession: Swizzled {
     internal func bitrise_streamTaskWith(_ service: NetService) -> URLSessionStreamTask {
         // call default method
         let task = self.bitrise_streamTaskWith(service)
-        
-        process(task)
-        
+         
         return task
     }
     
@@ -228,7 +204,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_uploadTask(with: request, fromFile: fileURL)
         
-        process(task)
         process(request)
         
         return task
@@ -239,7 +214,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_uploadTask(with: request, from: bodyData)
         
-        process(task)
         process(request)
         
         return task
@@ -250,7 +224,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_uploadTask(withStreamedRequest: request)
         
-        process(task)
         process(request)
         
         return task
@@ -261,7 +234,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_uploadTask(with: request, fromFile: fileURL, completionHandler: completionHandler)
         
-        process(task)
         process(request)
         
         return task
@@ -272,7 +244,6 @@ extension URLSession: Swizzled {
         // call default method
         let task = self.bitrise_uploadTask(with: request, from: bodyData, completionHandler: completionHandler)
         
-        process(task)
         process(request)
         
         return task
@@ -286,7 +257,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_downloadTaskWithRequest(request)
         
         process(request)
-        process(task)
         
         return task
     }
@@ -297,7 +267,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_downloadTaskWithURL(url)
         
         process(URLRequest(url: url))
-        process(task)
         
         return task
     }
@@ -306,8 +275,6 @@ extension URLSession: Swizzled {
     internal func bitrise_downloadTaskWithResumeData(_ resumeData: Data) -> URLSessionDownloadTask {
         // call default method
         let task = self.bitrise_downloadTaskWithResumeData(resumeData)
-        
-        process(task)
         
         return task
     }
@@ -318,7 +285,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_downloadTaskWithRequest(request, completionHandler: completionHandler)
         
         process(request)
-        process(task)
         
         return task
     }
@@ -329,7 +295,6 @@ extension URLSession: Swizzled {
         let task = self.bitrise_downloadTaskWithURL(url, completionHandler: completionHandler)
         
         process(URLRequest(url: url))
-        process(task)
         
         return task
     }
@@ -338,8 +303,6 @@ extension URLSession: Swizzled {
     internal func bitrise_downloadTaskWithResumeData(_ resumeData: Data, completionHandler: ((URL?, URLResponse?, Error?) -> Void)?) -> URLSessionDownloadTask {
         // call default method
         let task = self.bitrise_downloadTaskWithResumeData(resumeData, completionHandler: completionHandler)
-        
-        process(task)
         
         return task
     }
@@ -372,64 +335,8 @@ extension URLSession: Swizzled {
         process(metrics)
         // skipping task since its been processed beforehand
     }
-    
-    // MARK: - KVO
-    
-    private func invalidateKVO(for key: Int) {
-        kvo_objects.removeValue(forKey: key)
-        
-        // by default on deinit it will invalidate observer
-    }
-    
+  
     // MARK: - Private
-    
-    private func process(_ task: URLSessionTask) {
-        let api = Constants.API.absoluteString
-
-        guard task.currentRequest?.url?.absoluteString.contains(api) == false || task.originalRequest?.url?.absoluteString.contains(api) == false else {
-            return
-        }
-        
-        let object = task.observe(\URLSessionTask.state) { [weak self] task, _ in
-            guard self?.canReceiveMetrics == false else { return }
-            
-            switch task.state {
-            case .running:
-                if task.startDate == nil {
-                    task.startDate = Time.timestamp
-                }
-            case .completed:
-                self?.invalidateKVO(for: task.taskIdentifier)
-                
-                if task.endDate == nil {
-                    task.endDate = Time.timestamp
-                }
-                
-                // Used when task metric is not enabled
-                let formatter = URLSessionTaskFormatter(task)
-                let spans = formatter.spans
-                
-                let shared = Trace.shared
-                shared.tracer.addChild(spans)
-                shared.queue.add(formatter.metrics, force: false, delay: true)
-                
-                // some odd reason, this object get freed up and crashes the app, so i made sure it stay in memory a little longer by holding on to it after using it above to stop it crashing.
-                _ = spans
-            case .suspended:
-                task.startDate = nil
-                task.endDate = nil
-            case .canceling:
-                self?.invalidateKVO(for: task.taskIdentifier)
-                
-                task.startDate = nil
-                task.endDate = nil
-            @unknown default:
-                break
-            }
-        }
-        
-        kvo_objects[task.taskIdentifier] = object
-    }
     
     private func process(_ metrics: URLSessionTaskMetrics) {
         let api = Constants.API.absoluteString
