@@ -37,11 +37,13 @@ final class WebViewController: UIViewController {
     private func setup() {
         title = "Web View"
         
-        let bitrise = URL(string: "https://bitrise.io")!
+        let url = URL(string: "https://bitrise.io")!
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
         // pre load website
         webView.navigationDelegate = self
-        webView.load(URLRequest(url: bitrise))
+        webView.load(request)
     }
 }
 

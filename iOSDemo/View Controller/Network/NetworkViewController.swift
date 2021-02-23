@@ -12,6 +12,12 @@ import UIKit
 /// Example of getting and sending data from network requests
 final class NetworkViewController: UIViewController {
     
+    // MARK: - Property
+    
+    lazy var altSession: URLSession = {
+        return URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -85,7 +91,6 @@ final class NetworkViewController: UIViewController {
     }
     
     private func setupAltNetwork() {
-        let session = URLSession(configuration: .ephemeral)
         let requests = [
             "https://httpstat.us/200",
             "https://httpstat.us/200?sleep=100",
@@ -108,19 +113,19 @@ final class NetworkViewController: UIViewController {
             return req
         }
         
-        requests.forEach {
-            session.dataTask(with: $0) { data, res, err in
+        requests.forEach { [altSession] in
+            altSession.dataTask(with: $0) { data, res, err in
                 
             }
         }
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async { [altSession] in
             requests.forEach {
                 let waitingTime = Int.random(in: 1...4)
                 
                 sleep(UInt32(waitingTime))
                 
-                session.dataTask(with: $0) { data, res, err in
+                altSession.dataTask(with: $0) { data, res, err in
                     
                 }
             }
@@ -240,5 +245,14 @@ final class NetworkViewController: UIViewController {
         URLSession.shared.dataTask(with: request3) { data, req, err in
             URLSession.shared.invalidateAndCancel()
         }
+    }
+}
+
+extension NetworkViewController: URLSessionDataDelegate {
+
+    // MARK: - URLSessionTaskDelegate
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
+        print("DEMO - did finish collecting metrics delegate method called in Network class")
     }
 }

@@ -176,13 +176,14 @@ final class ViewController: UITableViewController {
     // Validating how this would work in a normal app that display a table and does a request
     // afterward refreshes the view
     private func makeNetworkRequest() {
-        let url = URL(string: "https://google.com")!
+        let url = URL(string: "https://google.co.uk")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         let session = URLSession(
             configuration: .ephemeral,
             delegate: self,
             delegateQueue: nil
         )
-        let task = session.dataTask(with: url) { [weak self] _, _, _ in
+        let task = session.dataTask(with: request) { [weak self] _, _, _ in
             print("DEMO - network request completed")
             
             DispatchQueue.main.async {
