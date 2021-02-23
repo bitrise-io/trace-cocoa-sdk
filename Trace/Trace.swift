@@ -112,7 +112,7 @@ final public class Trace: NSObject {
         
         setupConfiguration()
         
-        if Trace.configuration.log == .debug {
+        if Trace.configuration.log == .warning {
             Logger.default(.application, "Verbose logs has been enabled while in Beta. Configure in Swift: `Trace.configuration.log` ObjC: `BRTrace.configuration.log`")
         }
         
