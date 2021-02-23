@@ -17,6 +17,9 @@ protocol URLSessionTaskReadable {
     var countOfBytesReceived: Int64 { get }
     var iOS10_countOfBytesClientExpectsToSend: Int64 { get }
     var countOfBytesExpectedToSend: Int64 { get }
+    
+    // MARK: - Property - Custom via Runtime
+    
     var startDate: Time.Timestamp? { get }
     var endDate: Time.Timestamp? { get }
 }
@@ -197,7 +200,11 @@ extension URLSessionTaskFormatter: Spanable {
     // MARK: - Spanable
 
     var spans: [TraceModel.Span] {
-        guard let startDate = task.startDate else { return [] }
+        guard let startDate = task.startDate else {
+            Logger.debug(.network, "Start date in Task has not been set")
+            
+            return []
+        }
         guard let url = URLStructure(url: task.originalRequest?.url).format() else { return [] }
         
         let detail = detailsForRequest
