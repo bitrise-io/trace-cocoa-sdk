@@ -26,7 +26,7 @@ internal struct Entities {
         
         let entity = NSEntityDescription()
         entity.name = name
-        entity.managedObjectClassName = "Trace." + name // Note: namespace is required
+        entity.managedObjectClassName = String(reflecting: DBTrace.self) // Note: namespace is required
         entity.properties = traceAttribute
         
         return entity
@@ -37,7 +37,7 @@ internal struct Entities {
         
         let entity = NSEntityDescription()
         entity.name = name
-        entity.managedObjectClassName = "Trace." + name // Note: namespace is required
+        entity.managedObjectClassName = String(reflecting: DBMetric.self) // Note: namespace is required
         entity.properties = metricAttribute
         
         return entity
