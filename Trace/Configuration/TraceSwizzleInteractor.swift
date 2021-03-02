@@ -18,6 +18,8 @@ internal struct TraceSwizzleInteractor {
     static func setup() -> Bool {
         URLSessionTaskMetrics.bitrise_swizzle_methods()
         URLSession.bitrise_swizzle_methods()
+        URLLocalSessionConnection.bitrise_swizzle_methods()
+        LocalSessionTask.bitrise_swizzle_methods()
         
         UIViewController.bitrise_swizzle_methods()
         UIView.bitrise_swizzle_methods()

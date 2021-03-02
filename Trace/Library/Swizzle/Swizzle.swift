@@ -14,6 +14,11 @@ internal typealias Selectors = (
     alternative: Selector
 )
 
+internal typealias SelectorWithType = (
+    selector: Selector,
+    `class`: AnyClass
+)
+
 internal protocol Swizzled {
     
     // MARK: - Swizzled
@@ -123,5 +128,22 @@ internal class Swizzle {
         method_exchangeImplementations(originalMethod, alternativeMethod)
         
         return .success
+    }
+    
+    /**
+     typealias NewClosureType =  @convention(c) (AnyObject, Selector, AnyObject?) -> Void
+     
+     let originalImp: IMP = method_getImplementation(method)
+     let block: @convention(block) (AnyObject, AnyObject?) -> Void = { (me, error) in
+         // call the original
+         let original: NewClosureType = unsafeBitCast(originalImp, to: NewClosureType.self)
+         original(me, selector, error)
+         
+         // your code here
+     }
+     **/
+    @discardableResult
+    func block(_ block: Any, forMethod method: Method) -> IMP {
+        method_setImplementation(method, imp_implementationWithBlock(block))
     }
 }
