@@ -139,6 +139,8 @@ extension URLSession: Swizzled {
     // MARK: - Property
     
     /// Some apps have custom logic for metrics so we can't always depend on it.
+    /// But whenever we can the SDK will take full ownership on the method.
+    /// This does not call the orginal method as it hasn't been implemented
     private var canReceiveMetrics: Bool {
         get {
             return (objc_getAssociatedObject(self, &AssociatedKey.metrics) as? Bool) ?? false
@@ -314,6 +316,7 @@ extension URLSession: Swizzled {
         // call default method and cache the results
         let result = self.bitrise_canDelegateTaskDidFinishCollectingMetrics()
         
+        // this is now used as a flag
         self.canReceiveMetrics = result
         
         return result
@@ -321,8 +324,9 @@ extension URLSession: Swizzled {
     
     @objc
     internal func bitrise_delegateTask(_ task: AnyObject, didFinishCollectingMetrics metrics: URLSessionTaskMetrics, completion: AnyObject) {
+        // If the app hasn't implemented the method we will take full ownership of it
         if self.canReceiveMetrics {
-            // call default method
+            // call default method as the app has this method set
             self.bitrise_delegateTask(
                 task,
                 didFinishCollectingMetrics: metrics,
@@ -333,7 +337,7 @@ extension URLSession: Swizzled {
         }
         
         process(metrics)
-        // skipping task since its been processed beforehand
+        // skipping task since its has been processed beforehand
     }
   
     // MARK: - Private
