@@ -8,14 +8,18 @@
 //
 
 import UIKit
+import Foundation
+import Combine
 
-/// Example of getting and sending data from network requests
+/// Example of getting and sending data from network requests for data and download tasks
 final class NetworkViewController: UIViewController {
     
     // MARK: - Property
     
     lazy var altSession: URLSession = {
-        return URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+        let configuration = URLSessionConfiguration.ephemeral
+        
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: .main)
     }()
     
     // MARK: - Lifecycle
@@ -27,6 +31,7 @@ final class NetworkViewController: UIViewController {
         setupNetwork()
         setupAltNetwork()
         setupAltNetworkWithQueue()
+        setupDownloadRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +55,7 @@ final class NetworkViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        title = "Network"
+        title = "Network (data & download)"
         
         let shared = URLSession.shared
         let urls = [
@@ -93,17 +98,17 @@ final class NetworkViewController: UIViewController {
     private func setupAltNetwork() {
         let requests = [
             "https://httpstat.us/200",
-            "https://httpstat.us/200?sleep=100",
-            "https://httpstat.us/200?sleep=500",
-            "https://httpstat.us/200?sleep=1000",
-            "https://httpstat.us/200?sleep=2000",
-            "https://httpstat.us/200?sleep=90000",
-            "https://httpstat.us/200?sleep=2500",
-            "https://httpstat.us/200?sleep=50",
+            "https://httpstat.us/200?sleep=101",
+            "https://httpstat.us/200?sleep=502",
+            "https://httpstat.us/200?sleep=1001",
+            "https://httpstat.us/200?sleep=2002",
+            "https://httpstat.us/200?sleep=6003",
+            "https://httpstat.us/200?sleep=2504",
+            "https://httpstat.us/200?sleep=55",
             "https://httpstat.us/200",
-            "https://httpstat.us/200?sleep=100",
-            "https://httpstat.us/200?sleep=1500",
-            "https://httpstat.us/200?sleep=10000"
+            "https://httpstat.us/200?sleep=106",
+            "https://httpstat.us/200?sleep=1507",
+            "https://httpstat.us/200?sleep=1448"
         ]
         .compactMap { URL(string: $0) }
         .map { url -> URLRequest in
@@ -117,6 +122,8 @@ final class NetworkViewController: UIViewController {
             altSession.dataTask(with: $0) { data, res, err in
                 
             }
+            
+            altSession.dataTask(with: $0).resume()
         }
         
         DispatchQueue.global(qos: .background).async { [altSession] in
@@ -130,23 +137,41 @@ final class NetworkViewController: UIViewController {
                 }
             }
         }
+        
+        if #available(iOS 13.0, *) {
+            var cancellables = [AnyCancellable]()
+            
+            let cancel1 = URLSession.shared.dataTaskPublisher(for: requests[0]).sink { (_) in
+
+            } receiveValue: { (_) in
+
+            }
+            let cancel2 = URLSession.shared.dataTaskPublisher(for: requests[0].url!).sink { (_) in
+
+            } receiveValue: { (_) in
+
+            }
+            
+            cancellables.append(cancel1)
+            cancellables.append(cancel2)
+        }
     }
     
     private func setupAltNetworkWithQueue() {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue())
         let requests = [
             "https://httpstat.us/200",
-            "https://httpstat.us/200?sleep=100",
-            "https://httpstat.us/200?sleep=500",
-            "https://httpstat.us/200?sleep=1000",
-            "https://httpstat.us/200?sleep=2000",
-            "https://httpstat.us/200?sleep=90000",
-            "https://httpstat.us/200?sleep=2500",
-            "https://httpstat.us/200?sleep=50",
+            "https://httpstat.us/200?sleep=111",
+            "https://httpstat.us/200?sleep=512",
+            "https://httpstat.us/200?sleep=1013",
+            "https://httpstat.us/200?sleep=2014",
+            "https://httpstat.us/200?sleep=6015",
+            "https://httpstat.us/200?sleep=2516",
+            "https://httpstat.us/200?sleep=517",
             "https://httpstat.us/200",
-            "https://httpstat.us/200?sleep=100",
-            "https://httpstat.us/200?sleep=1500",
-            "https://httpstat.us/200?sleep=10000"
+            "https://httpstat.us/200?sleep=118",
+            "https://httpstat.us/200?sleep=1519",
+            "https://httpstat.us/200?sleep=1320"
         ]
         .compactMap { URL(string: $0) }
         .map { url -> URLRequest in
@@ -245,6 +270,47 @@ final class NetworkViewController: UIViewController {
         URLSession.shared.dataTask(with: request3) { data, req, err in
             URLSession.shared.invalidateAndCancel()
         }
+    }
+    
+    func setupDownloadRequest() {
+        var url: URL {
+            URL(string: "https://httpbin.org/image/jpeg?randon=\(Int.random(in: 0..<100))")!
+        }
+        var request: URLRequest {
+            var request = URLRequest(url: url)
+            request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            
+            return request
+        }
+        
+        let urlSession = URLSession.shared
+        
+        urlSession.downloadTask(with: request).resume()
+        
+        let task1 = urlSession.downloadTask(with: url)
+        task1.resume()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            task1.cancel()
+            
+            if let response = task1.response as? HTTPURLResponse {
+                print("Cancelled request detail: \(response)")
+            }
+        }
+          
+        urlSession.downloadTask(with: request) { (_, _, _) in
+            
+        }.resume()
+        urlSession.downloadTask(with: url) { (_, _, _) in
+            
+        }.resume()
+        
+        let data = Data()
+
+        urlSession.downloadTask(withResumeData: data).resume()
+        urlSession.downloadTask(withResumeData: data) { (_, _, _) in
+
+        }.resume()
     }
 }
 

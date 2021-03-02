@@ -41,6 +41,10 @@
 		100575A9229D8994000343EE /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A4229D8994000343EE /* Routable.swift */; };
 		1006100D23576729004EFC2C /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006100C23576729004EFC2C /* String+Hex.swift */; };
 		1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F5772350DFEF00689B2B /* OrderedDictionary.swift */; };
+		1009907325E9045C009E03E2 /* URLLocalSessionConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009907225E9045C009E03E2 /* URLLocalSessionConnection.swift */; };
+		1009908625E9046E009E03E2 /* URLLocalSessionConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009908525E9046E009E03E2 /* URLLocalSessionConnectionTests.swift */; };
+		1009909925E938A6009E03E2 /* LocalSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009909825E938A6009E03E2 /* LocalSessionTask.swift */; };
+		100990AC25E938CF009E03E2 /* LocalSessionTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100990AB25E938CF009E03E2 /* LocalSessionTaskTests.swift */; };
 		100993D4250009AE006C7FB4 /* Trace.h in Headers */ = {isa = PBXBuildFile; fileRef = 100993BF24FFFF84006C7FB4 /* Trace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100993F92500EA9C006C7FB4 /* CrashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F22500EA9B006C7FB4 /* CrashController.swift */; };
 		100993FB2500EA9C006C7FB4 /* Crash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100993F42500EA9B006C7FB4 /* Crash.swift */; };
@@ -540,6 +544,9 @@
 		10C0499223E0944200822835 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0499123E0944200822835 /* SystemConfiguration.framework */; };
 		10C0F5AA22E1BF3000FA5465 /* BitriseConfigurationInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0F5A822E1BF1B00FA5465 /* BitriseConfigurationInteractorTests.swift */; };
 		10C0F5AC22E1C1BE00FA5465 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0F5AB22E1C1BE00FA5465 /* bitrise_configuration.plist */; platformFilter = ios; };
+		10C7F34825ED9C7400597D1C /* NetworkUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7F34725ED9C7400597D1C /* NetworkUploadViewController.swift */; };
+		10C7F35E25EDA39F00597D1C /* NetworkUpload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C7F35D25EDA39F00597D1C /* NetworkUpload.storyboard */; };
+		10C7F37125EDAA3600597D1C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C7F37025EDAA3600597D1C /* logo.png */; };
 		10C98014231E5BF4008188CF /* ErrorFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C98013231E5BF4008188CF /* ErrorFormatterTests.swift */; };
 		10C98016231E62D3008188CF /* CrashFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C98015231E62D3008188CF /* CrashFormatterTests.swift */; };
 		10CA8760229D8D97003702B1 /* EncodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA875F229D8D97003702B1 /* EncodableTests.swift */; };
@@ -833,6 +840,10 @@
 		100575A4229D8994000343EE /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		1006100C23576729004EFC2C /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
 		1008F5772350DFEF00689B2B /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		1009907225E9045C009E03E2 /* URLLocalSessionConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLocalSessionConnection.swift; sourceTree = "<group>"; };
+		1009908525E9046E009E03E2 /* URLLocalSessionConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLLocalSessionConnectionTests.swift; path = Tests/URLLocalSessionConnectionTests.swift; sourceTree = SOURCE_ROOT; };
+		1009909825E938A6009E03E2 /* LocalSessionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSessionTask.swift; sourceTree = "<group>"; };
+		100990AB25E938CF009E03E2 /* LocalSessionTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalSessionTaskTests.swift; path = Tests/LocalSessionTaskTests.swift; sourceTree = SOURCE_ROOT; };
 		100993BE24FFD074006C7FB4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		100993BF24FFFF84006C7FB4 /* Trace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
 		100993DA25003BB1006C7FB4 /* libTraceInternal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTraceInternal.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1275,6 +1286,9 @@
 		10C0499123E0944200822835 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		10C0F5A822E1BF1B00FA5465 /* BitriseConfigurationInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BitriseConfigurationInteractorTests.swift; path = Tests/Configuration/BitriseConfigurationInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		10C0F5AB22E1C1BE00FA5465 /* bitrise_configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bitrise_configuration.plist; sourceTree = "<group>"; };
+		10C7F34725ED9C7400597D1C /* NetworkUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUploadViewController.swift; sourceTree = "<group>"; };
+		10C7F35D25EDA39F00597D1C /* NetworkUpload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NetworkUpload.storyboard; sourceTree = "<group>"; };
+		10C7F37025EDAA3600597D1C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		10C98013231E5BF4008188CF /* ErrorFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorFormatterTests.swift; path = Tests/ErrorFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		10C98015231E62D3008188CF /* CrashFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashFormatterTests.swift; path = Tests/CrashFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA875F229D8D97003702B1 /* EncodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EncodableTests.swift; path = Tests/Library/JSON/EncodableTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1981,6 +1995,8 @@
 				108EF3C4231EC9310029FD65 /* TaskMetricsFormatterTests.swift */,
 				108EF3C6231FBCA90029FD65 /* SessionConfigurationFormatterTests.swift */,
 				10EFEC0E234764B10037CBBD /* URLSessionTaskTests.swift */,
+				1009908525E9046E009E03E2 /* URLLocalSessionConnectionTests.swift */,
+				100990AB25E938CF009E03E2 /* LocalSessionTaskTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2015,6 +2031,8 @@
 				10FC45E62312B7FA0077BF2C /* URLSessionTaskFormatter.swift */,
 				10F2BC9422B24EAC0074EE5D /* SessionConfigurationFormatter.swift */,
 				1043FC9023144A7400F75D27 /* URLSessionTask+Helper.swift */,
+				1009907225E9045C009E03E2 /* URLLocalSessionConnection.swift */,
+				1009909825E938A6009E03E2 /* LocalSessionTask.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -2246,6 +2264,7 @@
 				103ABC872445FF27001BC364 /* prod */,
 				103ABC852445FF17001BC364 /* staging */,
 				104A697C229401280065F218 /* Assets.xcassets */,
+				10C7F37025EDAA3600597D1C /* logo.png */,
 				10350D9B24C222180004F6D7 /* iOSDemo.entitlements */,
 				104A697E229401280065F218 /* LaunchScreen.storyboard */,
 				104A6981229401280065F218 /* Info.plist */,
@@ -3038,6 +3057,8 @@
 			children = (
 				80BA2AE924631113008604D3 /* Test */,
 				10FC45D2230EE6730077BF2C /* NetworkViewController.swift */,
+				10C7F34725ED9C7400597D1C /* NetworkUploadViewController.swift */,
+				10C7F35D25EDA39F00597D1C /* NetworkUpload.storyboard */,
 				10FC45D4230EE94D0077BF2C /* Network.storyboard */,
 			);
 			path = Network;
@@ -3691,8 +3712,10 @@
 				107B2C5B23560474002E7A3D /* Tabs.storyboard in Resources */,
 				1053593924C991FF0007F2E0 /* CollectionViewCell.xib in Resources */,
 				1087A00022DE06A7005F8F83 /* WebView.storyboard in Resources */,
+				10C7F35E25EDA39F00597D1C /* NetworkUpload.storyboard in Resources */,
 				10FC45D5230EE94D0077BF2C /* Network.storyboard in Resources */,
 				109B39F224EFC9CB00E44676 /* NibView.xib in Resources */,
+				10C7F37125EDAA3600597D1C /* logo.png in Resources */,
 				1053593724C989C90007F2E0 /* Collection.storyboard in Resources */,
 				104A697B229401260065F218 /* Main.storyboard in Resources */,
 				101BDEE725C8069600888117 /* bitrise_configuration.plist in Resources */,
@@ -4383,6 +4406,7 @@
 				1046CC3622B94B2100A8762F /* Queue.swift in Sources */,
 				10F2BC9522B24EAC0074EE5D /* SessionConfigurationFormatter.swift in Sources */,
 				100993FD2500EA9C006C7FB4 /* CrashController+Testing.swift in Sources */,
+				1009909925E938A6009E03E2 /* LocalSessionTask.swift in Sources */,
 				10F2BC9722B291100074EE5D /* Metrics.swift in Sources */,
 				1087A01022E07700005F8F83 /* BitriseConfiguration.swift in Sources */,
 				10FC45E123117EA50077BF2C /* Metric+Timeseries+Point.swift in Sources */,
@@ -4467,6 +4491,7 @@
 				10CA938D24E2E23200F6A95E /* TraceSwizzleInteractor.swift in Sources */,
 				10CA8766229F1AE5003702B1 /* TraceService.swift in Sources */,
 				105929522309A2D50004D340 /* Metric+Collater.swift in Sources */,
+				1009907325E9045C009E03E2 /* URLLocalSessionConnection.swift in Sources */,
 				10879FF922DC897D005F8F83 /* Error+Swizzled.swift in Sources */,
 				103701F422ABD1130069C771 /* URLSession+Swizzled.swift in Sources */,
 				10FC45E72312B7FA0077BF2C /* URLSessionTaskFormatter.swift in Sources */,
@@ -4534,6 +4559,7 @@
 				101055E3241BEE1D0088BD24 /* DataTests.swift in Sources */,
 				108EF3C5231EC9310029FD65 /* TaskMetricsFormatterTests.swift in Sources */,
 				10AC27E523440CF600780890 /* MetricDAOTests.swift in Sources */,
+				100990AC25E938CF009E03E2 /* LocalSessionTaskTests.swift in Sources */,
 				1072919A231FDF65007A18C7 /* URLSessionTaskFormatterTests.swift in Sources */,
 				101055D12417B4610088BD24 /* CrashesServiceTests.swift in Sources */,
 				10C98014231E5BF4008188CF /* ErrorFormatterTests.swift in Sources */,
@@ -4569,6 +4595,7 @@
 				10E49096235DAD6F0047691F /* OrderedDictionaryTests.swift in Sources */,
 				10729196231FC275007A18C7 /* HardwareFormatterTests.swift in Sources */,
 				10729198231FDC08007A18C7 /* DeviceFormatterTests.swift in Sources */,
+				1009908625E9046E009E03E2 /* URLLocalSessionConnectionTests.swift in Sources */,
 				108EF3B9231E780F0029FD65 /* StartupFormatterTests.swift in Sources */,
 				101055E1241BED990088BD24 /* CrashesTest.swift in Sources */,
 				104F556323225AFC006247C4 /* SessionTests.swift in Sources */,
@@ -4597,6 +4624,7 @@
 				109B39F024EFC51400E44676 /* NibViewController.swift in Sources */,
 				104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */,
 				10B606512530754400DC1DB1 /* AudioViewController.swift in Sources */,
+				10C7F34825ED9C7400597D1C /* NetworkUploadViewController.swift in Sources */,
 				107B2C5F235604C3002E7A3D /* SecondTabViewController.swift in Sources */,
 				1087A00322DE06BC005F8F83 /* WebViewController.swift in Sources */,
 				10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */,
