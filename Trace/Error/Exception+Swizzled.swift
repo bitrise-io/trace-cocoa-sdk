@@ -18,21 +18,27 @@ extension NSException: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
-        let `init` = Selectors(
+        // let `init` =
+        _ = Selectors(
             original: #selector(NSException.init(name:reason:userInfo:)),
             alternative: #selector(NSException.init(bitriseName:reason:userInfo:))
         )
-        let raise = Selectors(
+        
+        // let raise =
+        _ = Selectors(
             original: #selector(NSException.raise),
             alternative: #selector((NSException.bitrise_raise) as (NSException) -> () -> Void)
         )
+        
+        // let classRaise =
         _ = Selectors(
             original: #selector((NSException.raise(_:format:arguments:)) as (NSExceptionName, String, CVaListPointer) -> Void),
             alternative: #selector((NSException.raise(_:format:arguments:)) as (NSExceptionName, String, CVaListPointer) -> Void)
         )
         
-        _ = self.swizzleInstanceMethod(`init`)
-        _ = self.swizzleInstanceMethod(raise)
+        // Disabled
+//        _ = self.swizzleInstanceMethod(`init`)
+//        _ = self.swizzleInstanceMethod(raise)
         
         // Disabled: need to find a way to call static methods correctly
         // _ = self.swizzleClassMethod(classRaise.original, alternativeSelector: classRaise.alternative)
@@ -42,6 +48,7 @@ extension NSException: Swizzled {
     
     // MARK: - Init
     
+    // Disabled
     @objc
     internal convenience init(bitriseName: NSExceptionName, reason: String?, userInfo: [AnyHashable: Any]?) {
         // call default method
