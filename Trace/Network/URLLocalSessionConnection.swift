@@ -91,7 +91,6 @@ final class URLLocalSessionConnection: Swizzled {
 
             // Used when task metric is not enabled
             let formatter = URLSessionTaskFormatter(task)
-            print("XXXX state: \(task.currentRequest?.url?.absoluteString ?? "Unknown")")
             let spans = formatter.spans
 
             let shared = Trace.shared
