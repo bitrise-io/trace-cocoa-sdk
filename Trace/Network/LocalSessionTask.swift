@@ -83,8 +83,6 @@ final class LocalSessionTask: Swizzled {
             return
         }
         
-        print("XXXX resume \(task.currentRequest?.url?.absoluteString ?? "Unknown")")
-        
         if task.startDate == nil {
             task.startDate = timestamp
         } else {
