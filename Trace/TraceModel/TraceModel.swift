@@ -168,9 +168,10 @@ public final class TraceModel: NSObject, Codable {
                 let result = end - start
                 let isGreaterThanOrEqualTo = result >= zeroPointOne
                 
-                if isGreaterThanOrEqualTo {
+                if isGreaterThanOrEqualTo { // leave alone
                     $0.end = end
                 } else {
+                    // round up by result
                     let roundedUp = end + result
                     let roundedUpTimeStamp = Span.Timestamp(from: roundedUp)
                     
