@@ -134,8 +134,12 @@ final internal class Lifecycle {
     private func processMetric() {
         let currentSession = Trace.currentSession
         
-        guard currentSession != 0 else {
+        func sdkLaunchedWithoutAValidStartupSession() {
             Logger.warning(.internalError, "SDK launched without a valid startup session, bypassing startup metric")
+        }
+        
+        guard currentSession != 0 else {
+            sdkLaunchedWithoutAValidStartupSession()
             
             return
         }

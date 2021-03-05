@@ -178,9 +178,21 @@ internal final class Queue {
                 combined.forEach { trace in
                     // fallback
                     if trace.resource == nil {
+                        func willAssignResourceInBlock() { }
+                        
+                        willAssignResourceInBlock()
+                        
                         if let newResource = self?.session.resource {
+                            func didAssignResourceInBlock() { }
+                            
                             trace.resource = newResource
+                            
+                            didAssignResourceInBlock()
                         } else {
+                            func didNotAssignResourceInBlock() { }
+                            
+                            didNotAssignResourceInBlock()
+                            
                             Logger.debug(.internalError, "Resource missing from new trace model")
                         }
                     }
