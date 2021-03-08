@@ -72,7 +72,11 @@ extension StartupFormatter: Metricable {
     internal var metrics: Metrics {
         let timeseries = Metric.Timeseries(
             .value(status.rawValue),
-            points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: time.rounded(to: 2))]
+            points: [.point(
+                        seconds: timestamp.seconds,
+                        nanos: timestamp.nanos.rounded(to: 3),
+                        value: time.rounded(to: 2))
+            ]
         )
         let descriptor = Metric.Descriptor(
             name: .appStartupLatencyMS,
