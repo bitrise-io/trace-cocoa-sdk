@@ -62,7 +62,11 @@ extension SessionFormatter: Metricable {
         let timeseries = [
             Metric.Timeseries(
                 [.value(reason.rawValue), .value(String(result))],
-                points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: result)]
+                points: [.point(
+                            seconds: timestamp.seconds,
+                            nanos: timestamp.nanos.rounded(to: 3),
+                            value: result)
+                ]
             )
         ]
         let descriptor = Metric.Descriptor(

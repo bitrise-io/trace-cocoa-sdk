@@ -64,7 +64,11 @@ extension FPSFormatter: Metricable {
         
         let timeseries = Metric.Timeseries(
             .value(result.viewController),
-            points: [.point(seconds: result.timestamp.seconds, nanos: result.timestamp.nanos, value: result.fps)]
+            points: [.point(
+                        seconds: result.timestamp.seconds,
+                        nanos: result.timestamp.nanos.rounded(to: 3),
+                        value: result.fps)
+            ]
         )
         let descriptor = Metric.Descriptor(
             name: .viewFrameRate,

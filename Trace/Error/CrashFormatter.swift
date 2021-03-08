@@ -56,7 +56,11 @@ extension CrashFormatter: Metricable {
     internal var metrics: Metrics {
         let timeseries = Metric.Timeseries(
             [.value(report.name)],
-            points: [.point(seconds: report.timestamp.seconds, nanos: report.timestamp.nanos, value: 1)]
+            points: [.point(
+                        seconds: report.timestamp.seconds,
+                        nanos: report.timestamp.nanos.rounded(to: 3),
+                        value: 1)
+            ]
         )
         let descriptor = Metric.Descriptor(
             name: .appCrashTotal,
@@ -77,13 +81,19 @@ extension CrashFormatter: Spanable {
     
     var spans: [TraceModel.Span] {
         let name = TraceModel.Span.Name(value: report.name, truncatedByteCount: 0)
-        let start = TraceModel.Span.Timestamp(seconds: report.timestamp.seconds, nanos: report.timestamp.nanos)
+        let start = TraceModel.Span.Timestamp(
+            seconds: report.timestamp.seconds,
+            nanos: report.timestamp.nanos.rounded(to: 3)
+        )
         let attribute = TraceModel.Span.Attributes(attributes: [
             TraceModel.Span.Attributes.Attribute(name: Keys.type.rawValue, value: .init(value: report.type.rawValue, truncatedByteCount: 0)),
             TraceModel.Span.Attributes.Attribute(name: Keys.reason.rawValue, value: .init(value: report.reason, truncatedByteCount: 0))
         ])
         let timestamp = Time.timestamp
-        let end = TraceModel.Span.Timestamp(seconds: timestamp.seconds, nanos: timestamp.nanos)
+        let end = TraceModel.Span.Timestamp(
+            seconds: timestamp.seconds,
+            nanos: timestamp.nanos.rounded(to: 3)
+        )
         let span = TraceModel.Span(name: name, start: start, end: end, attribute: attribute)
         
         return [span]

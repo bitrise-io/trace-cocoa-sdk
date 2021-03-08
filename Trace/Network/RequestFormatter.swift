@@ -86,7 +86,11 @@ extension RequestFormatter: Metricable {
         
         let timeseries = Metric.Timeseries(
             values,
-            points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: bodySize)]
+            points: [.point(
+                        seconds: timestamp.seconds,
+                        nanos: timestamp.nanos.rounded(to: 3),
+                        value: bodySize)
+            ]
         )
         let descriptor = Metric.Descriptor(
             name: .appPrerequestTotal,

@@ -210,7 +210,11 @@ extension TaskMetricsFormatter: Metricable {
             unit: .bytes,
             type: .int64,
             detail: requestDetail,
-            points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: requestPointValue)]
+            points: [.point(
+                        seconds: timestamp.seconds,
+                        nanos: timestamp.nanos.rounded(to: 3),
+                        value: requestPointValue)
+            ]
         )
         let response = metric(
             for: .appResponseSizeBytes,
@@ -218,7 +222,11 @@ extension TaskMetricsFormatter: Metricable {
             unit: .bytes,
             type: .int64,
             detail: responseDetail,
-            points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: responsePointValue)]
+            points: [.point(
+                        seconds: timestamp.seconds,
+                        nanos: timestamp.nanos.rounded(to: 3),
+                        value: responsePointValue)
+            ]
         )
         
         return Metrics([request, response])
@@ -286,8 +294,14 @@ extension TaskMetricsFormatter: Spanable {
         
         let attributeWrapper = TraceModel.Span.Attributes(attributes: attributes)
         let startFormatted = Time.from(fetchStartDate)
-        let start = TraceModel.Span.Timestamp(seconds: startFormatted.seconds, nanos: startFormatted.nanos)
-        let end = TraceModel.Span.Timestamp(seconds: timestamp.seconds, nanos: timestamp.nanos)
+        let start = TraceModel.Span.Timestamp(
+            seconds: startFormatted.seconds,
+            nanos: startFormatted.nanos
+        )
+        let end = TraceModel.Span.Timestamp(
+            seconds: timestamp.seconds,
+            nanos: timestamp.nanos.rounded(to: 3)
+        )
         let span = TraceModel.Span(
             name: TraceModel.Span.Name(value: url, truncatedByteCount: 0),
             start: start,
