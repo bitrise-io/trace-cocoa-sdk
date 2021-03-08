@@ -136,14 +136,14 @@ final class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 7: navigateToSafari()
-        case 8: navigateUsingShow()
-        case 9: navigateUsingShowDetail()
-        case 10: navigateUsingPresent()
-        case 11: navigateUsingPopover()
-        case 12: navigateUsingCustom()
-        case 13: navigateUsingSegue()
-        case 14: navigateToNibViewController()
+        case 8: navigateToSafari()
+        case 9: navigateUsingShow()
+        case 10: navigateUsingShowDetail()
+        case 11: navigateUsingPresent()
+        case 12: navigateUsingPopover()
+        case 13: navigateUsingCustom()
+        case 14: navigateUsingSegue()
+        case 15: navigateToNibViewController()
         default: break
         }
     }

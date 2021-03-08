@@ -403,6 +403,7 @@
 		1091373024AF4B7300476EF6 /* appResponseSizeBytes_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091372E24AF4B7300476EF6 /* appResponseSizeBytes_no_match.json */; };
 		1091373424AF5EFD00476EF6 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091373324AF5EFD00476EF6 /* Json.swift */; };
 		1091373724AF8E7700476EF6 /* URLStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091373624AF8E7700476EF6 /* URLStructureTests.swift */; };
+		1091420125F62B7E00224F08 /* Int+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091420025F62B7E00224F08 /* Int+helper.swift */; };
 		10916D71234B395300E02C14 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10916D70234B395300E02C14 /* ResourceTests.swift */; };
 		1091771D232F8CF1007CE2F0 /* Tracer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091771C232F8CF1007CE2F0 /* Tracer.swift */; };
 		1091771F232FE761007CE2F0 /* ViewController+Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091771E232FE761007CE2F0 /* ViewController+Metric.swift */; };
@@ -1217,6 +1218,7 @@
 		1091372E24AF4B7300476EF6 /* appResponseSizeBytes_no_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = appResponseSizeBytes_no_match.json; path = Tests/appResponseSizeBytes_no_match.json; sourceTree = SOURCE_ROOT; };
 		1091373324AF5EFD00476EF6 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Json.swift; path = Tests/Json.swift; sourceTree = SOURCE_ROOT; };
 		1091373624AF8E7700476EF6 /* URLStructureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLStructureTests.swift; path = Tests/URLStructureTests.swift; sourceTree = SOURCE_ROOT; };
+		1091420025F62B7E00224F08 /* Int+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+helper.swift"; sourceTree = "<group>"; };
 		10916D70234B395300E02C14 /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResourceTests.swift; path = Tests/ResourceTests.swift; sourceTree = SOURCE_ROOT; };
 		1091771C232F8CF1007CE2F0 /* Tracer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracer.swift; sourceTree = "<group>"; };
 		1091771E232FE761007CE2F0 /* ViewController+Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Metric.swift"; sourceTree = "<group>"; };
@@ -2912,6 +2914,7 @@
 				10574D0724D85F2600391D6C /* Date+Helper.swift */,
 				10B6084A2535BE8F00DC1DB1 /* DispatchQueue.swift */,
 				10B6086E25360E2700DC1DB1 /* DispatchQueueSynchronized.swift */,
+				1091420025F62B7E00224F08 /* Int+helper.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -4447,6 +4450,7 @@
 				108D309923292974002757CC /* UUID.swift in Sources */,
 				10DCA093230420C800F0281E /* Encodable+Helper.swift in Sources */,
 				1047952622C504D600E6B8A2 /* UIApplication+ViewController.swift in Sources */,
+				1091420125F62B7E00224F08 /* Int+helper.swift in Sources */,
 				1064C8DB2295706900787D8C /* Memory.swift in Sources */,
 				10592954230AF2590004D340 /* Resource.swift in Sources */,
 				108D30932327A80A002757CC /* TraceModel+Span.swift in Sources */,
