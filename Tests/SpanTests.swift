@@ -176,8 +176,10 @@ final class SpanTests: XCTestCase {
         let timestamp = Time.from(Date(timeIntervalSince1970: 99999999.9999))
         let convertedTimestamp = TraceModel.Span.Timestamp(from: timestamp)
         
+        print(convertedTimestamp)
+        
         XCTAssertNotEqual(convertedTimestamp.seconds, 0)
-        XCTAssertNotEqual(convertedTimestamp.nanos, 0)
+        XCTAssertNotEqual(convertedTimestamp.nanos, 1)
         XCTAssertNotEqual(convertedTimestamp.seconds, convertedTimestamp.nanos)
     }
     

@@ -96,7 +96,7 @@ final class TimestampTests: XCTestCase {
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result.seconds, 1597337539)
-        XCTAssertEqual(result.nanos, 5822508)
+        XCTAssertEqual(result.nanos, 582)
         
         XCTAssertNotNil(startDate)
         XCTAssertNotNil(updatedDate)
@@ -114,7 +114,7 @@ final class TimestampTests: XCTestCase {
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result.seconds, 1597337540)
-        XCTAssertEqual(result.nanos, 914487)
+        XCTAssertEqual(result.nanos, 914)
         
         XCTAssertNotNil(startDate)
         XCTAssertNotNil(updatedDate)
@@ -133,7 +133,7 @@ final class TimestampTests: XCTestCase {
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result.seconds, 1597449600)
-        XCTAssertEqual(result.nanos, 992508)
+        XCTAssertEqual(result.nanos, 99)
         
         XCTAssertNotNil(startDate)
         XCTAssertNotNil(updatedDate)

@@ -19,11 +19,10 @@ extension Double {
     
     static var random: Double { Double(arc4random()) / 0xFFFFFFFF }
     
-    // MARK: - Split
+    // MARK: - Class - Split
     
-    /// 123.45 split to 123 and 45
-    var splitAtDecimal: Split {
-        let split = String(self).split(separator: ".")
+    static func split(atDecimal decimal: String) -> Split {
+        let split = decimal.split(separator: ".")
         let integer = Int(split.first ?? "")
         let fractional = Int(split.last ?? "")
         
@@ -33,7 +32,28 @@ extension Double {
         )
     }
     
+    // MARK: - Split
+    
+    /// 123.45 split to 123 and 45
+    var splitAtDecimal: Split {
+        let split = Self.split(atDecimal: String(self))
+        
+        return split
+    }
+    
     // MARK: - Round
+    
+    func roundFraction(to scale: Int) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        formatter.roundingMode = .halfEven
+        formatter.minimumFractionDigits = scale
+        formatter.maximumFractionDigits = scale
+
+        let result = formatter.string(for: self)
+        
+        return result
+    }
     
     func rounded(to scale: Int) -> Double {
         var decimalValue = Decimal(self)
