@@ -104,7 +104,7 @@ final class Tracer {
                 if $0.parentSpanId == nil { // exclude root span i.e parentSpanId is nil
                     $0.parentSpanId = parentSpanId
                 } else {
-                    Logger.warning(.traceModel, "Property parentSpanId not set as it may be a root span")
+                    Logger.warning(.traceModel, "Property `parentSpanId` not set as it may be a root span")
                 }
             }
             
