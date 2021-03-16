@@ -14,7 +14,11 @@ final class WebViewController: UIViewController {
     
     // MARK: - Property
     
-    @IBOutlet private weak var webView: WKWebView!
+    private let webView: WKWebView = {
+        let webView = WKWebView(frame: .zero)
+        
+        return webView
+    }()
     
     // MARK: - Lifecycle
     
@@ -28,6 +32,16 @@ final class WebViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        webView.frame = view.frame
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -36,6 +50,8 @@ final class WebViewController: UIViewController {
     
     private func setup() {
         title = "Web View"
+        
+        view.addSubview(webView)
         
         let url = URL(string: "https://bitrise.io")!
         var request = URLRequest(url: url)
