@@ -98,7 +98,11 @@ internal final class MetricDAO: CRUD {
                 let key = NSAffectedObjectsErrorKey
                 
                 if let affectedObjects = cocoaError.userInfo[key] as? [T] {
-                    Logger.error(.database, "Writting metric failed. Removing affected objects \(affectedObjects.count)")
+                    func writtingMetricFailed() {
+                        Logger.error(.database, "Writting metric failed. Removing affected objects \(affectedObjects.count)")
+                    }
+                    
+                    writtingMetricFailed()
                     
                     let affectedObjectIds = affectedObjects.map { $0.objectID }
                     

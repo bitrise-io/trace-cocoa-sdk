@@ -104,7 +104,8 @@ internal struct DeviceFormatter: JSONEncodable {
                 platform = "iOS"
             #endif
         #else
-        Logger.debug(.application, "Unknown")
+            Logger.warning(.application, "Unknown platform type")
+            
             platform = "Unknown"
         #endif
         

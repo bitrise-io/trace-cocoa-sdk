@@ -124,11 +124,19 @@ internal final class Queue {
                     }
                     .flatMap { $0 }
                 
+                func willAddResourceInScheduleMetricsMethod() { }
+                func didAddResourceInScheduleMetricsMethod() { }
+                
                 let names = Set(combined.map { $0.descriptor.name.rawValue })
                 let attributes = Trace.shared.attributes
+                
+                willAddResourceInScheduleMetricsMethod()
+                
                 let resource = self?.session.resource
                 let model = Metrics(combined, resource: resource, attributes: attributes)
                 let dbModelObjectIds = dbModels.map { $0.objectID }
+                
+                didAddResourceInScheduleMetricsMethod()
                 
                 Logger.debug(.queue, "Scheduling \(names.joined(separator: ", ")) from \(dbModels.count) processed metrics")
                 
@@ -260,12 +268,20 @@ internal final class Queue {
             }
             
             let attributes = Trace.shared.attributes
+            
+            func willAddResourceInAddTraceMethod() { }
+            func didAddResourceInAddTraceMethod() { }
+            
+            willAddResourceInAddTraceMethod()
+            
             let resource = self?.session.resource
             
             traces.forEach {
                 $0.resource = resource
                 $0.attributes = attributes
             }
+            
+            didAddResourceInAddTraceMethod()
             
             dao?.create(with: traces, save: save, synchronous: false)
             
