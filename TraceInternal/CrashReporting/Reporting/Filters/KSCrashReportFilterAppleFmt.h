@@ -112,7 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initWithReportStyle:(KSAppleReportStyle) reportStyle;
 
 - (NSString*)headerStringForSystemInfo:(NSDictionary*)system reportID:(NSString*)reportID crashTime:(NSDate*)crashTime;
-- (NSString*) stringFromDate:(NSDate*)date;
+- (nullable NSString*) stringFromDate:(NSDate*)date;
 
 @end
 NS_ASSUME_NONNULL_END
