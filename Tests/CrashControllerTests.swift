@@ -97,4 +97,57 @@ final class CrashControllerTests: XCTestCase {
             XCTFail("Could not open crash file")
         }
     }
+    
+    func testUpdatingUserInfo_nilString() {
+        let crash = newCrash
+        crash.userInfo["test"] = nil
+        
+        XCTAssertNil(crash.userInfo["test"])
+    }
+    
+    weak var string: NSString? = "testUpdatingUserInfo_weakString"
+    
+    func testUpdatingUserInfo_weakString() {
+        let crash = newCrash
+        
+        crash.userInfo = ["1":""]
+        crash.userInfo["test"] = string
+        
+        sleep(2)
+        
+        XCTAssertNil(crash.userInfo["test"])
+    }
+    
+    func testUpdatingUserInfo_100() {
+        let crash = newCrash
+        
+        let numbers = 1...100
+        numbers.forEach {
+            crash.userInfo["test"] = "test \($0)"
+        }
+        
+        XCTAssertEqual(crash.userInfo["test"] as! String, "test 100")
+    }
+    
+    func testUpdatingUserInfo_10000() {
+        let crash = newCrash
+        
+        let numbers = 1...10000
+        numbers.forEach {
+            crash.userInfo["test"] = "test \($0)"
+        }
+        
+        XCTAssertEqual(crash.userInfo["test"] as! String, "test 10000")
+    }
+    
+    func testUpdatingUserInfo_100000() {
+        let crash = newCrash
+        
+        let numbers = 1...100000
+        numbers.forEach {
+            crash.userInfo["test"] = "test \($0)"
+        }
+        
+        XCTAssertEqual(crash.userInfo["test"] as! String, "test 100000")
+    }
 }

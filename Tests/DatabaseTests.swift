@@ -52,6 +52,12 @@ final class DatabaseTests: XCTestCase {
             sleep(3)
             
             count = database.dao.metric.count(in: .view)
+            
+            if count > 0 {
+                sleep(3)
+                
+                count = database.dao.metric.count(in: .view)
+            }
         }
         
         XCTAssertEqual(count, 0)
