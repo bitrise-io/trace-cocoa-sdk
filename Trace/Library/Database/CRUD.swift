@@ -103,18 +103,10 @@ internal extension CRUD where T: NSManagedObject {
     func delete(_ ids: [NSManagedObjectID]) {
         let context = persistent.privateContext
         context.perform {
-            let objects: [NSManagedObject] = ids.compactMap {
-                do {
-                    return try context.existingObject(with: $0)
-                } catch {
-                    return nil
-                }
-            }
-            
-            objects.forEach { context.delete($0) }
-            
-            // save
             do {
+                let request = NSBatchDeleteRequest(objectIDs: ids)
+                
+                try context.execute(request)
                 try context.save()
             } catch {
                 Logger.error(.database, "Failed to save database after a delete operation")
