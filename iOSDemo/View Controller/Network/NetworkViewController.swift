@@ -9,7 +9,10 @@
 
 import UIKit
 import Foundation
+
+#if canImport(Combine)
 import Combine
+#endif
 
 /// Example of getting and sending data from network requests for data and download tasks
 final class NetworkViewController: UIViewController {
@@ -138,23 +141,25 @@ final class NetworkViewController: UIViewController {
             }
         }
         
-        if #available(iOS 13.0, *) {
-            var cancellables = [AnyCancellable]()
-            
-            let cancel1 = URLSession.shared.dataTaskPublisher(for: requests[0]).sink { (_) in
+        #if canImport(Combine)
+            if #available(iOS 13.0, *) {
+                var cancellables = [AnyCancellable]()
+                
+                let cancel1 = URLSession.shared.dataTaskPublisher(for: requests[0]).sink { (_) in
 
-            } receiveValue: { (_) in
+                } receiveValue: { (_) in
 
+                }
+                let cancel2 = URLSession.shared.dataTaskPublisher(for: requests[0].url!).sink { (_) in
+
+                } receiveValue: { (_) in
+
+                }
+                
+                cancellables.append(cancel1)
+                cancellables.append(cancel2)
             }
-            let cancel2 = URLSession.shared.dataTaskPublisher(for: requests[0].url!).sink { (_) in
-
-            } receiveValue: { (_) in
-
-            }
-            
-            cancellables.append(cancel1)
-            cancellables.append(cancel2)
-        }
+        #endif
     }
     
     private func setupAltNetworkWithQueue() {
