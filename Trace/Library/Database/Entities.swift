@@ -23,10 +23,17 @@ internal struct Entities {
     
     internal var trace: NSEntityDescription {
         let name = String(describing: DBTrace.self)
+        let managedObjectClassName: String
+        
+        if #available(iOS 12.0, *) {
+            managedObjectClassName = String(reflecting: DBTrace.self) // Note: namespace is required
+        } else {
+            managedObjectClassName = name
+        }
         
         let entity = NSEntityDescription()
         entity.name = name
-        entity.managedObjectClassName = String(reflecting: DBTrace.self) // Note: namespace is required
+        entity.managedObjectClassName = managedObjectClassName
         entity.properties = traceAttribute
         
         return entity
@@ -34,10 +41,17 @@ internal struct Entities {
     
     internal var metric: NSEntityDescription {
         let name = String(describing: DBMetric.self)
+        let managedObjectClassName: String
+        
+        if #available(iOS 12.0, *) {
+            managedObjectClassName = String(reflecting: DBMetric.self) // Note: namespace is required
+        } else {
+            managedObjectClassName = name
+        }
         
         let entity = NSEntityDescription()
         entity.name = name
-        entity.managedObjectClassName = String(reflecting: DBMetric.self) // Note: namespace is required
+        entity.managedObjectClassName = managedObjectClassName
         entity.properties = metricAttribute
         
         return entity
