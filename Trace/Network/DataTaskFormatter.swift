@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Disabled
 internal struct DataTaskFormatter: JSONEncodable {
     
     // MARK: - Enum

@@ -29,7 +29,7 @@ extension Metric.Descriptor {
         
         // MARK: - Post MVP (Needs reviewing)
         
-        case subviewRenderLatencyMS = "subview.render.latency.ms" // Post MVP
+        case subviewRenderLatencyMS = "subview.render.latency.ms" // Post MVP - Disabled
         case appSessionMilliseconds = "app.session.milliseconds" // Post MVP
         case appRequestTask = "app.request.task" // Post MVP
         case httpSessionConfiguration = "http.session.configuration" // Post MVP

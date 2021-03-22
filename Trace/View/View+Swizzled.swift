@@ -12,6 +12,7 @@ import ObjectiveC
 
 // MARK: - View
 
+/// Disabled
 /// Internal use only
 internal extension UIView {
     
@@ -207,19 +208,20 @@ internal extension UIView {
     // MARK: - Process
 
     private func process() {
-        guard !isInternalClass else {
-            metric.observed = false
-            
-            return
-        }
-        guard !isBannedClass else {
-            metric.observed = false
-            
-            return
-        }
-        
-        let formatter = ViewFormatter(metric)
-        
-        Trace.shared.queue.add(formatter.metrics)
+    // Disabled
+//        guard !isInternalClass else {
+//            metric.observed = false
+//
+//            return
+//        }
+//        guard !isBannedClass else {
+//            metric.observed = false
+//
+//            return
+//        }
+//
+//        let formatter = ViewFormatter(metric)
+//
+//        Trace.shared.queue.add(formatter.metrics)
     }
 }

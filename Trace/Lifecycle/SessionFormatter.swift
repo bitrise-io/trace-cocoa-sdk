@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Disabled
 internal struct SessionFormatter: JSONEncodable {
     
     // MARK: - Enum
