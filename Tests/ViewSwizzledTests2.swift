@@ -37,7 +37,7 @@ final class ViewSwizzledTests2: XCTestCase {
         view.perform(#selector(UIView.removeFromSuperview))
         
         XCTAssertNotNil(view.metric)
-        XCTAssertFalse(view.metric.observed)
+        XCTAssertTrue(view.metric.observed)
     }
     
     func testView_bannedClass() {
@@ -51,6 +51,6 @@ final class ViewSwizzledTests2: XCTestCase {
         view.perform(#selector(UIView.removeFromSuperview))
         
         XCTAssertNotNil(view.metric)
-        XCTAssertFalse(view.metric.observed)
+        XCTAssertTrue(view.metric.observed)
     }
 }
