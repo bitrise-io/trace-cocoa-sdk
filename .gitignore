@@ -107,5 +107,4 @@ firebase-debug.log
 .swiftpm
 Trace.xcframework
 libTrace.a
-SDK/**/Trace-Swift.h
-SDK/**/VERSION
+SDK/
