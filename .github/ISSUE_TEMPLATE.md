@@ -2,8 +2,8 @@
 
   * Xcode version: _____
   * Trace SDK version: _____
-  * Installation method: `Trace step | CocoaPods | Carthage | Xcode(Git submodule) | SPM`
-  * iOS Version (Optional):
+  * Installation method: `Trace Step | CocoaPods | Carthage | Xcode(Git submodule) | SPM | Manual`
+  * iOS Version:
   * Swift Version (Optional):
 
 #### Steps to reproduce:
@@ -14,5 +14,11 @@ This could be a description, Stacktrace, crash report, screenshot/video, log/con
 #### Relevant Code/StackTrace/Crash report:
 
 ```swift
-// Add code here to reproduce the problem
+// Add details here to reproduce the problem
+```
+
+#### Any other information(Optional):
+
+```swift
+// Console logs, Xcode logs, Bitrise build url etc...
 ```
