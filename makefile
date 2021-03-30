@@ -81,8 +81,8 @@ endif
 	git add --all
 	git commit -m "Bumped version to $(version) [ci skip]"
 	git tag $(version)
-	# git push
-	# git push --tags
+	git push
+	git push --tags
 	echo "\nPushed changed to remote repo"
 
 	echo "\n\nComplete"
