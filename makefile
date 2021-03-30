@@ -78,6 +78,7 @@ endif
 	git --no-pager status --porcelain
 
 	# Commit/Tag changes and push
+	git add --all
 	git commit -m "Bumped version to $(version) [ci skip]"
 	git tag $(version)
 	# git push
