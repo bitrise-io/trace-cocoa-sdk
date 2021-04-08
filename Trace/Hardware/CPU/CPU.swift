@@ -162,14 +162,20 @@ internal final class CPU: CPUProtocol {
         var result = [String: thread_basic_info]()
         
         for act_t in threadActPointers() {
-            var raw: [Int8] = Array(repeating: 0, count: 256)
             var name = String(act_t)
-            
+
             if let pthread = pthread_from_mach_thread_np(act_t) {
                 _ = pthread_getname_np(pthread, &raw, raw.count)
+                var raw: [Int8] = Array(repeating: 0, count: 256)
                 
+                _ = pthread_getname_np(pthread, &raw, raw.count)
+
                 if let realName = String(utf8String: raw), !realName.isEmpty {
                     name = realName
+                }
+                
+                if name.isEmpty {
+                    name = "Unknown thread \(Int.random(in: 0...10000))"
                 }
             }
             
