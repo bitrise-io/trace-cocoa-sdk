@@ -155,17 +155,13 @@ internal final class CPU: CPUProtocol {
     
     // Get name and details of the thread
     private func threads() -> [String: thread_basic_info] {
-        var thinfo = thread_info_t.allocate(capacity: Int(THREAD_INFO_MAX))
-        let thread_info_count = UnsafeMutablePointer<mach_msg_type_number_t>.allocate(capacity: 128)
         let count: Int = MemoryLayout<thread_basic_info_data_t>.size / MemoryLayout<integer_t>.size
-        
         var result = [String: thread_basic_info]()
         
         for act_t in threadActPointers() {
             var name = String(act_t)
 
             if let pthread = pthread_from_mach_thread_np(act_t) {
-                _ = pthread_getname_np(pthread, &raw, raw.count)
                 var raw: [Int8] = Array(repeating: 0, count: 256)
                 
                 _ = pthread_getname_np(pthread, &raw, raw.count)
@@ -178,19 +174,19 @@ internal final class CPU: CPUProtocol {
                     name = "Unknown thread \(Int.random(in: 0...10000))"
                 }
             }
-            
-            thread_info_count.pointee = UInt32(THREAD_INFO_MAX)
-            
-            let kr = thread_info(act_t, thread_flavor_t(THREAD_BASIC_INFO), thinfo, thread_info_count)
-            
+
+            var thread_info_count = mach_msg_type_number_t(THREAD_INFO_MAX)
+            var thinfo = [integer_t](repeating: 0, count: Int(thread_info_count))
+            let kr = thread_info(act_t, thread_flavor_t(THREAD_BASIC_INFO), &thinfo, &thread_info_count)
+
             guard kr == KERN_SUCCESS else { continue }
-            
+
             let basic_info_th = withUnsafePointer(to: &thinfo, {
                 return $0.withMemoryRebound(to: thread_basic_info_t.self, capacity: count, {
                     return $0.pointee
                 })
             })
-            
+
             result[name] = basic_info_th.pointee
         }
         
