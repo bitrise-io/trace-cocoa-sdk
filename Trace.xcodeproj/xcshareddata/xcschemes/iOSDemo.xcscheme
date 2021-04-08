@@ -159,7 +159,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = "Leaks"
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
+      ignoresPersistentStateOnLaunch = "YES"
+      debugDocumentVersioning = "NO">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
