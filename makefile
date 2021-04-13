@@ -82,6 +82,7 @@ endif
 	@git commit -m "Bumped version to $(version) [ci skip]"
 	@git tag $(version)
 	@git push
+	@sleep 3
 	@git push --tags
 	@echo "\nPushed changed to remote repo"
 
