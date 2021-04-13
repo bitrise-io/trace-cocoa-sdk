@@ -4,7 +4,7 @@
   "description": "Catch bugs before they reach production — get detailed crash reports and monitor how your app is performing across the entire install base. When issues are detected we show you exactly what happened during the user session to locate, reproduce, and fix the problem as quickly as possible.",
   "social_media_url": "https://twitter.com/bitrise",
   "homepage": "https://www.bitrise.io/add-ons/trace-mobile-monitoring",
-  "version": "1.7.28",
+  "version": "1.7.29",
   "swift_versions": [
     "5.0",
     "5.1",
@@ -31,7 +31,7 @@
   ],
   "source": {
     "git": "https://github.com/bitrise-io/trace-cocoa-sdk.git",
-    "tag": "1.7.28"
+    "tag": "1.7.29"
   },
   "module_name": "Trace",
   "static_framework": true,
