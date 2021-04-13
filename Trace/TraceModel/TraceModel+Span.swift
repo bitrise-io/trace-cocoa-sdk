@@ -371,10 +371,27 @@ extension TraceModel.Span {
     
     /// :nodoc:
     public override var description: String {
-        let date = Date.date(from: start)
-        let time = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .medium)
+        let startDate = Date.date(from: start)
+        let startDateFormatted = DateFormatter.localizedString(
+            from: startDate,
+            dateStyle: .none,
+            timeStyle: .medium
+        )
+        let endDateFormatted: String
         
-        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), isComplete: \(end != nil), startTime: \(time)"
+        if let end = end {
+            let endDate = Date.date(from: end)
+            
+            endDateFormatted = DateFormatter.localizedString(
+                from: endDate,
+                dateStyle: .none,
+                timeStyle: .medium
+            )
+        } else {
+            endDateFormatted = "Unknown"
+        }
+        
+        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), start: \(startDateFormatted), end: \(endDateFormatted)"
     }
 }
 
