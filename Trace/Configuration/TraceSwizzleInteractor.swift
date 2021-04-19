@@ -8,7 +8,10 @@
 
 import Foundation
 import UIKit
+
+#if canImport(JavaScriptCore)
 import JavaScriptCore.JSContextRef
+#endif
 
 internal struct TraceSwizzleInteractor {
     

@@ -8,7 +8,10 @@
 
 import Foundation
 import Network
+
+#if canImport(SystemConfiguration)
 import SystemConfiguration.CaptiveNetwork
+#endif
 
 internal protocol ConnectivitySupportProtocol {
     
