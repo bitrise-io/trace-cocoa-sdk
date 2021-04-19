@@ -108,7 +108,7 @@ final public class Trace: NSObject {
         setupCrashReporting()
         #endif
         
-        Logger.default(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
+        Logger.print(.launch, "Bitrise Trace version: \(Constants.SDK.version.rawValue) - Beta")
         
         setupConfiguration()
         
