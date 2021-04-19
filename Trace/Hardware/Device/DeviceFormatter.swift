@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 #if !targetEnvironment(macCatalyst) && !targetEnvironment(simulator)
-import CoreTelephony.CTTelephonyNetworkInfo
+    #if canImport(CoreTelephony)
+    import CoreTelephony.CTTelephonyNetworkInfo
+    #endif
 #endif
 
 internal struct DeviceFormatter: JSONEncodable {
