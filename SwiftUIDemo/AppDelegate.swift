@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Trace
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("DEMO - did finish launching with options")
+        
+        _ = Trace.shared
         
         return true
     }
