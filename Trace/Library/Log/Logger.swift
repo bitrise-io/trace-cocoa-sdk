@@ -110,7 +110,7 @@ public enum Logger {
     ///   - module: module type
     ///   - message: message to print
     @discardableResult
-    fileprivate static func print(_ module: Module, _ message: String) -> Bool {
+    internal static func print(_ module: Module, _ message: String) -> Bool {
         // Add prefix to all logs
         let prefix = "[\(Constants.SDK.company.rawValue):" + Constants.SDK.name.rawValue + "/"
         let text = prefix + module.rawValue + "]" + " " + message
