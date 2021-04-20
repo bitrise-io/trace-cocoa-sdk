@@ -79,7 +79,7 @@ endif
 
 	# Commit/Tag changes and push
 	@git add --all
-	@git commit -m "Bumped version to $(version) [ci skip]"
+	@git commit -m "Bumped version to $(version)"
 	@git tag $(version)
 	@git push
 	@sleep 3
