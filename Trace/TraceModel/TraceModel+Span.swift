@@ -340,7 +340,7 @@ extension TraceModel {
         @discardableResult
         internal func validate() -> Bool {
             guard let strongEnd = end else {
-                Logger.debug(.traceModel, "Span(\(name)) end timestamp is not set")
+                Logger.warning(.traceModel, "Span(\(name)) end timestamp is not set")
                 
                 return false
             }
@@ -356,7 +356,7 @@ extension TraceModel {
             }
             
             if !valid {
-                Logger.debug(.internalError, "Span(\(name.value)) end timestamp (\(String(describing: end))) is before it's start timestamp (\(start))")
+                Logger.warning(.internalError, "Span(\(name.value)) end timestamp (\(String(describing: end))) is before it's start timestamp (\(start))")
             }
             
             return valid

@@ -34,7 +34,7 @@ internal struct TraceConfigurationInteractor {
                 network.configuration.additionalHeaders[.installationSource] = source
             }
             
-            Logger.default(.launch, "Bitrise Trace setup complete")
+            Logger.print(.launch, "Bitrise Trace setup complete")
             
             result = true
         } catch {
@@ -48,7 +48,7 @@ internal struct TraceConfigurationInteractor {
         let environment = ProcessInfo.processInfo.environment
         
         if let configuration = try? BitriseConfiguration(dictionary: environment) {
-            Logger.warning(.application, "Overriding configuration from Xcode environment variables")
+            Logger.print(.application, "Overriding configuration from Xcode environment variables")
                 
             network.authorization = configuration.token
             

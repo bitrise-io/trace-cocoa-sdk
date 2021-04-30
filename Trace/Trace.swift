@@ -103,7 +103,7 @@ final public class Trace: NSObject {
     
     private func setup(with initializationTime: Time.Timestamp) {
         #if DEBUG || Debug || debug
-        Logger.debug(.crash, "Disabled since app is running in Debug mode")
+        Logger.print(.crash, "Disabled since app is running in Debug mode")
         #else
         setupCrashReporting()
         #endif

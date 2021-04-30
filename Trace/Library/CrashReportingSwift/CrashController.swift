@@ -101,7 +101,7 @@ public final class CrashController: NSObject {
                 count = processedCount
 
                 if processedCount != 0 {
-                    Logger.debug(.crash, "Report count: \(count)")
+                    Logger.default(.crash, "Report count: \(count)")
                 }
             }
 
