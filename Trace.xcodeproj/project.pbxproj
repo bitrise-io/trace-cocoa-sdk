@@ -267,7 +267,7 @@
 		104EA0C2238294FA004C07CE /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104EA0C1238294FA004C07CE /* Control.storyboard */; };
 		104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C32382A407004C07CE /* GestureViewController.swift */; };
 		104EA0C62382AA61004C07CE /* Gesture+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C52382AA61004C07CE /* Gesture+Swizzled.swift */; };
-		104F555D2321.7.3206247C4 /* ViewSwizzledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555C23214723006247C4 /* ViewSwizzledTests.swift */; };
+		104F555D2321.7.3206247C4 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555E2322563C006247C4 /* ViewFilterTests.swift */; };
 		104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556023225845006247C4 /* ViewControllerFilterTests.swift */; };
 		104F556323225AFC006247C4 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556223225AFC006247C4 /* SessionTests.swift */; };
@@ -305,6 +305,7 @@
 		1064C8DE229610DA00787D8C /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8DD229610DA00787D8C /* Host.swift */; };
 		1064C8E12296266300787D8C /* MemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8E02296266300787D8C /* MemoryTests.swift */; };
 		1064C8E42296DEBD00787D8C /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064C8E32296DEBD00787D8C /* Swizzle.swift */; };
+		106C22FF263C238100706776 /* ViewSwizzledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555C2321.7.3206247C4 /* ViewSwizzledTests.swift */; };
 		106D1C8222980D4E00E02CFE /* SwizzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D1C8122980D4E00E02CFE /* SwizzleTests.swift */; };
 		1070AB9324748AAE00F15090 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070AB9224748AAE00F15090 /* main.swift */; };
 		1070AB9E24748CD900F15090 /* UploadDSYMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070AB9D24748CD900F15090 /* UploadDSYMTests.swift */; };
@@ -1176,8 +1177,8 @@
 		1070AB9B24748CD800F15090 /* UploadDSYMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UploadDSYMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1070AB9D24748CD900F15090 /* UploadDSYMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDSYMTests.swift; sourceTree = "<group>"; };
 		1070AB9F24748CD900F15090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		10729195231FC275007A18C7 /* HardwareFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HardwareFormatterTests.swift; path = Tests/HardwareFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		107291.7.32FDC08007A18C7 /* DeviceFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceFormatterTests.swift; path = Tests/DeviceFormatterTests.swift; sourceTree = SOURCE_ROOT; };
+		10729195231FC275007A18C7 /* HardwareFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HardwareFormatterTests.swift; path = Tests/HardwareFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		10729199231FDF65007A18C7 /* URLSessionTaskFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskFormatterTests.swift; path = Tests/URLSessionTaskFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		1072919B231FE142007A18C7 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QueueTests.swift; path = Tests/QueueTests.swift; sourceTree = SOURCE_ROOT; };
 		1072919D231FE167007A18C7 /* SchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SchedulerTests.swift; path = Tests/SchedulerTests.swift; sourceTree = SOURCE_ROOT; };
@@ -4737,7 +4738,7 @@
 				108EF3BF231E89C60029FD65 /* FPSFormatterTests.swift in Sources */,
 				108EF3C1231E98880029FD65 /* RequestFormatterTests.swift in Sources */,
 				10F2874E23C3790A00F9D03A /* JailbrokeTests.swift in Sources */,
-				104F555D2321.7.3206247C4 /* ViewSwizzledTests.swift in Sources */,
+				104F555D2321.7.3206247C4 /* (null) in Sources */,
 				1028C8BE2302BA1D00E07839 /* ConnectivityTests.swift in Sources */,
 				1028C8C42302C28A00E07839 /* DatabaseTests.swift in Sources */,
 				10866F4022946AEB00D77D56 /* TraceTests.swift in Sources */,
@@ -4747,6 +4748,7 @@
 				106D1C8222980D4E00E02CFE /* SwizzleTests.swift in Sources */,
 				10C0F5AA22E1BF3000FA5465 /* BitriseConfigurationInteractorTests.swift in Sources */,
 				10F4648A2322AAB20071FD5C /* StartupTests.swift in Sources */,
+				106C22FF263C238100706776 /* ViewSwizzledTests.swift in Sources */,
 				10866F3C22946A6D00D77D56 /* ConstantsTests.swift in Sources */,
 				1091373424AF5EFD00476EF6 /* Json.swift in Sources */,
 				10CA876B229F1ED3003702B1 /* MetricsServiceTests.swift in Sources */,
