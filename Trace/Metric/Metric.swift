@@ -106,7 +106,7 @@ internal struct Metric: Codable {
         for series in timeseries where series.values.count != count {
             let message = "Metric keys:\(count), values:\(series.values.count) mismatch for \(descriptor.name)"
             
-            Logger.debug(.internalError, message)
+            Logger.warning(.internalError, message)
             
             result = false
         }

@@ -35,7 +35,7 @@ internal final class SwiftOnlyLoad: NSObject, SelfAware {
             let name = Constants.SDK.name.rawValue
             let message = company + " " + name + " " + "starting up using application's runloop"
             
-            Logger.default(.launch, message)
+            Logger.warning(.launch, message)
         }
         
         // Start SDK
