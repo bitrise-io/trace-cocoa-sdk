@@ -10,6 +10,7 @@ import Foundation
 import JavaScriptCore
 
 /// Internal use only
+/// Disabled
 internal extension JSValue {
     
     // MARK: - Swizzled

@@ -11,6 +11,7 @@ import UIKit
 import ObjectiveC
 
 /// Internal use only
+/// Disabled
 internal extension UIGestureRecognizer {
     
     // MARK: - Swizzled

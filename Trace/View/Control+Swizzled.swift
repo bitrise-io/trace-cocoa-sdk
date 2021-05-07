@@ -13,6 +13,7 @@ import ObjectiveC
 // MARK: - Control
 
 /// Internal use only
+/// Disabled
 /// pecker:ignore
 internal final class UIControl_Swizzled: Swizzled {
     

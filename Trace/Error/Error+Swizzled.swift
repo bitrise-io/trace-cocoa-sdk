@@ -41,15 +41,17 @@ extension NSError: Swizzled {
     // MARK: - Process
     
     private static func process(domain: String, code: Int, userInfo: [String: Any]?) {
-        let formatter = ErrorFormatter(domain: domain, code: code, userinfo: userInfo)
+        guard !domain.lowercased().contains("bitrise") else { return }
+        
         let key = Constants.API.absoluteString
         let failingURLKey = (userInfo?["NSErrorFailingURLKey"] as? String) ?? ""
         let failingURLStringKey = (userInfo?["NSErrorFailingURLStringKey"] as? String) ?? ""
         
-        guard !domain.contains("bitrise") else { return }
         guard !failingURLKey.contains(key) || !failingURLStringKey.contains(key) else {
             return
         }
+        
+        let formatter = ErrorFormatter(domain: domain, code: code, userinfo: userInfo)
         
         Trace.shared.queue.add(formatter.metrics)
     }
