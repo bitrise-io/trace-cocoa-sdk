@@ -33,7 +33,9 @@ internal struct TraceSwizzleInteractor {
         
         NSError.bitrise_swizzle_methods()
         
+        #if canImport(JavaScriptCore)
         JSContext.bitrise_swizzle_methods()
+        #endif
         
         return true
     }

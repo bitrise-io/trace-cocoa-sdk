@@ -7,7 +7,10 @@
 //
 
 import Foundation
+
+#if canImport(JavaScriptCore)
 import JavaScriptCore
+#endif
 
 /// Internal use only
 /// Disabled
