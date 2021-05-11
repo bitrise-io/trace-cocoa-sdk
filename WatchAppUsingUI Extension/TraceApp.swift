@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-//import Trace
+// import Trace
 
 @main
 struct TraceApp: App {
