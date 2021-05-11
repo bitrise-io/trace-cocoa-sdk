@@ -4,10 +4,21 @@ import Foundation
 // swiftlint:disable switch_case_alignment
 // swiftlint:disable force_unwrapping
 
+/**
+ Examples
+ 
+ // In the root of the repo
+ swift UploadSystemSymbols/main.swift -path ~/Downloads/
+ 
+ // In the root of the repo and hae set architecture that are already in the path
+ swift UploadSystemSymbols/main.swift -path ~/Downloads/ -architecture arm64
+ */
+
 // MARK: - Enum
 
 enum Parameter: String {
     case path = "-path"
+    case architecture = "-architecture"
 }
 
 enum Skip: String, CaseIterable {
@@ -294,6 +305,7 @@ let arguments = CommandLine.arguments
 let fileManager = FileManager.default
 var path = fileManager.currentDirectoryPath
 let orginalPath = path
+var knownArchitectures = [String]()
 
 // MARK: - ENV
 
@@ -306,48 +318,61 @@ if let index = arguments.firstIndex(of: Parameter.path.rawValue) {
     fileManager.changeCurrentDirectoryPath(path)
 }
 
+for (index, value) in arguments.enumerated() {
+    if value == Parameter.architecture.rawValue {
+        let architecture = arguments[index + 1]
+        
+        print("Found known architecture: \(architecture)")
+        
+        knownArchitectures.append(architecture)
+    }
+}
+
 print("Current directory path: \(path) \n")
 
 // MARK: - Run
 
 do {
-    // Find IPSW
-    let locater = Locater(fileManager: fileManager, path: path)
-    let ipsws = try locater.findIpsw()
-    
-    print("\nIPSW")
-    ipsws.forEach { print($0) }
-    
-    // Find biggest sized DMG file
-    print("\nBiggest DMG content file")
-    var knownArchitectures = [String]()
+    if knownArchitectures.isEmpty {
+        // Find IPSW
+        let locater = Locater(fileManager: fileManager, path: path)
+        let ipsws = try locater.findIpsw()
+        
+        print("\nIPSW")
+        ipsws.forEach { print($0) }
+        
+        // Find biggest sized DMG file
+        print("\nBiggest DMG content file")
 
-    let contents = try locater.findBiggestDMG(from: ipsws)
-    try contents.forEach { content in
-        // Unzip IPSW for the DMG
-        print("\nUnzipping: \(content)")
-        try Zip().unzip(atPath: content.ipsw.fullPath, filter: content.content.name)
+        let contents = try locater.findBiggestDMG(from: ipsws)
+        try contents.forEach { content in
+            // Unzip IPSW for the DMG
+            print("\nUnzipping: \(content)")
+            try Zip().unzip(atPath: content.ipsw.fullPath, filter: content.content.name)
 
-        // Mount .DMG to OS
-        let dmg = (path as NSString).appendingPathComponent(content.content.name)
-        let volumeResults = try Shell().run(["hdiutil", "attach", dmg])
-        let volume = try locater.findVolume(from: volumeResults)
+            // Mount .DMG to OS
+            let dmg = (path as NSString).appendingPathComponent(content.content.name)
+            let volumeResults = try Shell().run(["hdiutil", "attach", dmg])
+            let volume = try locater.findVolume(from: volumeResults)
 
-        // Move OS debug file to root
-        let OSDebugPath = (volume as NSString).appendingPathComponent("System/Library/Caches/com.apple.dyld/")
-        let dyldName = try fileManager.contentsOfDirectory(atPath: OSDebugPath).first ?? ""
-        let dyldPath = (OSDebugPath as NSString).appendingPathComponent(dyldName)
-        let dyldFolderName = String(dyldName[dyldName.lastIndex(of: "_")!..<dyldName.endIndex]).replacingOccurrences(of: "_", with: "")
+            // Move OS debug file to root
+            let OSDebugPath = (volume as NSString).appendingPathComponent("System/Library/Caches/com.apple.dyld/")
+            let dyldName = try fileManager.contentsOfDirectory(atPath: OSDebugPath).first ?? ""
+            let dyldPath = (OSDebugPath as NSString).appendingPathComponent(dyldName)
+            let dyldFolderName = String(dyldName[dyldName.lastIndex(of: "_")!..<dyldName.endIndex]).replacingOccurrences(of: "_", with: "")
 
-        try Shell().run(["mv", dyldPath, fileManager.currentDirectoryPath])
+            try Shell().run(["mv", dyldPath, fileManager.currentDirectoryPath])
 
-        // DSC extractor
-        let dyldCopiedLocation = (fileManager.currentDirectoryPath as NSString).appendingPathComponent(dyldName)
-        let dyldCopiedOutputLocation = (fileManager.currentDirectoryPath as NSString).appendingPathComponent(dyldFolderName)
+            // DSC extractor
+            let dyldCopiedLocation = (fileManager.currentDirectoryPath as NSString).appendingPathComponent(dyldName)
+            let dyldCopiedOutputLocation = (fileManager.currentDirectoryPath as NSString).appendingPathComponent(dyldFolderName)
 
-        try Shell().run(["\(orginalPath)/UploadSystemSymbols/dsc_extractor", dyldCopiedLocation, dyldCopiedOutputLocation])
+            try Shell().run(["\(orginalPath)/UploadSystemSymbols/dsc_extractor", dyldCopiedLocation, dyldCopiedOutputLocation])
 
-        knownArchitectures.append(dyldFolderName)
+            knownArchitectures.append(dyldFolderName)
+        }
+    } else {
+        print("Skipping to Merge symbols and Symsorter since architectures slices have been extracted")
     }
 
     // Merge symbols i.e arm64 and arm64e
@@ -355,8 +380,27 @@ do {
 
     if knownArchitectures.count == 2 {
         print("Merging known architectures")
+        
+        let folder0 = "\(path)\(knownArchitectures[0])"
+        let folder1 = "\(path)\(knownArchitectures[1])"
+        let size0before = try Shell().run(["du", "-sh", folder0]).get()
+        let size1before = try Shell().run(["du", "-sh", folder1]).get()
+        
+        print("Current folder size for \(size0before)")
+        print("Current folder size for \(size1before)")
+        
+        let commands = ["\(orginalPath)/UploadSystemSymbols/merge_symbols", folder0, folder1]
+        
+        switch try Shell().run(commands) {
+            case .success(let result): print(result)
+            case .failure(let error): print(error)
+        }
 
-        try Shell().run(["bash", "\(orginalPath)/UploadSystemSymbols/merge_symbols.sh", "\(path)\(knownArchitectures[0])", "\(path)\(knownArchitectures[1])"])
+        let size0after = try Shell().run(["du", "-sh", folder0]).get()
+        let size1after = try Shell().run(["du", "-sh", folder1]).get()
+        
+        print("Current folder size after processing for \(size0after)")
+        print("Current folder size after processing for \(size1after)")
     }
     
     // Symsorter
@@ -364,10 +408,10 @@ do {
     try Shell().run([command.command])
     
     // Upload to GCP
-    try Shell().run(["gsutil", "-o", "GSUtil:parallel_process_count=1", "-o", "GSUtil:parallel_thread_count=24", "-m", "cp", "-r", "\(path)Output/ios/", Bucket.prod.rawValue])
+    try Shell().run(["gsutil", "-o", "GSUtil:parallel_process_count=1", "-o", "GSUtil:parallel_thread_count=8", "-m", "cp", "-r", "\(path)Output/ios/", Bucket.prod.rawValue])
     
     // Confirm uploaded to GCP
-    try Shell().run(["gsutil", "-o", "GSUtil:parallel_process_count=1", "-o", "GSUtil:parallel_thread_count=24", "-m", "cp", "-n", "-r", "\(path)Output/ios/", Bucket.prod.rawValue])
+    try Shell().run(["gsutil", "-o", "GSUtil:parallel_process_count=1", "-o", "GSUtil:parallel_thread_count=8", "-m", "cp", "-n", "-r", "\(path)Output/ios/", Bucket.prod.rawValue])
     
     // Read the directory and object sizes
     switch try Shell().run(["gsutil", "du", "-h", "\(Bucket.prod.rawValue)/ios/\(command.version)/"]) {
@@ -375,6 +419,7 @@ do {
         case .failure(let error): print(error)
     }
 } catch {
+    print("Scrip error")
     print(error)
 }
 
