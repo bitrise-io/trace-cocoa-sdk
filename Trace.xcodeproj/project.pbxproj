@@ -3724,7 +3724,7 @@
 			attributes = {
 				CLASSPREFIX = BR;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
 					100993D925003BB1006C7FB4 = {

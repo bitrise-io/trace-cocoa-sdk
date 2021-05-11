@@ -11,7 +11,7 @@ import UIKit
 import ObjectiveC
 
 /// Class to help with finding main SDK gateway
-private protocol SelfAware: class {
+private protocol SelfAware: AnyObject {
     
     // MARK: - Awake
     

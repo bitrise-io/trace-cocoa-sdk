@@ -4,16 +4,6 @@ import Foundation
 // swiftlint:disable switch_case_alignment
 // swiftlint:disable force_unwrapping
 
-/**
- Examples
- 
- // In the root of the repo
- swift UploadSystemSymbols/main.swift -path ~/Downloads/
- 
- // In the root of the repo and hae set architecture that are already in the path
- swift UploadSystemSymbols/main.swift -path ~/Downloads/ -architecture arm64
- */
-
 // MARK: - Enum
 
 enum Parameter: String {
@@ -29,6 +19,15 @@ enum Skip: String, CaseIterable {
 
 // MARK: - Shell
 
+/**
+ Examples
+ 
+ // In the root of the repo
+ swift UploadSystemSymbols/main.swift -path ~/Downloads/
+ 
+ // In the root of the repo and hae set architecture that are already in the path
+ swift UploadSystemSymbols/main.swift -path ~/Downloads/ -architecture arm64
+ */
 final class Shell {
     
     // MARK: - Error
@@ -318,14 +317,12 @@ if let index = arguments.firstIndex(of: Parameter.path.rawValue) {
     fileManager.changeCurrentDirectoryPath(path)
 }
 
-for (index, value) in arguments.enumerated() {
-    if value == Parameter.architecture.rawValue {
-        let architecture = arguments[index + 1]
+for (index, value) in arguments.enumerated() where value == Parameter.architecture.rawValuev {
+    let architecture = arguments[index + 1]
         
-        print("Found known architecture: \(architecture)")
+    print("Found known architecture: \(architecture)")
         
-        knownArchitectures.append(architecture)
-    }
+    knownArchitectures.append(architecture)
 }
 
 print("Current directory path: \(path) \n")
