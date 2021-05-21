@@ -31,7 +31,7 @@ final class URLSessionTests: XCTestCase {
     func testDataRequest() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let reqest = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: reqest)
@@ -47,7 +47,7 @@ final class URLSessionTests: XCTestCase {
     func testDataURL() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let session = URLSession.shared
         let task = session.dataTask(with: url)
         
@@ -78,7 +78,7 @@ final class URLSessionTests: XCTestCase {
     func testDataURLCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let session = URLSession.shared
         let task = session.dataTask(with: url) { _, _, _ in
             
@@ -95,7 +95,7 @@ final class URLSessionTests: XCTestCase {
     func testDataRequestCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { _, _, _ in
@@ -187,7 +187,7 @@ final class URLSessionTests: XCTestCase {
     func testStreamHost() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let session = URLSession.shared
         let task = session.streamTask(withHostName: url.absoluteString, port: 8000)
         
@@ -202,7 +202,7 @@ final class URLSessionTests: XCTestCase {
     func testUploadData() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
@@ -235,7 +235,7 @@ final class URLSessionTests: XCTestCase {
     func testUploadDataCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
@@ -253,7 +253,7 @@ final class URLSessionTests: XCTestCase {
     func testUploadFileCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
@@ -289,7 +289,7 @@ final class URLSessionTests: XCTestCase {
     func testDownloadRequest() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         
@@ -305,7 +305,7 @@ final class URLSessionTests: XCTestCase {
     func testDownloadURL() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let session = URLSession.shared
         let task = session.downloadTask(with: url)
         task.resume()
@@ -319,7 +319,7 @@ final class URLSessionTests: XCTestCase {
     func testDownloadRequestCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let request = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.downloadTask(with: request) { _, _, _ in
@@ -336,7 +336,7 @@ final class URLSessionTests: XCTestCase {
     func testDownloadURLCompletionHandler() {
         URLSession.bitrise_swizzle_methods()
         
-        let url = URL(string: "https://google.co.uk")!
+        let url = URL(string: "https://httpstat.us/200?sleep=2000")!
         let session = URLSession.shared
         let task = session.downloadTask(with: url) { _, _, _ in
             
