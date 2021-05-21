@@ -37,7 +37,7 @@ final class FPS: FPSProtocol {
         return displayLink
     }()
     
-    private var lastNotification: CFAbsoluteTime = 0.0
+    var lastNotification: CFAbsoluteTime = 0.0
     private var numberOfFrames: Int = 0
     
     var delay: TimeInterval = 1.5

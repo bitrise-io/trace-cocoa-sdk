@@ -73,4 +73,30 @@ final class LoggerTests: XCTestCase {
         XCTAssertEqual(Trace.configuration.log, .error)
         XCTAssertFalse(Logger.debug(.application, ["1", "2", "3"]))
     }
+    
+    func testLogLevel_equal() {
+        XCTAssertEqual(LoggerLevel.debug, LoggerLevel.debug)
+        XCTAssertEqual(LoggerLevel.default, LoggerLevel.default)
+        XCTAssertEqual(LoggerLevel.warning, LoggerLevel.warning)
+        XCTAssertEqual(LoggerLevel.error, LoggerLevel.error)
+    }
+    
+    func testLogLevel_not_equal() {
+        XCTAssertNotEqual(LoggerLevel.debug, LoggerLevel.error)
+        XCTAssertNotEqual(LoggerLevel.default, LoggerLevel.error)
+        XCTAssertNotEqual(LoggerLevel.warning, LoggerLevel.error)
+        XCTAssertNotEqual(LoggerLevel.error, LoggerLevel.debug)
+    }
+    
+    func testLogLevel_greaterThan() {
+        XCTAssertGreaterThan(LoggerLevel.default, LoggerLevel.debug)
+        XCTAssertGreaterThan(LoggerLevel.warning, LoggerLevel.default)
+        XCTAssertGreaterThan(LoggerLevel.error, LoggerLevel.warning)
+    }
+    
+    func testLogLevel_lessThan() {
+        XCTAssertLessThan(LoggerLevel.debug, LoggerLevel.default)
+        XCTAssertLessThan(LoggerLevel.default, LoggerLevel.warning)
+        XCTAssertLessThan(LoggerLevel.warning, LoggerLevel.error)
+    }
 }

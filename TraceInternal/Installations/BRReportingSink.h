@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFileName:(NSString* )fileName;
 
+- (void)filterReports:(NSArray<NSData *> *)reports onCompletion:(KSCrashReportFilterCompletion)onCompletion;
+
+- (BOOL)saveReport:(NSData *)report atPath:(NSURL *)location;
+
 @end
 
 NS_ASSUME_NONNULL_END

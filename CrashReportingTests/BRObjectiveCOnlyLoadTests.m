@@ -33,4 +33,19 @@
     XCTAssertNotNil(class);
 }
 
+- (void)testInclude_load {
+    Class class = NSClassFromString(@"BRInternalObjectiveCOnlyLoadUsingClassMethod");
+    
+    [class load];
+    
+    XCTAssertNotNil(class);
+}
+
+- (void)testInclude_new {
+    Class class = NSClassFromString(@"BRInternalObjectiveCOnlyLoadUsingClassMethod");
+    [class new];
+    
+    XCTAssertNotNil(class);
+}
+
 @end

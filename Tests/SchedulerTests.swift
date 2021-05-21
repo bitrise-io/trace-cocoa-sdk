@@ -33,7 +33,7 @@ final class SchedulerTests: XCTestCase {
         
         let test1 = expectation(description: "test1")
         
-        scheduler.schedule(metrics) { result in
+        scheduler.schedule(metrics) { _ in
             test1.fulfill()
         }
         
@@ -46,10 +46,23 @@ final class SchedulerTests: XCTestCase {
         let trace = TraceModel(id: "12345678", spans: [], resource: nil, type: .view)
         let test2 = expectation(description: "test2")
         
-        scheduler.schedule(trace) { result in
+        scheduler.schedule(trace) { _ in
             test2.fulfill()
         }
         
         wait(for: [test2], timeout: 10)
+    }
+    
+    func testCrashRequest() {
+        let network = Network()
+        let scheduler = Scheduler(with: network)
+        let crash = Crash(id: "id", timestamp: "1", title: "title", appVersion: "1", buildVersion: "1", osVersion: "1", deviceType: "ios", sessionId: "s1", network: "network", carrier: "c1", deviceId: "d1", eventIdentifier: "e1", crashedWithoutSession: false, report: Data())
+        let test3 = expectation(description: "test3")
+        
+        scheduler.schedule(crash) { _ in
+            test3.fulfill()
+        }
+        
+        wait(for: [test3], timeout: 10)
     }
 }

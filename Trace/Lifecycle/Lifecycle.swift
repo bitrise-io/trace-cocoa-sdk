@@ -56,7 +56,7 @@ final internal class Lifecycle {
     
     // MARK: - Observer
     
-    private func startObserver() {
+    func startObserver() {
         let notificationCenter = NotificationCenter.default
         
         didFinishLaunchingNotification = notificationCenter.addObserver(
@@ -109,7 +109,7 @@ final internal class Lifecycle {
     }
     
     // pecker:ignore
-    private func stopObserver() {
+    func stopObserver() {
         let notificationCenter = NotificationCenter.default
         
         notificationCenter.removeObserver(didFinishLaunchingNotification as Any)

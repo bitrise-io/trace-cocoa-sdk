@@ -8,6 +8,11 @@
 
 #import <XCTest/XCTest.h>
 #import "KSCrashInstallation.h"
+#import "BRReportingSink.h"
+#import "KSCrashReportWriter.h"
+
+@class KSCrashInstallation;
+@class BRReportingSink;
 
 @interface BRKSCrashInstallationTests : XCTestCase
 
@@ -61,6 +66,71 @@
     [self measureBlock:^{
         
     }];
+}
+
+- (void)testSink {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    BRReportingSink *sink = installation.sink;
+    
+    XCTAssertNotNil(sink);
+}
+
+- (void)testDeleteAllReports {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    [installation deleteAllReports];
+    
+    XCTAssertEqual(installation.reportCount, 0);
+}
+
+- (void)testAllReport {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    NSArray *reports = installation.allReport;
+    
+    XCTAssertEqual(reports.count, 0);
+}
+
+- (void)testAllReportsWithCompletion {
+    __block BOOL isCompleted;
+    __block NSError *error;
+    
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    [installation allReportsWithCompletion: ^(NSArray* filteredReports, BOOL completed, NSError* newError) {
+        completed = isCompleted;
+        error = newError;
+    }];
+    
+    XCTAssertFalse(isCompleted);
+    XCTAssertNil(error);
+}
+
+- (void)testIsEnabled {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    BOOL isEnabled = installation.isEnabled;
+    
+    XCTAssertFalse(isEnabled);
+}
+
+- (void)testInstall {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    BOOL installed = [installation install];
+    
+    XCTAssertNotNil(installation.userInfo);
+    XCTAssertEqual(installation.userInfo.count, 0);
+    XCTAssertTrue(installed);
+    XCTAssertTrue(installation.isEnabled);
+}
+
+static void crashCallback(const KSCrashReportWriter* writer) {
+    // You can add extra user data at crash time if you want.
+    writer->addBooleanElement(writer, "some_bool_value", NO);
+    NSLog(@"***advanced_crash_callback");
+}
+
+- (void)testOnCrash {
+    KSCrashInstallation *installation = [[KSCrashInstallation alloc] init];
+    installation.onCrash = crashCallback;
+    
+    XCTAssertTrue(installation.onCrash != NULL);
 }
 
 @end

@@ -87,15 +87,23 @@ final internal class Persistent: NSPersistentContainer {
         
         // Create directory if it doesn't exist
         if !fileManager.fileExists(atPath: url.path) {
-            do {
-                try fileManager.createDirectory(at: url, withIntermediateDirectories: true)
-            } catch {
-                Logger.error(.database, "Failed to create directory with error: \(error.localizedDescription)")
-            }
+            try? createDirectory(at: url)
         }
         
         Logger.debug(.database, url.absoluteString)
             
         return url
+    }
+    
+    static func createDirectory(at url: URL) throws {
+        let fileManager = FileManager.default
+        
+        do {
+            try fileManager.createDirectory(at: url, withIntermediateDirectories: true)
+        } catch {
+            Logger.error(.database, "Failed to create directory with error: \(error.localizedDescription)")
+            
+            throw error
+        }
     }
 }

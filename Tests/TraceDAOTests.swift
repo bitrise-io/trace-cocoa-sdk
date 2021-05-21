@@ -39,6 +39,10 @@ final class TraceDAOTests: XCTestCase {
     
     func testDAO_save() {
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let model = TraceModel(spans: [], type: .view)
         
         dao.create(with: model, save: true)
@@ -46,6 +50,10 @@ final class TraceDAOTests: XCTestCase {
     
     func testDAO() {
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let model = TraceModel(spans: [], type: .view)
         
         dao.create(with: model, save: false)
@@ -53,6 +61,10 @@ final class TraceDAOTests: XCTestCase {
     
     func testRequest() {
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let request = dao.fetchRequest
         
         XCTAssertNotNil(request)
@@ -87,6 +99,10 @@ final class TraceDAOTests: XCTestCase {
         database.reset()
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let count = dao.count(in: .view)
         
         XCTAssertEqual(count, 0)
@@ -96,6 +112,10 @@ final class TraceDAOTests: XCTestCase {
         let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         dao.create(with: [model], save: true, synchronous: true)
         
         let count = dao.count(in: .view)
@@ -107,6 +127,10 @@ final class TraceDAOTests: XCTestCase {
         let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         dao.create(with: [model], save: true, synchronous: true)
         
         let one = dao.one(in: .view)
@@ -116,6 +140,10 @@ final class TraceDAOTests: XCTestCase {
     
     func testFetch_all() {
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let all = dao.all(in: .view)
         
         XCTAssertNotNil(all)
@@ -127,6 +155,9 @@ final class TraceDAOTests: XCTestCase {
         var traces: [DBTrace] = []
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
         dao.allInBackground {
             traces.append(contentsOf: $0)
             
@@ -143,6 +174,9 @@ final class TraceDAOTests: XCTestCase {
         let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
         
         sleep(1)
@@ -183,6 +217,9 @@ final class TraceDAOTests: XCTestCase {
         let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
         
         let dbModels = dao.all(in: .view)
@@ -191,6 +228,9 @@ final class TraceDAOTests: XCTestCase {
         
         let date = Date()
         
+        dao.test_completion = {
+            
+        }
         dao.update(ids: dbModels.map { $0.objectID }) { traces -> Bool in
             XCTAssertNotNil(traces)
             
@@ -208,8 +248,15 @@ final class TraceDAOTests: XCTestCase {
         let model = TraceModel(spans: [], type: .view)
         
         let dao = database.dao.trace
+        dao.test_completion = {
+            
+        }
+        
         let count = dao.count(in: .view)
         
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
         
         sleep(1)
@@ -217,10 +264,28 @@ final class TraceDAOTests: XCTestCase {
         let dbModel = dao.one(in: .view)
         let ids = [dbModel.map { $0.objectID }!]
         
+        dao.test_completion = {
+            
+        }
         dao.delete(ids)
         
         sleep(1)
         
+        dao.test_completion = {
+            
+        }
+        
         XCTAssertGreaterThanOrEqual(dao.count(in: .view), count)
+    }
+    
+    func testDeleteCheck() {
+        enum Error: Swift.Error {
+            case test
+        }
+        
+        let dao = database.dao.trace
+        let result = dao.deleteAffectedObjects(Error.test)
+        
+        XCTAssertFalse(result)
     }
 }

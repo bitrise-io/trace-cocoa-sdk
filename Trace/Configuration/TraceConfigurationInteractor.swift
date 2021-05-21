@@ -54,6 +54,8 @@ internal struct TraceConfigurationInteractor {
             
             if let api = configuration.environment {
                 Constants.API = api
+                
+                result = true
             }
         }
         #endif

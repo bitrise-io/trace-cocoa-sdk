@@ -14,7 +14,7 @@ final class LifecycleTests: XCTestCase {
     
     // MARK: - Property
     
-    let lifecycle = Lifecycle()
+    var lifecycle: Lifecycle? = Lifecycle()
     
     private var observation: ((Metrics) -> Void)?
     
@@ -26,7 +26,8 @@ final class LifecycleTests: XCTestCase {
     }
     
     override func tearDown() {
-        
+        lifecycle?.stopObserver()
+        lifecycle = nil
     }
     
     // MARK: - Tests
@@ -103,6 +104,8 @@ final class LifecycleTests: XCTestCase {
         
         XCTAssertTrue(result)
         XCTAssertNotNil(notificationCenter)
+        
+        sleep(1)
         
         Trace.shared.queue.observation = nil
     }

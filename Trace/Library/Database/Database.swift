@@ -109,6 +109,7 @@ final internal class Database {
             return
         }
         
+        // Disk only
         let context = persistent.privateContext
         context.perform {
             let requests = [

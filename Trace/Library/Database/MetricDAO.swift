@@ -94,20 +94,7 @@ internal final class MetricDAO: CRUD {
                     DispatchQueue.main.async { self?.test_completion?() }
                 }
             } catch {
-                let cocoaError = error as NSError
-                let key = NSAffectedObjectsErrorKey
-                
-                if let affectedObjects = cocoaError.userInfo[key] as? [T] {
-                    func writtingMetricFailed() {
-                        Logger.error(.database, "Writting metric failed. Removing affected objects \(affectedObjects.count)")
-                    }
-                    
-                    writtingMetricFailed()
-                    
-                    let affectedObjectIds = affectedObjects.map { $0.objectID }
-                    
-                    self?.delete(affectedObjectIds)
-                }
+                self?.deleteAffectedObjects(error)
             }
         }
         
@@ -116,5 +103,29 @@ internal final class MetricDAO: CRUD {
         } else {
             context.perform(function)
         }
+    }
+    
+    // MARK: - Error
+    
+    @discardableResult
+    func deleteAffectedObjects(_ error: Error) -> Bool {
+        let cocoaError = error as NSError
+        let key = NSAffectedObjectsErrorKey
+        
+        if let affectedObjects = cocoaError.userInfo[key] as? [T] {
+            func writtingMetricFailed() {
+                Logger.error(.database, "Writting metric failed. Removing affected objects \(affectedObjects.count)")
+            }
+            
+            writtingMetricFailed()
+            
+            let affectedObjectIds = affectedObjects.map { $0.objectID }
+            
+            delete(affectedObjectIds)
+            
+            return true
+        }
+        
+        return false
     }
 }

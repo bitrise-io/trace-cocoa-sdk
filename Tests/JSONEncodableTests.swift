@@ -91,4 +91,11 @@ final class JSONEncodableTests: XCTestCase {
             XCTAssertNotNil(error)
         }
     }
+    
+    func testClass_passes() {
+        let error = ErrorFormatter(domain: "test", code: 1, userinfo: nil)
+        
+        XCTAssertNotNil(error.data)
+        XCTAssertNotNil(error.jsonString)
+    }
 }

@@ -230,6 +230,28 @@ final class NetworkTests: XCTestCase {
 
         _ = task
     }
+    
+    func testMakingUpload_clientError_withParameter() {
+        var task: URLSessionTask?
+
+        let async = expectation(description: "network request clientError")
+
+        let network = Network()
+        network.authorization = "test"
+        
+        task = network.upload(MockRouter.clientError, name: "test", file: Data(), parameters: ["1": "1", "2": "2"]) {
+            switch $0 {
+            case .success: XCTFail()
+            case .failure: async.fulfill()
+            }
+        }
+
+        XCTAssertNotNil(task)
+
+        waitForExpectations(timeout: 10.0) { _ in }
+
+        _ = task
+    }
 
     func testMakingUpload_serverError() {
         let async = expectation(description: "network request serverError")

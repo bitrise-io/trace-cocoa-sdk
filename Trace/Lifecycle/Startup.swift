@@ -59,12 +59,16 @@ internal final class Startup {
     
     // MARK: - Process
     
-    private func process() {
-        processMetric()
-        processTrace()
+    @discardableResult
+    private func process() -> Bool {
+        let metric = processMetric()
+        let trace = processTrace()
+        
+        return metric && trace
     }
     
-    private func processMetric() {
+    @discardableResult
+    private func processMetric() -> Bool {
         let currentSession = Trace.currentSession
         
         func sdkLaunchedWithoutAValidStartupSession() {
@@ -74,7 +78,7 @@ internal final class Startup {
         guard currentSession != 0 else {
             sdkLaunchedWithoutAValidStartupSession()
             
-            return
+            return false
         }
         
         // Compare start and end time.
@@ -84,18 +88,21 @@ internal final class Startup {
         let formatter = StartupFormatter(result, status: .cold)
         
         Trace.shared.queue.add(formatter.metrics)
+        
+        return true
     }
     
-    private func processTrace() {
+    @discardableResult
+    private func processTrace() -> Bool {
         let tracer = Trace.shared.tracer
         
         // Trace will always be in active traces as startup is short lived
         guard let model = tracer.traces.first(where: { $0.type == .startup }) else {
             Logger.warning(.traceModel, "Failed to locate Startup trace model")
             
-            return
+            return false
         }
         
-        tracer.finish(model)
+        return tracer.finish(model)
     }
 }

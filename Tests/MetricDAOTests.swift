@@ -47,6 +47,10 @@ final class MetricDAOTests: XCTestCase {
         let model = Metric(descriptor: descriptor, timeseries: [])
         let metrics = Metrics([model])
         
+        dao.test_completion = {
+            
+        }
+        
         dao.create(with: metrics, save: true)
     }
     
@@ -58,6 +62,10 @@ final class MetricDAOTests: XCTestCase {
             unit: .ms,
             type: .int64, keys: [])
         let model = Metric(descriptor: descriptor, timeseries: [])
+        
+        dao.test_completion = {
+            
+        }
         
         dao.create(with: [model], save: true, synchronous: true)
     }
@@ -71,12 +79,20 @@ final class MetricDAOTests: XCTestCase {
             type: .int64, keys: [])
         let model = Metric(descriptor: descriptor, timeseries: [])
         
+        dao.test_completion = {
+            
+        }
+        
         dao.create(with: model, save: false)
     }
     
     func testRequest() {
         let dao = database.dao.metric
         let request = dao.fetchRequest
+        
+        dao.test_completion = {
+            
+        }
         
         XCTAssertNotNil(request)
         XCTAssertTrue(request.entityName?.contains("Metric") == true)
@@ -112,6 +128,10 @@ final class MetricDAOTests: XCTestCase {
         let dao = database.dao.metric
         let count = dao.count(in: .view)
 
+        dao.test_completion = {
+            
+        }
+        
         XCTAssertEqual(count, 0)
     }
 
@@ -123,6 +143,10 @@ final class MetricDAOTests: XCTestCase {
 
         let count = dao.count(in: .view)
 
+        dao.test_completion = {
+            
+        }
+        
         XCTAssertGreaterThanOrEqual(count, 1)
     }
 
@@ -130,6 +154,9 @@ final class MetricDAOTests: XCTestCase {
         let model = Metric(descriptor: Metric.Descriptor(name: .appMemoryBytes, description: "", unit: .ms, type: .cumulativeDouble, keys: []), timeseries: [])
 
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
 
         let one = dao.one(in: .view)
@@ -139,6 +166,10 @@ final class MetricDAOTests: XCTestCase {
 
     func testFetch_all() {
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
+        
         let all = dao.all(in: .view)
 
         XCTAssertNotNil(all)
@@ -150,6 +181,9 @@ final class MetricDAOTests: XCTestCase {
         var metrics: [DBMetric] = []
 
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
         dao.allInBackground {
             metrics.append(contentsOf: $0)
 
@@ -166,6 +200,9 @@ final class MetricDAOTests: XCTestCase {
         let model = Metric(descriptor: Metric.Descriptor(name: .appMemoryBytes, description: "", unit: .ms, type: .cumulativeDouble, keys: []), timeseries: [])
 
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
 
         let dbModel = dao.one(in: .view)
@@ -196,6 +233,9 @@ final class MetricDAOTests: XCTestCase {
         let model = Metric(descriptor: Metric.Descriptor(name: .appMemoryBytes, description: "", unit: .ms, type: .cumulativeDouble, keys: []), timeseries: [])
 
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
         dao.create(with: [model], save: true, synchronous: true)
 
         let dbModels = dao.all(in: .view)
@@ -221,6 +261,10 @@ final class MetricDAOTests: XCTestCase {
         let model = Metric(descriptor: Metric.Descriptor(name: .appMemoryBytes, description: "", unit: .ms, type: .cumulativeDouble, keys: []), timeseries: [])
 
         let dao = database.dao.metric
+        dao.test_completion = {
+            
+        }
+        
         let count = dao.count(in: .view)
 
         dao.create(with: [model], save: true, synchronous: true)
@@ -233,5 +277,16 @@ final class MetricDAOTests: XCTestCase {
         dao.delete(ids)
         
         XCTAssertGreaterThanOrEqual(dao.count(in: .view), count)
+    }
+    
+    func testDeleteCheck() {
+        enum Error: Swift.Error {
+            case test
+        }
+        
+        let dao = database.dao.metric
+        let result = dao.deleteAffectedObjects(Error.test)
+        
+        XCTAssertFalse(result)
     }
 }

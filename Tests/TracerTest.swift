@@ -40,7 +40,15 @@ final class TracerTests: XCTestCase {
     
     // MARK: - Tests
     
-    func testTracer_add() {
+    func testTracer_add_empty_fails() {
+        XCTAssertEqual(tracer.traces.count, 0)
+        
+        tracer.addChild([])
+        
+        XCTAssertEqual(tracer.traces.count, 0)
+    }
+    
+    func testTracer_add1() {
         XCTAssertEqual(tracer.traces.count, 0)
         
         let trace = TraceModel.start(with: "test", type: .view)

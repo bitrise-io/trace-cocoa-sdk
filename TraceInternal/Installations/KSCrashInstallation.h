@@ -81,6 +81,8 @@ NS_ASSUME_NONNULL_BEGIN;
  */
 - (void) deleteAllReports;
 
+- (id<KSCrashReportFilter>) sink;
+
 @end
 
 NS_ASSUME_NONNULL_END;

@@ -10,8 +10,15 @@ import Foundation
 
 private var oldExceptionHandler: (@convention(c) (NSException) -> Swift.Void)?
 
+protocol CrashReportingProvider {
+    
+    // MARK: - Observe
+    
+    static func observe() -> Bool
+}
+
 /// CrashReporting class monitors for crashes in the host app. This uses Apple approach isn't the most accurate and mostly misses out majority of the classes. i.e Swift, C++ etc...
-internal final class CrashReporting {
+internal final class CrashReporting: CrashReportingProvider {
     
     // MARK: - Property
     
@@ -52,7 +59,7 @@ internal final class CrashReporting {
     // MARK: - Init
     
     @discardableResult
-    internal class func observe() -> Bool {
+    internal static func observe() -> Bool {
         oldExceptionHandler = NSGetUncaughtExceptionHandler()
         
         NSSetUncaughtExceptionHandler(CrashReporting.recieveException)
@@ -77,7 +84,7 @@ internal final class CrashReporting {
     
     // MARK: - Helper
     
-    private class func name(of signal: Int32) -> String {
+    class func name(of signal: Int32) -> String {
         switch signal {
         case SIGABRT: return "SIGABRT"
         case SIGILL: return "SIGILL"
@@ -93,7 +100,7 @@ internal final class CrashReporting {
     
     // MARK: - Process
     
-    private class func process(with report: Report) {
+    class func process(with report: Report) {
         let formatter = CrashFormatter(report)
         let spans = formatter.spans
         
@@ -112,7 +119,7 @@ internal final class CrashReporting {
     
     // MARK: - Terminate
     
-    private class func terminate() {
+    class func terminate() {
         NSSetUncaughtExceptionHandler(nil)
         
         signal(SIGABRT, SIG_DFL)

@@ -382,6 +382,7 @@
 		108EF3C3231EBFEB0029FD65 /* DataTaskFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108EF3C2231EBFEB0029FD65 /* DataTaskFormatterTests.swift */; };
 		108EF3C5231EC9310029FD65 /* TaskMetricsFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108EF3C4231EC9310029FD65 /* TaskMetricsFormatterTests.swift */; };
 		108EF3C7231FBCA90029FD65 /* SessionConfigurationFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108EF3C6231FBCA90029FD65 /* SessionConfigurationFormatterTests.swift */; };
+		1091.7.334AF383700476EF6 /* appCrashTotal_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091371124AF383700476EF6 /* appCrashTotal_no_match.json */; };
 		109136C924ACCAAB00476EF6 /* CollaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109136C824ACCAAB00476EF6 /* CollaterTests.swift */; };
 		109136CE24ACD03000476EF6 /* viewRenderLatencyMS_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 109136CD24ACD02F00476EF6 /* viewRenderLatencyMS_match.json */; };
 		109136D024ACE29000476EF6 /* viewRenderLatencyMS_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 109136CF24ACE28B00476EF6 /* viewRenderLatencyMS_no_match.json */; };
@@ -406,7 +407,6 @@
 		1091370E24AF356B00476EF6 /* appErrorTotal_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091370C24AF356B00476EF6 /* appErrorTotal_no_match.json */; };
 		1091370F24AF356B00476EF6 /* appErrorTotal_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091370D24AF356B00476EF6 /* appErrorTotal_match.json */; };
 		1091371224AF383700476EF6 /* appCrashTotal_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091371024AF383700476EF6 /* appCrashTotal_match.json */; };
-		1091.7.334AF383700476EF6 /* appCrashTotal_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091371124AF383700476EF6 /* appCrashTotal_no_match.json */; };
 		1091371624AF3A4600476EF6 /* appRequestTotal_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091371424AF3A4500476EF6 /* appRequestTotal_no_match.json */; };
 		1091371724AF3A4600476EF6 /* appRequestTotal_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091371524AF3A4500476EF6 /* appRequestTotal_match.json */; };
 		1091372724AF485400476EF6 /* appRequestSizeBytes_no_match.json in Resources */ = {isa = PBXBuildFile; fileRef = 1091372524AF485300476EF6 /* appRequestSizeBytes_no_match.json */; };
@@ -584,6 +584,27 @@
 		10D1E47C22E9AA83007BD5E1 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */; };
 		10D1E48022EB0088007BD5E1 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1E47F22EB0088007BD5E1 /* Repeater.swift */; };
 		10D4C91625BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */; };
+		10D582BF265282B700B62C3C /* TraceConfigurationInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582BE265282B700B62C3C /* TraceConfigurationInteractorTests.swift */; };
+		10D582C12653CA0800B62C3C /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582C02653CA0800B62C3C /* ViewControllerTests.swift */; };
+		10D582C32653F9FA00B62C3C /* JSContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582C22653F9FA00B62C3C /* JSContextTests.swift */; };
+		10D582C7265407B900B62C3C /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582C6265407B900B62C3C /* UIApplicationTests.swift */; };
+		10D582C9265516B700B62C3C /* URLSessionTaskMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582C8265516B700B62C3C /* URLSessionTaskMetricsTests.swift */; };
+		10D582CB265518F300B62C3C /* URLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582CA265518F300B62C3C /* URLSessionTests.swift */; };
+		10D582CE2655194400B62C3C /* ViewControllerMetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582CC2655193D00B62C3C /* ViewControllerMetricTests.swift */; };
+		10D582D026551AD200B62C3C /* JSValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D582CF26551AD200B62C3C /* JSValueTests.swift */; };
+		10D582D22655675400B62C3C /* BRReportingSinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D582D12655675400B62C3C /* BRReportingSinkTests.m */; };
+		10D582DF265660D400B62C3C /* iOSDemo-report-0074043d2e000000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D3265660D200B62C3C /* iOSDemo-report-0074043d2e000000.json */; };
+		10D582E0265660D400B62C3C /* iOSDemo-report-0074044008000000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D4265660D200B62C3C /* iOSDemo-report-0074044008000000.json */; };
+		10D582E1265660D400B62C3C /* crash-report-iOSDemo-1.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D5265660D300B62C3C /* crash-report-iOSDemo-1.crash */; };
+		10D582E2265660D400B62C3C /* crash-report-iOSDemo-Device-1.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D6265660D300B62C3C /* crash-report-iOSDemo-Device-1.crash */; };
+		10D582E3265660D400B62C3C /* crash-report-iOSDemo-Device-2.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D7265660D300B62C3C /* crash-report-iOSDemo-Device-2.crash */; };
+		10D582E4265660D400B62C3C /* iOSDemo-report-0074043ca8000000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D8265660D300B62C3C /* iOSDemo-report-0074043ca8000000.json */; };
+		10D582E5265660D400B62C3C /* iOSDemo-report-0074043fdd800000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582D9265660D300B62C3C /* iOSDemo-report-0074043fdd800000.json */; };
+		10D582E6265660D400B62C3C /* iOSDemo-report-0074043fd3800000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582DA265660D300B62C3C /* iOSDemo-report-0074043fd3800000.json */; };
+		10D582E7265660D400B62C3C /* crash-report-iOSDemo-Device-3.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582DB265660D300B62C3C /* crash-report-iOSDemo-Device-3.crash */; };
+		10D582E8265660D400B62C3C /* crash-report-iOSDemo-3.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582DC265660D300B62C3C /* crash-report-iOSDemo-3.crash */; };
+		10D582E9265660D400B62C3C /* iOSDemo-report-0074043d16000000.json in Resources */ = {isa = PBXBuildFile; fileRef = 10D582DD265660D400B62C3C /* iOSDemo-report-0074043d16000000.json */; };
+		10D582EA265660D400B62C3C /* crash-report-iOSDemo-2.crash in Resources */ = {isa = PBXBuildFile; fileRef = 10D582DE265660D400B62C3C /* crash-report-iOSDemo-2.crash */; };
 		10D7E8FA2344FE580032FBA3 /* FPSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D7E8F92344FE580032FBA3 /* FPSTests.swift */; };
 		10D7E8FC23450E730032FBA3 /* JSONEncodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */; };
 		10DCA093230420C800F0281E /* Encodable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DCA092230420C800F0281E /* Encodable+Helper.swift */; };
@@ -1254,6 +1275,7 @@
 		108EF3C2231EBFEB0029FD65 /* DataTaskFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTaskFormatterTests.swift; path = Tests/DataTaskFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		108EF3C4231EC9310029FD65 /* TaskMetricsFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskMetricsFormatterTests.swift; path = Tests/TaskMetricsFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		108EF3C6231FBCA90029FD65 /* SessionConfigurationFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionConfigurationFormatterTests.swift; path = Tests/SessionConfigurationFormatterTests.swift; sourceTree = SOURCE_ROOT; };
+		1091.7.334AF5EFD00476EF6 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Json.swift; path = Tests/Json.swift; sourceTree = SOURCE_ROOT; };
 		109136C824ACCAAB00476EF6 /* CollaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollaterTests.swift; path = Tests/CollaterTests.swift; sourceTree = SOURCE_ROOT; };
 		109136CD24ACD02F00476EF6 /* viewRenderLatencyMS_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = viewRenderLatencyMS_match.json; path = Tests/viewRenderLatencyMS_match.json; sourceTree = SOURCE_ROOT; };
 		109136CF24ACE28B00476EF6 /* viewRenderLatencyMS_no_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = viewRenderLatencyMS_no_match.json; path = Tests/viewRenderLatencyMS_no_match.json; sourceTree = SOURCE_ROOT; };
@@ -1287,7 +1309,6 @@
 		1091372A24AF4A3E00476EF6 /* appRequestLatencyMS_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = appRequestLatencyMS_match.json; path = Tests/appRequestLatencyMS_match.json; sourceTree = SOURCE_ROOT; };
 		1091372D24AF4B7300476EF6 /* appResponseSizeBytes_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = appResponseSizeBytes_match.json; path = Tests/appResponseSizeBytes_match.json; sourceTree = SOURCE_ROOT; };
 		1091372E24AF4B7300476EF6 /* appResponseSizeBytes_no_match.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = appResponseSizeBytes_no_match.json; path = Tests/appResponseSizeBytes_no_match.json; sourceTree = SOURCE_ROOT; };
-		1091.7.334AF5EFD00476EF6 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Json.swift; path = Tests/Json.swift; sourceTree = SOURCE_ROOT; };
 		1091373624AF8E7700476EF6 /* URLStructureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLStructureTests.swift; path = Tests/URLStructureTests.swift; sourceTree = SOURCE_ROOT; };
 		1091420025F62B7E00224F08 /* Int+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+helper.swift"; sourceTree = "<group>"; };
 		10916D70234B395300E02C14 /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResourceTests.swift; path = Tests/ResourceTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1385,6 +1406,27 @@
 		10D1E47B22E9AA83007BD5E1 /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		10D1E47F22EB0088007BD5E1 /* Repeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRKSCrashReportFilterAppleFmtTests.m; sourceTree = "<group>"; };
+		10D582BE265282B700B62C3C /* TraceConfigurationInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceConfigurationInteractorTests.swift; path = Tests/TraceConfigurationInteractorTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582C02653CA0800B62C3C /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerTests.swift; path = Tests/ViewControllerTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582C22653F9FA00B62C3C /* JSContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSContextTests.swift; path = Tests/JSContextTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582C6265407B900B62C3C /* UIApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIApplicationTests.swift; path = Tests/UIApplicationTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582C8265516B700B62C3C /* URLSessionTaskMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTaskMetricsTests.swift; path = Tests/URLSessionTaskMetricsTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582CA265518F300B62C3C /* URLSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSessionTests.swift; path = Tests/URLSessionTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582CC2655193D00B62C3C /* ViewControllerMetricTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerMetricTests.swift; path = Tests/ViewControllerMetricTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582CF26551AD200B62C3C /* JSValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSValueTests.swift; path = Tests/JSValueTests.swift; sourceTree = SOURCE_ROOT; };
+		10D582D12655675400B62C3C /* BRReportingSinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRReportingSinkTests.m; sourceTree = "<group>"; };
+		10D582D3265660D200B62C3C /* iOSDemo-report-0074043d2e000000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074043d2e000000.json"; path = "Mocks/iOSDemo-report-0074043d2e000000.json"; sourceTree = "<group>"; };
+		10D582D4265660D200B62C3C /* iOSDemo-report-0074044008000000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074044008000000.json"; path = "Mocks/iOSDemo-report-0074044008000000.json"; sourceTree = "<group>"; };
+		10D582D5265660D300B62C3C /* crash-report-iOSDemo-1.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-1.crash"; path = "Mocks/crash-report-iOSDemo-1.crash"; sourceTree = "<group>"; };
+		10D582D6265660D300B62C3C /* crash-report-iOSDemo-Device-1.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-Device-1.crash"; path = "Mocks/crash-report-iOSDemo-Device-1.crash"; sourceTree = "<group>"; };
+		10D582D7265660D300B62C3C /* crash-report-iOSDemo-Device-2.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-Device-2.crash"; path = "Mocks/crash-report-iOSDemo-Device-2.crash"; sourceTree = "<group>"; };
+		10D582D8265660D300B62C3C /* iOSDemo-report-0074043ca8000000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074043ca8000000.json"; path = "Mocks/iOSDemo-report-0074043ca8000000.json"; sourceTree = "<group>"; };
+		10D582D9265660D300B62C3C /* iOSDemo-report-0074043fdd800000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074043fdd800000.json"; path = "Mocks/iOSDemo-report-0074043fdd800000.json"; sourceTree = "<group>"; };
+		10D582DA265660D300B62C3C /* iOSDemo-report-0074043fd3800000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074043fd3800000.json"; path = "Mocks/iOSDemo-report-0074043fd3800000.json"; sourceTree = "<group>"; };
+		10D582DB265660D300B62C3C /* crash-report-iOSDemo-Device-3.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-Device-3.crash"; path = "Mocks/crash-report-iOSDemo-Device-3.crash"; sourceTree = "<group>"; };
+		10D582DC265660D300B62C3C /* crash-report-iOSDemo-3.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-3.crash"; path = "Mocks/crash-report-iOSDemo-3.crash"; sourceTree = "<group>"; };
+		10D582DD265660D400B62C3C /* iOSDemo-report-0074043d16000000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "iOSDemo-report-0074043d16000000.json"; path = "Mocks/iOSDemo-report-0074043d16000000.json"; sourceTree = "<group>"; };
+		10D582DE265660D400B62C3C /* crash-report-iOSDemo-2.crash */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crash-report-iOSDemo-2.crash"; path = "Mocks/crash-report-iOSDemo-2.crash"; sourceTree = "<group>"; };
 		10D7E8F92344FE580032FBA3 /* FPSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FPSTests.swift; path = Tests/FPSTests.swift; sourceTree = SOURCE_ROOT; };
 		10D7E8FB23450E730032FBA3 /* JSONEncodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONEncodableTests.swift; path = Tests/JSONEncodableTests.swift; sourceTree = SOURCE_ROOT; };
 		10DCA092230420C800F0281E /* Encodable+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Helper.swift"; sourceTree = "<group>"; };
@@ -2062,6 +2104,8 @@
 		1028C8B32302B87C00E07839 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				10D582C22653F9FA00B62C3C /* JSContextTests.swift */,
+				10D582CF26551AD200B62C3C /* JSValueTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2090,7 +2134,9 @@
 		1028C8B82302B89600E07839 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				10D582CC2655193D00B62C3C /* ViewControllerMetricTests.swift */,
 				104F555C2321.7.3306247C4 /* ViewSwizzledTests.swift */,
+				10D582C02653CA0800B62C3C /* ViewControllerTests.swift */,
 				108D309C232AA3B3002757CC /* ViewSwizzledTests2.swift */,
 				104F556023225845006247C4 /* ViewControllerFilterTests.swift */,
 				108EF3BC231E7F920029FD65 /* ViewFormatterTests.swift */,
@@ -2112,6 +2158,8 @@
 				10EFEC0E234764B10037CBBD /* URLSessionTaskTests.swift */,
 				1009908525E9046E009E03E2 /* URLLocalSessionConnectionTests.swift */,
 				100990AB25E938CF009E03E2 /* LocalSessionTaskTests.swift */,
+				10D582C8265516B700B62C3C /* URLSessionTaskMetricsTests.swift */,
+				10D582CA265518F300B62C3C /* URLSessionTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2433,6 +2481,18 @@
 		1053AAB223FCB8A900F90393 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				10D582D5265660D300B62C3C /* crash-report-iOSDemo-1.crash */,
+				10D582DE265660D400B62C3C /* crash-report-iOSDemo-2.crash */,
+				10D582DC265660D300B62C3C /* crash-report-iOSDemo-3.crash */,
+				10D582D6265660D300B62C3C /* crash-report-iOSDemo-Device-1.crash */,
+				10D582D7265660D300B62C3C /* crash-report-iOSDemo-Device-2.crash */,
+				10D582DB265660D300B62C3C /* crash-report-iOSDemo-Device-3.crash */,
+				10D582D8265660D300B62C3C /* iOSDemo-report-0074043ca8000000.json */,
+				10D582D3265660D200B62C3C /* iOSDemo-report-0074043d2e000000.json */,
+				10D582DD265660D400B62C3C /* iOSDemo-report-0074043d16000000.json */,
+				10D582DA265660D300B62C3C /* iOSDemo-report-0074043fd3800000.json */,
+				10D582D9265660D300B62C3C /* iOSDemo-report-0074043fdd800000.json */,
+				10D582D4265660D200B62C3C /* iOSDemo-report-0074044008000000.json */,
 				1053AAB323FCB8BC00F90393 /* processed.json */,
 				1053AAB423FCB8BC00F90393 /* raw.json */,
 			);
@@ -2570,6 +2630,7 @@
 			children = (
 				1091373524AF8E3000476EF6 /* Helper */,
 				10866F3E22946AE400D77D56 /* TraceTests.swift */,
+				10D582BE265282B700B62C3C /* TraceConfigurationInteractorTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -2666,6 +2727,7 @@
 				108CDF0023FC55DE00153BEB /* XCTestCase+KSCrash.h */,
 				108CDEF823FC55DE00153BEB /* XCTestCase+KSCrash.m */,
 				10D4C91525BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m */,
+				10D582D12655675400B62C3C /* BRReportingSinkTests.m */,
 				1053AAB223FCB8A900F90393 /* Mocks */,
 				108CDEDF23FC547700153BEB /* Supporting files */,
 			);
@@ -2970,6 +3032,7 @@
 				1091373624AF8E7700476EF6 /* URLStructureTests.swift */,
 				10B6085C2535D47F00DC1DB1 /* DispatchQueueTests.swift */,
 				10FBC20325AF6E2D00481967 /* DuplicateKeysOfTypeTests.swift */,
+				10D582C6265407B900B62C3C /* UIApplicationTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -3933,8 +3996,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				1053AAB523FCB8BC00F90393 /* processed.json in Resources */,
+				10D582E4265660D400B62C3C /* iOSDemo-report-0074043ca8000000.json in Resources */,
+				10D582E0265660D400B62C3C /* iOSDemo-report-0074044008000000.json in Resources */,
+				10D582EA265660D400B62C3C /* crash-report-iOSDemo-2.crash in Resources */,
+				10D582E1265660D400B62C3C /* crash-report-iOSDemo-1.crash in Resources */,
+				10D582E2265660D400B62C3C /* crash-report-iOSDemo-Device-1.crash in Resources */,
+				10D582E9265660D400B62C3C /* iOSDemo-report-0074043d16000000.json in Resources */,
 				108CDF3223FC55E000153BEB /* KSCrashTests-Info.plist in Resources */,
+				10D582E8265660D400B62C3C /* crash-report-iOSDemo-3.crash in Resources */,
+				10D582E7265660D400B62C3C /* crash-report-iOSDemo-Device-3.crash in Resources */,
+				10D582E5265660D400B62C3C /* iOSDemo-report-0074043fdd800000.json in Resources */,
+				10D582E3265660D400B62C3C /* crash-report-iOSDemo-Device-2.crash in Resources */,
 				1053AAB623FCB8BC00F90393 /* raw.json in Resources */,
+				10D582DF265660D400B62C3C /* iOSDemo-report-0074043d2e000000.json in Resources */,
+				10D582E6265660D400B62C3C /* iOSDemo-report-0074043fd3800000.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4717,13 +4792,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */,
+				10D582BF265282B700B62C3C /* TraceConfigurationInteractorTests.swift in Sources */,
 				10CA878222A493B4003702B1 /* FileManagerTests.swift in Sources */,
 				1028C8C22302C15000E07839 /* PersistentTests.swift in Sources */,
 				104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */,
 				105962E3243F87BD00047D29 /* SelectorTests.m in Sources */,
+				10D582CB265518F300B62C3C /* URLSessionTests.swift in Sources */,
+				10D582C12653CA0800B62C3C /* ViewControllerTests.swift in Sources */,
 				10B6085D2535D47F00DC1DB1 /* DispatchQueueTests.swift in Sources */,
 				10AC27E723440FE300780890 /* TracerTest.swift in Sources */,
+				10D582CE2655194400B62C3C /* ViewControllerMetricTests.swift in Sources */,
 				804832F024CAF7AC005970CF /* DeviceModelTests.swift in Sources */,
+				10D582D026551AD200B62C3C /* JSValueTests.swift in Sources */,
 				101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */,
 				10D7E8FC23450E730032FBA3 /* JSONEncodableTests.swift in Sources */,
 				10D7E8FA2344FE580032FBA3 /* FPSTests.swift in Sources */,
@@ -4739,6 +4819,7 @@
 				108EF3C1231E98880029FD65 /* RequestFormatterTests.swift in Sources */,
 				10F2874E23C3790A00F9D03A /* JailbrokeTests.swift in Sources */,
 				104F555D2321.7.3306247C4 /* (null) in Sources */,
+				10D582C32653F9FA00B62C3C /* JSContextTests.swift in Sources */,
 				1028C8BE2302BA1D00E07839 /* ConnectivityTests.swift in Sources */,
 				1028C8C42302C28A00E07839 /* DatabaseTests.swift in Sources */,
 				10866F4022946AEB00D77D56 /* TraceTests.swift in Sources */,
@@ -4757,6 +4838,7 @@
 				10F4648C2322AC660071FD5C /* RepeaterTests.swift in Sources */,
 				101055E3241BEE1D0088BD24 /* DataTests.swift in Sources */,
 				108EF3C5231EC9310029FD65 /* TaskMetricsFormatterTests.swift in Sources */,
+				10D582C7265407B900B62C3C /* UIApplicationTests.swift in Sources */,
 				10AC27E523440CF600780890 /* MetricDAOTests.swift in Sources */,
 				100990AC25E938CF009E03E2 /* LocalSessionTaskTests.swift in Sources */,
 				1072919A231FDF65007A18C7 /* URLSessionTaskFormatterTests.swift in Sources */,
@@ -4777,6 +4859,7 @@
 				105962D9243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift in Sources */,
 				109136E224ACE66800476EF6 /* CollaterTests+ProcessCpuPct.swift in Sources */,
 				10866F372294686600D77D56 /* LoggerTests.swift in Sources */,
+				10D582C9265516B700B62C3C /* URLSessionTaskMetricsTests.swift in Sources */,
 				108EF3C3231EBFEB0029FD65 /* DataTaskFormatterTests.swift in Sources */,
 				10574D0A24D8606700391D6C /* DateHelperTests.swift in Sources */,
 				10350D9924C203B70004F6D7 /* TimestampValidatorTests.swift in Sources */,
@@ -4910,6 +4993,7 @@
 				10D4C91625BEF02600BD9601 /* BRKSCrashReportFilterAppleFmtTests.m in Sources */,
 				108CDF2D23FC55E000153BEB /* KSFileUtils_Tests.m in Sources */,
 				108CDF3123FC55E000153BEB /* KSCrashMonitor_NSException_Tests.m in Sources */,
+				10D582D22655675400B62C3C /* BRReportingSinkTests.m in Sources */,
 				108CDF2023FC55E000153BEB /* TestThread.m in Sources */,
 				108CDF1823FC55DF00153BEB /* KSSysCtl_Tests.m in Sources */,
 				10FB1D402506325600850A58 /* BRKSCrashInstallationTests.m in Sources */,

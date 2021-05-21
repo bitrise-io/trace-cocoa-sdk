@@ -58,6 +58,7 @@ final class SpanTests: XCTestCase {
             TraceModel.Span.Attributes.Attribute(name: "br_test2", value: TraceModel.Span.Name(value: "test2", truncatedByteCount: 0)),
             TraceModel.Span.Attributes.Attribute(name: "br_test3", value: TraceModel.Span.Name(value: "test3", truncatedByteCount: 10))
         ])
+        attributes.append(TraceModel.Span.Attributes.Attribute(name: "br_test4", value: TraceModel.Span.Name(value: "test4", truncatedByteCount: 10)))
         let root = TraceModel.Span(
             traceId: UUID.random(16),
             spanId: UUID.random(8),
@@ -73,6 +74,43 @@ final class SpanTests: XCTestCase {
         
         XCTAssertEqual(root.traceId?.count, 16)
         XCTAssertEqual(root.spanId.count, 8)
+    }
+    
+    func testSpan_description() {
+        let end = Time.timestamp
+        let attributes = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let root = TraceModel.Span(
+            traceId: UUID.random(16),
+            spanId: UUID.random(8),
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: start.seconds, nanos: start.nanos),
+            end: TraceModel.Span.Timestamp(seconds: end.seconds, nanos: end.nanos),
+            attribute: attributes
+        )
+        let description = root.description
+        
+        XCTAssertNotNil(description)
+        XCTAssertTrue(description.contains("test"))
+    }
+    
+    func testSpan_copy() {
+        let end = Time.timestamp
+        let attributes = TraceModel.Span.Attributes(attributes: [
+            TraceModel.Span.Attributes.Attribute(name: "br_test1", value: TraceModel.Span.Name(value: "test", truncatedByteCount: 0))
+        ])
+        let root = TraceModel.Span(
+            traceId: UUID.random(16),
+            spanId: UUID.random(8),
+            name: TraceModel.Span.Name(value: "test", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: start.seconds, nanos: start.nanos),
+            end: TraceModel.Span.Timestamp(seconds: end.seconds, nanos: end.nanos),
+            attribute: attributes
+        )
+        let copy = root.copy() as! TraceModel.Span
+        
+        XCTAssertNotEqual(root, copy)
     }
     
     func testSpan_encode() {
@@ -421,5 +459,49 @@ final class SpanTests: XCTestCase {
         let result = lhs == rhs
         
         XCTAssertTrue(result)
+    }
+    
+    func testSpanName_encode() {
+        let encoder = JSONEncoder()
+        
+        XCTAssertNoThrow(try encoder.encode(TraceModel.Span.Name(value: 1, truncatedByteCount: 0)))
+        XCTAssertNoThrow(try encoder.encode(TraceModel.Span.Name(value: 2.0, truncatedByteCount: 0)))
+        XCTAssertNoThrow(try encoder.encode(TraceModel.Span.Name(value: "string", truncatedByteCount: 0)))
+    }
+    
+    func testSpanName_encode_codingError() {
+        let encoder = JSONEncoder()
+        var error: TraceModel.Span.Name.Error?
+        
+        do {
+            _ = try encoder.encode(TraceModel.Span.Name(value: [Int](), truncatedByteCount: 0))
+        } catch let newError {
+            error = newError as? TraceModel.Span.Name.Error
+        }
+        
+        XCTAssertNotNil(error)
+    }
+    
+    func testNameDecode() {
+        let dictInt: [String: Int] = [
+            "value": 1,
+            "truncated_byte_count": 0
+        ]
+        let dictDouble: NSDictionary = [
+            "value": 1.0,
+            "truncated_byte_count": 0
+        ]
+        let dictString: NSDictionary = [
+            "value": "string",
+            "truncated_byte_count": 0
+        ]
+        let dataInt = try! dictInt.json()
+        let dataDouble = try! JSONSerialization.data(withJSONObject: dictDouble)
+        let dataString = try! JSONSerialization.data(withJSONObject: dictString)
+        let decoder = JSONDecoder()
+        
+        XCTAssertNoThrow(try decoder.decode(TraceModel.Span.Name.self, from: dataInt))
+        XCTAssertNoThrow(try decoder.decode(TraceModel.Span.Name.self, from: dataDouble))
+        XCTAssertNoThrow(try decoder.decode(TraceModel.Span.Name.self, from: dataString))
     }
 }

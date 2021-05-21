@@ -109,4 +109,67 @@ final class OrderedDictionaryTests: XCTestCase {
         XCTAssertNotNil(dict.value(forKey: "K"))
         XCTAssertNotNil(dict["K"])
     }
+    
+    func testUnsorted_init() {
+        let data = ["1": "one"]
+        let dict: OrderedDictionary<String, String> = OrderedDictionary(unsorted: data) { lhs, rhs in
+            return true
+        }
+        
+        XCTAssertNotNil(dict)
+        XCTAssertTrue(dict.containsKey("1"))
+    }
+    
+    func testSequence_array_init() {
+        let data = ["one"]
+        let dict = OrderedDictionary<String, String>(values: data, uniquelyKeyedBy: { key in
+            return key
+        })
+        
+        XCTAssertNotNil(dict)
+        XCTAssertTrue(dict.containsKey("one"))
+    }
+    
+    func testSequence_keyPair_init() {
+        let dict = OrderedDictionary<String, String>(values: ["1"], uniquelyKeyedBy: { keyPair in
+            return keyPair
+        })
+        
+        XCTAssertNotNil(dict)
+        XCTAssertTrue(dict.containsKey("1"))
+    }
+    
+    func testArrayLiteral_init() {
+        let dict = OrderedDictionary<String, String>(arrayLiteral: ("1", "two"), ("three", "4"))
+        
+        XCTAssertEqual(dict.count, 2)
+    }
+    
+    func testSubscript() {
+        let dict: OrderedDictionary<String, String> = [
+            "A": "One",
+            "B": "2",
+            "c": "Three"
+        ]
+        
+        let slice = dict[1...2]
+        
+        XCTAssertNotNil(slice)
+        XCTAssertEqual(slice.count, 2)
+    }
+    
+    func testUpdateValue() {
+        var dict: OrderedDictionary<String, String> = [
+            "A": "One",
+            "B": "2"
+        ]
+        
+        XCTAssertEqual(dict["A"], "One")
+        
+        dict.updateValue("1of1", forKey: "A")
+        
+        XCTAssertNotEqual(dict["A"]!, "One")
+        XCTAssertEqual(dict["A"]!, "1of1")
+        XCTAssertTrue(dict.containsKey("A"))
+    }
 }

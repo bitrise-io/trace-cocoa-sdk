@@ -26,15 +26,9 @@ extension JSONEncodable {
     // MARK: - JSON
     
     internal var data: Data? {
-        do {
-            let data = try JSONEncoder().encode(details)
+        let data = try? JSONEncoder().encode(details)
         
-            return data
-        } catch {
-            Logger.error(.serialization, "Failed to encode \(type(of: self))")
-            
-            return nil
-        }
+        return data
     }
     
     internal var jsonString: String {

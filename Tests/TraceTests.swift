@@ -119,4 +119,15 @@ final class TraceTests: XCTestCase {
         XCTAssertEqual(viewController.trace?.root.name.value as! String, "Custom (CustomViewController)")
         XCTAssertEqual(viewController.trace?.spans.count, 1)
     }
+    
+    func testConfiguration_enable() {
+        let configuration = Configuration.default
+        let current = configuration.enabled
+        
+        XCTAssertNotNil(configuration)
+        
+        configuration.enabled = current
+        
+        XCTAssertEqual(configuration.enabled, current)
+    }
 }

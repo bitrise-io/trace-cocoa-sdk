@@ -50,12 +50,14 @@
 
 #pragma mark - Save
 
-- (void)saveReport:(NSData *)report atPath:(NSURL *)location {
+- (BOOL)saveReport:(NSData *)report atPath:(NSURL *)location {
     BOOL result = [report writeToURL:location atomically:true];
     
     if (!result) {
         [BRLogger print:@"Failed to write crash report to document directory" forModule:BRLoggerModuleInternalError];
     }
+    
+    return result;
 }
 
 @end

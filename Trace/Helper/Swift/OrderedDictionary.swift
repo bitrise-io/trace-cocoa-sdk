@@ -49,12 +49,6 @@ struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
             return (try extractKey(value), value)
         })
     }
-    
-    init<S: Sequence>(values: S, uniquelyKeyedBy keyPath: KeyPath<Value, Key>) where S.Element == Value {
-        self.init(uniqueKeysWithValues: values.map { value in
-            return (value[keyPath: keyPath], value)
-        })
-    }
 
     init<S: Sequence>(uniqueKeysWithValues keysAndValues: S) where S.Element == Element {
         for (key, value) in keysAndValues {

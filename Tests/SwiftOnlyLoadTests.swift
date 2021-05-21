@@ -29,4 +29,8 @@ final class SwiftOnlyLoadTests: XCTestCase {
         
         XCTAssertGreaterThan(Trace.currentSession, 0)
     }
+    
+    func testSwiftStart_next() {
+        XCTAssertNil(UIApplication.shared.next)
+    }
 }

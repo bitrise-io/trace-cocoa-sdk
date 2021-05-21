@@ -27,6 +27,10 @@ __attribute__((constructor)) static void BRInternalObjectiveCOnlyLoad(void) {
     // Lucky we have Objective-C runtime to help!
     Class Trace = NSClassFromString(@"BRTrace");
     
+    if (!Trace) {
+        Trace = NSClassFromString(@"Trace");
+    }
+    
     if (Trace) {
         @try {
             BOOL isTraceEnabled = [[Trace valueForKeyPath:@"configuration.enabled"] boolValue];

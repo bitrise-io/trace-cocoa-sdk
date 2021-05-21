@@ -30,4 +30,28 @@ final class DoubleTests: XCTestCase {
         XCTAssertNotNil(random)
         XCTAssertGreaterThan(random, 0.0001)
     }
+    
+    func testSplitAtDecimal() {
+        let value = 12.34
+        let split = value.splitAtDecimal
+        
+        XCTAssertEqual(split.integer, 12)
+        XCTAssertEqual(split.fractional, 34)
+    }
+    
+    func testSplitAtDecimalLong() {
+        let value = 123456.789
+        let split = value.splitAtDecimal
+        
+        XCTAssertEqual(split.integer, 123456)
+        XCTAssertEqual(split.fractional, 789)
+    }
+    
+    func testSplitAtDecimal_round() {
+        let value = 1.99
+        let split = value.splitAtDecimal
+        
+        XCTAssertEqual(split.integer, 1)
+        XCTAssertEqual(split.fractional, 99)
+    }
 }

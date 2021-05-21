@@ -207,11 +207,6 @@ extension TraceModel {
                 self.droppedAttributesCount = droppedAttributesCount
             }
             
-            private init(attribute: [String: [String: Name]], droppedAttributesCount: Int) {
-                self.attribute = attribute
-                self.droppedAttributesCount = droppedAttributesCount
-            }
-            
             required init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 
@@ -378,6 +373,7 @@ extension TraceModel.Span {
             timeStyle: .medium
         )
         let endDateFormatted: String
+        var id = "Unknown"
         
         if let end = end {
             let endDate = Date.date(from: end)
@@ -391,7 +387,11 @@ extension TraceModel.Span {
             endDateFormatted = "Unknown"
         }
         
-        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(traceId ?? "nil"), start: \(startDateFormatted), end: \(endDateFormatted)"
+        if let traceId = traceId {
+            id = traceId
+        }
+        
+        return "\(type(of: self)) \(spanId) name: \(name.value), traceId: \(id), start: \(startDateFormatted), end: \(endDateFormatted)"
     }
 }
 

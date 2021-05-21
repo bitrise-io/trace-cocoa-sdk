@@ -13,7 +13,12 @@ extension Date {
     // MARK: - Timestamp {
     
     static func date<T: Timestampable>(from timestamp: T) -> Date {
-        let joinedValue = Double("\(timestamp.seconds).\(timestamp.nanos)") ?? 0.0
+        var joinedValue = 0.0
+        
+        if let value = Double("\(timestamp.seconds).\(timestamp.nanos)") {
+            joinedValue = value
+        }
+        
         let date = Date(timeIntervalSince1970: joinedValue)
         
         return date

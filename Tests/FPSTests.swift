@@ -39,4 +39,28 @@ final class FPSTests: XCTestCase {
         XCTAssertEqual(fps.current.fps, 0.0)
         XCTAssertEqual(fps.current.viewController, "")
     }
+    
+    func testFPS_sendCADisplayLink() {
+        let link = CADisplayLink()
+        
+        let fps = FPS()
+        fps.step(link)
+        
+        XCTAssertNotNil(fps.current)
+    }
+    
+    func testFPS_process_fails_no_viewcontrollerFound() {
+        let fps = FPS()
+        let link = CADisplayLink()
+        let old = fps.current
+        
+        fps.lastNotification = 60.0
+        fps.step(link)
+        
+        let new = fps.current
+        
+        XCTAssertEqual(old.fps, new.fps)
+        XCTAssertEqual(old.timestamp.timeInterval, new.timestamp.timeInterval)
+        XCTAssertEqual(old.viewController, new.viewController)
+    }
 }

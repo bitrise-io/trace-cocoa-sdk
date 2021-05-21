@@ -14,7 +14,7 @@ final class StartupTests: XCTestCase {
     
     // MARK: - Property
     
-    let startup = Startup()
+    var startup: Startup? = Startup()
     
     // MARK: - Setup
     
@@ -23,7 +23,7 @@ final class StartupTests: XCTestCase {
     }
     
     override func tearDown() {
-        
+        startup = nil
     }
     
     // MARK: - Tests

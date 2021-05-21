@@ -45,4 +45,10 @@ final class PersistentTests: XCTestCase {
         XCTAssertNotNil(persistent.privateContext)
         XCTAssertNotNil(Persistent.defaultDirectoryURL())
     }
+    
+    func testCreateDirectory() {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("test")
+        
+        XCTAssertNoThrow(try Persistent.createDirectory(at: url))
+    }
 }

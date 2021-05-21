@@ -35,6 +35,24 @@ final class CrashFormatterTests: XCTestCase {
     
     // MARK: - Tests
     
+    func testReport() {
+        let report = CrashReporting.Report(
+            type: .exception,
+            name: "someCrash",
+            reason: "someReason",
+            callStack: "CallStack..."
+        )
+        
+        XCTAssertNotNil(report)
+        XCTAssertEqual(report.type, .exception)
+        XCTAssertEqual(report.callStack, "CallStack...")
+        XCTAssertNotNil(report.timestamp)
+        XCTAssertNotNil(report.timestamp.nanos)
+        XCTAssertNotNil(report.timestamp.seconds)
+        XCTAssertGreaterThanOrEqual(report.timestamp.nanos, 0)
+        XCTAssertGreaterThanOrEqual(report.timestamp.seconds, 0)
+    }
+    
     func testErrorNil() {
         let data = crash.data
         let json = crash.jsonString
