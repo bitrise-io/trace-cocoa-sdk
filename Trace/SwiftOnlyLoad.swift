@@ -78,10 +78,20 @@ extension UIApplication {
     
     /// Internal use only
     override open var next: UIResponder? {
+        func BITRISE_WILL_START_TRACE() {
+            
+        }
+        func BITRISE_DID_START_TRACE() {
+            
+        }
+        
         // Fallback plan if the SDK doesn't start using -force_load approach
+        BITRISE_WILL_START_TRACE()
         
         // Method is only called once.
         UIApplication.bitrise_run // Called before applicationDidFinishLaunching since the app delegate conforms to UIResponder class by default on all Xcode projects. For others that use a custom version this would fail
+        
+        BITRISE_DID_START_TRACE()
         
         return super.next
     }

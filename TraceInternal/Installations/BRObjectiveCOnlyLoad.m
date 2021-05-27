@@ -14,6 +14,16 @@
 #import <Trace-Swift.h> // Static library
 #endif
 
+#pragma mark - Logs
+
+static void BITRISE_WILL_LOAD_TRACE_USING_CONSTRUCTOR() {
+ 
+}
+
+static void BITRISE_DID_LOAD_TRACE_USING_CONSTRUCTOR() {
+ 
+}
+
 #pragma mark - Constructor/Destructor
 
 /// Second attempt at starting SDK
@@ -23,6 +33,8 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 __attribute__((constructor)) static void BRInternalObjectiveCOnlyLoad(void) {
+    BITRISE_WILL_LOAD_TRACE_USING_CONSTRUCTOR();
+    
     // The SDK doesn't expose excess methods when developers won't ever need to use.
     // Lucky we have Objective-C runtime to help!
     Class Trace = NSClassFromString(@"BRTrace");
@@ -127,8 +139,21 @@ __attribute__((destructor)) static void BRInternalObjectiveCOnlyUnload() {
     } else {
         NSLog(@"[Bitrise:Trace/internalError] BRLoggerObjc class does not exist");
     }
+    
+    BITRISE_DID_LOAD_TRACE_USING_CONSTRUCTOR();
 }
+
 #pragma clang diagnostic pop
+
+#pragma mark - Logging
+
+static void BITRISE_WILL_LOAD_TRACE() {
+ 
+}
+
+static void BITRISE_DID_LOAD_TRACE() {
+ 
+}
 
 #pragma mark - BRInternalObjectiveCOnlyLoadUsingClassMethod
 
@@ -138,14 +163,22 @@ __attribute__((destructor)) static void BRInternalObjectiveCOnlyUnload() {
 /// In Xcode build settings the file is the first one to get processed and called
 @interface BRInternalObjectiveCOnlyLoadUsingClassMethod : NSObject
 
+#pragma mark - Load
+
 + (void)load;
 
 @end
 
 @implementation BRInternalObjectiveCOnlyLoadUsingClassMethod
 
+#pragma mark - Load
+
 + (void)load {
+    BITRISE_WILL_LOAD_TRACE();
+    
     BRInternalObjectiveCOnlyLoad();
+    
+    BITRISE_DID_LOAD_TRACE();
 }
 
 @end
