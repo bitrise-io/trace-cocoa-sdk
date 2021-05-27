@@ -21,6 +21,8 @@ internal final class UIControl_Swizzled: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let coder = Selectors(
             original: #selector(UIControl.init(coder:)),
             alternative: #selector(UIControl.init(bitrise_control_coder:))
@@ -42,6 +44,8 @@ internal final class UIControl_Swizzled: Swizzled {
         _ = UIControl.swizzleInstanceMethod(frame)
         _ = UIControl.swizzleInstanceMethod(begin)
         _ = UIControl.swizzleInstanceMethod(end)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

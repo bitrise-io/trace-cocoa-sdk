@@ -13,18 +13,24 @@ import JavaScriptCore
 #endif
 
 /// Internal use only
-internal extension JSContext {
+extension JSContext: Swizzled {
     
     // MARK: - Swizzled
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let getter = Selectors(
             original: #selector(getter: JSContext.exceptionHandler),
             alternative: #selector(getter: JSContext.bitrise_exceptionHandler)
         )
         
-        return self.swizzleInstanceMethod(getter)
+        let result = self.swizzleInstanceMethod(getter)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
+        
+        return result
     }
     
     // MARK: - Typealias

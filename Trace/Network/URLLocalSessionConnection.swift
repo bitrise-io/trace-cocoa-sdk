@@ -14,6 +14,8 @@ final class URLLocalSessionConnection: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let part7 = "Connection"
         let part4 = "URL"
         let part5 = "Local"
@@ -68,6 +70,8 @@ final class URLLocalSessionConnection: Swizzled {
         
         // Run
         Swizzle().block(block, forMethod: method)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

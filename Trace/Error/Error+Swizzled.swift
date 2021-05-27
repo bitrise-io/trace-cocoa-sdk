@@ -17,12 +17,18 @@ extension NSError: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let `init` = Selectors(
             original: #selector(NSError.init(domain:code:userInfo:)),
             alternative: #selector(NSError.init(bitriseDomain:code:userInfo:))
         )
         
-        return self.swizzleInstanceMethod(`init`)
+        let result = self.swizzleInstanceMethod(`init`)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
+        
+        return result
     }
     
     // MARK: - Init

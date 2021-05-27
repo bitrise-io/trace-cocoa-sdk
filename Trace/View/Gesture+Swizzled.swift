@@ -12,13 +12,15 @@ import ObjectiveC
 
 /// Internal use only
 /// Disabled
-internal extension UIGestureRecognizer {
+extension UIGestureRecognizer: Swizzled {
     
     // MARK: - Swizzled
     
     // pecker:ignore
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let initTarget = Selectors(
             original: #selector(UIGestureRecognizer.init(target:action:)),
             alternative: #selector(UIGestureRecognizer.init(bitrise_target:action:))
@@ -50,6 +52,8 @@ internal extension UIGestureRecognizer {
         _ = self.swizzleInstanceMethod(touchesEnded)
         _ = self.swizzleInstanceMethod(pressesBegan)
         _ = self.swizzleInstanceMethod(pressesEnded)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }
