@@ -158,7 +158,7 @@
 		100994F92500EBF0006C7FB4 /* KSCrashDoctor.h in Headers */ = {isa = PBXBuildFile; fileRef = 100994732500EBF0006C7FB4 /* KSCrashDoctor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100994FA2500EBF0006C7FB4 /* KSCrashReportFixer.c in Sources */ = {isa = PBXBuildFile; fileRef = 100994742500EBF0006C7FB4 /* KSCrashReportFixer.c */; };
 		100994FB2500EBF0006C7FB4 /* None.h in Headers */ = {isa = PBXBuildFile; fileRef = 100994772500EBF0006C7FB4 /* None.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		100994FC2500EBF0006C7FB4 /* Optional.h in Headers */ = {isa = PBXBuildFile; fileRef = 100994782500EBF0006C7FB4 /* Optional.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		100994FC2500EBF0006C7FB4 /* BROptional.h in Headers */ = {isa = PBXBuildFile; fileRef = 100994782500EBF0006C7FB4 /* BROptional.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100994FD2500EBF0006C7FB4 /* StringRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 100994792500EBF0006C7FB4 /* StringRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100994FE2500EBF0006C7FB4 /* llvm-config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009947B2500EBF0006C7FB4 /* llvm-config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		100994FF2500EBF0006C7FB4 /* Casting.h in Headers */ = {isa = PBXBuildFile; fileRef = 1009947D2500EBF0006C7FB4 /* Casting.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -527,7 +527,7 @@
 		10BB4E51250785C90044AB9E /* KSCrashReportFields.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994722500EBF0006C7FB4 /* KSCrashReportFields.h */; };
 		10BB4E52250785C90044AB9E /* KSCrashDoctor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994732500EBF0006C7FB4 /* KSCrashDoctor.h */; };
 		10BB4E53250785C90044AB9E /* None.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994772500EBF0006C7FB4 /* None.h */; };
-		10BB4E54250785C90044AB9E /* Optional.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994782500EBF0006C7FB4 /* Optional.h */; };
+		10BB4E54250785C90044AB9E /* BROptional.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994782500EBF0006C7FB4 /* BROptional.h */; };
 		10BB4E55250785C90044AB9E /* StringRef.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 100994792500EBF0006C7FB4 /* StringRef.h */; };
 		10BB4E56250785C90044AB9E /* llvm-config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009947B2500EBF0006C7FB4 /* llvm-config.h */; };
 		10BB4E57250785C90044AB9E /* Casting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1009947D2500EBF0006C7FB4 /* Casting.h */; };
@@ -859,7 +859,7 @@
 				10BB4E51250785C90044AB9E /* KSCrashReportFields.h in CopyFiles */,
 				10BB4E52250785C90044AB9E /* KSCrashDoctor.h in CopyFiles */,
 				10BB4E53250785C90044AB9E /* None.h in CopyFiles */,
-				10BB4E54250785C90044AB9E /* Optional.h in CopyFiles */,
+				10BB4E54250785C90044AB9E /* BROptional.h in CopyFiles */,
 				10BB4E55250785C90044AB9E /* StringRef.h in CopyFiles */,
 				10BB4E56250785C90044AB9E /* llvm-config.h in CopyFiles */,
 				10BB4E57250785C90044AB9E /* Casting.h in CopyFiles */,
@@ -1037,7 +1037,7 @@
 		100994732500EBF0006C7FB4 /* KSCrashDoctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCrashDoctor.h; sourceTree = "<group>"; };
 		100994742500EBF0006C7FB4 /* KSCrashReportFixer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = KSCrashReportFixer.c; sourceTree = "<group>"; };
 		100994772500EBF0006C7FB4 /* None.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = None.h; sourceTree = "<group>"; };
-		100994782500EBF0006C7FB4 /* Optional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Optional.h; sourceTree = "<group>"; };
+		100994782500EBF0006C7FB4 /* BROptional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptional.h; sourceTree = "<group>"; };
 		100994792500EBF0006C7FB4 /* StringRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringRef.h; sourceTree = "<group>"; };
 		1009947B2500EBF0006C7FB4 /* llvm-config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "llvm-config.h"; sourceTree = "<group>"; };
 		1009947D2500EBF0006C7FB4 /* Casting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Casting.h; sourceTree = "<group>"; };
@@ -1880,7 +1880,7 @@
 			isa = PBXGroup;
 			children = (
 				100994772500EBF0006C7FB4 /* None.h */,
-				100994782500EBF0006C7FB4 /* Optional.h */,
+				100994782500EBF0006C7FB4 /* BROptional.h */,
 				100994792500EBF0006C7FB4 /* StringRef.h */,
 			);
 			path = ADT;
@@ -3372,7 +3372,7 @@
 				100994DD2500EBF0006C7FB4 /* KSObjC.h in Headers */,
 				101796FA25251248005F27B9 /* KSCrashReportWriter.h in Headers */,
 				10940AF825D1B74F0044A702 /* Demangler.h in Headers */,
-				100994FC2500EBF0006C7FB4 /* Optional.h in Headers */,
+				100994FC2500EBF0006C7FB4 /* BROptional.h in Headers */,
 				1009949D2500EBF0006C7FB4 /* KSCrashMonitor_CPPException.h in Headers */,
 				100994982500EBF0006C7FB4 /* KSCrashMonitorContext.h in Headers */,
 				100994E02500EBF0006C7FB4 /* KSDate.h in Headers */,

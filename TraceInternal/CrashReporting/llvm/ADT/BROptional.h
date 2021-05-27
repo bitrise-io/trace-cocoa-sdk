@@ -1,4 +1,4 @@
-//===-- Optional.h - Simple variant for passing optional values ---*- C++ -*-=//
+//===-- BROptional.h - Simple variant for passing optional values ---*- C++ -*-=//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -13,8 +13,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef CRASHREPORTING_LLVM_ADT_OPTIONAL_H
-#define CRASHREPORTING_LLVM_ADT_OPTIONAL_H
+#ifndef CRASHREPORTING_LLVM_ADT_BROPTIONAL_H
+#define CRASHREPORTING_LLVM_ADT_BROPTIONAL_H
 
 #include "None.h"
 #include "AlignOf.h"
