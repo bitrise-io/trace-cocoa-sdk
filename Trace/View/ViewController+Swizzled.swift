@@ -32,7 +32,7 @@ fileprivate extension UIViewController {
 }
 
 /// Internal use only
-internal extension UIViewController {
+extension UIViewController: Swizzled {
     
     // MARK: - Enum
     
@@ -72,6 +72,8 @@ internal extension UIViewController {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let viewDidLoad = Selectors(
             original: #selector(UIViewController.viewDidLoad),
             alternative: #selector(UIViewController.bitrise_viewDidLoad)
@@ -98,6 +100,8 @@ internal extension UIViewController {
         _ = self.swizzleInstanceMethod(viewDidAppear)
         _ = self.swizzleInstanceMethod(viewDidDisappear)
         _ = self.swizzleInstanceMethod(title)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

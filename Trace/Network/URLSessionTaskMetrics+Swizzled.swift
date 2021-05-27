@@ -15,6 +15,8 @@ extension URLSessionTaskMetrics: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         // private method.. easy way to avoid Apple discovering in their automatic string analysis tool
         let part1 = "_init"
         let part2 = "With"
@@ -23,8 +25,11 @@ extension URLSessionTaskMetrics: Swizzled {
             original: Selector((part1 + part2 + part3)), // _initWithTask:
             alternative: #selector(URLSessionTaskMetrics.bitrise_initWithTask(_:))
         )
+        let result = self.swizzleInstanceMethod(initWithTask)
         
-        return self.swizzleInstanceMethod(initWithTask)
+        BITRISE_DID_SWIZZLE_METHOD()
+        
+        return result
     }
     
     // MARK: - URLSessionTaskMetrics

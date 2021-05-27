@@ -14,6 +14,8 @@ final class LocalSessionTask: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         // In iOS 14 resume method is inside NSURLSessionTask class
         var baseResumeClass: AnyClass? = URLSessionTask.self
         
@@ -69,6 +71,8 @@ final class LocalSessionTask: Swizzled {
         
         // Run
         Swizzle().block(block, forMethod: method)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

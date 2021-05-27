@@ -14,7 +14,7 @@ import ObjectiveC
 
 /// Disabled
 /// Internal use only
-internal extension UIView {
+extension UIView: Swizzled {
     
     // MARK: - Enum
     
@@ -102,6 +102,8 @@ internal extension UIView {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let coder = Selectors(
             original: #selector(UIView.init(coder:)),
             alternative: #selector(UIView.init(bitrise_view_coder:))
@@ -138,6 +140,8 @@ internal extension UIView {
         _ = self.swizzleInstanceMethod(didMoveToSuperview)
         _ = self.swizzleInstanceMethod(didMoveToWindow)
         _ = self.swizzleInstanceMethod(removeFromSuperview)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

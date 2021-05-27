@@ -25,6 +25,24 @@ internal protocol Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result
+    
+    // MARK: - Stacktrace - Trace
+    
+    static func BITRISE_WILL_SWIZZLE_METHOD()
+    static func BITRISE_DID_SWIZZLE_METHOD()
+}
+
+extension Swizzled {
+    
+    // MARK: - Stacktrace - Trace
+    
+    static func BITRISE_WILL_SWIZZLE_METHOD() {
+        
+    }
+    
+    static func BITRISE_DID_SWIZZLE_METHOD() {
+        
+    }
 }
 
 /// Helper for swizzling objects

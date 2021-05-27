@@ -18,6 +18,8 @@ extension URLSession: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let part1 = "init"
         let part2 = "With"
         let part3 = "Configuration:"
@@ -126,6 +128,8 @@ extension URLSession: Swizzled {
         _ = self.swizzleInstanceMethod(downloadTask6)
         _ = self.swizzleInstanceMethod(canDidFinishCollectingMetrics)
         _ = self.swizzleInstanceMethod(didFinishCollectingMetrics)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

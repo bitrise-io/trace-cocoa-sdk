@@ -18,6 +18,8 @@ extension NSException: Swizzled {
     
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         // let `init` =
         _ = Selectors(
             original: #selector(NSException.init(name:reason:userInfo:)),
@@ -42,6 +44,8 @@ extension NSException: Swizzled {
         
         // Disabled: need to find a way to call static methods correctly
         // _ = self.swizzleClassMethod(classRaise.original, alternativeSelector: classRaise.alternative)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }

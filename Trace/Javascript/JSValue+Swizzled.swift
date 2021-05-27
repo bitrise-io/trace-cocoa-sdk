@@ -14,13 +14,15 @@ import JavaScriptCore
 
 /// Internal use only
 /// Disabled
-internal extension JSValue {
+extension JSValue: Swizzled {
     
     // MARK: - Swizzled
     
     // pecker:ignore
     @discardableResult
     static func bitrise_swizzle_methods() -> Swizzle.Result {
+        BITRISE_WILL_SWIZZLE_METHOD()
+        
         let `init` = Selectors(
             original: #selector(JSValue.init(newErrorFromMessage:in:)),
             alternative: #selector(JSValue.init(bitrise_newErrorFromMessage:in:))
@@ -57,6 +59,8 @@ internal extension JSValue {
         _ = self.swizzleInstanceMethod(array)
         _ = self.swizzleInstanceMethod(newObject)
         _ = self.swizzleInstanceMethod(object)
+        
+        BITRISE_DID_SWIZZLE_METHOD()
         
         return .success
     }
