@@ -317,7 +317,7 @@ if let index = arguments.firstIndex(of: Parameter.path.rawValue) {
     fileManager.changeCurrentDirectoryPath(path)
 }
 
-for (index, value) in arguments.enumerated() where value == Parameter.architecture.rawValuev {
+for (index, value) in arguments.enumerated() where value == Parameter.architecture.rawValue {
     let architecture = arguments[index + 1]
         
     print("Found known architecture: \(architecture)")
@@ -416,7 +416,7 @@ do {
         case .failure(let error): print(error)
     }
 } catch {
-    print("Scrip error")
+    print("Script error")
     print(error)
 }
 
