@@ -147,10 +147,13 @@ final class Tracer {
             return false
         }
         
+        #if DEBUG || Debug || debug
+        // getting hold of root is expensive
         let root: TraceModel.Span! = trace.root
         
         Logger.debug(.traceModel, "Tracing finished for trace id: \(trace.traceId) name: \(root.name.value)")
-
+        #endif
+        
         dispatchQueue.sync {
             trace.finish()
 
