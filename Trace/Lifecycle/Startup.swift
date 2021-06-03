@@ -15,6 +15,8 @@ internal final class Startup {
     // MARK: - Property
     
     private var didBecomeActiveNotification: NSObjectProtocol?
+    private var didBecomeActiveNotificationScene: NSObjectProtocol?
+    
     private let queue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = .background
@@ -32,6 +34,7 @@ internal final class Startup {
     
     deinit {
         didBecomeActiveNotification = nil
+        didBecomeActiveNotificationScene = nil
     }
     
     // MARK: - Setup
@@ -49,6 +52,16 @@ internal final class Startup {
             queue: queue,
             using: didBecomeActive
         )
+        
+        // Fallback if UIApplication.didBecomeActiveNotification does not get triggered for unknown reasons
+        if #available(iOS 13.0, *) {
+            didBecomeActiveNotificationScene = NotificationCenter.default.addObserver(
+                forName: UIScene.didActivateNotification,
+                object: nil,
+                queue: queue,
+                using: didBecomeActiveScene
+            )
+        }
     }
     
     // MARK: - Notification
@@ -57,18 +70,33 @@ internal final class Startup {
         process()
     }
     
+    private func didBecomeActiveScene(_ notification: Notification) {
+        let time = Time.current
+        let timestamp = Time.timestamp
+   
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10) { [weak self] in
+            let tracer = Trace.shared.tracer
+            
+            if tracer.traces.contains(where: { $0.type == .startup }) {
+                Logger.warning(.launch, "didBecomeActiveNotification was not triggered, fallback method called in UIScene")
+                
+                self?.process(with: time, customTimestamp: timestamp)
+            }
+        }
+    }
+    
     // MARK: - Process
     
     @discardableResult
-    private func process() -> Bool {
-        let metric = processMetric()
-        let trace = processTrace()
+    private func process(with time: CFTimeInterval = Time.current, customTimestamp: Time.Timestamp? = nil) -> Bool {
+        let metricResult = processMetric(with: time)
+        let traceResult = processTrace(with: customTimestamp)
         
-        return metric && trace
+        return metricResult && traceResult
     }
     
     @discardableResult
-    private func processMetric() -> Bool {
+    private func processMetric(with time: CFTimeInterval) -> Bool {
         let currentSession = Trace.currentSession
         
         func sdkLaunchedWithoutAValidStartupSession() {
@@ -83,7 +111,6 @@ internal final class Startup {
         
         // Compare start and end time.
         // Start time is updated when the SDK start
-        let time = Time.current
         let result = time - currentSession
         let formatter = StartupFormatter(result, status: .cold)
         
@@ -93,7 +120,7 @@ internal final class Startup {
     }
     
     @discardableResult
-    private func processTrace() -> Bool {
+    private func processTrace(with customTimestamp: Time.Timestamp? = nil) -> Bool {
         let tracer = Trace.shared.tracer
         
         // Trace will always be in active traces as startup is short lived
@@ -103,6 +130,6 @@ internal final class Startup {
             return false
         }
         
-        return tracer.finish(model)
+        return tracer.finish(model, withCustomTimestamp: customTimestamp)
     }
 }
