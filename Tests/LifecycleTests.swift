@@ -84,23 +84,31 @@ final class LifecycleTests: XCTestCase {
         Trace.shared.queue.observation = nil
     }
     
+    // this tests is known to crash
     func testSendNotification_foreground_observationDoesGetTriggered() {
         var result = false
         let notificationCenter = NotificationCenter.default
+        let expectationObject = expectation(description: "test")
         
         Trace.shared.queue.observation = nil
         observation = nil
         
-        observation = { _ in result = true }
+        observation = { _ in
+            result = true
+            expectationObject.fulfill()
+        }
         
         Trace.shared.queue.observation = observation
         
         [
             UIApplication.didEnterBackgroundNotification,
             UIApplication.willEnterForegroundNotification
-        ].forEach { notificationCenter.post(Notification(name: $0)) }
+        ].forEach {
+            notificationCenter.post(Notification(name: $0))
+            sleep(1)
+        }
         
-        sleep(1)
+        wait(for: [expectationObject], timeout: 5.0)
         
         XCTAssertTrue(result)
         XCTAssertNotNil(notificationCenter)
