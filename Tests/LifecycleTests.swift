@@ -88,14 +88,12 @@ final class LifecycleTests: XCTestCase {
     func testSendNotification_foreground_observationDoesGetTriggered() {
         var result = false
         let notificationCenter = NotificationCenter.default
-        let expectationObject = expectation(description: "test")
         
         Trace.shared.queue.observation = nil
         observation = nil
         
         observation = { _ in
             result = true
-            expectationObject.fulfill()
         }
         
         Trace.shared.queue.observation = observation
@@ -105,17 +103,14 @@ final class LifecycleTests: XCTestCase {
             UIApplication.willEnterForegroundNotification
         ].forEach {
             notificationCenter.post(Notification(name: $0))
-            sleep(1)
         }
         
-        wait(for: [expectationObject], timeout: 5.0)
+        sleep(1)
         
         XCTAssertTrue(result)
         XCTAssertNotNil(notificationCenter)
         
         sleep(1)
-        
-        Trace.shared.queue.observation = nil
     }
     
     func testStartupTrace_cold() {
