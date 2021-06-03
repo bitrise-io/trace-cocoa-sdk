@@ -216,7 +216,6 @@
 		1018644C262DE7550053B626 /* WatchAppUsingUI.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1018642B262DE7520053B626 /* WatchAppUsingUI.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		10186468262DE9680053B626 /* libTrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A694C2293FB060065F218 /* libTrace.a */; };
 		101864BC262DFF6D0053B626 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101864BB262DFF6D0053B626 /* SystemConfiguration.framework */; };
-		101865E5262E03000053B626 /* libTrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A694C2293FB060065F218 /* libTrace.a */; };
 		101BDEE725C8069600888117 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 103ABC812445FED6001BC364 /* bitrise_configuration.plist */; };
 		101F4A0F22B7931700F9DF4A /* DescriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F4A0E22B7931700F9DF4A /* DescriptorTests.swift */; };
 		101F4A1122B7946300F9DF4A /* MetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F4A1022B7946300F9DF4A /* MetricTests.swift */; };
@@ -689,13 +688,6 @@
 			remoteInfo = WatchAppUsingUI;
 		};
 		10186469262DE9680053B626 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 104A69442293FB060065F218 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 104A694B2293FB060065F218;
-			remoteInfo = Trace;
-		};
-		101865E6262E03000053B626 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 104A69442293FB060065F218 /* Project object */;
 			proxyType = 1;
@@ -1513,7 +1505,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				101865E5262E03000053B626 /* libTrace.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3488,7 +3479,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				101865E7262E03000053B626 /* PBXTargetDependency */,
 			);
 			name = "WatchAppUsingUI Extension";
 			productName = "WatchAppUsingUI Extension";
@@ -5087,11 +5077,6 @@
 			target = 104A694B2293FB060065F218 /* Trace */;
 			targetProxy = 10186469262DE9680053B626 /* PBXContainerItemProxy */;
 		};
-		101865E7262E03000053B626 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 104A694B2293FB060065F218 /* Trace */;
-			targetProxy = 101865E6262E03000053B626 /* PBXContainerItemProxy */;
-		};
 		104A69692293FDA20065F218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 104A694B2293FB060065F218 /* Trace */;
@@ -5332,11 +5317,6 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.SwiftUIDemo.SwiftUIDemo.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -5368,11 +5348,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTrace.a",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bitrise.SwiftUIDemo.SwiftUIDemo.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
