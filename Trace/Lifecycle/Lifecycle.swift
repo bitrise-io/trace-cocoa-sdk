@@ -13,8 +13,7 @@ import UIKit
 final internal class Lifecycle {
     
     // MARK: - Property
-        
-    private var didFinishLaunchingNotification: NSObjectProtocol?
+    
     private var willEnterForegroundNotification: NSObjectProtocol?
     private var didEnterBackgroundNotification: NSObjectProtocol?
     private var willTerminateNotification: NSObjectProtocol?
@@ -41,7 +40,6 @@ final internal class Lifecycle {
     }
     
     deinit {
-        didFinishLaunchingNotification = nil
         willEnterForegroundNotification = nil
         didEnterBackgroundNotification = nil
         willTerminateNotification = nil
@@ -59,12 +57,6 @@ final internal class Lifecycle {
     func startObserver() {
         let notificationCenter = NotificationCenter.default
         
-        didFinishLaunchingNotification = notificationCenter.addObserver(
-            forName: UIApplication.didFinishLaunchingNotification,
-            object: nil,
-            queue: queue,
-            using: { _ in }
-        )
         willEnterForegroundNotification = notificationCenter.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
@@ -111,8 +103,6 @@ final internal class Lifecycle {
     // pecker:ignore
     func stopObserver() {
         let notificationCenter = NotificationCenter.default
-        
-        notificationCenter.removeObserver(didFinishLaunchingNotification as Any)
         notificationCenter.removeObserver(willEnterForegroundNotification as Any)
         notificationCenter.removeObserver(didEnterBackgroundNotification as Any)
         notificationCenter.removeObserver(willTerminateNotification as Any)

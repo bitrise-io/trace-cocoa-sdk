@@ -140,7 +140,7 @@ final class Tracer {
     // MARK: - Finish
     
     @discardableResult
-    func finish(_ trace: TraceModel) -> Bool {
+    func finish(_ trace: TraceModel, withCustomTimestamp: Time.Timestamp? = nil) -> Bool {
         guard traces.contains(trace) else {
             Logger.warning(.traceModel, "Failed to find trace model: \(trace.traceId)")
             
@@ -155,8 +155,12 @@ final class Tracer {
         #endif
         
         dispatchQueue.sync {
-            trace.finish()
-
+            if let customTimestamp = withCustomTimestamp {
+                trace.finish(with: customTimestamp)
+            } else {
+                trace.finish()
+            }
+            
             sendToQueue()
         }
         
