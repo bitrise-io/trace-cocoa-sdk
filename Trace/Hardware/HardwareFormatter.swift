@@ -108,11 +108,7 @@ extension HardwareFormatter: Metricable {
                 
         timeseries.append(Metric.Timeseries(
             .value("res"),
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.used.rounded(to: 1))
-            ])
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.used.rounded(to: 1))])
         )
         
         let descriptor = Metric.Descriptor(
@@ -131,11 +127,7 @@ extension HardwareFormatter: Metricable {
         let value = cpu.applicationUsage
         let timeseries = Metric.Timeseries(
             [],
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.overall.rounded(to: 2)
-            )]
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.overall.rounded(to: 2))]
         )
         
         let descriptor = Metric.Descriptor(
@@ -158,35 +150,19 @@ extension HardwareFormatter: Metricable {
         keys.append(.init("cpu.state"))
         timeseries.append(Metric.Timeseries(
             .value("system"),
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.system.rounded(to: 1))
-            ])
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.system.rounded(to: 1))])
         )
         timeseries.append(Metric.Timeseries(
             .value("user"),
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.user.rounded(to: 1))
-            ])
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.user.rounded(to: 1))])
         )
         timeseries.append(Metric.Timeseries(
             .value("idle"),
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.idle.rounded(to: 1))
-            ])
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.idle.rounded(to: 1))])
         )
         timeseries.append(Metric.Timeseries(
             .value("nice"),
-            points: [.point(
-                        seconds: value.timestamp.seconds,
-                        nanos: value.timestamp.nanos.rounded(to: 3),
-                        value: value.nice.rounded(to: 1))
-            ])
+            points: [.point(seconds: value.timestamp.seconds, nanos: value.timestamp.nanos, value: value.nice.rounded(to: 1))])
         )
         
         let descriptor = Metric.Descriptor(

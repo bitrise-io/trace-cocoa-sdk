@@ -74,63 +74,40 @@ extension ViewFormatter: Metricable {
         if let value = metric.initWithCoder {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.`init`.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)
-                ])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         } else if let value = metric.initWithFrame {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.`init`.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)
-                ])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         }
         
         if let value = metric.layoutSubviews {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.layoutSubviews.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)
-                ])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         }
         
         if let value = metric.draw {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.draw.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)
-                ])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         }
         
         if let value = metric.didMoveToSuperview {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.didMoveToSuperview.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         }
         
         if let value = metric.removeFromSuperview {
             timeseries.append(Metric.Timeseries(
                 [.value(name), .value(Keys.removeFromSuperview.rawValue)],
-                points: [.point(
-                            seconds: value.seconds,
-                            nanos: value.nanos.rounded(to: 3),
-                            value: duration)
-                ])
+                points: [.point(seconds: value.seconds, nanos: value.nanos, value: duration)])
             )
         }
         
