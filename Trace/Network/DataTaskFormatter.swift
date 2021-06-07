@@ -68,11 +68,7 @@ extension DataTaskFormatter: Metricable {
         
         let timeseries = Metric.Timeseries(
             values,
-            points: [.point(
-                        seconds: timestamp.seconds,
-                        nanos: timestamp.nanos.rounded(to: 3),
-                        value: 1)
-            ]
+            points: [.point(seconds: timestamp.seconds, nanos: timestamp.nanos, value: 1)]
         )
         let descriptor = Metric.Descriptor(
             name: .appRequestTask,
