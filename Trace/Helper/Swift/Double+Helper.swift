@@ -36,7 +36,8 @@ extension Double {
     
     /// 123.45 split to 123 and 45
     var splitAtDecimal: Split {
-        let split = Self.split(atDecimal: String(self))
+        let string = String(format: "%0.9f", self)
+        let split = Self.split(atDecimal: string)
         
         return split
     }
