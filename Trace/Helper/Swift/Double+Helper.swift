@@ -34,7 +34,7 @@ extension Double {
     
     // MARK: - Split
     
-    /// 123.45 split to 123 and 45
+    /// 123.45 split to 123 and 450000000?
     var splitAtDecimal: Split {
         let string = String(format: "%0.9f", self)
         let split = Self.split(atDecimal: string)
