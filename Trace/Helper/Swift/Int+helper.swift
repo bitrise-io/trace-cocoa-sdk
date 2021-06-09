@@ -19,6 +19,8 @@ extension Int {
         
         NSDecimalRound(&result, &decimalValue, scale, .plain)
         
-        return (result as NSDecimalNumber).intValue
+        let resultInt = (result as NSDecimalNumber).intValue
+        
+        return resultInt
     }
 }
