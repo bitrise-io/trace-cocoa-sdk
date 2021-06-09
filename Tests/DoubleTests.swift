@@ -32,19 +32,19 @@ final class DoubleTests: XCTestCase {
     }
     
     func testSplitAtDecimal() {
-        let value = 12.34
+        let value = 12.340000
         let split = value.splitAtDecimal
         
         XCTAssertEqual(split.integer, 12)
-        XCTAssertEqual(split.fractional, 34)
+        XCTAssertEqual(split.fractional, 340000000)
     }
     
     func testSplitAtDecimalLong() {
-        let value = 123456.789
+        let value = 123456.789001
         let split = value.splitAtDecimal
         
         XCTAssertEqual(split.integer, 123456)
-        XCTAssertEqual(split.fractional, 789)
+        XCTAssertEqual(split.fractional, 789001000)
     }
     
     func testSplitAtDecimal_round() {
@@ -52,6 +52,6 @@ final class DoubleTests: XCTestCase {
         let split = value.splitAtDecimal
         
         XCTAssertEqual(split.integer, 1)
-        XCTAssertEqual(split.fractional, 99)
+        XCTAssertEqual(split.fractional, 990000000)
     }
 }
