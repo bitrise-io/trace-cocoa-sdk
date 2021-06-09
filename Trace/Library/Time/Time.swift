@@ -70,17 +70,8 @@ internal enum Time {
     
     internal static func from(_ date: Date) -> Timestamp {
         let time = date.timeIntervalSince1970
-        // round to milliseconds
-        // https://developer.apple.com/forums/thread/71169
-        let rounded = time.roundFraction(to: 3)
-        let split: Double.Split
+        let split = time.splitAtDecimal
         
-        if let rounded = rounded {
-            split = Double.split(atDecimal: rounded)
-        } else {
-            split = time.splitAtDecimal
-        }
-         
         return Timestamp(
             seconds: split.integer,
             nanos: split.fractional,

@@ -43,24 +43,14 @@ extension Double {
     
     // MARK: - Round
     
-    func roundFraction(to scale: Int) -> String? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .none
-        formatter.roundingMode = .halfEven
-        formatter.minimumFractionDigits = scale
-        formatter.maximumFractionDigits = scale
-
-        let result = formatter.string(for: self)
-        
-        return result
-    }
-    
     func rounded(to scale: Int) -> Double {
         var decimalValue = Decimal(self)
         var result = Decimal()
         
         NSDecimalRound(&result, &decimalValue, scale, .plain)
         
-        return (result as NSDecimalNumber).doubleValue
+        let resultDouble = (result as NSDecimalNumber).doubleValue
+        
+        return resultDouble
     }
 }
