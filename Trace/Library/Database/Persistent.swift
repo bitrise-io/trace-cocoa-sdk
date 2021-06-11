@@ -35,11 +35,12 @@ final internal class Persistent: NSPersistentContainer {
     }
     
     private func setupPersistentStore(inMemory: Bool = false, _ completion: ((Result) -> Void)? = nil) {
-        #if DEBUG || Debug || debug
+        #if DEBUG || Debug || debug || targetEnvironment(simulator)
             addInMemoryStore()
         
-            Logger.debug(.database, "Using in-memory store while in debug mode")
+            Logger.debug(.database, "Using in-memory store while in debug/simulator mode")
         #else
+            // mainly acts as a fallback when disk space is limited
             if inMemory {
                 addInMemoryStore()
                 
