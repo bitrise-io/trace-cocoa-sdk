@@ -48,7 +48,7 @@ typedef unsigned int NSUInteger;
 #include <CoreGraphics/CGBase.h>
 #include <inttypes.h>
 #include <objc/runtime.h>
-
+#include "TargetConditionals.h"
 
 #define kMaxNameLength 128
 
@@ -195,6 +195,7 @@ static const struct class_t* decodeIsaPointer(const void* const isaPointer)
     if(isa & ISA_TAG_MASK)
     {
 #if defined(__arm64__)
+#if TARGET_OS_IOS
 // Bitrise
 // Look at this patch
 // https://github.com/kstenerud/KSCrash/issues/388#issuecomment-769568737
@@ -202,6 +203,7 @@ static const struct class_t* decodeIsaPointer(const void* const isaPointer)
             return (const struct class_t*)(isa & ISA_MASK_OLD);
         }
         return (const struct class_t*)(isa & ISA_MASK);
+#endif
 #else
         return (const struct class_t*)(isa & ISA_MASK);
 #endif

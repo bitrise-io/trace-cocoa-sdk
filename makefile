@@ -13,6 +13,7 @@ LastGitTagVersion := $(shell git describe --abbrev=0 --tags `git rev-list --tags
 # Open project
 open:
 	@open $(WORKSPACE)
+	@echo "Opening Trace.workspace"
 
 # Update project dependency
 update:
