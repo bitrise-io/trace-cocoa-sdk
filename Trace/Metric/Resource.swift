@@ -13,6 +13,27 @@ struct Resource: Codable {
     
     // MARK: - Enum
     
+    enum ConfigurationMode: String, Codable {
+        case debug
+        case release
+        case unknown
+    }
+    
+    enum Environment: String, Codable {
+        case normal
+        case unitTest
+        case UITest
+        case unknown
+    }
+    
+    enum DistributionMethod: String, Codable {
+        case adhoc
+        case testflight
+        case appStore
+        case enterprise
+        case unknown
+    }
+    
     enum CodingKeys: String, CodingKey {
         enum Labels: String, CodingKey {
             case appVersion = "app.version"
@@ -27,6 +48,9 @@ struct Resource: Codable {
             case sessionId = "app.session.id"
             case jailbroken = "device.jailbroken"
             case sdkVersion = "sdk.version"
+            case configurationMode = "app.configuration.mode"
+            case environment = "app.environment"
+            case distributionMethod = "app.distribution.method"
         }
         
         case type
@@ -46,6 +70,9 @@ struct Resource: Codable {
     let carrier: String
     let jailbroken: String
     let sdkVersion: String
+    let configurationMode: String
+    let environment: String
+    let distributionMethod: String
     
     var network: String
     var session: String
@@ -63,6 +90,9 @@ struct Resource: Codable {
         jailbroken = details[DeviceFormatter.Keys.jailbroken.rawValue] ?? ""
         sdkVersion = details[DeviceFormatter.Keys.SDK.version.rawValue] ?? ""
         platform = details[DeviceFormatter.Keys.platform.rawValue] ?? ""
+        configurationMode = details[DeviceFormatter.Keys.Application.configurationMode.rawValue] ?? ConfigurationMode.unknown.rawValue
+        environment = details[DeviceFormatter.Keys.Application.environment.rawValue] ?? Environment.unknown.rawValue
+        distributionMethod = details[DeviceFormatter.Keys.Application.distributionMethod.rawValue] ?? DistributionMethod.unknown.rawValue
         
         network = ""
         session = sessionId
@@ -87,6 +117,9 @@ struct Resource: Codable {
         jailbroken = try nestedContainer.decode(String.self, forKey: .jailbroken)
         sdkVersion = try nestedContainer.decode(String.self, forKey: .sdkVersion)
         platform = try nestedContainer.decode(String.self, forKey: .platform)
+        configurationMode = try nestedContainer.decodeIfPresent(String.self, forKey: .configurationMode) ?? ConfigurationMode.unknown.rawValue
+        environment = try nestedContainer.decodeIfPresent(String.self, forKey: .environment) ?? Environment.unknown.rawValue
+        distributionMethod = try nestedContainer.decodeIfPresent(String.self, forKey: .distributionMethod) ?? DistributionMethod.unknown.rawValue
     }
     
     // MARK: - Encode
@@ -108,6 +141,9 @@ struct Resource: Codable {
         try nestedContainer.encode(platform, forKey: .platform)
         try nestedContainer.encode(jailbroken, forKey: .jailbroken)
         try nestedContainer.encode(sdkVersion, forKey: .sdkVersion)
+        try nestedContainer.encode(configurationMode, forKey: .configurationMode)
+        try nestedContainer.encode(environment, forKey: .environment)
+        try nestedContainer.encode(distributionMethod, forKey: .distributionMethod)
     }
 }
 
