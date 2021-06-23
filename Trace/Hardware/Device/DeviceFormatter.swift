@@ -41,6 +41,9 @@ internal struct DeviceFormatter: JSONEncodable {
             case build = "app.build"
             case state = "app.state"
             case powerState = "app.power.state"
+            case configurationMode = "app.configuration.mode"
+            case environment = "app.environment"
+            case distributionMethod = "app.distribution.method"
         }
         
         enum Disk: String {
@@ -171,6 +174,45 @@ internal struct DeviceFormatter: JSONEncodable {
         
         details[Keys.jailbroken.rawValue] = isJailbroken ? "true" : "false"
         details[Keys.SDK.version.rawValue] = Constants.SDK.version.rawValue
+        
+        let configurationMode: Resource.ConfigurationMode
+        let environment: Resource.Environment
+        let distributionMethod: Resource.DistributionMethod
+        let isSimulator: Bool
+        let isSandboxed = bundle.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
+        let hasMobileProvision = bundle.path(forResource: "embedded", ofType: "mobileprovision") != nil
+        
+        #if targetEnvironment(simulator)
+            isSimulator = true
+        #else
+            isSimulator = false
+        #endif
+        
+        #if DEBUG || Debug || debug
+        configurationMode = .debug
+        #else
+        configurationMode = .release
+        #endif
+        
+        if NSClassFromString("XCTest") != nil || NSClassFromString("XCTestProbe") != nil {
+            environment = .unitTest
+        } else {
+            environment = .normal
+        }
+        
+        if !isSimulator && isSandboxed && !hasMobileProvision {
+            distributionMethod = .testflight
+        } else if !isSimulator && !isSandboxed && !hasMobileProvision {
+            distributionMethod = .appStore
+        } else if !isSimulator && !isSandboxed && hasMobileProvision {
+            distributionMethod = .adhoc
+        } else {
+            distributionMethod = .unknown
+        }
+        
+        details[Keys.Application.configurationMode.rawValue] = configurationMode.rawValue
+        details[Keys.Application.environment.rawValue] = environment.rawValue
+        details[Keys.Application.distributionMethod.rawValue] = distributionMethod.rawValue
         
         return details
     }
