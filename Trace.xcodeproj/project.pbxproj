@@ -266,7 +266,7 @@
 		104EA0C2238294FA004C07CE /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104EA0C1238294FA004C07CE /* Control.storyboard */; };
 		104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C32382A407004C07CE /* GestureViewController.swift */; };
 		104EA0C62382AA61004C07CE /* Gesture+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C52382AA61004C07CE /* Gesture+Swizzled.swift */; };
-		104F555D2321.7.3506247C4 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		104F555D2321.7.3506247C4 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555E2322563C006247C4 /* ViewFilterTests.swift */; };
 		104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556023225845006247C4 /* ViewControllerFilterTests.swift */; };
 		104F556323225AFC006247C4 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556223225AFC006247C4 /* SessionTests.swift */; };
@@ -1638,6 +1638,13 @@
 				800DC605247D6E3F00FC8C73 /* libTrace.a in Frameworks */,
 				800DC604247D6E3900FC8C73 /* libz.tbd in Frameworks */,
 				800DC603247D6E3200FC8C73 /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8633EA70E063D8AB72777E4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3457,6 +3464,7 @@
 			buildPhases = (
 				10186429262DE7520053B626 /* Resources */,
 				10186450262DE7550053B626 /* Embed App Extensions */,
+				8633EA70E063D8AB72777E4A /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4123,8 +4131,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
@@ -4164,8 +4171,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
@@ -4223,8 +4229,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		1086A8B225641036007612D0 /* 4. Create VERSION file */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4502,8 +4507,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */ = {
@@ -4523,8 +4527,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "
-";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
@@ -4808,7 +4811,7 @@
 				108EF3BF231E89C60029FD65 /* FPSFormatterTests.swift in Sources */,
 				108EF3C1231E98880029FD65 /* RequestFormatterTests.swift in Sources */,
 				10F2874E23C3790A00F9D03A /* JailbrokeTests.swift in Sources */,
-				104F555D2321.7.3506247C4 /* (null) in Sources */,
+				104F555D2321.7.3506247C4 /* BuildFile in Sources */,
 				10D582C32653F9FA00B62C3C /* JSContextTests.swift in Sources */,
 				1028C8BE2302BA1D00E07839 /* ConnectivityTests.swift in Sources */,
 				1028C8C42302C28A00E07839 /* DatabaseTests.swift in Sources */,

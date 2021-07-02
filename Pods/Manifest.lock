@@ -1,5 +1,5 @@
 PODS:
-  - SnapshotTesting (1.8.2)
+  - SnapshotTesting (1.9.0)
 
 DEPENDENCIES:
   - SnapshotTesting
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SnapshotTesting
 
 SPEC CHECKSUMS:
-  SnapshotTesting: 38947050d13960d57a4a9c166fcf51bca7d56970
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
 
 PODFILE CHECKSUM: 86e13431c2dc4629c6ac5c0f317d7dbfadd18b78
 
