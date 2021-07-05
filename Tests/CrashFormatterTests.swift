@@ -119,4 +119,17 @@ final class CrashFormatterTests: XCTestCase {
         XCTAssertEqual(span.name.value as! String, "someCrash")
         XCTAssertEqual(span.attribute.attribute.count, 2)
     }
+    
+    func testDescriptor_snapshot() {
+        let formatter = CrashFormatter(CrashReporting.Report(
+            type: .exception,
+            name: "some.crash.name",
+            reason: "some.reason",
+            callStack: "CallStack... CallStack... CallStack..."
+            )
+        )
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

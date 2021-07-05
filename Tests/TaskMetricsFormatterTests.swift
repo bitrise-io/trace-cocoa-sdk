@@ -140,4 +140,11 @@ final class TaskMetricsFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: taskMetrics.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testDescriptor_snapshot() {
+        let formatter = TaskMetricsFormatter(mock)
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

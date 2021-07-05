@@ -103,10 +103,27 @@ final internal class Lifecycle {
     // pecker:ignore
     func stopObserver() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(willEnterForegroundNotification as Any)
-        notificationCenter.removeObserver(didEnterBackgroundNotification as Any)
-        notificationCenter.removeObserver(willTerminateNotification as Any)
-        notificationCenter.removeObserver(didReceiveMemoryWarningNotification as Any)
+        
+        if let notification = willEnterForegroundNotification {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        if let notification = didEnterBackgroundNotification {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        if let notification = willTerminateNotification {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        if let notification = didReceiveMemoryWarningNotification {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        willEnterForegroundNotification = nil
+        didEnterBackgroundNotification = nil
+        willTerminateNotification = nil
+        didReceiveMemoryWarningNotification = nil
     }
     
     // MARK: - Process

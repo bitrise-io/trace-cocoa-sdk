@@ -91,4 +91,11 @@ final class StartupFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: startup.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testDescriptor_snapshot() {
+        let formatter = StartupFormatter(123.4, status: .warm)
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

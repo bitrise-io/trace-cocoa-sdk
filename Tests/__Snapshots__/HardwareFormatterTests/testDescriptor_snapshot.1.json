@@ -1,0 +1,12 @@
+{
+  "description" : "System CPU Usage",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "cpu.state"
+    }
+  ],
+  "name" : "system.cpu.pct",
+  "type" : 2,
+  "unit" : "percent"
+}
