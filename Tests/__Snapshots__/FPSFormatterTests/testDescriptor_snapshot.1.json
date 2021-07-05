@@ -1,0 +1,12 @@
+{
+  "description" : "Application frame rate",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "view"
+    }
+  ],
+  "name" : "view.frame.rate",
+  "type" : 1,
+  "unit" : "1"
+}

@@ -23,6 +23,8 @@ final class StartupTests: XCTestCase {
     }
     
     override func tearDown() {
+        startup?.stopObserver()
+        
         startup = nil
     }
     

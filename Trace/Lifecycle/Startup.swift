@@ -64,6 +64,21 @@ internal final class Startup {
         }
     }
     
+    func stopObserver() {
+        let notificationCenter = NotificationCenter.default
+        
+        if let notification = didBecomeActiveNotification {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        if let notification = didBecomeActiveNotificationScene {
+            notificationCenter.removeObserver(notification)
+        }
+        
+        didBecomeActiveNotification = nil
+        didBecomeActiveNotificationScene = nil
+    }
+    
     // MARK: - Notification
     
     private func didBecomeActive(_ notification: Notification) {

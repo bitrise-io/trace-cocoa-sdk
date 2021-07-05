@@ -83,4 +83,18 @@ final class HardwareFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: hardware.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testDescriptor_snapshot() {
+        let formatter: HardwareFormatter = {
+            let cpu = CPU()
+            let memory = Memory()
+            let connectivity = Connectivity()
+            
+            return HardwareFormatter(cpu: cpu, memory: memory, connectivity: connectivity)
+        }()
+        
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

@@ -165,4 +165,18 @@ final class URLSessionTaskFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: task.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testDescriptor_snapshot() {
+        let url = URL(string: "https://apm.bitrise.io")!
+        let session = URLSession(
+            configuration: .default,
+            delegate: nil,
+            delegateQueue: nil
+        )
+        let task = session.downloadTask(with: url) { _, _, _ in }
+        let formatter = URLSessionTaskFormatter(task)
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

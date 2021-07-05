@@ -83,4 +83,11 @@ final class ErrorFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: error.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testMetric_descriptor_snapshot() {
+        let formatter = ErrorFormatter(domain: "com.test.one", code: 1001, userinfo: nil)
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

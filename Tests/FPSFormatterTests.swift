@@ -76,4 +76,12 @@ final class FPSFormatterTests: XCTestCase {
     func testFormatterMatchesJSON_descriptor() {
         assertSnapshot(matching: fps.metrics.metrics[0].descriptor, as: .json)
     }
+    
+    func testDescriptor_snapshot() {
+        let timestamp = Time.Timestamp(seconds: 123, nanos: 22200, timeInterval: 123.22200)
+        let formatter = FPSFormatter(FPS.Result(timestamp: timestamp, fps: 47, viewController: "CustomViewController"))
+        let metric = formatter.metrics.metrics.first!
+        
+        assertSnapshot(matching: metric.descriptor, as: .json)
+    }
 }

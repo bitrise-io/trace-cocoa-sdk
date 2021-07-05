@@ -1,0 +1,12 @@
+{
+  "description" : "Total number of application crashes",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "crash.type"
+    }
+  ],
+  "name" : "app.crash.total",
+  "type" : 4,
+  "unit" : "1"
+}

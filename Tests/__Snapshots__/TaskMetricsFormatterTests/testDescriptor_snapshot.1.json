@@ -1,0 +1,20 @@
+{
+  "description" : "Network request size in bytes",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "http.url"
+    },
+    {
+      "description" : "",
+      "key" : "http.method"
+    },
+    {
+      "description" : "",
+      "key" : "http.status_code"
+    }
+  ],
+  "name" : "app.request.size.bytes",
+  "type" : 1,
+  "unit" : "bytes"
+}
