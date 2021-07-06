@@ -92,9 +92,8 @@ final class HardwareFormatterTests: XCTestCase {
             
             return HardwareFormatter(cpu: cpu, memory: memory, connectivity: connectivity)
         }()
-        
-        let metric = formatter.metrics.metrics.first!
-        
-        assertSnapshot(matching: metric.descriptor, as: .json)
+        formatter.metrics.metrics.forEach {
+            assertSnapshot(matching: $0.descriptor, as: .json)
+        }
     }
 }

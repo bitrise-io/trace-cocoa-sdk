@@ -175,8 +175,9 @@ final class URLSessionTaskFormatterTests: XCTestCase {
         )
         let task = session.downloadTask(with: url) { _, _, _ in }
         let formatter = URLSessionTaskFormatter(task)
-        let metric = formatter.metrics.metrics.first!
         
-        assertSnapshot(matching: metric.descriptor, as: .json)
+        formatter.metrics.metrics.forEach {
+            assertSnapshot(matching: $0.descriptor, as: .json)
+        }
     }
 }
