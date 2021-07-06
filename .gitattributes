@@ -12,3 +12,6 @@
 *.tgz linguist-documentation
 *.zip linguist-documentation
 *.rb linguist-documentation
+*.makefile linguist-documentation
+*.shell linguist-documentation
+*.sh linguist-documentation
