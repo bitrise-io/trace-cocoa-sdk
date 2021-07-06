@@ -1,0 +1,12 @@
+{
+  "description" : "App Memory Usage",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "memory.state"
+    }
+  ],
+  "name" : "app.memory.bytes",
+  "type" : 1,
+  "unit" : "bytes"
+}

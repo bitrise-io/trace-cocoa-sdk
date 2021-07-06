@@ -115,7 +115,7 @@ extension HardwareFormatter: Metricable {
             name: .appMemoryBytes,
             description: "App Memory Usage",
             unit: .bytes,
-            type: .double,
+            type: .int64,
             keys: keys
         )
         let metric = Metric(descriptor: descriptor, timeseries: timeseries)

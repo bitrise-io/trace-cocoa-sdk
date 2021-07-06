@@ -1,0 +1,16 @@
+{
+  "description" : "Network response size in bytes",
+  "label_keys" : [
+    {
+      "description" : "",
+      "key" : "http.url"
+    },
+    {
+      "description" : "",
+      "key" : "http.method"
+    }
+  ],
+  "name" : "app.response.size.bytes",
+  "type" : 1,
+  "unit" : "bytes"
+}

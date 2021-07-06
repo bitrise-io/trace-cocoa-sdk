@@ -1,0 +1,9 @@
+{
+  "description" : "Application CPU Usage",
+  "label_keys" : [
+
+  ],
+  "name" : "process.cpu.pct",
+  "type" : 2,
+  "unit" : "percent"
+}
