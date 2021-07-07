@@ -486,4 +486,124 @@ final class TraceModelTests: XCTestCase {
         XCTAssertEqual(model.spans.count, 1)
         XCTAssertNotNil(model.spans[0].end)
     }
+    
+    func testTrace_snapshot() {
+        let span = TraceModel.Span(
+            traceId: "7530566f6638343046575a6c7761594d",
+            spanId: "31444d675946645a",
+            name: TraceModel.Span.Name(value: "TraceModel start", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1)
+        )
+        let model = TraceModel(id: "7530566f6638343046575a6c7761594d", spans: [span], resource: nil, attributes: nil, type: .startup)
+        
+        assertSnapshot(matching: model, as: .json)
+        assertSnapshot(matching: model.description, as: Snapshotting.lines)
+        assertSnapshot(matching: model.spans, as: .json)
+    }
+    
+    func testTrace_snapshot_finish() {
+        let span = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "wrcwrwrewr",
+            name: TraceModel.Span.Name(value: "TraceModel finish", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1)
+        )
+        let model = TraceModel(id: "gs45634tttre", spans: [span], resource: nil, attributes: nil, type: .startup)
+        model.finish(with: Time.Timestamp(seconds: 123, nanos: 100, timeInterval: 123.100))
+        
+        assertSnapshot(matching: model, as: .json)
+        assertSnapshot(matching: model.description, as: Snapshotting.lines)
+        assertSnapshot(matching: model.spans, as: .json)
+    }
+    
+    func testTrace_snapshot_finish_with_spans() {
+        let span = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "wrcwrwrewr",
+            name: TraceModel.Span.Name(value: "TraceModel finish", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1)
+        )
+        let model = TraceModel(id: "gs45634tttre", spans: [span], resource: nil, attributes: nil, type: .startup)
+        let span2 = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "new2",
+            name: TraceModel.Span.Name(value: "name", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1),
+            end: TraceModel.Span.Timestamp(seconds: 123, nanos: 100),
+            attribute: TraceModel.Span.Attributes(),
+            kind: .client,
+            parentSpanId: "wrcwrwrewr"
+        )
+        
+        model.spans.append(span2)
+        model.finish(with: Time.Timestamp(seconds: 123, nanos: 100, timeInterval: 123.100))
+        
+        assertSnapshot(matching: model, as: .json)
+        assertSnapshot(matching: model.description, as: Snapshotting.lines)
+        assertSnapshot(matching: model.spans, as: .json)
+    }
+    
+    func testTrace_snapshot_finish_withMany_spans() {
+        let span = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "wrcwrwrewr",
+            name: TraceModel.Span.Name(value: "TraceModel finish", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1)
+        )
+        let model = TraceModel(id: "gs45634tttre", spans: [span], resource: nil, attributes: nil, type: .startup)
+        let span2 = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "new2",
+            name: TraceModel.Span.Name(value: "name", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1),
+            end: TraceModel.Span.Timestamp(seconds: 123, nanos: 100),
+            attribute: TraceModel.Span.Attributes(),
+            kind: .client,
+            parentSpanId: "wrcwrwrewr"
+        )
+        let span3 = TraceModel.Span(
+            traceId: "gs45634tttre",
+            spanId: "new3",
+            name: TraceModel.Span.Name(value: "name 3", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 10, nanos: 1),
+            end: TraceModel.Span.Timestamp(seconds: 143, nanos: 100),
+            attribute: TraceModel.Span.Attributes(),
+            kind: .unspecified,
+            parentSpanId: "wrcwrwrewr"
+        )
+        
+        model.spans.append(span2)
+        model.spans.append(span3)
+        model.finish(with: Time.Timestamp(seconds: 123, nanos: 100, timeInterval: 123.100))
+        
+        assertSnapshot(matching: model, as: .json)
+        assertSnapshot(matching: model.description, as: Snapshotting.lines)
+        assertSnapshot(matching: model.spans, as: .json)
+    }
+    
+    func testTrace_snapshot_resourceAndAttributes() {
+        let resource = Resource(from: [], sessionId: "123")
+        let span = TraceModel.Span(
+            traceId: "7530566f6638343046575a6c7761594d",
+            spanId: "31444d675946645a",
+            name: TraceModel.Span.Name(value: "TraceModel start", truncatedByteCount: 0),
+            start: TraceModel.Span.Timestamp(seconds: 0, nanos: 1)
+        )
+        let attributes = [
+            "At1": "v1",
+            "At2": "v2",
+            "At3": "v3"
+        ]
+        let model = TraceModel(
+            id: "7530566f6638343046575a6c7761594d",
+            spans: [span],
+            resource: resource,
+            attributes: attributes,
+            type: .startup
+        )
+        
+        assertSnapshot(matching: model, as: .json)
+        assertSnapshot(matching: model.description, as: Snapshotting.lines)
+        assertSnapshot(matching: model.spans, as: .json)
+    }
 }
