@@ -1,0 +1,29 @@
+{
+  "spans" : [
+    {
+      "attributes" : {
+        "attribute_map" : {
+
+        },
+        "dropped_attributes_count" : 0
+      },
+      "end_time" : {
+        "nanos" : 100,
+        "seconds" : 123
+      },
+      "kind" : 2,
+      "name" : {
+        "truncated_byte_count" : 0,
+        "value" : "TraceModel finish"
+      },
+      "parent_span_id" : null,
+      "span_id" : "77726377727772657772",
+      "start_time" : {
+        "nanos" : 1,
+        "seconds" : 0
+      },
+      "trace_id" : "677334353633347474747265"
+    }
+  ],
+  "type" : "startup"
+}
