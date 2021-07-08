@@ -40,7 +40,7 @@ final class AppleCrashFormatInterpreterTests: XCTestCase {
     }
     
     func testFindCrashFiles() {
-        guard let url = Bundle(for: Self.self).url(forResource: "outOfBound", withExtension: "crash") else {
+        guard let url = Bundle(for: type(of: self)).url(forResource: "outOfBound", withExtension: "crash") else {
             return XCTFail("Could not locate test fails")
         }
         
@@ -52,7 +52,7 @@ final class AppleCrashFormatInterpreterTests: XCTestCase {
     }
     
     func testCreateModel_outOfBound() {
-        guard let url = Bundle(for: Self.self).url(forResource: "outOfBound", withExtension: "crash") else {
+        guard let url = Bundle(for: type(of: self)).url(forResource: "outOfBound", withExtension: "crash") else {
             return XCTFail("Could not locate test fails")
         }
         
@@ -96,7 +96,7 @@ final class AppleCrashFormatInterpreterTests: XCTestCase {
     }
     
     func testCreateModel_noTraceId() {
-        guard let url = Bundle(for: Self.self).url(forResource: "noTraceId", withExtension: "crash") else {
+        guard let url = Bundle(for: type(of: self)).url(forResource: "noTraceId", withExtension: "crash") else {
             return XCTFail("Could not locate test fails")
         }
         
@@ -127,7 +127,7 @@ final class AppleCrashFormatInterpreterTests: XCTestCase {
     }
     
     func testCreateModel_traceIdEmpty() {
-        guard let url = Bundle(for: Self.self).url(forResource: "traceIdEmpty", withExtension: "crash") else {
+        guard let url = Bundle(for: type(of: self)).url(forResource: "traceIdEmpty", withExtension: "crash") else {
             return XCTFail("Could not locate test fails")
         }
         
@@ -158,7 +158,7 @@ final class AppleCrashFormatInterpreterTests: XCTestCase {
     }
     
     func testCreateModel_InStringFormat() {
-        guard let url = Bundle(for: Self.self).url(forResource: "traceIdEmpty", withExtension: "crash") else {
+        guard let url = Bundle(for: type(of: self)).url(forResource: "traceIdEmpty", withExtension: "crash") else {
             return XCTFail("Could not locate test fails")
         }
         

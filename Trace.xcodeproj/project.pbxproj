@@ -266,7 +266,7 @@
 		104EA0C2238294FA004C07CE /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104EA0C1238294FA004C07CE /* Control.storyboard */; };
 		104EA0C42382A407004C07CE /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C32382A407004C07CE /* GestureViewController.swift */; };
 		104EA0C62382AA61004C07CE /* Gesture+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0C52382AA61004C07CE /* Gesture+Swizzled.swift */; };
-		104F555D2321.7.3506247C4 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		104F555D2321.7.3506247C4 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		104F555F2322563C006247C4 /* ViewFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F555E2322563C006247C4 /* ViewFilterTests.swift */; };
 		104F556123225845006247C4 /* ViewControllerFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556023225845006247C4 /* ViewControllerFilterTests.swift */; };
 		104F556323225AFC006247C4 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F556223225AFC006247C4 /* SessionTests.swift */; };
@@ -284,9 +284,9 @@
 		105929522309A2D50004D340 /* Metric+Collater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105929512309A2D50004D340 /* Metric+Collater.swift */; };
 		10592954230AF2590004D340 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10592953230AF2590004D340 /* Resource.swift */; };
 		105962D9243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105962D8243CDE7C00047D29 /* AppleCrashFormatInterpreterTests.swift */; };
-		105962DB243CDF2B00047D29 /* outOfBound.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DA243CDF2B00047D29 /* outOfBound.crash */; platformFilter = ios; };
-		105962DE243E12C700047D29 /* noTraceId.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DC243E12C700047D29 /* noTraceId.crash */; platformFilter = ios; };
-		105962DF243E12C700047D29 /* traceIdEmpty.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DD243E12C700047D29 /* traceIdEmpty.crash */; platformFilter = ios; };
+		105962DB243CDF2B00047D29 /* outOfBound.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DA243CDF2B00047D29 /* outOfBound.crash */; };
+		105962DE243E12C700047D29 /* noTraceId.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DC243E12C700047D29 /* noTraceId.crash */; };
+		105962DF243E12C700047D29 /* traceIdEmpty.crash in Resources */ = {isa = PBXBuildFile; fileRef = 105962DD243E12C700047D29 /* traceIdEmpty.crash */; };
 		105962E3243F87BD00047D29 /* SelectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 105962E2243F87BD00047D29 /* SelectorTests.m */; };
 		105A4B6D246028C5007ECEF1 /* Decodable+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105A4B6C246028C5007ECEF1 /* Decodable+Helper.swift */; };
 		105A4B6E2460338F007ECEF1 /* BitriseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */; };
@@ -460,7 +460,7 @@
 		10B1BAF822F31ABF00DEA77B /* URLSessionTaskMetrics+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1BAF722F31ABF00DEA77B /* URLSessionTaskMetrics+Swizzled.swift */; };
 		10B1BB6D22F9AAB900DEA77B /* Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1BB6C22F9AAB900DEA77B /* Lifecycle.swift */; };
 		10B1BB6F22F9B35600DEA77B /* SessionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B1BB6E22F9B35600DEA77B /* SessionFormatter.swift */; };
-		10B1BB7122FAFBF200DEA77B /* bitrise_configuration_noURL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10B1BB7022FAFBF200DEA77B /* bitrise_configuration_noURL.plist */; platformFilter = ios; };
+		10B1BB7122FAFBF200DEA77B /* bitrise_configuration_noURL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10B1BB7022FAFBF200DEA77B /* bitrise_configuration_noURL.plist */; };
 		10B606512530754400DC1DB1 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606502530754400DC1DB1 /* AudioViewController.swift */; };
 		10B606732530759500DC1DB1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B606722530759500DC1DB1 /* VideoViewController.swift */; };
 		10B60685253075CA00DC1DB1 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B60684253075CA00DC1DB1 /* Media.storyboard */; };
@@ -557,7 +557,7 @@
 		10C0498E23E0942800822835 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0498D23E0941500822835 /* libz.tbd */; };
 		10C0499223E0944200822835 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0499123E0944200822835 /* SystemConfiguration.framework */; };
 		10C0F5AA22E1BF3000FA5465 /* BitriseConfigurationInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0F5A822E1BF1B00FA5465 /* BitriseConfigurationInteractorTests.swift */; };
-		10C0F5AC22E1C1BE00FA5465 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0F5AB22E1C1BE00FA5465 /* bitrise_configuration.plist */; platformFilter = ios; };
+		10C0F5AC22E1C1BE00FA5465 /* bitrise_configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0F5AB22E1C1BE00FA5465 /* bitrise_configuration.plist */; };
 		10C7F34825ED9C7400597D1C /* NetworkUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7F34725ED9C7400597D1C /* NetworkUploadViewController.swift */; };
 		10C7F35E25EDA39F00597D1C /* NetworkUpload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C7F35D25EDA39F00597D1C /* NetworkUpload.storyboard */; };
 		10C7F37125EDAA3600597D1C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C7F37025EDAA3600597D1C /* logo.png */; };
@@ -4131,7 +4131,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		10512F4724806DC000A3B180 /* Tests - Run Swift via code */ = {
@@ -4171,7 +4172,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		1053AAC4240543A600F90393 /* Run Pecker linter tool - Disabled */ = {
@@ -4229,7 +4231,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		1086A8B225641036007612D0 /* 4. Create VERSION file */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4507,7 +4510,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift APM_APP_VERSION 1.0.0 APM_BUILD_VERSION 123";
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		10D8833D256E8573000BEDE1 /* Tests - Run Swift project without version details via Shell */ = {
@@ -4527,7 +4531,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/xcrun --sdk macosx swift $(SRCROOT)/UploadDSYM/main.swift";
-			shellScript = "\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		10F7031322A6A7F100618F27 /* 2. Create universal static library */ = {
@@ -4811,7 +4816,7 @@
 				108EF3BF231E89C60029FD65 /* FPSFormatterTests.swift in Sources */,
 				108EF3C1231E98880029FD65 /* RequestFormatterTests.swift in Sources */,
 				10F2874E23C3790A00F9D03A /* JailbrokeTests.swift in Sources */,
-				104F555D2321.7.3506247C4 /* BuildFile in Sources */,
+				104F555D2321.7.3506247C4 /* (null) in Sources */,
 				10D582C32653F9FA00B62C3C /* JSContextTests.swift in Sources */,
 				1028C8BE2302BA1D00E07839 /* ConnectivityTests.swift in Sources */,
 				1028C8C42302C28A00E07839 /* DatabaseTests.swift in Sources */,
