@@ -52,11 +52,12 @@
 // /usr/bin/xcrun --sdk macosx swift main.swift APM_COLLECTOR_TOKEN token_here APM_APP_VERSION version_here APM_BUILD_VERSION build_version
 //
 import Foundation
+import CoreServices
 
 // swiftlint:disable prefixed_toplevel_constant
 
 // Upload dSYM script version
-let version = "1.0.1"
+let version = "1.0.2"
 
 /// Keys
 enum Keys: String, CodingKey {
@@ -181,11 +182,71 @@ final class DSYMLocator {
         
         do {
             let fileManager = FileManager.default
+            let suffix = ".dSYM"
             
             // Check the path and filter for .dSYM suffix
             dSYMs = try fileManager
                 .subpathsOfDirectory(atPath: path)
-                .filter { $0.hasSuffix(".dSYM") } // Remove extra files and folders
+                .filter { $0.hasSuffix(suffix) } // Remove extra files and folders
+            
+            print("[Bitrise:Trace/dSYM] Looking for non ASCII dSYM's")
+            
+            // check for non ASCII
+            for dsym in dSYMs where dsym.unicodeScalars.contains(where: { !$0.isASCII }) {
+                print("[Bitrise:Trace/dSYM] Found non ASCII name for \(dsym)")
+                
+                // get the name
+                var names = dsym.components(separatedBy: ".")
+                names.removeAll { $0 == "app" || $0 == "dSYM" }
+                
+                // locations
+                var url = URL(fileURLWithPath: (path as NSString).appendingPathComponent(dsym))
+                let contentPath = "/Contents/Resources/DWARF/"
+                var contentURL = URL(fileURLWithPath: (path as NSString)
+                                        .appendingPathComponent(dsym + contentPath + names.joined()))
+                let uuid: String
+                
+                // find dSYM uuid
+                if let item = MDItemCreate(nil, url.path as CFString),
+                   let mdNames = MDItemCopyAttributeNames(item),
+                   let mdAttributes = MDItemCopyAttributes(item, mdNames) as? [String: Any],
+                   let uuids = mdAttributes["com_apple_xcode_dsym_uuids"] as? [String],
+                   let fileUUID = uuids.first,
+                   !fileUUID.isEmpty {
+                    print("[Bitrise:Trace/dSYM] Found dSYM UUID: \(fileUUID)")
+                    
+                    uuid = fileUUID
+                } else {
+                    print("[Bitrise:Trace/dSYM] Failed to read dSYM uuid, fallback to random UUID for DSYM \(url)")
+                    
+                    uuid = UUID().uuidString
+                }
+                
+                // formatters
+                var resource = URLResourceValues()
+                resource.name = "\(uuid)\(suffix)"
+                var content = URLResourceValues()
+                content.name = uuid
+                
+                do {
+                    // update dsym content name
+                    try contentURL.setResourceValues(content)
+                    
+                    print("[Bitrise:Trace/dSYM] Non ASCII file content name updated to \(content.name ?? "Unknown")")
+                    
+                    // update dsym
+                    try url.setResourceValues(resource)
+                    
+                    print("[Bitrise:Trace/dSYM] Non ASCII file name updated to \(resource.name ?? "Unknown")")
+                    
+                    // replace uuid with the new name
+                    if let index = dSYMs.firstIndex(of: dsym) {
+                        dSYMs[index] = uuid
+                    }
+                } catch {
+                    print("[Bitrise:Trace/dSYM] Failed to update ASCII file with error \(error)")
+                }
+            }
         } catch {
             print("[Bitrise:Trace/dSYM] Failed to read dSYM files in \(Paths.dSYM.rawValue).")
             
