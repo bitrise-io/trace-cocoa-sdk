@@ -38,7 +38,13 @@ internal extension Network {
 
         // add auth
         configuration.additionalHeaders.forEach {
-            url.addValue($0.value, forHTTPHeaderField: $0.key.rawValue)
+            let currentValue = url.value(forHTTPHeaderField: $0.key.rawValue)
+            
+            if currentValue == nil {
+                url.setValue($0.value, forHTTPHeaderField: $0.key.rawValue)
+            } else {
+                Logger.print(.network, "Will not apply additional header for: \($0.key.rawValue)")
+            }
         }
 
         // network async request

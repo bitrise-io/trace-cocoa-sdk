@@ -27,17 +27,21 @@ internal extension MetricsService {
         
         var path: String {
             switch self {
-            case .metrics: return "api/v1/metrics"
+            case .metrics: return "api/metrics"
             }
         }
         
         func asURLRequest() throws -> URLRequest {
+            let headerValue = Network.MIMEType.jsonV1.rawValue
+            
             // create request
             var url = Router.baseURL
             url.appendPathComponent(path)
             
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
+            request.setValue(headerValue, forHTTPHeaderField: Network.Header.accept.rawValue)
+            request.setValue(headerValue, forHTTPHeaderField: Network.Header.contentType.rawValue)
             
             // add body and settings
             switch self {

@@ -31,7 +31,7 @@ internal struct CrashesService {
     // MARK: - Details
     
     @discardableResult
-    internal func crash(with model: Crash, _ completion: @escaping (Result<Data?, Network.Error>) -> Void) -> URLSessionDataTask? {
+    internal func crash(with model: Crash, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) -> URLSessionDataTask? {
         let router = Router.crash
         let parameters = try? model.dictionary()
         let name = model.title

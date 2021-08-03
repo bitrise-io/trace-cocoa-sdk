@@ -378,8 +378,8 @@ do {
     if knownArchitectures.count == 2 {
         print("Merging known architectures")
         
-        let folder0 = "\(path)\(knownArchitectures[0])"
-        let folder1 = "\(path)\(knownArchitectures[1])"
+        let folder0 = "\(path)/\(knownArchitectures[0])"
+        let folder1 = "\(path)/\(knownArchitectures[1])"
         let size0before = try Shell().run(["du", "-sh", folder0]).get()
         let size1before = try Shell().run(["du", "-sh", folder1]).get()
         

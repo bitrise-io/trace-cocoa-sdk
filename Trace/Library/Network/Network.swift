@@ -12,7 +12,7 @@ protocol Networkable {
     
     // MARK: - Typealias
     
-    typealias Completion = Result<Data?, Network.Error>
+    typealias Completion = Result<(data: Data?, response: HTTPURLResponse?), Network.Error>
     
     // MARK: - Network
     
@@ -26,7 +26,7 @@ protocol Networkable {
 final internal class Network: Networkable {
     
     /// Request completion
-    internal typealias Completion = Result<Data?, Error>
+    internal typealias Completion = Result<(data: Data?, response: HTTPURLResponse?), Error>
 
     // MARK: - Property
 
