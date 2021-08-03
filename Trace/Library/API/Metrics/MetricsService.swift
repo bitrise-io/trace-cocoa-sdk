@@ -49,23 +49,18 @@ internal struct MetricsService {
     @discardableResult
     private func validate(response: HTTPURLResponse?, for metrics: [String]) -> Bool {
         guard let headers = response?.allHeaderFields as? [String: String] else { return false }
+        guard let acceptedCount = headers[Network.MIMEType.acceptedMetricsCount.rawValue],
+              let count = Int(acceptedCount) else { return false }
+        guard let acceptedMetrics = headers[Network.MIMEType.acceptedMetricsLabels.rawValue]?.split(separator: ",") else { return false }
         
-        if let acceptedCount = headers[Network.MIMEType.acceptedMetricsCount.rawValue], let count = Int(acceptedCount) {
-            if metrics.count != count {
-                if let acceptedMetrics = headers[Network.MIMEType.acceptedMetricsLabels.rawValue]?.split(separator: ",") {
-                    let sentMetrics = Set(metrics)
-                    let acceptedMetrics = Set(acceptedMetrics.map { String($0) })
-                    let mismatches = sentMetrics.symmetricDifference(acceptedMetrics)
+        let sent = Set(metrics)
+        let accepted = Set(acceptedMetrics.map { String($0) })
+        let mismatches = sent.symmetricDifference(accepted)
+        
+        guard metrics.count != count, !mismatches.isEmpty else { return true }
                     
-                    Logger.warning(.network, "Mismatch found for sent metric: \(mismatches). Accepted (\(count)/\(metrics.count))")
-                } else {
-                    Logger.warning(.network, "Unknown mismatch found for sent metric. Accepted (\(count)/\(metrics.count))")
-                }
-                
-                return false
-            }
-        }
+        Logger.warning(.network, "Mismatch found for sent metric: \(mismatches), Accepted (\(count)/\(metrics.count)).")
         
-        return true
+        return false
     }
 }
