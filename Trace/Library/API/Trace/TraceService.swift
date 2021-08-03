@@ -31,7 +31,7 @@ internal struct TraceService {
     // MARK: - Steps
     
     @discardableResult
-    internal func trace(with model: TraceModel, _ completion: @escaping (Result<Data?, Network.Error>) -> Void) -> URLSessionDataTask? {
+    internal func trace(with model: TraceModel, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) -> URLSessionDataTask? {
         return network.request(Router.trace(model)) {
             completion($0)
             

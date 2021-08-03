@@ -17,7 +17,7 @@ internal extension Network {
         
         if let statusCode = statusCode,
             successStatusCodes.contains(statusCode) {
-            completion(.success(data))
+            completion(.success((data: data, response: response as? HTTPURLResponse)))
         } else if let statusCode = statusCode,
             clientStatusCodes.contains(statusCode) {
             if statusCode == StatusCode.unauthorized.rawValue {

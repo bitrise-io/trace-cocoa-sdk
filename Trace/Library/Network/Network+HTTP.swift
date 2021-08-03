@@ -178,5 +178,11 @@ internal extension Network {
         case html = "text/html"
         /// application/json
         case json = "application/json"
+        /// application/json with version one of the api
+        case jsonV1 = "application/vnd.bitrise.trace-v1+json"
+        /// metric response accepted labels
+        case acceptedMetricsLabels = "accepted-metrics-labels"
+        /// metric response label count
+        case acceptedMetricsCount = "accepted-metrics-count"
     }
 }

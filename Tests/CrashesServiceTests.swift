@@ -31,7 +31,7 @@ final private class MockNetwork: Networkable {
     func request(_ request: Routable, _ completion: @escaping (MockNetwork.Completion) -> Void) -> URLSessionDataTask? {
         // call the callback
         switch status {
-        case .success: completion(.success(nil))
+        case .success: completion(.success((data: nil, response: nil)))
         case .failure: completion(.failure(.invalidURL))
         }
         
@@ -42,7 +42,7 @@ final private class MockNetwork: Networkable {
     func upload(_ request: Routable, name: String, file: Data, parameters: [String: Any]?, _ completion: @escaping (Completion) -> Void) -> URLSessionDataTask? {
         // call the callback
         switch status {
-        case .success: completion(.success(nil))
+        case .success: completion(.success((data: nil, response: nil)))
         case .failure: completion(.failure(.invalidURL))
         }
         
@@ -103,7 +103,7 @@ final class CrashesServiceTests: XCTestCase {
         let task = service.crash(with: model) { result in
             switch result {
             case .success(let model):
-                XCTAssertNil(model)
+                XCTAssertNil(model.data)
             case .failure:
                 XCTFail("it should send request")
             }
