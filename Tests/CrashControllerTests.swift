@@ -16,7 +16,7 @@ final class CrashControllerTests: XCTestCase {
     
     var newCrash: CrashController {
         let resource = Resource(from: [:])
-        let network = Network()
+        let network = HTTPNetwork()
         let scheduler = Scheduler(with: network)
         
         let crash = CrashController(with: scheduler, resource: resource)

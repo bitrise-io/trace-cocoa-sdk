@@ -35,15 +35,15 @@ internal final class Scheduler {
   
     // MARK: - Schedule
     
-    func schedule(_ metrics: Metrics, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) {
+    func schedule(_ metrics: Metrics, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), HTTPNetwork.Error>) -> Void) {
         metricsService.metrics(with: metrics, { completion($0) })
     }
     
-    func schedule(_ trace: TraceModel, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) {
+    func schedule(_ trace: TraceModel, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), HTTPNetwork.Error>) -> Void) {
         traceService.trace(with: trace, { completion($0) })
     }
     
-    func schedule(_ crash: Crash, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) {
+    func schedule(_ crash: Crash, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), HTTPNetwork.Error>) -> Void) {
         crashesService.crash(with: crash, { completion($0) })
     }
 }

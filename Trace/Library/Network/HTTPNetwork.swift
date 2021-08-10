@@ -1,5 +1,5 @@
 //
-//  Network.swift
+//  HTTPNetwork.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 28/05/2019.
@@ -12,7 +12,7 @@ protocol Networkable {
     
     // MARK: - Typealias
     
-    typealias Completion = Result<(data: Data?, response: HTTPURLResponse?), Network.Error>
+    typealias Completion = Result<(data: Data?, response: HTTPURLResponse?), HTTPNetwork.Error>
     
     // MARK: - Network
     
@@ -23,7 +23,7 @@ protocol Networkable {
 }
 
 /// Common network manager
-final internal class Network: Networkable {
+final internal class HTTPNetwork: Networkable {
     
     /// Request completion
     internal typealias Completion = Result<(data: Data?, response: HTTPURLResponse?), Error>

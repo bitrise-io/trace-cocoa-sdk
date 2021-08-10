@@ -25,7 +25,7 @@ final class SchedulerTests: XCTestCase {
     // MARK: - Tests
     
     func testMetricRequest() {
-        let network = Network()
+        let network = HTTPNetwork()
         let scheduler = Scheduler(with: network)
         let metric = Metric(descriptor: Metric.Descriptor(name: .appCrashTotal, description: "", unit: .bytes, type: .cumulativeDistribution, keys: []), timeseries: [])
         let resource = Resource(from: ["test":"test"])
@@ -41,7 +41,7 @@ final class SchedulerTests: XCTestCase {
     }
     
     func testTraceRequest() {
-        let network = Network()
+        let network = HTTPNetwork()
         let scheduler = Scheduler(with: network)
         let trace = TraceModel(id: "12345678", spans: [], resource: nil, type: .view)
         let test2 = expectation(description: "test2")
@@ -54,7 +54,7 @@ final class SchedulerTests: XCTestCase {
     }
     
     func testCrashRequest() {
-        let network = Network()
+        let network = HTTPNetwork()
         let scheduler = Scheduler(with: network)
         let crash = Crash(id: "id", timestamp: "1", title: "title", appVersion: "1", buildVersion: "1", osVersion: "1", deviceType: "ios", sessionId: "s1", network: "network", carrier: "c1", deviceId: "d1", eventIdentifier: "e1", crashedWithoutSession: false, report: Data())
         let test3 = expectation(description: "test3")

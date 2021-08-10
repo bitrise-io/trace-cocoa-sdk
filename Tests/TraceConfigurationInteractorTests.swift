@@ -26,7 +26,7 @@ final class TraceConfigurationInteractorTests: XCTestCase {
     
     /// Use integration test target for .plist checks
     func testConfiguration_fails() {
-        let network = Network()
+        let network = HTTPNetwork()
         let configuration = TraceConfigurationInteractor(network: network)
         
         XCTAssertFalse(configuration.setup())

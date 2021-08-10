@@ -31,7 +31,7 @@ internal struct MetricsService {
     // MARK: - Details
     
     @discardableResult
-    internal func metrics(with model: Metrics, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), Network.Error>) -> Void) -> URLSessionDataTask? {
+    internal func metrics(with model: Metrics, _ completion: @escaping (Result<(data: Data?, response: HTTPURLResponse?), HTTPNetwork.Error>) -> Void) -> URLSessionDataTask? {
         let metricsNames = model.metrics.map { $0.descriptor.name.rawValue }
         
         return network.request(Router.metrics(model)) {
@@ -49,9 +49,9 @@ internal struct MetricsService {
     @discardableResult
     private func validate(response: HTTPURLResponse?, for metrics: [String]) -> Bool {
         guard let headers = response?.allHeaderFields as? [String: String] else { return false }
-        guard let acceptedCount = headers[Network.MIMEType.acceptedMetricsCount.rawValue],
+        guard let acceptedCount = headers[HTTPNetwork.MIMEType.acceptedMetricsCount.rawValue],
               let count = Int(acceptedCount) else { return false }
-        guard let acceptedMetrics = headers[Network.MIMEType.acceptedMetricsLabels.rawValue]?.split(separator: ",") else { return false }
+        guard let acceptedMetrics = headers[HTTPNetwork.MIMEType.acceptedMetricsLabels.rawValue]?.split(separator: ",") else { return false }
         
         let sent = Set(metrics)
         let accepted = Set(acceptedMetrics.map { String($0) })

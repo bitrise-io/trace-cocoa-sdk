@@ -17,7 +17,7 @@ final class TracerTests: XCTestCase {
     
     let tracer: Tracer = {
         let resource = Resource(from: [:]) 
-        let network = Network()
+        let network = HTTPNetwork()
         let database = Database()
         let session = Session()
         let scheduler = Scheduler(with: network)

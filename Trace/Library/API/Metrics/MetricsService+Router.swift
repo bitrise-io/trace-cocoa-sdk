@@ -19,7 +19,7 @@ internal extension MetricsService {
         
         static var baseURL: URL = Constants.API
         
-        var method: Network.Method {
+        var method: HTTPNetwork.Method {
             switch self {
             case .metrics: return .post
             }
@@ -32,7 +32,7 @@ internal extension MetricsService {
         }
         
         func asURLRequest() throws -> URLRequest {
-            let headerValue = Network.MIMEType.jsonV1.rawValue
+            let headerValue = HTTPNetwork.MIMEType.jsonV1.rawValue
             
             // create request
             var url = Router.baseURL
@@ -40,8 +40,8 @@ internal extension MetricsService {
             
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
-            request.setValue(headerValue, forHTTPHeaderField: Network.Header.accept.rawValue)
-            request.setValue(headerValue, forHTTPHeaderField: Network.Header.contentType.rawValue)
+            request.setValue(headerValue, forHTTPHeaderField: HTTPNetwork.Header.accept.rawValue)
+            request.setValue(headerValue, forHTTPHeaderField: HTTPNetwork.Header.contentType.rawValue)
             
             // add body and settings
             switch self {

@@ -1,5 +1,5 @@
 //
-//  Network+Upload.swift
+//  HTTPNetwork+Upload.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 11/03/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal extension Network {
+internal extension HTTPNetwork {
 
     // MARK: - Upload
 

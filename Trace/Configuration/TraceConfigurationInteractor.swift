@@ -12,7 +12,7 @@ internal struct TraceConfigurationInteractor {
     
     // MARK: - Property
     
-    let network: Network
+    let network: HTTPNetwork
     
     // MARK: - Setup
     

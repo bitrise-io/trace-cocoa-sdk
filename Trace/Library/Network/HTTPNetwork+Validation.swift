@@ -1,5 +1,5 @@
 //
-//  Network+Validation.swift
+//  HTTPNetwork+Validation.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 12/03/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal extension Network {
+internal extension HTTPNetwork {
 
     // MARK: - Response Validation
 
