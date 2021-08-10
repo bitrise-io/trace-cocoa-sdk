@@ -7,7 +7,12 @@
 //
 
 import Foundation
-import Network
+
+#if canImport(Network)
+import class Network.NWConnection
+import class Network.NWPathMonitor
+import struct Network.NWPath
+#endif
 
 #if canImport(SystemConfiguration)
 import SystemConfiguration.CaptiveNetwork
@@ -20,39 +25,40 @@ internal protocol ConnectivitySupportProtocol {
     var interface: Connectivity.Interface? { get }
 }
 
+#if canImport(Network)
 internal extension Connectivity {
 
     // MARK: - PathMonitor iOS12+
 
     @available(iOS 12.0, *)
     final class PathMonitor: ConnectivitySupportProtocol {
-        
+
         // MARK: - Property
-        
+
         private let network = NWPathMonitor()
-        
+
         internal var interface: Connectivity.Interface?
-        
+
         // MARK: - Init
-        
+
         internal init() {
             setup()
         }
-        
+
         // MARK: - Setup
-        
+
         private func setup() {
             network.pathUpdateHandler = { [weak self] path in
                 self?.update(with: path)
             }
-            
+
             network.start(queue: .global(qos: .background))
-            
+
             update(with: network.currentPath)
         }
-        
+
         // MARK: - Interface
-        
+
         private func update(with path: NWPath) {
             if let availableInterface = path.availableInterfaces.first {
                 switch availableInterface.type {
@@ -63,6 +69,10 @@ internal extension Connectivity {
             }
         }
     }
+}
+#endif
+
+internal extension Connectivity {
     
     // MARK: - Reachability Pre iOS12
     
@@ -135,7 +145,14 @@ internal struct Connectivity {
     private let network: ConnectivitySupportProtocol = {
         guard #available(iOS 12.0, *) else { return Reachability() }
         
+        // Weird issue with Xcode 13 beta. Does not like importing Network module
+        // 'NWConnection' is only available in iOS 12.0 or newer.
+        // Only issue with arch v7
+        #if canImport(Network)
         return PathMonitor()
+        #else
+        return Reachability()
+        #endif
     }()
     
     internal var interface: Result {
