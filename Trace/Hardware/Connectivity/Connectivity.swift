@@ -9,9 +9,7 @@
 import Foundation
 
 #if canImport(Network)
-import class Network.NWConnection
-import class Network.NWPathMonitor
-import struct Network.NWPath
+import Network
 #endif
 
 #if canImport(SystemConfiguration)
