@@ -22,6 +22,7 @@ import Foundation
 */
 @objcMembers
 @objc(BRTrace)
+@available(iOSApplicationExtension, unavailable)
 final public class Trace: NSObject {
     
     // MARK: - Static Property
