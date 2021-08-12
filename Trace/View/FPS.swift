@@ -95,7 +95,12 @@ final class FPS: FPSProtocol {
             
             // get view name
             var viewController: String? {
-                guard let viewController = UIApplication.shared.currentViewController() else { return nil }
+                let application = UIApplication.sharedIfAvailable
+                let rootViewController = application?.currentWindow?.rootViewController
+                
+                guard let viewController = application?.currentViewController(from: rootViewController) else {
+                    return nil
+                }
                 
                 return "\(type(of: viewController))"
             }

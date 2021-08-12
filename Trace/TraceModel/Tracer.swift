@@ -65,9 +65,15 @@ final class Tracer {
         if traces.count == 1 {
             trace = traces.first
         } else if Thread.isMainThread {
-            trace = UIApplication.shared.currentViewController()?.trace
+            let application = UIApplication.sharedIfAvailable
+            let viewController = application?.currentWindow?.rootViewController
+            
+            trace = application?.currentViewController(from: viewController)?.trace
         } else if DispatchQueue.isMainQueue {
-            trace = UIApplication.shared.currentViewController()?.trace
+            let application = UIApplication.sharedIfAvailable
+            let viewController = application?.currentWindow?.rootViewController
+            
+            trace = application?.currentViewController(from: viewController)?.trace
         } else {
              return nil // try using inside a async main thread instead!
         }
