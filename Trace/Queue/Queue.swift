@@ -384,6 +384,7 @@ internal final class Queue {
             Logger.debug(.queue, "Attempting to restart queue after server network issues.")
         }
         
+        repeaterLastUpdated = Date()
         repeater.timeInterval = repeaterTimeout
         repeaterUpdatedCount = 0
         repeater.state = .resume
