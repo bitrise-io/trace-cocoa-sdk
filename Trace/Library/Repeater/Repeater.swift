@@ -20,7 +20,11 @@ internal final class Repeater {
     
     // MARK: - Property
     
-    private let timeInterval: TimeInterval
+    internal var timeInterval: TimeInterval {
+        didSet {
+            adjustTimer()
+        }
+    }
    
     internal var handler: (() -> Void)?
     
@@ -30,13 +34,7 @@ internal final class Repeater {
     )
     
     private lazy var timer: DispatchSourceTimer = {
-        let timer = DispatchSource.makeTimerSource(queue: self.dispatchQueue)
-        timer.schedule(deadline: .now() + self.timeInterval, repeating: self.timeInterval)
-        timer.setEventHandler(handler: { [weak self] in
-            self?.handler?()
-        })
-        
-        return timer
+        return createTimer(with: self.timeInterval)
     }()
     
     internal var state: State = .suspend {
@@ -64,5 +62,33 @@ internal final class Repeater {
         state = .resume
         
         handler = nil
+    }
+    
+    // MARK: - Timer
+    
+    private func createTimer(with timeInterval: TimeInterval) -> DispatchSourceTimer {
+        let timer = DispatchSource.makeTimerSource(queue: dispatchQueue)
+        timer.schedule(
+            deadline: .now() + timeInterval,
+            repeating: timeInterval,
+            leeway: .seconds(2)
+        )
+        timer.setEventHandler(handler: { [weak self] in
+            self?.handler?()
+        })
+        
+        return timer
+    }
+    
+    private func adjustTimer() {
+        state = .suspend
+        
+        timer.schedule(
+            deadline: .now() + timeInterval,
+            repeating: timeInterval,
+            leeway: .seconds(2)
+        )
+        
+        state = .resume
     }
 }
