@@ -24,7 +24,11 @@ internal final class Queue {
     )
     private let database: Database
     private let session: Session
+    
     private let repeater: Repeater
+    private var repeaterLastUpdated: Date = Date()
+    private var repeaterUpdatedCount = 0
+    private var repeaterTimeout: TimeInterval
     
     private var lastSavedForMetric: Date = Date()
     private var lastSavedForTrace: Date = Date()
@@ -69,12 +73,12 @@ internal final class Queue {
         self.scheduler = scheduler
         
         var timeout: TimeInterval = 45
-        
         #if DEBUG || Debug || debug
             timeout = 30
         #endif
         
         repeater = Repeater(timeout)
+        repeaterTimeout = timeout
         
         setup()
     }
@@ -145,8 +149,20 @@ internal final class Queue {
                     case .success:
                         let dao = self?.database.dao.metric
                         dao?.delete(dbModelObjectIds)
+                            
+                        if let count = self?.repeaterUpdatedCount, count > 1 {
+                            self?.resetRepeater()
+                        }
                     case .failure:
-                        Logger.warning(.queue, "Failed to submit metric, will try again in 1 minute")
+                        Logger.warning(.queue, "Failed to submit metric, will try again in in a few minutes")
+                        
+                        if let count = self?.repeaterUpdatedCount, count >= 5 {
+                            Logger.warning(.queue, "Suspended sending data due to ongoing server issues. See more here: https://status.bitrise.io")
+                            
+                            self?.repeater.state = .suspend
+                        } else {
+                            self?.tryToIncreaseBackoff()
+                        }
                     }
                 })
             } catch {
@@ -214,8 +230,20 @@ internal final class Queue {
                         case .success:
                             let dao = self?.database.dao.trace
                             dao?.delete(toBeDeletedObjectIds)
+                                
+                            if let count = self?.repeaterUpdatedCount, count >= 1 {
+                                self?.resetRepeater()
+                            }
                         case .failure:
-                            Logger.warning(.queue, "Failed to submit trace, will try again in 1 minute")
+                            Logger.warning(.queue, "Failed to submit trace, will try again in a few minutes")
+                                
+                            if let count = self?.repeaterUpdatedCount, count > 5 {
+                                Logger.warning(.queue, "Suspended sending data due to ongoing server issues. See more here: https://status.bitrise.io")
+                                
+                                self?.repeater.state = .suspend
+                            } else {
+                                self?.tryToIncreaseBackoff()
+                            }
                         }
                     })
                 }
@@ -223,6 +251,36 @@ internal final class Queue {
                 Logger.warning(.queue, "Failed to create Trace class from json: \(error)")
             }
         }
+    }
+    
+    // MARK: - Backoff
+    
+    @discardableResult
+    func tryToIncreaseBackoff() -> Bool {
+        let backoffMinimum: TimeInterval
+            
+        #if DEBUG || Debug || debug
+        backoffMinimum = 15
+        #else
+        backoffMinimum = 30
+        #endif
+        
+        let backoff = TimeInterval.random(in: backoffMinimum...repeaterTimeout)
+        let calendar = Calendar.current
+        let date = Date()
+        let from = repeaterLastUpdated
+        let components = calendar.dateComponents([.second], from: from, to: date)
+        
+        guard repeater.state != .suspend else { return false }
+        guard let second = components.second, second >= Queue.timeout else { return false }
+        
+        repeaterLastUpdated = Date()
+        repeaterUpdatedCount += 1
+        repeater.timeInterval += backoff
+        
+        Logger.debug(.queue, "Increased backoff to: \(repeater.timeInterval)")
+        
+        return true
     }
     
     // MARK: - Add
@@ -321,8 +379,18 @@ internal final class Queue {
     
     // MARK: - State
     
-    func restart() {
+    private func resetRepeater() {
+        if repeaterUpdatedCount > 1 {
+            Logger.debug(.queue, "Attempting to restart queue after server network issues.")
+        }
+        
+        repeater.timeInterval = repeaterTimeout
+        repeaterUpdatedCount = 0
         repeater.state = .resume
+    }
+    
+    func restart() {
+        resetRepeater()
         
         savePendingManagedObjects()
         schedule()
