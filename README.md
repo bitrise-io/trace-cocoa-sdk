@@ -17,11 +17,12 @@ Use Trace to:
 
 - iOS 10.0+ 
 - [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 11.0+
-- Swift 5
+- Xcode 13 beta (use [https://github.com/bitrise-io/trace-cocoa-sdk/pull/84](xcode13 branch))
+- Swift 5.2+
 
 ## Installation
 
-`Trace` SDK doesn't contain any external dependencies but does depend on a few system frameworks such as:      
+`Trace` SDK doesn't contain any external dependencies but does depend on a few system frameworks found on iOS, such as:      
 * `SystemConfiguration.framework`
 * `libc++.tbd`
 * `libz.tbd`
@@ -308,6 +309,10 @@ Add the collector token (`bitrise_configuration.plist`) found in the [setting pa
 #### `-force_load` and `-all_load`
 
 `.XCFramework` does not currently allow developers to load a library at App launch. This only affects SPM packages only. No workaround are available right now.
+
+#### SDK doesn't auto load (i,e above has failed)
+
+Add `-ObjC` flag to other linker flags in the target settings. This flag causes the linker to load every object file in the library that defines an Objective-C class or category. While this option will typically result in a larger executable (due to additional object code loaded into the application), it will allow the successful creation of effective Objective-C static libraries that contain categories on existing classes.
 
 #### Mac catalyst support 
 
