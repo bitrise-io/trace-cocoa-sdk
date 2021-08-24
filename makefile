@@ -20,6 +20,11 @@ update:
 	@pod update
 	@bundler update
 
+# Build SDK and internal
+build:
+	xcodebuild "-workspace" $(WORKSPACE) "-scheme" $(TRACEINTERNALSCHEME) "clean" "build" | xcpretty
+	xcodebuild "-workspace" $(WORKSPACE) "-scheme" $(TRACESCHEME) "clean" "build" | xcpretty
+
 # Run all tests
 test:
 	xcodebuild "-workspace" $(WORKSPACE) "-scheme" $(TRACESCHEME) "test" | xcpretty
