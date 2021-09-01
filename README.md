@@ -137,7 +137,7 @@ The Swift Package Manager is a tool for automating the distribution of Swift cod
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bitrise-io/trace-cocoa-sdk.git", .upToNextMajor(from: "1.7.37"))
+    .package(url: "https://github.com/bitrise-io/trace-cocoa-sdk.git", .upToNextMajor(from: "1.7.38"))
 ]
 ```
 Add Trace SDK as a dependency inside your `Package.swift` file. Please look at the [release section](https://github.com/bitrise-io/trace-cocoa-sdk/releases) for the latest stable version of the SDK.
