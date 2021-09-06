@@ -17,7 +17,7 @@ Use Trace to:
 
 - iOS 10.0+ 
 - [Xcode](https://apps.apple.com/gb/app/xcode/id497799835?mt=12) 11.0+
-- Xcode 13 beta (use [https://github.com/bitrise-io/trace-cocoa-sdk/pull/84](xcode13 branch))
+- Xcode 13 beta (use [xcode13 branch](https://github.com/bitrise-io/trace-cocoa-sdk/pull/84))
 - Swift 5.2+
 
 ## Installation
