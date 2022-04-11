@@ -22,6 +22,7 @@ import Foundation
 */
 @objcMembers
 @objc(BRTrace)
+@available(iOSApplicationExtension, unavailable)
 final public class Trace: NSObject {
     
     // MARK: - Static Property
@@ -45,7 +46,7 @@ final public class Trace: NSObject {
     
     // MARK: - Property - Internal
     
-    private let network: Network
+    private let network: HTTPNetwork
     internal let queue: Queue
     internal let database: Database
     internal let tracer: Tracer
@@ -73,7 +74,7 @@ final public class Trace: NSObject {
         Trace.preSetup()
         
         session = Session()
-        network = Network()
+        network = HTTPNetwork()
         database = Database()
         lifecycle = Lifecycle()
         scheduler = Scheduler(with: network)

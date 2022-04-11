@@ -20,7 +20,7 @@ struct FailMock: Encodable {
     let surname: String
     
     func encode(to encoder: Encoder) throws {
-        throw Network.Error.invalidData
+        throw HTTPNetwork.Error.invalidData
     }
 }
 

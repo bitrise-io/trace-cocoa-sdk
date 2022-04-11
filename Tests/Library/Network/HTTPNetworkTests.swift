@@ -21,7 +21,7 @@ enum MockRouter: Routable {
     case badURL
     case ok
     
-    var method: Network.Method { return .get }
+    var method: HTTPNetwork.Method { return .get }
     
     var path: String {
         let status = "status/"
@@ -48,7 +48,7 @@ enum MockRouter: Routable {
             
             return request
         case .badURL:
-            throw Network.Error.invalidURL
+            throw HTTPNetwork.Error.invalidURL
         }
     }
 }
@@ -68,14 +68,14 @@ final class NetworkTests: XCTestCase {
     // MARK: - Tests
     
     func testConfiguration() {
-        let configuration = Network.Configuration.default
+        let configuration = HTTPNetwork.Configuration.default
         
         XCTAssertEqual(configuration.timeoutIntervalForRequest, 15.0)
         XCTAssertEqual(configuration.timeoutIntervalForResource, 15.0)
     }
     
     func testReset() {
-        let network = Network()
+        let network = HTTPNetwork()
         network.reset()
         
         // nothing here, if anything it would crash the whole test suite
@@ -84,7 +84,7 @@ final class NetworkTests: XCTestCase {
     func testMakingRequest_success() {
         let async = expectation(description: "network request success")
        
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
         
         let task = network.request(MockRouter.ok) {
@@ -103,7 +103,7 @@ final class NetworkTests: XCTestCase {
         var task: URLSessionTask?
         let async = expectation(description: "network request clientError")
         
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
         task = network.request(MockRouter.clientError) {
             switch $0 {
@@ -122,7 +122,7 @@ final class NetworkTests: XCTestCase {
     func testMakingRequest_serverError() {
         let async = expectation(description: "network request serverError")
         
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
         
         var task: URLSessionTask?
@@ -143,7 +143,7 @@ final class NetworkTests: XCTestCase {
     func testMakingRequest_failsWithAuth() {
         let async = expectation(description: "network request failsWithAuth")
         
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = nil
         
         var task: URLSessionTask?
@@ -164,7 +164,7 @@ final class NetworkTests: XCTestCase {
     func testMakingRequest_successWithConfiguration() {
         let async = expectation(description: "network request successWithConfiguration")
         
-        let network = Network()
+        let network = HTTPNetwork()
         network.configuration.additionalHeaders = [
             .authorization: "xxx"
         ]
@@ -189,7 +189,7 @@ final class NetworkTests: XCTestCase {
         let async = expectation(description: "network request failureWithBadURL")
         var error: Error?
         
-        let network = Network()
+        let network = HTTPNetwork()
         let task = network.request(MockRouter.badURL) {
             switch $0 {
             case .success:
@@ -214,7 +214,7 @@ final class NetworkTests: XCTestCase {
 
         let async = expectation(description: "network request clientError")
 
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
         
         task = network.upload(MockRouter.clientError, name: "test", file: Data()) {
@@ -236,7 +236,7 @@ final class NetworkTests: XCTestCase {
 
         let async = expectation(description: "network request clientError")
 
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
         
         task = network.upload(MockRouter.clientError, name: "test", file: Data(), parameters: ["1": "1", "2": "2"]) {
@@ -256,7 +256,7 @@ final class NetworkTests: XCTestCase {
     func testMakingUpload_serverError() {
         let async = expectation(description: "network request serverError")
 
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = "test"
 
         var task: URLSessionTask?
@@ -277,7 +277,7 @@ final class NetworkTests: XCTestCase {
     func testMakingUpload_failsWithAuth() {
         let async = expectation(description: "network request failsWithAuth")
 
-        let network = Network()
+        let network = HTTPNetwork()
         network.authorization = nil
 
         var task: URLSessionTask?
@@ -299,7 +299,7 @@ final class NetworkTests: XCTestCase {
         let async = expectation(description: "network request failureWithBadURL")
         var error: Error?
 
-        let network = Network()
+        let network = HTTPNetwork()
         let task = network.upload(MockRouter.badURL, name: "test", file: Data()) {
             switch $0 {
             case .success:

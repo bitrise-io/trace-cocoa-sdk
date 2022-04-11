@@ -1,5 +1,5 @@
 //
-//  Network+HTTP.swift
+//  HTTPNetwork+HTTP.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 28/05/2019.
@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Enums
-internal extension Network {
+internal extension HTTPNetwork {
 
     // MARK: - Property
 

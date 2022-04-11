@@ -17,7 +17,7 @@ internal protocol Routable {
     static var baseURL: URL { get }
     
     /// HTTP Method
-    var method: Network.Method { get }
+    var method: HTTPNetwork.Method { get }
     
     /// Endpoint
     var path: String { get }

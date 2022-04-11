@@ -25,8 +25,6 @@ final class SwiftOnlyLoadTests: XCTestCase {
     // MARK: - Tests
     
     func testSwiftStart() {
-        SwiftOnlyLoad.awake()
-        
         XCTAssertGreaterThan(Trace.currentSession, 0)
     }
     

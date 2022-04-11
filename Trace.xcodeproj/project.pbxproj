@@ -34,10 +34,10 @@
 /* Begin PBXBuildFile section */
 		1005759E229D87B2000343EE /* JSONDecoder+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005759C229D87B2000343EE /* JSONDecoder+Helper.swift */; };
 		1005759F229D87B2000343EE /* Encodable+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005759D229D87B2000343EE /* Encodable+JSON.swift */; };
-		100575A5229D8994000343EE /* Network+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A0229D8994000343EE /* Network+Configuration.swift */; };
-		100575A6229D8994000343EE /* Network+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A1229D8994000343EE /* Network+Request.swift */; };
-		100575A7229D8994000343EE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A2229D8994000343EE /* Network.swift */; };
-		100575A8229D8994000343EE /* Network+HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A3229D8994000343EE /* Network+HTTP.swift */; };
+		100575A5229D8994000343EE /* HTTPNetwork+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A0229D8994000343EE /* HTTPNetwork+Configuration.swift */; };
+		100575A6229D8994000343EE /* HTTPNetwork+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A1229D8994000343EE /* HTTPNetwork+Request.swift */; };
+		100575A7229D8994000343EE /* HTTPNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A2229D8994000343EE /* HTTPNetwork.swift */; };
+		100575A8229D8994000343EE /* HTTPNetwork+HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A3229D8994000343EE /* HTTPNetwork+HTTP.swift */; };
 		100575A9229D8994000343EE /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100575A4229D8994000343EE /* Routable.swift */; };
 		1006100D23576729004EFC2C /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006100C23576729004EFC2C /* String+Hex.swift */; };
 		1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008F5772350DFEF00689B2B /* OrderedDictionary.swift */; };
@@ -180,8 +180,8 @@
 		101055CD2417AEE70088BD24 /* CrashesService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055CC2417AEE70088BD24 /* CrashesService+Router.swift */; };
 		101055D12417B4610088BD24 /* CrashesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D02417B4610088BD24 /* CrashesServiceTests.swift */; };
 		101055D52417F6EA0088BD24 /* CrashControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D42417F6EA0088BD24 /* CrashControllerTests.swift */; };
-		101055D7241961410088BD24 /* Network+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D6241961410088BD24 /* Network+Upload.swift */; };
-		101055D9241A70510088BD24 /* Network+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D8241A70510088BD24 /* Network+Validation.swift */; };
+		101055D7241961410088BD24 /* HTTPNetwork+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D6241961410088BD24 /* HTTPNetwork+Upload.swift */; };
+		101055D9241A70510088BD24 /* HTTPNetwork+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055D8241A70510088BD24 /* HTTPNetwork+Validation.swift */; };
 		101055DB241BACAB0088BD24 /* Data+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055DA241BACAB0088BD24 /* Data+Helper.swift */; };
 		101055E1241BED990088BD24 /* CrashesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055E0241BED990088BD24 /* CrashesTest.swift */; };
 		101055E3241BEE1D0088BD24 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101055E2241BEE1D0088BD24 /* DataTests.swift */; };
@@ -260,7 +260,6 @@
 		104A69AA229403370065F218 /* libTrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A694C2293FB060065F218 /* libTrace.a */; };
 		104A69B22294039C0065F218 /* AppDelegate+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A69B12294039C0065F218 /* AppDelegate+Application.swift */; };
 		104A69C42294076C0065F218 /* libTrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A694C2293FB060065F218 /* libTrace.a */; };
-		104EA0BB237EAE67004C07CE /* UIApplication+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0BA237EAE67004C07CE /* UIApplication+Screenshot.swift */; };
 		104EA0BD23826CA1004C07CE /* Control+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0BC23826CA1004C07CE /* Control+Swizzled.swift */; };
 		104EA0C023829461004C07CE /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EA0BF23829461004C07CE /* ControlViewController.swift */; };
 		104EA0C2238294FA004C07CE /* Control.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104EA0C1238294FA004C07CE /* Control.storyboard */; };
@@ -333,6 +332,7 @@
 		1087A00D22DF82C5005F8F83 /* JSValue+Swizzled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00C22DF82C5005F8F83 /* JSValue+Swizzled.swift */; };
 		1087A01022E07700005F8F83 /* BitriseConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */; };
 		1087A01222E07FF1005F8F83 /* BitriseConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A01122E07FF1005F8F83 /* BitriseConfigurationInteractor.swift */; };
+		108981D626C2BA2600B2CF57 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108981D526C2BA2600B2CF57 /* Network.framework */; };
 		108CDED723FC544800153BEB /* CrashReportingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 108CDED623FC544800153BEB /* CrashReportingTests.m */; platformFilter = ios; };
 		108CDEE023FC553B00153BEB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064993E23F6E9A300989C14 /* libz.tbd */; };
 		108CDEE323FC554B00153BEB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1064994323F6E9C300989C14 /* SystemConfiguration.framework */; };
@@ -564,7 +564,7 @@
 		10C98014231E5BF4008188CF /* ErrorFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C98013231E5BF4008188CF /* ErrorFormatterTests.swift */; };
 		10C98016231E62D3008188CF /* CrashFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C98015231E62D3008188CF /* CrashFormatterTests.swift */; };
 		10CA8760229D8D97003702B1 /* EncodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA875F229D8D97003702B1 /* EncodableTests.swift */; };
-		10CA8763229D8E38003702B1 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA8762229D8E38003702B1 /* NetworkTests.swift */; };
+		10CA8763229D8E38003702B1 /* HTTPNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA8762229D8E38003702B1 /* HTTPNetworkTests.swift */; };
 		10CA8766229F1AE5003702B1 /* TraceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA8765229F1AE5003702B1 /* TraceService.swift */; };
 		10CA8768229F1B01003702B1 /* TraceService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA8767229F1B01003702B1 /* TraceService+Router.swift */; };
 		10CA876B229F1ED3003702B1 /* MetricsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA876A229F1ED3003702B1 /* MetricsServiceTests.swift */; };
@@ -903,10 +903,10 @@
 /* Begin PBXFileReference section */
 		1005759C229D87B2000343EE /* JSONDecoder+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Helper.swift"; sourceTree = "<group>"; };
 		1005759D229D87B2000343EE /* Encodable+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+JSON.swift"; sourceTree = "<group>"; };
-		100575A0229D8994000343EE /* Network+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Network+Configuration.swift"; sourceTree = "<group>"; };
-		100575A1229D8994000343EE /* Network+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Network+Request.swift"; sourceTree = "<group>"; };
-		100575A2229D8994000343EE /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		100575A3229D8994000343EE /* Network+HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Network+HTTP.swift"; sourceTree = "<group>"; };
+		100575A0229D8994000343EE /* HTTPNetwork+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPNetwork+Configuration.swift"; sourceTree = "<group>"; };
+		100575A1229D8994000343EE /* HTTPNetwork+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPNetwork+Request.swift"; sourceTree = "<group>"; };
+		100575A2229D8994000343EE /* HTTPNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPNetwork.swift; sourceTree = "<group>"; };
+		100575A3229D8994000343EE /* HTTPNetwork+HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPNetwork+HTTP.swift"; sourceTree = "<group>"; };
 		100575A4229D8994000343EE /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		1006100C23576729004EFC2C /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
 		1008F5772350DFEF00689B2B /* OrderedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
@@ -1050,8 +1050,8 @@
 		101055CC2417AEE70088BD24 /* CrashesService+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrashesService+Router.swift"; sourceTree = "<group>"; };
 		101055D02417B4610088BD24 /* CrashesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashesServiceTests.swift; path = Tests/CrashesServiceTests.swift; sourceTree = SOURCE_ROOT; };
 		101055D42417F6EA0088BD24 /* CrashControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashControllerTests.swift; path = Tests/CrashControllerTests.swift; sourceTree = SOURCE_ROOT; };
-		101055D6241961410088BD24 /* Network+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Upload.swift"; sourceTree = "<group>"; };
-		101055D8241A70510088BD24 /* Network+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+Validation.swift"; sourceTree = "<group>"; };
+		101055D6241961410088BD24 /* HTTPNetwork+Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPNetwork+Upload.swift"; sourceTree = "<group>"; };
+		101055D8241A70510088BD24 /* HTTPNetwork+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPNetwork+Validation.swift"; sourceTree = "<group>"; };
 		101055DA241BACAB0088BD24 /* Data+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Helper.swift"; sourceTree = "<group>"; };
 		101055E0241BED990088BD24 /* CrashesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashesTest.swift; path = Tests/CrashesTest.swift; sourceTree = SOURCE_ROOT; };
 		101055E2241BEE1D0088BD24 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTests.swift; path = Tests/DataTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1145,7 +1145,6 @@
 		104A69A7229403370065F218 /* InteroperabilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InteroperabilityTests.m; sourceTree = "<group>"; };
 		104A69A9229403370065F218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		104A69B12294039C0065F218 /* AppDelegate+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Application.swift"; sourceTree = "<group>"; };
-		104EA0BA237EAE67004C07CE /* UIApplication+Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Screenshot.swift"; sourceTree = "<group>"; };
 		104EA0BC23826CA1004C07CE /* Control+Swizzled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control+Swizzled.swift"; sourceTree = "<group>"; };
 		104EA0BF23829461004C07CE /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		104EA0C1238294FA004C07CE /* Control.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Control.storyboard; sourceTree = "<group>"; };
@@ -1217,6 +1216,7 @@
 		1087A00C22DF82C5005F8F83 /* JSValue+Swizzled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSValue+Swizzled.swift"; sourceTree = "<group>"; };
 		1087A00F22E07700005F8F83 /* BitriseConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseConfiguration.swift; sourceTree = "<group>"; };
 		1087A01122E07FF1005F8F83 /* BitriseConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseConfigurationInteractor.swift; sourceTree = "<group>"; };
+		108981D526C2BA2600B2CF57 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk/System/Library/Frameworks/Network.framework; sourceTree = DEVELOPER_DIR; };
 		108CDED423FC544800153BEB /* CrashReportingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrashReportingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		108CDED623FC544800153BEB /* CrashReportingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashReportingTests.m; sourceTree = "<group>"; };
 		108CDED823FC544800153BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1378,7 +1378,7 @@
 		10C98013231E5BF4008188CF /* ErrorFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorFormatterTests.swift; path = Tests/ErrorFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		10C98015231E62D3008188CF /* CrashFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrashFormatterTests.swift; path = Tests/CrashFormatterTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA875F229D8D97003702B1 /* EncodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EncodableTests.swift; path = Tests/Library/JSON/EncodableTests.swift; sourceTree = SOURCE_ROOT; };
-		10CA8762229D8E38003702B1 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTests.swift; path = Tests/Library/Network/NetworkTests.swift; sourceTree = SOURCE_ROOT; };
+		10CA8762229D8E38003702B1 /* HTTPNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HTTPNetworkTests.swift; path = Tests/Library/Network/HTTPNetworkTests.swift; sourceTree = SOURCE_ROOT; };
 		10CA8765229F1AE5003702B1 /* TraceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceService.swift; sourceTree = "<group>"; };
 		10CA8767229F1B01003702B1 /* TraceService+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraceService+Router.swift"; sourceTree = "<group>"; };
 		10CA876A229F1ED3003702B1 /* MetricsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MetricsServiceTests.swift; path = Tests/Library/API/MetricsServiceTests.swift; sourceTree = SOURCE_ROOT; };
@@ -1530,6 +1530,7 @@
 				1087A00622DE0E04005F8F83 /* WebKit.framework in Frameworks */,
 				10C0499223E0944200822835 /* SystemConfiguration.framework in Frameworks */,
 				104A69C42294076C0065F218 /* libTrace.a in Frameworks */,
+				108981D626C2BA2600B2CF57 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2236,7 +2237,6 @@
 			isa = PBXGroup;
 			children = (
 				1047952522C504D600E6B8A2 /* UIApplication+ViewController.swift */,
-				104EA0BA237EAE67004C07CE /* UIApplication+Screenshot.swift */,
 				10F2874A23C36C3100F9D03A /* UIDevice+Jailbreak.swift */,
 			);
 			name = UIKit;
@@ -2342,12 +2342,12 @@
 			isa = PBXGroup;
 			children = (
 				10CA8761229D8E0E003702B1 /* Tests */,
-				100575A2229D8994000343EE /* Network.swift */,
-				100575A0229D8994000343EE /* Network+Configuration.swift */,
-				100575A3229D8994000343EE /* Network+HTTP.swift */,
-				100575A1229D8994000343EE /* Network+Request.swift */,
-				101055D6241961410088BD24 /* Network+Upload.swift */,
-				101055D8241A70510088BD24 /* Network+Validation.swift */,
+				100575A2229D8994000343EE /* HTTPNetwork.swift */,
+				100575A0229D8994000343EE /* HTTPNetwork+Configuration.swift */,
+				100575A3229D8994000343EE /* HTTPNetwork+HTTP.swift */,
+				100575A1229D8994000343EE /* HTTPNetwork+Request.swift */,
+				101055D6241961410088BD24 /* HTTPNetwork+Upload.swift */,
+				101055D8241A70510088BD24 /* HTTPNetwork+Validation.swift */,
 				100575A4229D8994000343EE /* Routable.swift */,
 			);
 			path = Network;
@@ -2941,7 +2941,7 @@
 		10CA8761229D8E0E003702B1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				10CA8762229D8E38003702B1 /* NetworkTests.swift */,
+				10CA8762229D8E38003702B1 /* HTTPNetworkTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -3310,6 +3310,7 @@
 		82F58DA35A9B2D1C5A2E9C94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				108981D526C2BA2600B2CF57 /* Network.framework */,
 				101864BB262DFF6D0053B626 /* SystemConfiguration.framework */,
 				10BB4E742507C4E80044AB9E /* UIKit.framework */,
 				10BB4E6E25078F070044AB9E /* libc++.tbd */,
@@ -3785,7 +3786,7 @@
 			attributes = {
 				CLASSPREFIX = BR;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
 					100993D925003BB1006C7FB4 = {
@@ -3857,7 +3858,7 @@
 				};
 			};
 			buildConfigurationList = 104A69472293FB060065F218 /* Build configuration list for PBXProject "Trace" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -4685,7 +4686,7 @@
 				1043FC9123144A7400F75D27 /* URLSessionTask+Helper.swift in Sources */,
 				10DCA0972306ADA500F0281E /* ViewControllerFilter.swift in Sources */,
 				104EA0BD23826CA1004C07CE /* Control+Swizzled.swift in Sources */,
-				101055D9241A70510088BD24 /* Network+Validation.swift in Sources */,
+				101055D9241A70510088BD24 /* HTTPNetwork+Validation.swift in Sources */,
 				1087A01222E07FF1005F8F83 /* BitriseConfigurationInteractor.swift in Sources */,
 				1046CC3922BA87CF00A8762F /* ViewController+Swizzled.swift in Sources */,
 				1047952F22C69DC900E6B8A2 /* StartupFormatter.swift in Sources */,
@@ -4696,7 +4697,7 @@
 				10B6084B2535BE8F00DC1DB1 /* DispatchQueue.swift in Sources */,
 				1047952A22C5118D00E6B8A2 /* FPSFormatter.swift in Sources */,
 				10F2BC8522AFAD590074EE5D /* DataTaskFormatter.swift in Sources */,
-				100575A8229D8994000343EE /* Network+HTTP.swift in Sources */,
+				100575A8229D8994000343EE /* HTTPNetwork+HTTP.swift in Sources */,
 				10866F4222946B4E00D77D56 /* CPU.swift in Sources */,
 				1008F5782350DFEF00689B2B /* OrderedDictionary.swift in Sources */,
 				10B1BB6D22F9AAB900DEA77B /* Lifecycle.swift in Sources */,
@@ -4709,7 +4710,7 @@
 				10FC45D0230EB2550077BF2C /* URLStructure.swift in Sources */,
 				1091771D232F8CF1007CE2F0 /* Tracer.swift in Sources */,
 				1087A00D22DF82C5005F8F83 /* JSValue+Swizzled.swift in Sources */,
-				100575A6229D8994000343EE /* Network+Request.swift in Sources */,
+				100575A6229D8994000343EE /* HTTPNetwork+Request.swift in Sources */,
 				101055DB241BACAB0088BD24 /* Data+Helper.swift in Sources */,
 				10F2BC8822AFB2BC0074EE5D /* JSONEncodable.swift in Sources */,
 				10879FFB22DCA3F7005F8F83 /* ErrorFormatter.swift in Sources */,
@@ -4725,17 +4726,16 @@
 				10F2BC9A22B296530074EE5D /* Metric.swift in Sources */,
 				10F2BC8322AEBBAD0074EE5D /* RequestFormatter.swift in Sources */,
 				10B6086F25360E2700DC1DB1 /* DispatchQueueSynchronized.swift in Sources */,
-				100575A7229D8994000343EE /* Network.swift in Sources */,
+				100575A7229D8994000343EE /* HTTPNetwork.swift in Sources */,
 				1006100D23576729004EFC2C /* String+Hex.swift in Sources */,
 				10B8DF1B242A6BC00055D41E /* ULID.swift in Sources */,
-				104EA0BB237EAE67004C07CE /* UIApplication+Screenshot.swift in Sources */,
 				101055CB2417AEDF0088BD24 /* CrashesService.swift in Sources */,
 				1059295023096CE10004D340 /* Metric+Descriptor+Keys.swift in Sources */,
 				10FC45DF23117AA70077BF2C /* Timeseriesble.swift in Sources */,
 				10DCA09523045D5B00F0281E /* Double+Helper.swift in Sources */,
 				1005759F229D87B2000343EE /* Encodable+JSON.swift in Sources */,
 				109177212331315D007CE2F0 /* DBTrace.swift in Sources */,
-				101055D7241961410088BD24 /* Network+Upload.swift in Sources */,
+				101055D7241961410088BD24 /* HTTPNetwork+Upload.swift in Sources */,
 				104EA0C62382AA61004C07CE /* Gesture+Swizzled.swift in Sources */,
 				10F2874B23C36C3100F9D03A /* UIDevice+Jailbreak.swift in Sources */,
 				10127B8D22E7643D004B1F4C /* DAO.swift in Sources */,
@@ -4758,7 +4758,7 @@
 				10CA877B22A453FF003702B1 /* DeviceFormatter.swift in Sources */,
 				10CA938B24E2E01800F6A95E /* TraceConfigurationInteractor.swift in Sources */,
 				100993FB2500EA9C006C7FB4 /* Crash.swift in Sources */,
-				100575A5229D8994000343EE /* Network+Configuration.swift in Sources */,
+				100575A5229D8994000343EE /* HTTPNetwork+Configuration.swift in Sources */,
 				1046CC3F22BB894800A8762F /* ViewFormatter.swift in Sources */,
 				10CA938D24E2E23200F6A95E /* TraceSwizzleInteractor.swift in Sources */,
 				10CA8766229F1AE5003702B1 /* TraceService.swift in Sources */,
@@ -4865,7 +4865,7 @@
 				10EFEC11234799B60037CBBD /* SwiftOnlyLoadTests.swift in Sources */,
 				108D309B23292A93002757CC /* UUIDTests.swift in Sources */,
 				109136E424ACE69400476EF6 /* CollaterTests+AppMemoryBytes.swift in Sources */,
-				10CA8763229D8E38003702B1 /* NetworkTests.swift in Sources */,
+				10CA8763229D8E38003702B1 /* HTTPNetworkTests.swift in Sources */,
 				109136D224ACE3AA00476EF6 /* CollaterTests+AppRequestSizeBytes.swift in Sources */,
 				10CA8760229D8D97003702B1 /* EncodableTests.swift in Sources */,
 				102070BC24604DF400A75C45 /* DecodableTests.swift in Sources */,
@@ -5204,13 +5204,15 @@
 		100993E125003BB1006C7FB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.7.39;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -5237,13 +5239,15 @@
 		100993E225003BB1006C7FB4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.7.39;
 				DEVELOPMENT_TEAM = 72SA8V3WYL;
 				GCC_OPTIMIZATION_LEVEL = z;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
 					"-fno-optimize-sibling-calls",
@@ -5272,6 +5276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -5292,6 +5297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -5499,6 +5505,7 @@
 		104A69542293FB060065F218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
@@ -5518,13 +5525,14 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = "";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
@@ -5562,6 +5570,7 @@
 		104A69552293FB060065F218 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
@@ -5582,13 +5591,14 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Trace/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = "";
 				OTHER_CFLAGS = (
 					"-fembed-bitcode",
@@ -5687,6 +5697,7 @@
 		104A6999229401280065F218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
@@ -5701,11 +5712,12 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/iOSDemo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -5730,6 +5742,7 @@
 		104A699A229401280065F218 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "iOSDemo/Supporting Files/iOSDemo.entitlements";
@@ -5742,11 +5755,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSDemo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

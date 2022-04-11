@@ -27,14 +27,14 @@ final class UIApplicationTests: XCTestCase {
     func testCurrentViewController() {
         let application = UIApplication.shared
         
-        XCTAssertNil(application.currentViewController())
+        XCTAssertNil(application.currentViewController(from: nil))
     }
     
     func testCurrentViewController_viewController() {
         let application = UIApplication.shared
         let viewController = UIViewController()
         
-        XCTAssertNotNil(application.currentViewController(viewController))
+        XCTAssertNotNil(application.currentViewController(from: viewController))
     }
     
     func testCurrentViewController_navigationController() {
@@ -42,7 +42,7 @@ final class UIApplicationTests: XCTestCase {
         let viewController = UIViewController()
         let navigation = UINavigationController(rootViewController: viewController)
         
-        XCTAssertNotNil(application.currentViewController(navigation))
+        XCTAssertNotNil(application.currentViewController(from: navigation))
     }
     
     func testCurrentViewController_tabController() {
@@ -52,7 +52,7 @@ final class UIApplicationTests: XCTestCase {
         
         tab.viewControllers = [viewController]
         
-        XCTAssertNotNil(application.currentViewController(tab))
+        XCTAssertNotNil(application.currentViewController(from: tab))
     }
     
     func testCurrentViewController_tabController_3_viewcontroller() {
@@ -62,7 +62,7 @@ final class UIApplicationTests: XCTestCase {
         
         tab.viewControllers = viewControllers
         
-        XCTAssertNotNil(application.currentViewController(tab))
+        XCTAssertNotNil(application.currentViewController(from: tab))
     }
     
     func testCurrentViewController_tabController_7_viewcontroller() {
@@ -73,6 +73,6 @@ final class UIApplicationTests: XCTestCase {
         tab.viewControllers = viewControllers
         tab.selectedIndex = 5
         
-        XCTAssertNotNil(application.currentViewController(tab))
+        XCTAssertNotNil(application.currentViewController(from: tab))
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Network+Request.swift
+//  HTTPNetwork+Request.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 28/05/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal extension Network {
+internal extension HTTPNetwork {
 
     // MARK: - Request
 

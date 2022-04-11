@@ -1,5 +1,5 @@
 //
-//  Network+Configuration.swift
+//  HTTPNetwork+Configuration.swift
 //  Trace
 //
 //  Created by Shams Ahmed on 28/05/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Network {
+extension HTTPNetwork {
     
     // MARK: - Configuration
     

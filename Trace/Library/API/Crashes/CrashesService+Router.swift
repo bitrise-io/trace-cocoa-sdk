@@ -19,7 +19,7 @@ internal extension CrashesService {
         
         static var baseURL: URL = Constants.API
         
-        var method: Network.Method {
+        var method: HTTPNetwork.Method {
             switch self {
             case .crash: return .post
             }

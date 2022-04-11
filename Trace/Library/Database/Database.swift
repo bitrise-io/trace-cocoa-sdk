@@ -112,10 +112,16 @@ final internal class Database {
         // Disk only
         let context = persistent.privateContext
         context.perform {
-            let requests = [
-                NSBatchDeleteRequest(fetchRequest: DBMetric.fetchRequest()),
-                NSBatchDeleteRequest(fetchRequest: DBTrace.fetchRequest())
-            ]
+            var requests = [NSBatchDeleteRequest]()
+            
+            if let trace = DBTrace.fetchRequest() as? NSFetchRequest<NSFetchRequestResult> {
+                requests.append(NSBatchDeleteRequest(fetchRequest: trace))
+            }
+            
+            if let metric = DBMetric.fetchRequest() as? NSFetchRequest<NSFetchRequestResult> {
+                requests.append(NSBatchDeleteRequest(fetchRequest: metric))
+            }
+            
             requests.forEach { _ = try? context.execute($0) }
             
             // save
